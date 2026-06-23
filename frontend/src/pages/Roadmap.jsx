@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 /* ================================================================== *
- *  Proqio Roadmap
+ *  TeraStamp Roadmap
  *  - Portal card with year tabs + month-grouped feature cards
  *  - Each card opens a full detail view (image, author + date, rich
  *    English content, share-to-copy-link, and a working feedback form)
@@ -236,51 +236,51 @@ const roadmap = [
             title: "AI Insights",
             votes: 0,
             kind: "line",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "May 12",
             intro: [
               [
-                { t: "We are thrilled to bridge the gap between raw data and actionable decisions with our latest innovation: " },
+                { t: "We're excited to close the gap between raw data and actionable decisions with our newest innovation: " },
                 { t: 'AI-Powered "Get Insights" with ADA Chat.', b: true },
               ],
-              "Instead of manually analyzing complex graphs or investigating the root cause of every alert, you can now ask our AI assistant, ADA, to do the heavy lifting for you. With a single click, ADA captures the full context of your data and provides a detailed analysis in seconds.",
+              "Rather than manually working through complex graphs or chasing the root cause of every alert, you can now hand the heavy lifting to our AI assistant, ADA. With a single click, ADA grabs the full context of your data and returns a detailed analysis in seconds.",
             ],
             features: [
-              { lead: 'Contextual "Get Insights" Button:', text: 'Find the new "Get Insights" button directly on your Charts and within the Alerts view.' },
+              { lead: 'Contextual "Get Insights" Button:', text: 'Find the new "Get Insights" button right on your Charts and inside the Alerts view.' },
               {
                 lead: "Automatic Context Sharing:",
-                text: "No more typing long explanations. ADA automatically receives:",
+                text: "No more typing out long explanations. ADA automatically picks up:",
                 children: [
-                  { lead: "For Charts:", text: "A screenshot of the current visualization, including all selected instruments and fields." },
-                  { lead: "For Alerts:", text: "The current alert details plus a historical context of previous alerts for that specific instrument." },
+                  { lead: "For Charts:", text: "A screenshot of the current visualization, with all selected instruments and fields included." },
+                  { lead: "For Alerts:", text: "The current alert details plus the historical context of previous alerts for that specific instrument." },
                 ],
               },
-              { lead: "Intelligent Analysis:", text: "ADA reviews trends, identifies anomalies, and cross-references historical behavior to tell you what is happening and why." },
-              { lead: "Real-Time Progress Tracking:", text: "AI analysis is deep and thorough. To keep you informed, ADA will show you exactly what it's doing with live status updates." },
+              { lead: "Intelligent Analysis:", text: "ADA looks over trends, spots anomalies, and cross-checks historical behavior to explain what is happening and why." },
+              { lead: "Real-Time Progress Tracking:", text: "AI analysis is deep and thorough. To keep you in the loop, ADA shows you exactly what it's doing with live status updates." },
             ],
             steps: [
-              { text: "Open a chart you want to investigate or navigate to an active alert in your log." },
-              { lead: 'Click "Get Insights".', text: "Look for the button in the top-right corner of the chart or next to the alert entry." },
-              { lead: "ADA Takes Over:", text: "The ADA chat panel will automatically open, attach the relevant screenshot or alert history, and begin its analysis." },
-              { lead: "Review the Takeaways:", text: "Once processing is complete, ADA will provide a summarized report of the key findings and suggested next steps." },
+              { text: "Open a chart you want to investigate or head to an active alert in your log." },
+              { lead: 'Click "Get Insights".', text: "Look for the button in the top-right corner of the chart or beside the alert entry." },
+              { lead: "ADA Takes Over:", text: "The ADA chat panel opens on its own, attaches the relevant screenshot or alert history, and starts its analysis." },
+              { lead: "Review the Takeaways:", text: "Once processing wraps up, ADA hands you a summarized report of the key findings and suggested next steps." },
             ],
           },
           {
             title: "Security & Connectivity: OIDC Authentication",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "May 8",
-            intro: ["Sign in to Proqio through your own identity provider using OpenID Connect. No more managing a separate password for every user — access stays in sync with the systems your team already uses."],
+            intro: ["Sign in to TeraStamp through your own identity provider using OpenID Connect. No more juggling a separate password for every user — access stays in step with the systems your team already relies on."],
             features: [
               { lead: "Single sign-on:", text: "Connect providers like Azure AD and Okta so users log in with their existing credentials." },
-              { lead: "Automatic provisioning:", text: "Roles and permissions sync from your provider, so access changes apply instantly." },
+              { lead: "Automatic provisioning:", text: "Roles and permissions sync from your provider, so access changes take effect instantly." },
               { lead: "Audit-ready logs:", text: "Every sign-in is recorded for compliance and security reviews." },
             ],
             steps: [
               { text: "Open Settings and select Authentication." },
               { lead: "Add your provider:", text: "Paste your OIDC client ID, secret, and issuer URL." },
-              { lead: "Map roles:", text: "Match provider groups to Proqio roles, then enable SSO for your workspace." },
+              { lead: "Map roles:", text: "Match provider groups to TeraStamp roles, then enable SSO for your workspace." },
             ],
           },
         ],
@@ -292,13 +292,13 @@ const roadmap = [
             title: "New Instrument States",
             votes: 0,
             kind: "gauge",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "April 22",
-            intro: ["Every instrument now shows a clear, color-coded state so problems are easy to spot at a glance across your whole network."],
+            intro: ["Every instrument now displays a clear, color-coded state, so problems are easy to catch at a glance across your whole network."],
             features: [
               { lead: "Live status:", text: "Active, warning, and offline states update in real time for each sensor." },
               { lead: "Automatic flags:", text: "Offline or stalled instruments are highlighted without any manual checks." },
-              { lead: "State history:", text: "Review how an instrument's state changed over time to investigate past issues." },
+              { lead: "State history:", text: "Review how an instrument's state shifted over time to dig into past issues." },
             ],
             steps: [
               { text: "Open any site to see instrument states on the map and list." },
@@ -309,9 +309,9 @@ const roadmap = [
             title: "Table widget for dashboard",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "April 15",
-            intro: ["Add a configurable table to any dashboard and compare readings from many instruments side by side."],
+            intro: ["Drop a configurable table onto any dashboard and compare readings from many instruments side by side."],
             features: [
               { lead: "Choose your columns:", text: "Pick the fields you care about and reorder them with a drag." },
               { lead: "Sort and filter:", text: "Work with the data right inside the widget." },
@@ -326,7 +326,7 @@ const roadmap = [
             title: "Multi-condition filtering for Alerts",
             votes: 0,
             kind: "bars",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "April 3",
             intro: ["Cut through the noise by filtering alerts on more than one condition at once, so you only see what matters."],
             features: [
@@ -354,13 +354,13 @@ const roadmap = [
             title: "Time-lapse camera instrument",
             votes: 0,
             kind: "map",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "November 19",
             intro: ["Treat a camera feed like any other instrument and watch how a site changes over time."],
             features: [
               { lead: "Scheduled capture:", text: "Snapshots are taken automatically on a schedule you set." },
               { lead: "Playback:", text: "Scrub through a time-lapse straight from the dashboard." },
-              { lead: "Aligned data:", text: "Match the image timeline with sensor readings to see cause and effect." },
+              { lead: "Aligned data:", text: "Line up the image timeline with sensor readings to see cause and effect." },
             ],
             steps: [
               { text: "Add a camera as a new instrument." },
@@ -371,13 +371,13 @@ const roadmap = [
             title: "Relative Calculation for Inclinometers",
             votes: 0,
             kind: "area",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "November 6",
             intro: ["Inclinometer readings can now be calculated relative to any reference depth for more accurate movement analysis."],
             features: [
               { lead: "Pick a reference:", text: "Choose any point along the profile as your baseline." },
               { lead: "Two views:", text: "See cumulative and incremental movement together." },
-              { lead: "Auto-recalculation:", text: "Results update whenever new data arrives." },
+              { lead: "Auto-recalculation:", text: "Results refresh whenever new data arrives." },
             ],
             steps: [
               { text: "Open an inclinometer chart." },
@@ -388,9 +388,9 @@ const roadmap = [
             title: "Trends",
             votes: 0,
             kind: "line",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "November 1",
-            intro: ["Overlay data from several instruments to understand long-term behavior and spot patterns early."],
+            intro: ["Overlay data from several instruments to understand long-term behavior and catch patterns early."],
             features: [
               { lead: "Multi-instrument overlay:", text: "Compare several series on a single chart." },
               { lead: "Adjustable windows:", text: "Zoom from hours to years with one control." },
@@ -410,7 +410,7 @@ const roadmap = [
             title: "Global File Search",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "July 24",
             intro: ["Find documents, reports, and attachments across your whole account from a single search bar."],
             features: [
@@ -427,7 +427,7 @@ const roadmap = [
             title: "Custom dashboard exports",
             votes: 0,
             kind: "donut",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "July 9",
             intro: ["Export any dashboard as a PDF or image, complete with your layout and branding, ready to drop into a report."],
             features: [
@@ -455,7 +455,7 @@ const roadmap = [
             title: "Threshold-based notifications",
             votes: 0,
             kind: "bars",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "September 18",
             intro: ["Set thresholds on any instrument and get notified the moment a reading crosses the line."],
             features: [
@@ -472,7 +472,7 @@ const roadmap = [
             title: "Site grouping & permissions",
             votes: 0,
             kind: "kanban",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "September 5",
             intro: ["Organize sites into groups and control exactly who can access each one."],
             features: [
@@ -489,7 +489,7 @@ const roadmap = [
             title: "Bulk instrument import",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "September 2",
             intro: ["Import many instruments at once from a spreadsheet instead of adding them one by one."],
             features: [
@@ -517,7 +517,7 @@ const roadmap = [
             title: "Calculation formulas",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 27",
             intro: ["Turn raw readings into meaningful values with your own calculated channels."],
             features: [
@@ -534,7 +534,7 @@ const roadmap = [
             title: "Map layer to show 3D Buildings",
             votes: 0,
             kind: "map",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 19",
             intro: ["Add a 3D buildings layer to the map so instruments make sense in their real-world surroundings."],
             features: [
@@ -551,7 +551,7 @@ const roadmap = [
             title: "New tag creation on Dropdown tags",
             votes: 0,
             kind: "kanban",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 12",
             intro: ["Create a new tag right from the dropdown without leaving what you're doing."],
             features: [
@@ -568,9 +568,9 @@ const roadmap = [
             title: "Heatmap",
             votes: 0,
             kind: "heatmap",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 6",
-            intro: ["Visualize reading intensity as a heatmap so hotspots are obvious."],
+            intro: ["Visualize reading intensity as a heatmap so hotspots stand out."],
             features: [
               { lead: "Color scale:", text: "Configure the range to suit your data." },
               { lead: "Animate over time:", text: "Watch how intensity shifts." },
@@ -585,7 +585,7 @@ const roadmap = [
             title: "Alert Comments",
             votes: 0,
             kind: "table",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 3",
             intro: ["Discuss alerts in context by commenting directly on them, keeping decisions in one place."],
             features: [
@@ -602,7 +602,7 @@ const roadmap = [
             title: "Advanced Formula Editor",
             votes: 0,
             kind: "donut",
-            author: "PROQIO",
+            author: "TERASTAMP",
             postedOn: "October 1",
             intro: ["Write complex formulas with confidence using a richer editor with helpers and a live preview."],
             features: [
@@ -696,7 +696,7 @@ const FeedbackForm = ({ onDone, reasonPlaceholder }) => {
 
       <div className="mt-5 flex flex-col gap-2 border-t pt-4 text-[11px] sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: c.borderSoft, color: c.faint }}>
         <span className="flex items-center gap-1.5">
-          Powered by <ChevronRight size={11} /> <span className="font-semibold">Proqio</span>
+          Powered by <ChevronRight size={11} /> <span className="font-semibold">TeraStamp</span>
         </span>
         <span>Do Not Sell or Share My Personal Information</span>
       </div>
@@ -952,7 +952,7 @@ const CareersCTA = () => (
   </div>
 );
 
-const ProqioRoadmap = () => {
+const TeraStampRoadmap = () => {
   const [activeYear, setActiveYear] = useState("2026");
   const [openFeature, setOpenFeature] = useState(null);
   const [showSubmit, setShowSubmit] = useState(false);
@@ -972,11 +972,11 @@ const ProqioRoadmap = () => {
     <section className="w-full px-5 py-16 sm:px-8 lg:py-24" style={{ background: c.section }}>
       <div className="mx-auto max-w-5xl">
         <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: c.heading }}>
-          About the Proqio Roadmap
+          About the TeraStamp Roadmap
         </h2>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed" style={{ color: c.muted }}>
-          Stay updated on how Proqio evolves. Explore upcoming features, track progress, and share
-          your feedback through our roadmap and wishlist. Every improvement reflects our goal to make
+          Keep up with how TeraStamp grows. Browse upcoming features, follow progress, and share
+          your feedback through our roadmap and wishlist. Every improvement reflects our goal of making
           infrastructure monitoring more connected, flexible, and data-driven.
         </p>
 
@@ -985,7 +985,7 @@ const ProqioRoadmap = () => {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: c.accent }}>
               <Rocket size={18} className="text-white" />
             </div>
-            <span className="text-base font-bold" style={{ color: c.heading }}>Proqio Portal</span>
+            <span className="text-base font-bold" style={{ color: c.heading }}>TeraStamp Portal</span>
             <div className="ml-auto flex items-center gap-2 sm:gap-3">
               <div className="flex items-center gap-2 rounded-lg px-2.5" style={{ background: c.field, border: `1px solid ${c.border}` }}>
                 <Search size={15} style={{ color: c.faint }} />
@@ -1041,7 +1041,7 @@ const ProqioRoadmap = () => {
             <div className="mt-8 flex items-center justify-center gap-1.5 text-xs" style={{ color: c.faint }}>
               <span>Powered by</span>
               <ChevronRight size={12} />
-              <span className="font-semibold">Proqio</span>
+              <span className="font-semibold">TeraStamp</span>
             </div>
           </div>
         </div>
@@ -1055,4 +1055,4 @@ const ProqioRoadmap = () => {
   );
 };
 
-export default ProqioRoadmap;
+export default TeraStampRoadmap;

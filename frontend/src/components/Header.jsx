@@ -45,7 +45,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-white sm:text-xl">
           <span className="text-accent">◆</span>
-          terranode
+          TeraStamp
           <span className="text-xs align-top text-white/40">®</span>
         </Link>
 

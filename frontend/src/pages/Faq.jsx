@@ -7,28 +7,28 @@ import { Plus } from "lucide-react";
 
 const FAQS = [
   {
-    q: "What is Terranode, and what does it offer?",
-    a: "TERRANODE simplifies your infrastructure project by converting billions of data points into actionable information. The platform uses next-gen technology, incorporating UCD (User Centered Design) and AI to deliver the most user-friendly experience for even the most complex projects. With TERRANODE, you'll have everything you need to stay in control and ensure that the correct information gets to the right people.",
+    q: "What is TeraStamp, and what does it offer?",
+    a: "TeraStamp simplifies your infrastructure project by turning billions of data points into actionable information. The platform draws on next-gen technology, blending UCD (User Centered Design) and AI to deliver the most user-friendly experience even for the most complex projects. With TeraStamp, you'll have everything you need to stay in control and make sure the right information reaches the right people.",
   },
   {
-    q: "Can Terranode be customized for different sectors within the construction industry?",
-    a: "Yes, Terranode is highly flexible and can be tailored for any sectors such as dams, mining, earthworks, tunnels, railways, buildings, bridges, smart cities, energy, and much more.",
+    q: "Can TeraStamp be customized for different sectors within the construction industry?",
+    a: "Yes, TeraStamp is highly flexible and can be adapted to any sector, such as dams, mining, earthworks, tunnels, railways, buildings, bridges, smart cities, energy, and much more.",
   },
   {
-    q: "Can I integrate any sensor in Terranode regardless the supplier?",
-    a: "Absolutely, collaboration and integration are at the core of our DNA. When it comes to sensors, Terranode is designed to seamlessly integrate with any suppliers, ensuring compatibility and flexibility for a truly integrated experience.",
+    q: "Can I integrate any sensor in TeraStamp regardless of the supplier?",
+    a: "Absolutely, collaboration and integration sit at the heart of our DNA. When it comes to sensors, TeraStamp is built to integrate smoothly with any supplier, ensuring compatibility and flexibility for a truly unified experience.",
   },
   {
     q: "Can I produce automated reports based on a customized project template?",
-    a: "Indeed! Leverage the power of our advanced Report module to tailor your report templates and set up automated scheduling, ensuring efficiency and customization for your project needs.",
+    a: "Indeed! Use the power of our advanced Report module to customize your report templates and set up automated scheduling, bringing efficiency and customization to your project needs.",
   },
   {
-    q: "What is the pricing of Terranode?",
-    a: "At Terranode, we're committed to making advanced technologies accessible to all projects. Our Sales team will assess your project and provide you with unbeatable rates tailored to your needs. Feel free to contact us.",
+    q: "What is the pricing of TeraStamp?",
+    a: "At TeraStamp, we're dedicated to making advanced technologies available to every project. Our Sales team will review your project and offer you unbeatable rates tailored to your needs. Feel free to reach out to us.",
   },
   {
-    q: "Is it Terranode suitable for very large-scale projects?",
-    a: "Terranode is designed to handle billions of data records and heavy processing loads, making it an ideal solution for very large-scale projects. Our system is highly scalable, ensuring optimal performance for projects of any size.",
+    q: "Is TeraStamp suitable for very large-scale projects?",
+    a: "TeraStamp is built to handle billions of data records and heavy processing loads, making it an ideal fit for very large-scale projects. Our system is highly scalable, ensuring strong performance for projects of any size.",
   },
 ];
 

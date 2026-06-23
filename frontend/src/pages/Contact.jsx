@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
+import toast from "react-hot-toast";
 
 
 const videoSrc = "/herovideo.mp4"; // <-- your video
 const poster = "/images/demo-preview-poster.png"; // optional
 
 const benefits = [
-  "One platform for all your project data.",
+  "A single platform for all your project data.",
   "Real-time dashboards and automated reporting.",
-  "Smarter decisions with AI-based insights.",
-  "24/7 support from experts who understand your project.",
+  "Smarter decisions backed by AI-based insights.",
+  "24/7 support from experts who know your project.",
 ];
 
 const LetsTalk = () => {
@@ -22,17 +23,85 @@ const LetsTalk = () => {
   });
   const [agree, setAgree] = useState(false);
   const [consent, setConsent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const update = (key) => (e) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Demo request from ${form.name || "—"}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\n\n${form.message}\n\nMarketing consent: ${consent ? "Yes" : "No"}`
-    );
-    window.location.href = `mailto:hello@terranode.com?subject=${subject}&body=${body}`;
+
+    if (!agree) {
+      toast.error("Please accept the privacy policy.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            company: form.company,
+            message: form.message,
+            consent,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      toast.success("Request submitted successfully!", {
+        icon: "✅",
+        duration: 5000,
+        style: {
+          background: "#16A34A",
+          color: "#FFFFFF",
+          padding: "16px 24px",
+          borderRadius: "12px",
+          minWidth: "400px",
+          textAlign: "center",
+          fontWeight: "600",
+          boxShadow: "0 10px 25px rgba(22,163,74,0.35)",
+        },
+      });
+
+      setForm({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+
+      setAgree(false);
+      setConsent(false);
+    } catch (error) {
+      console.error(error);
+
+      toast.error(
+        error.message || "Something went wrong",
+        {
+          style: {
+            background: "#1E1C24",
+            color: "#fff",
+            border: "1px solid #ef4444",
+          },
+        }
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass =
@@ -48,7 +117,7 @@ const LetsTalk = () => {
           </h2>
           <div className="mt-4 text-3xl">👋</div>
           <p className="mt-2 max-w-sm text-gray-300">
-            Schedule a demo, and we'll show you how Terranode can help your
+            Book a demo, and we'll walk you through how TeraStamp can support your
             project and teams.
           </p>
 
@@ -127,26 +196,33 @@ const LetsTalk = () => {
                 className="mt-0.5 h-4 w-4 flex-none accent-[#6366F1]"
               />
               <span>
-                I give my consent to Terranode to receive electronic commercial
-                communication regarding their services.
+                I give my consent to TeraStamp to send me electronic commercial
+                communication about their services.
               </span>
             </label>
 
             <button
               type="submit"
-              disabled={!agree}
-              className="mt-5 w-full rounded-lg bg-[#6366F1] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#5457E0] disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={!agree || loading}
+              className="mt-5 w-full rounded-lg bg-[#6366F1] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#5457E0] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Send email
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  Submitting...
+                </div>
+              ) : (
+                "Request Demo"
+              )}
             </button>
 
             <p className="mt-4 text-center text-sm font-semibold text-gray-200">
-              You can also contact us by email to:{" "}
+              You can also reach us by email at:{" "}
               <a
-                href="mailto:hello@terranode.com"
+                href="mailto:hello@terastamp.com"
                 className="text-[#8B8FF5] underline"
               >
-                hello@terranode.com
+                hello@terastamp.com
               </a>
             </p>
           </form>
@@ -155,7 +231,7 @@ const LetsTalk = () => {
         {/* Right — video + benefits */}
         <div>
           <h3 className="text-xl font-bold text-white">
-            Request Your Terranode Demo
+            Request Your TeraStamp Demo
           </h3>
 
           <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-black">
@@ -181,10 +257,10 @@ const LetsTalk = () => {
           </ul>
 
           <p className="mt-7 text-lg font-semibold leading-relaxed text-gray-200">
-            See how Terranode connects geotechnical, satellite, and sensor data
-            into one powerful platform. Request a personalized demo and discover
-            how our tools help infrastructure teams make faster, data-driven
-            decisions.
+            See how TeraStamp brings geotechnical, satellite, and sensor data
+            together into one powerful platform. Request a personalized demo and
+            find out how our tools help infrastructure teams make faster,
+            data-driven decisions.
           </p>
         </div>
       </div>

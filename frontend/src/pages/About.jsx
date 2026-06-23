@@ -17,10 +17,11 @@ import { ArrowRight } from "lucide-react";
 /**
  * About Us hero — "Improving the Civil Engineering World".
  * Full-width periwinkle block with rounded bottom corners on the dark page.
- * Note: copy uses "Terranode". Swap to "Proqio" if needed.
+ * Note: copy uses "TeraStamp".
  */
 
-// 24-spoke starburst
+
+
 const Starburst = ({ className = "" }) => (
   <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={className}>
     {Array.from({ length: 24 }).map((_, i) => {
@@ -32,7 +33,6 @@ const Starburst = ({ className = "" }) => (
   </svg>
 );
 
-// 6-spoke asterisk
 const Asterisk = ({ className = "" }) => (
   <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" className={className}>
     {Array.from({ length: 6 }).map((_, i) => {
@@ -45,20 +45,55 @@ const Asterisk = ({ className = "" }) => (
 const AboutHero = () => {
   return (
     <section className="bg-[#1E1C24]">
-      <div className="relative overflow-hidden rounded-b-[40px] bg-[#A6B4FD] px-6 py-20 md:px-14 md:py-32">
+      <div
+        className="
+          relative
+          overflow-hidden
+          rounded-b-[40px]
+          bg-[#A6B4FD]
+          px-4
+          py-20
+          md:px-8
+          md:py-28
+          lg:px-[180px]
+        "
+      >
         {/* Decorations */}
         <div className="pointer-events-none absolute inset-0 text-[#6B76E6]/85">
           <Starburst className="absolute right-[16%] top-8 h-16 w-16 md:h-20 md:w-20" />
 
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" className="absolute right-[7%] top-[34%] hidden h-7 w-7 md:block">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+            className="absolute right-[7%] top-[34%] hidden h-7 w-7 md:block"
+          >
             <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" />
           </svg>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="absolute right-[4%] top-[38%] hidden h-4 w-4 md:block">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            className="absolute right-[4%] top-[38%] hidden h-4 w-4 md:block"
+          >
             <circle cx="12" cy="12" r="9" />
           </svg>
-          <svg viewBox="0 0 120 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" className="absolute bottom-16 right-[14%] hidden h-6 w-32 md:block">
+
+          <svg
+            viewBox="0 0 120 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            className="absolute bottom-16 right-[14%] hidden h-6 w-32 md:block"
+          >
             <path d="M2 12 Q12 2 22 12 T42 12 T62 12 T82 12 T102 12 T118 12" />
           </svg>
+
           <Asterisk className="absolute right-2 top-[58%] h-10 w-10 md:h-12 md:w-12" />
         </div>
 
@@ -67,7 +102,7 @@ const AboutHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 mx-auto max-w-4xl"
+          className="relative z-10 max-w-4xl lg:ml-12"
         >
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -90,15 +125,22 @@ const AboutHero = () => {
             transition={{ duration: 0.6, delay: 0.12 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-[#46454C] md:text-xl"
           >
-            With decades of experience in civil engineering and infrastructure
-            monitoring, Terranode is redefining how data intelligence enhances
-            safety, efficiency, and sustainability in the industry.
+            Backed by decades of experience in civil engineering and
+            infrastructure monitoring, TeraStamp is reshaping how data
+            intelligence strengthens safety, efficiency, and sustainability
+            across modern infrastructure projects.
           </motion.p>
         </motion.div>
       </div>
     </section>
   );
 };
+
+
+
+
+
+
 
 
 
@@ -130,17 +172,17 @@ const OurStorySection = () => {
 
             <div className="mt-6 space-y-5 text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg">
               <p>
-                Founded with a vision to transform infrastructure
-                intelligence, Terranode combines engineering expertise,
+                Built around a vision to transform infrastructure
+                intelligence, TeraStamp blends engineering expertise,
                 geospatial analytics, and real-time monitoring to help
                 organizations make smarter decisions.
               </p>
 
               <p>
-                Our platform empowers teams with actionable insights,
-                advanced visualization, and seamless data integration,
-                enabling safer, more sustainable, and more efficient
-                infrastructure projects.
+                Our platform equips teams with actionable insights,
+                advanced visualization, and smooth data integration,
+                making infrastructure projects safer, more sustainable,
+                and more efficient.
               </p>
 
               <p>
@@ -187,7 +229,7 @@ const OurStorySection = () => {
                   lg:text-[110px]
                 "
               >
-                terranode
+                terastamp
               </motion.h1>
 
               {/* Bottom Labels */}
@@ -232,21 +274,21 @@ const DifferenceSection = () => {
     {
       title: "Simplicity",
       description:
-        "Intuitive design, total control – Our user-friendly interface and experience deliver efficiency with simplicity.",
+        "Intuitive design, total control – our user-friendly interface and experience bring efficiency together with simplicity.",
       image:
         "/test1.webp",
     },
     {
       title: "Flexibility",
       description:
-        "Tailored reporting, limitless visualization, customized dashboards, and multiple data integration via our adaptable platform.",
+        "Tailored reporting, limitless visualization, customized dashboards, and multiple data integrations through our adaptable platform.",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     },
     {
       title: "Versatility",
       description:
-        "From start to finish – seamlessly integrates applications, modules, and technologies for comprehensive project lifecycle coverage.",
+        "From start to finish – smoothly connects applications, modules, and technologies for complete coverage across the project lifecycle.",
       image:
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
     },
@@ -433,10 +475,10 @@ const TestimonialCTASection = () => {
           </motion.div>
 
           <h2 className="text-2xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">
-            We are managing the geological mapping parameters,
-            convergences, and displacement trends of the tunnels with
-            Proqio. It allows us to have unparalleled control over the
-            construction project.
+            We rely on TeraStamp to manage the geological mapping
+            parameters, convergences, and displacement trends of the
+            tunnels. It gives us unmatched control over the construction
+            project.
           </h2>
 
           <p className="mt-6 text-lg text-gray-400 md:text-2xl">
@@ -502,7 +544,7 @@ const TestimonialCTASection = () => {
               "
             >
               Interested in applying for a position?
-              View our careers page for open positions
+              Check our careers page for open roles
               and apply.
             </motion.p>
 

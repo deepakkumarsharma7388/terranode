@@ -19,6 +19,20 @@ import HowItWorks from "./pages/HowItWorks.jsx";
 import Faq from "./pages/Faq.jsx";
 import Tunnels from './pages/applications/Tunnels.jsx'
 import Bridges from './pages/applications/Bridges.jsx'
+import AnjiKhadBridge from './use-cases/anji-khad-bridge.jsx'
+import MetroSantiago from './use-cases/metro-santiago.jsx'
+import HowardStreetTunnel from './use-cases/howard-street-tunnel.jsx'
+import NeomRunningTunnels from './use-cases/neom-running-tunnels.jsx'
+import BlogPostGeotechnical from './blog/proqio-joins-aetos.jsx'
+import BlogPostDesignChallenges from './blog/tunnel-design-challenges.jsx'
+import Transportation from './pages/applications/Transportation.jsx'
+import Construction  from './pages/Applications/Construction.jsx'
+import EnergyInfrastructure from './pages/applications/Energy.jsx'
+import EnvironmentalMonitoring from './pages/applications/Environment.jsx'
+import LandslidesAndDisasterManagement from './pages/applications/Landslides.jsx'
+import Pipelines from './pages/applications/Pipelines.jsx'
+import SmartCities from './pages/applications/SmartCities.jsx'
+import StructuralHealthMonitoring from './pages/applications/StructuralHealth.jsx'
 
 
 
@@ -35,17 +49,34 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/applications" element={<Applications />} />
-            <Route path="/modules" element={<Modules />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="/use-cases" element={<UseCases />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/applications/dams" element={<Dams />} />
+             <Route path="/applications/dams" element={<Dams />} />
             <Route path="/applications/mining" element={<Mining />} />
             <Route path="/applications/tunnels" element={<Tunnels />} />
             <Route path="/applications/bridges" element={<Bridges/>} />
+            <Route path="/applications/transportation" element={<Transportation/>} />
+            <Route path="/applications/construction" element={<Construction/>} />
+            <Route path="/applications/energy" element={<EnergyInfrastructure/>} />
+            <Route path="/applications/environment" element={<EnvironmentalMonitoring/>} />
+            <Route path="/applications/landslides" element={<LandslidesAndDisasterManagement/>} />
+            <Route path="/applications/pipelines" element={<Pipelines/>} />
+            <Route path="/applications/smart-cities" element={<SmartCities/>} />
+            <Route path="/applications/structural-health" element={<StructuralHealthMonitoring/>} />
+            <Route path="/modules" element={<Modules />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/use-cases" element={<UseCases />} />
+            <Route path="/use-cases/anji-khad-bridge" element={<AnjiKhadBridge/>} />
+            <Route path="/use-cases/howard-street-tunnel" element={<HowardStreetTunnel />} />
+            <Route path="/use-cases/metro-santiago" element={<MetroSantiago/>} />
+            <Route path="/use-cases/neom-running-tunnels" element={<NeomRunningTunnels/>} />
+            <Route path="/about" element={<About />} />
+            <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/tunnel-design-challenges" element={<BlogPostDesignChallenges/>} />
+            <Route path="/blog/data-science-in-construction" element={<Blog />} />
+            <Route path="/blog/digital-transformation-construction" element={<Blog />} />
+            <Route path="/blog/proqio-joins-aetos" element={<BlogPostGeotechnical/>} />
+            <Route path="/contact" element={<Contact />} />
+           
             <Route path="/modules/digital-twin" element={<DigitalTwin />} />
             <Route path="/modules/ada" element={<OurAIAssistant />} />
             <Route path="/how-it-works" element={<HowItWorks />} />

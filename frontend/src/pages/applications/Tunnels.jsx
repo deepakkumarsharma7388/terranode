@@ -9,37 +9,37 @@ import {
   BarChart3,
 } from "lucide-react";
 
-const heroImage = "/tunnel.webp"; // <-- replace with your image
+const heroImage = "/tunnel.jpeg"; // <-- replace with your image
 
 const benefits = [
-  { icon: Clock, label: "Intuitive Interface with 24/7 Support" },
-  { icon: Bell, label: "Alarm System for Early Warning in Tunnels" },
-  { icon: FileText, label: "Customizable Scheduled Reporting & Real-Time Dashboards" },
-  { icon: ShieldCheck, label: "Flexibility, Control, and Security Over Tunnel Assets" },
-  { icon: Share2, label: "Scalability and Customization for Tunnel Environments" },
-  { icon: Sparkles, label: "Quick Analysis and Automation of Tasks thanks to our AI Chatbot" },
+  { icon: Clock, label: "Easy-to-Use Interface Backed by 24/7 Support" },
+  { icon: Bell, label: "Early Warning Alert System for Tunnels" },
+  { icon: FileText, label: "Customizable Scheduled Reports & Live Dashboards" },
+  { icon: ShieldCheck, label: "Adaptability, Oversight, and Protection of Tunnel Assets" },
+  { icon: Share2, label: "Scalable and Configurable Solutions for Tunnel Settings" },
+  { icon: Sparkles, label: "Rapid Analysis and Task Automation Powered by our AI Chatbot" },
   {
     icon: BarChart3,
     label:
-      "All-in-One Platform for Cause-Effect Analysis and Collaboration Environment between Members and Teams",
+      "Unified Platform for Cause-Effect Analysis and a Collaboration Space Across Members and Teams",
     wide: true,
   },
 ];
 
 // "Total Control..." body paragraphs.
 const totalControl = [
-  "For conventional tunnels, Proqio simplifies the tunnel excavation process — from recording geotechnical data, including face mapping and rock classification, to the required ground support, tunnel convergence measurement, safety conditions, and progress and ground behavior data analysis.",
-  "With real-time integration of TBM performance data — including advance speed, weight scale metrics and face pressure — along with ground behavior analysis, we provide dynamic visualizations of TBM progress. These real-time graphs illustrate how the TBM's movement interacts with surface instrumentation, displaying settlement profiles.",
-  "On the map, the tunnel's zone of influence is projected, along with associated assets and the instruments linked to each asset.",
-  "In short, Proqio helps you manage everything from TBM performance to quality records, helping to ensure accuracy and operational efficiency.",
-  "For both conventional and TBM tunnels, we bring together a wide range of geotechnical instruments such as inclinometers, ground sensors and UAV data, giving you a complete picture of environmental and ground conditions together with the tunnel performance insights.",
+  "For conventional tunnels, TeraStamp streamlines the tunnel excavation workflow — from capturing geotechnical data, including face mapping and rock classification, through to the necessary ground support, tunnel convergence measurement, safety conditions, and analysis of progress and ground behavior data.",
+  "By integrating TBM performance data in real time — covering advance speed, weight scale metrics, and face pressure — together with ground behavior analysis, we deliver dynamic visualizations of TBM progress. These real-time graphs show how the TBM's movement interacts with surface instrumentation, presenting settlement profiles.",
+  "On the map, the tunnel's zone of influence is projected, alongside the related assets and the instruments tied to each asset.",
+  "In essence, TeraStamp helps you handle everything from TBM performance to quality records, supporting accuracy and operational efficiency.",
+  "For both conventional and TBM tunnels, we combine a broad set of geotechnical instruments such as inclinometers, ground sensors, and UAV data, giving you a full picture of environmental and ground conditions alongside tunnel performance insights.",
 ];
 
 // "Benefits ... Tunnelling" body paragraphs.
 const benefitsIntro = [
-  "Proqio's platform offers an all-in-one approach to tunnel project management, combining real-time monitoring, alarm systems, interactive graphical and map visualizations, intelligent reporting, digital twins and AI chatbot support. We integrate TBM, ground information, BIM, tunnel access, tunnel plant, mucking-out operations, CCTV, quality records, and incident response management to provide a complete view of tunnel operations.",
-  "In addition, our automated and customized reporting facilitates the generation of detailed reports on production, safety, quality and operational performance, ensuring that your team always has up-to-date information for efficient management and informed decisions.",
-  "To sum up, our platform centralizes all critical information in one place, minimizing data fragmentation and improving decision-making while optimizing project timelines and saving costs.",
+  "TeraStamp's platform provides an all-in-one approach to tunnel project management, combining real-time monitoring, alarm systems, interactive graphical and map visualizations, intelligent reporting, digital twins, and AI chatbot support. We bring together TBM, ground information, BIM, tunnel access, tunnel plant, mucking-out operations, CCTV, quality records, and incident response management to give a complete view of tunnel operations.",
+  "On top of that, our automated and customized reporting makes it easy to generate detailed reports on production, safety, quality, and operational performance, ensuring your team always has up-to-date information for efficient management and well-informed decisions.",
+  "In short, our platform centralizes all critical information in one place, cutting down data fragmentation and sharpening decision-making while optimizing project timelines and saving costs.",
 ];
 
 // Reusable scroll-in animation. `i` adds a small stagger delay.
@@ -69,15 +69,15 @@ const Tunnels = () => {
           {...rise(1)}
           className="mt-5 text-lg leading-relaxed text-white md:text-xl"
         >
-          Tunnel projects, whether for transportation, water or energy
-          infrastructure, present complex technical challenges and potentially
-          significant risks. Safety and operational success depend on continuous
-          and accurate monitoring of geotechnical, structural, environmental,
-          and plant data, essential to prevent failures, ensure stability, and
-          optimize decision-making at every stage of the project. At Proqio, we
-          offer advanced data management solutions for Tunnel Boring Machine and
-          conventional tunneling projects that ensure optimized real-time data
-          management and better project control.
+          Tunnel projects, whether for transportation, water, or energy
+          infrastructure, bring complex technical challenges and potentially
+          serious risks. Safety and operational success rely on continuous,
+          accurate monitoring of geotechnical, structural, environmental, and
+          plant data, which is essential to prevent failures, maintain
+          stability, and optimize decision-making at every stage of the project.
+          At TeraStamp, we provide advanced data management solutions for Tunnel
+          Boring Machine and conventional tunneling projects that ensure
+          optimized real-time data handling and stronger project control.
         </motion.p>
 
         <motion.div
@@ -103,13 +103,13 @@ const Tunnels = () => {
         </motion.h2>
 
         <motion.p {...rise(1)} className="text-lg leading-relaxed text-white">
-          At Proqio, we integrate information from multiple sources, regardless
-          of vendor, including geotechnical, environmental, geospatial, plant,
-          engineering and structural monitoring devices. All data is centralized
-          in real-time on a single platform, enhancing collaboration between
-          teams, eliminating data fragmentation and improving decision-making by
-          providing a complete view of tunnel infrastructure and ground
-          behavior.
+          At TeraStamp, we unite information from many sources, no matter the
+          vendor, including geotechnical, environmental, geospatial, plant,
+          engineering, and structural monitoring devices. All data is
+          centralized in real time on a single platform, improving collaboration
+          between teams, removing data fragmentation, and enhancing
+          decision-making by offering a complete view of tunnel infrastructure
+          and ground behavior.
         </motion.p>
       </section>
 
@@ -142,7 +142,7 @@ const Tunnels = () => {
           {...rise(0)}
           className={`${gradientHeading} mb-5 text-4xl font-bold tracking-tight md:text-5xl`}
         >
-          Benefits of Using Proqio for TBM and Conventional Tunnelling
+          Benefits of Using TeraStamp for TBM and Conventional Tunnelling
         </motion.h2>
 
         <div className="space-y-5">
@@ -165,7 +165,7 @@ const Tunnels = () => {
           className="rounded-3xl border border-white/[0.05] bg-[#211F29] p-6 md:p-9"
         >
           <h2 className="mb-7 text-2xl font-bold text-white md:text-3xl">
-            Benefits of Using Proqio
+            Benefits of Using TeraStamp
           </h2>
 
           <div className="grid grid-cols-2 gap-3.5 md:grid-cols-4">

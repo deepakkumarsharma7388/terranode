@@ -26,7 +26,7 @@ const Applicards = () => {
       link: "/applications/dams",
       span: 1,
       description:
-        "Harness data intelligence for enhanced dam safety, maintenance, and performance analysis.",
+        "Put data intelligence to work for stronger dam safety, maintenance, and performance analysis.",
     },
     {
       title: "Mining",
@@ -34,7 +34,7 @@ const Applicards = () => {
       link: "/applications/mining",
       span: 1,
       description:
-        "Optimize mine and tailings dam operations with intelligent data insights.",
+        "Fine-tune mine and tailings dam operations with smart data insights.",
     },
     {
       title: "Tunnels",
@@ -42,7 +42,7 @@ const Applicards = () => {
       link: "/applications/tunnels",
       span: 1,
       description:
-        "Optimize TBM and Drill & Blast tunnel construction with real-time monitoring and analytics.",
+        "Improve TBM and Drill & Blast tunnel construction with real-time monitoring and analytics.",
     },
     {
       title: "Transportation",
@@ -50,7 +50,7 @@ const Applicards = () => {
       link: "/applications/transportation",
       span: 1,
       description:
-        "Elevate transport infrastructure with intelligent data solutions for roads, railways and transit systems.",
+        "Boost transport infrastructure with smart data solutions for roads, railways, and transit systems.",
     },
     {
       title: "Construction",
@@ -58,7 +58,7 @@ const Applicards = () => {
       link: "/applications/construction",
       span: 2,
       description:
-        "Transform civil projects with data-led insights for airports, ports, construction sites and more.",
+        "Reshape civil projects with data-driven insights for airports, ports, construction sites, and more.",
     },
     {
       title: "Bridges",
@@ -66,7 +66,7 @@ const Applicards = () => {
       link: "/applications/bridges",
       span: 1,
       description:
-        "Bridge structural intelligence with real-time data analysis for safety and longevity.",
+        "Add structural intelligence to bridges with real-time data analysis for safety and longevity.",
     },
     {
       title: "Energy Infrastructure",
@@ -74,7 +74,7 @@ const Applicards = () => {
       link: "/applications/energy",
       span: 1,
       description:
-        "Empower energy projects with targeted data analysis for wind, nuclear and solar sectors.",
+        "Strengthen energy projects with focused data analysis for wind, nuclear, and solar sectors.",
     },
     {
       title: "Environmental Monitoring",
@@ -82,7 +82,7 @@ const Applicards = () => {
       link: "/applications/environment",
       span: 1,
       description:
-        "Employ remote sensing and climate data for environmental management and sustainability.",
+        "Use remote sensing and climate data for environmental management and sustainability.",
     },
     {
       title: "Landslides & Disaster Management",
@@ -90,7 +90,7 @@ const Applicards = () => {
       link: "/applications/landslides",
       span: 2,
       description:
-        "Leverage predictive intelligence for effective landslide and disaster response.",
+        "Tap into predictive intelligence for effective landslide and disaster response.",
     },
     {
       title: "Pipelines",
@@ -98,7 +98,7 @@ const Applicards = () => {
       link: "/applications/pipelines",
       span: 1,
       description:
-        "Streamline pipeline efficiency with intelligent monitoring for oil, water and gas.",
+        "Make pipelines more efficient with smart monitoring for oil, water, and gas.",
     },
     {
       title: "Smart Cities",
@@ -106,7 +106,7 @@ const Applicards = () => {
       link: "/applications/smart-cities",
       span: 1,
       description:
-        "Drive smart city evolution with integrated data analytics and urban intelligence.",
+        "Advance smart city growth with integrated data analytics and urban intelligence.",
     },
     {
       title: "Structural Health Monitoring",
@@ -114,7 +114,7 @@ const Applicards = () => {
       link: "/applications/structural-health",
       span: 2,
       description:
-        "Reinforce structural integrity with data-centric monitoring for buildings and infrastructure.",
+        "Strengthen structural integrity with data-focused monitoring for buildings and infrastructure.",
     },
   ];
 
@@ -133,7 +133,7 @@ const Applicards = () => {
           </h2>
 
           <p className="mt-3 text-gray-400 text-base md:text-lg">
-            Beyond construction, explore Proqio's applications across industries.
+            Beyond construction, discover how TeraStamp applies across industries.
           </p>
         </motion.div>
 
@@ -240,7 +240,7 @@ const CTAsection = () => {
         {/* Left Content Column */}
         <div className="flex flex-col max-w-md z-10 text-[#111216]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Experience the "New" New with Terranode
+            Discover the "New" New with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
             Start building faster today
@@ -269,7 +269,7 @@ const CTAsection = () => {
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 self-end">
           <img 
             src="/test1.webp" 
-            alt="Terranode 3D Map Interface"
+            alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity bg-slate-800"
           />
           

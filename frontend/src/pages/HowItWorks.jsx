@@ -12,12 +12,6 @@ import {
 import { ArrowRight, Play } from "lucide-react";
 
 
-
-
-
-
-
-
 const videoSrc = "/videos/how-it-works.mp4"; 
 const poster = "/images/how-it-works-poster.png";  
 
@@ -56,8 +50,8 @@ const InfrastructureHero = () => {
           </h1>
 
           <p className="mt-5 max-w-md text-lg leading-relaxed text-[#46454C]">
-            Explore a world of possibilities! Unleash the features that
-            transform data into decisions.
+            Discover a world of possibilities! Unlock the features that
+            turn data into decisions.
           </p>
 
           <Link
@@ -140,14 +134,11 @@ const InfrastructureHero = () => {
   );
 };
 
-
-
-
 const steps = [
   {
     heading: "We create your own secure and scalable environment",
     description:
-      "We initiate your journey by establishing a personalized, secure, scalable environment tailored to your needs. Your data deserves a space that ensures security and allows seamless scalability as your requirements evolve.",
+      "We kick off your journey by setting up a personalized, secure, scalable environment shaped to your needs. Your data deserves a space that keeps it secure and lets it scale smoothly as your requirements change.",
     image: "/test1.webp",
     placeholder: "from-[#2c2a36] to-[#3a4a40]",
   },
@@ -155,21 +146,21 @@ const steps = [
     heading:
       "Configure data, instruments, model constructions, etc. Alerts included!",
     description:
-      "Take control as you effortlessly configure your data, instruments, and model constructions. Our 24/7 support is by your side, ensuring you're never alone in this process. Yes, alerts are part of the package – keeping you informed and in control.",
+      "Take charge as you easily configure your data, instruments, and model constructions. Our 24/7 support stays right beside you, so you're never on your own through this process. And yes, alerts come with the package – keeping you informed and in control.",
     image: "/test2.jpg",
     placeholder: "from-[#2c2a36] to-[#3a2a3a]",
   },
   {
     heading: "Customize your dashboard and reports",
     description:
-      "Make it yours! Personalize your dashboard to reflect the insights that matter most to you. Whether it's key performance indicators or specific data points, customization is at your fingertips. Craft reports that align with your goals and present information in a way that makes the most sense for you.",
+      "Make it yours! Tailor your dashboard to surface the insights that matter most to you. Whether it's key performance indicators or specific data points, customization is right at your fingertips. Build reports that line up with your goals and present information in the way that makes the most sense for you.",
     image: "/test3.avif",
     placeholder: "from-[#2c2a36] to-[#2a3344]",
   },
   {
     heading: "Gain insights and enjoy your intelligent infrastructure",
     description:
-      "The moment you've been waiting for! Armed with insights from your personalized dashboard and reports, you're ready to make informed decisions, seize opportunities, and truly enjoy the power of your data.",
+      "The moment you've been waiting for! With insights from your personalized dashboard and reports in hand, you're ready to make informed decisions, seize opportunities, and truly enjoy the power of your data.",
     image: "/media/how/step-4.png",
     placeholder: "from-[#322f3f] to-[#2a2a44]",
   },
@@ -288,25 +279,6 @@ const HowItWorksslider = () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const CTAsection = () => {
   return (
     <section className="bg-[#111216] min-h-screen w-full flex items-center justify-center p-6 sm:p-12">
@@ -315,7 +287,7 @@ const CTAsection = () => {
         {/* Left Content Column */}
         <div className="flex flex-col max-w-md z-10 text-[#111216]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Experience the "New" New with Terranode
+            Discover the "New" New with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
             Start building faster today
@@ -344,7 +316,7 @@ const CTAsection = () => {
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 self-end">
           <img 
             src="/test1.webp" 
-            alt="Terranode 3D Map Interface"
+            alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity bg-slate-800"
           />
           
@@ -394,23 +366,6 @@ const CTAsection = () => {
     </section>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const HowItWorks = () => {

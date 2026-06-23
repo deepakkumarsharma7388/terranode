@@ -15,7 +15,7 @@ const AdvancedModules = () => {
       poster: "/images/modules/digital-twin.png", // optional still shown before play
       placeholder: "from-[#8a7d63] to-[#3a4a5a]",
       description:
-        "Work with your data in a 3D spatial environment. The Digital Twin combines sensors, GIS, and BIM to give a clear view of infrastructure conditions. Review data in context, compare behavior over time, and support technical analysis.",
+        "Work with your data inside a 3D spatial environment. The Digital Twin pulls together sensors, GIS, and BIM to give a clear view of infrastructure conditions. Review data in context, compare behavior over time, and support technical analysis.",
     },
     {
       title: "Ada: Our AI Assistant",
@@ -24,7 +24,7 @@ const AdvancedModules = () => {
       poster: "/images/modules/ada.png", // optional still shown before play
       placeholder: "from-[#3a4a2a] to-[#1f2a1a]",
       description:
-        "Interact with your project data using natural language. Ada connects to your Proqio environment to access real-time and historical data, analyze it, and provide clear answers to your questions.",
+        "Engage with your project data using natural language. Ada links into your TeraStamp environment to reach real-time and historical data, analyze it, and give clear answers to your questions.",
     },
   ];
 
@@ -39,12 +39,12 @@ const AdvancedModules = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-white md:text-5xl">
-            Terranode Advanced Modules
+            TeraStamp Advanced Modules
           </h2>
           <p className="mt-4 max-w-2xl text-gray-400 text-lg">
-            Add specific capabilities to your Proqio setup. These modules help
-            you better visualize data and extract insights for analysis and
-            decision-making.
+            Add targeted capabilities to your TeraStamp setup. These modules
+            help you visualize data more effectively and draw out insights for
+            analysis and decision-making.
           </p>
         </motion.div>
 
@@ -131,7 +131,7 @@ const CTAsection = () => {
         {/* Left Content Column */}
         <div className="flex flex-col max-w-md z-10 text-[#111216]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Experience the "New" New with Terranode
+            Discover the "New" New with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
             Start building faster today
@@ -160,7 +160,7 @@ const CTAsection = () => {
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 self-end">
           <img 
             src="/test1.webp" 
-            alt="Terranode 3D Map Interface"
+            alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity bg-slate-800"
           />
           

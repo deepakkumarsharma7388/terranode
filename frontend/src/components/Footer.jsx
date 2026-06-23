@@ -72,7 +72,7 @@ const Footer = () => {
           {/* Brand & Social Column - spans full width on mobile */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-6">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-white">terranode</span>
+              <span className="text-2xl font-bold text-white">TeraStamp</span>
               <span className="h-2 w-2 rounded-full bg-blue-500"></span>
             </div>
             <p className="text-base text-gray-300 max-w-xs">
@@ -194,7 +194,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="pt-8 text-center text-sm text-gray-400 lg:text-left">
-          <p>© {new Date().getFullYear()} terranode. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} TeraStamp. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

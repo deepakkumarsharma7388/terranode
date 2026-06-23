@@ -9,18 +9,18 @@ import {
   BarChart3,
 } from "lucide-react";
 
-const heroImage = "/bridge.webp"; // <-- replace with your image
+const heroImage = "/bridge.jpeg"; // <-- replace with your image
 
 const benefits = [
-  { icon: Clock, label: "Customizable and Scheduled Reporting" },
-  { icon: Bell, label: "Alarm System for Early Warning in Bridges" },
-  { icon: FileText, label: "Real-Time Dashboards for Instant Insights" },
-  { icon: ShieldCheck, label: "Flexibility, Control, and Security Over Bridge Assets" },
-  { icon: Share2, label: "Scalability and Customization for Bridge Environments" },
-  { icon: Sparkles, label: "Quick Analysis and Automation of Tasks thanks to our AI Chatbot" },
+  { icon: Clock, label: "Tailored and Scheduled Report Generation" },
+  { icon: Bell, label: "Early Warning Alert System for Bridges" },
+  { icon: FileText, label: "Live Dashboards Delivering Immediate Insights" },
+  { icon: ShieldCheck, label: "Adaptability, Oversight, and Protection of Bridge Assets" },
+  { icon: Share2, label: "Scalable and Configurable Solutions for Bridge Settings" },
+  { icon: Sparkles, label: "Rapid Analysis and Task Automation Powered by our AI Chatbot" },
   {
     icon: BarChart3,
-    label: "Collaborative Environment through Comments in Graphs & Member's Tagging",
+    label: "Team Collaboration via Graph Comments and Member Tagging",
     wide: true,
   },
 ];
@@ -28,14 +28,14 @@ const benefits = [
 // Two visualization/analysis cards in the 2-col grid.
 const features = [
   {
-    title: "Customizable Data Visualization for Bridge Needs",
+    title: "Flexible Data Visualization Built for Bridge Requirements",
     text:
-      "Proqio's visualization suite for bridge monitoring includes digital twins created via LiDAR or BIM, 3D geological maps, and trend analysis tools. These are complemented by interactive graphs, trend lines, and dashboards specifically designed to meet the diverse needs of stakeholders in bridge infrastructure projects.",
+      "TeraStamp's visualization toolkit for bridge monitoring features digital twins built through LiDAR or BIM, three-dimensional geological maps, and tools for trend analysis. These offerings are rounded out with interactive graphs, trend lines, and dashboards purpose-built to address the varied requirements of everyone involved in bridge infrastructure projects.",
   },
   {
-    title: "Data Analysis, Understanding and Predictive Intelligence",
+    title: "Data Interpretation, Insight, and Predictive Intelligence",
     text:
-      "Proqio's platform for bridge monitoring continuously tracks critical parameters, ensuring the safety and longevity of bridges. It supports long-term maintenance and structural integrity through real-time updates. The system anticipates potential issues by leveraging AI and ML, facilitating proactive bridge management and maintenance strategies.",
+      "TeraStamp's bridge monitoring platform keeps a constant watch over essential parameters, safeguarding the safety and durability of bridges. By delivering real-time updates, it underpins ongoing maintenance and structural soundness. Drawing on AI and ML, the system predicts emerging problems and enables forward-looking bridge management and maintenance approaches.",
   },
 ];
 
@@ -47,8 +47,10 @@ const rise = (i = 0) => ({
   transition: { duration: 0.55, delay: i * 0.08 },
 });
 
+// `leading-[1.2] pb-1` gives descenders (g, y, p) room so bg-clip-text
+// doesn't crop them — Tailwind's text-5xl/6xl set line-height:1 otherwise.
 const gradientHeading =
-  "bg-gradient-to-r from-[#B6C2FF] to-white bg-clip-text text-transparent";
+  "bg-gradient-to-r from-[#B6C2FF] to-white bg-clip-text text-transparent leading-[1.2] pb-1";
 
 const Bridges = () => {
   return (
@@ -66,16 +68,17 @@ const Bridges = () => {
           {...rise(1)}
           className="mt-5 text-lg leading-relaxed text-white md:text-xl"
         >
-          Enhance bridge safety and longevity with Proqio's tailored solutions.
-          Integrating data, technology, and AI offers vital insights for
-          bridges, from digital twins to advanced monitoring. The system employs
-          data from fiber optics, geotechnical, environmental, and seismic
-          sensors, surveying tools, and GNSS for comprehensive bridge analysis.
-          Benefit from intuitive monitoring, superior visualization, and
-          predictive analytics, ensuring structural integrity and proactive
-          maintenance tailored specifically to bridge infrastructure needs.
-          Proqio's platform ensures seamless data integration, resulting in
-          user-friendly, accurate reporting for enhanced bridge management.
+          Improve the safety and lifespan of bridges with TeraStamp's customized
+          solutions. By bringing together data, technology, and AI, the platform
+          delivers essential insights for bridges, ranging from digital twins to
+          sophisticated monitoring. To perform thorough bridge analysis, the
+          system draws on inputs from fiber optic, geotechnical, environmental,
+          and seismic sensors, along with surveying instruments and GNSS. Take
+          advantage of straightforward monitoring, exceptional visualization, and
+          predictive analytics that protect structural integrity and support
+          proactive maintenance shaped specifically around bridge infrastructure
+          demands. TeraStamp's platform guarantees smooth data integration,
+          producing accurate, easy-to-use reporting for better bridge management.
         </motion.p>
 
         <motion.div
@@ -104,26 +107,26 @@ const Bridges = () => {
           {...rise(0)}
           className="mb-3 text-2xl font-bold text-white"
         >
-          Cross-Platform Data Integration of Diverse Bridges Data Sources
+          Cross-Platform Integration of Varied Bridge Data Sources
         </motion.h3>
         <motion.p {...rise(1)} className="mb-5 text-lg leading-relaxed text-white">
-          Integration is crucial for providing a comprehensive understanding of
-          the bridge's status, ensuring seamless data merging from varied
-          platforms like digital twins, maintenance documents, weather
-          conditions, key parameter changes from sensors, remote sensing data,
-          drone imagery, BIM, seismic data, scheduling, GIS Layers, geological
-          data, and event logs.
+          Integration plays a vital role in building a complete picture of a
+          bridge's condition, enabling smooth consolidation of data from diverse
+          sources such as digital twins, maintenance records, weather
+          information, sensor-detected shifts in key parameters, remote sensing
+          data, drone imagery, BIM, seismic readings, scheduling, GIS layers,
+          geological data, and event logs.
         </motion.p>
         <motion.p {...rise(2)} className="text-lg leading-relaxed text-white">
-          For bridge monitoring, Proqio integrates remote sensing technologies
-          like InSAR and DInSAR for deformation mapping, which is crucial for
-          structural safety. It harnesses optical, thermal, and multispectral
-          imagery, UAV, and LiDAR. GNSS and seismic data are integrated for
-          movement and vibration analysis. IoT dataloggers, fiber optics,
-          geotechnical, and environmental sensors provide real-time monitoring.
-          Scour and corrosion systems and weather stations are integrated for
-          comprehensive analysis, which is essential in maintaining bridge
-          integrity and safety.
+          In the context of bridge monitoring, TeraStamp incorporates remote
+          sensing technologies such as InSAR and DInSAR to map deformation, a key
+          factor in structural safety. It makes use of optical, thermal, and
+          multispectral imagery, along with UAV and LiDAR. GNSS and seismic data
+          are combined to analyze movement and vibration. Real-time monitoring is
+          delivered through IoT dataloggers, fiber optics, and geotechnical and
+          environmental sensors. Scour and corrosion systems together with
+          weather stations are brought in for thorough analysis, which is
+          indispensable for preserving the integrity and safety of bridges.
         </motion.p>
 
         <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2">
@@ -143,7 +146,7 @@ const Bridges = () => {
           className="rounded-3xl border border-white/[0.05] bg-[#211F29] p-6 md:p-9"
         >
           <h2 className="mb-7 text-2xl font-bold text-white md:text-3xl">
-            Benefits of Using Proqio
+            Benefits of Using TeraStamp
           </h2>
 
           <div className="grid grid-cols-2 gap-3.5 md:grid-cols-4">

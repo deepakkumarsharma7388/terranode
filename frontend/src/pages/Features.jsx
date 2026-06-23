@@ -9,6 +9,8 @@ import { Radar, MessagesSquare, LineChart, SlidersHorizontal } from "lucide-reac
 import { Activity, Image as ImageIcon, Box, Rocket } from "lucide-react";
 
 
+
+
 const Starburst = ({ className = "" }) => (
   <svg
     viewBox="0 0 100 100"
@@ -34,7 +36,6 @@ const Starburst = ({ className = "" }) => (
     })}
   </svg>
 );
-
 
 const Asterisk = ({ className = "" }) => (
   <svg
@@ -63,7 +64,21 @@ const Asterisk = ({ className = "" }) => (
 const Hero = () => {
   return (
     <section className="bg-[#1E1C24]">
-      <div className="relative overflow-hidden rounded-b-[40px] bg-[#A6B4FD] px-6 pb-20 pt-16 md:px-14 md:pb-24 md:pt-20">
+      <div
+        className="
+          relative
+          overflow-hidden
+          rounded-b-[40px]
+          bg-[#A6B4FD]
+          px-6
+          pb-20
+          pt-16
+          md:px-14
+          md:pb-24
+          md:pt-20
+          lg:px-60              {/* ← extra horizontal padding on laptops/desktops */}
+        "
+      >
         {/* Decorations */}
         <div className="pointer-events-none absolute inset-0 text-[#6B76E6]/85">
           <Starburst className="absolute right-10 top-7 h-16 w-16 md:right-12 md:h-[78px] md:w-[78px]" />
@@ -122,12 +137,12 @@ const Hero = () => {
               letterSpacing: "-1.5px",
             }}
           >
-            Elevate Your Civil Infrastructure Experience with Terranode
+            Elevate Your Civil Infrastructure Experience with TeraStamp
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-[#525D7E]">
-            Explore a world of possibilities and unleash the features that
-            transform data into decisions.
+            Discover a world of possibilities and unlock the features that
+            turn data into decisions.
           </p>
 
           <Link
@@ -154,6 +169,8 @@ const Hero = () => {
 
 
 
+
+
 const AUTO_ROTATE = true;
 const ROTATE_MS = 5000;
 
@@ -162,28 +179,28 @@ const features = [
     icon: Radar,
     title: "Explore Instrument Insights",
     description:
-      "Uncover the heartbeat of your project by opening individual instruments. Dive into real-time data, understand alert statuses, and initiate informed decision-making.",
+      "Tune into the pulse of your project by opening individual instruments. Dig into real-time data, read alert statuses, and kick off informed decision-making.",
     image: "/test1.webp", // or use video: "/media/showcase/explore.mp4"
   },
   {
     icon: MessagesSquare,
     title: "Collaborate on Alerts",
     description:
-      "Facilitate seamless communication within your team. Comment on specific alerts, keeping everyone in the loop and enabling collaborative problem-solving.",
+      "Enable smooth communication within your team. Comment on specific alerts to keep everyone informed and make collaborative problem-solving possible.",
     image: "/test2.jpg",
   },
   {
     icon: LineChart,
     title: "Dynamic Graph Plotting",
     description:
-      "Plot and overlay sensor readings on interactive graphs. Compare trends over time, zoom into critical windows, and turn raw data into clear visual stories.",
+      "Plot and layer sensor readings on interactive graphs. Compare trends over time, zoom into critical windows, and turn raw data into clear visual stories.",
     image: "/test3.avif",
   },
   {
     icon: SlidersHorizontal,
     title: "Key Insights with Dynamic Map Filters",
     description:
-      "Effortlessly filter instruments based on criteria such as number of readings, alert status, category, and more. Customize your map view to focus on the instruments that matter most in any given moment.",
+      "Easily filter instruments by criteria such as number of readings, alert status, category, and more. Tailor your map view to zero in on the instruments that matter most at any given moment.",
     image: "/media/showcase/filters.png",
   },
 ];
@@ -222,10 +239,10 @@ const FeatureShowcase = () => {
               Visualize, Analyze, and Decide
             </h2>
             <p className="mt-4 max-w-xl text-gray-400 leading-relaxed">
-              Unleash the power of your engineering project at a glance. From
+              Unlock the power of your engineering project at a glance. From
               sensor insights to collaborative alert management and dynamic
-              graph plotting, our Map Section is your command center for
-              informed decisions, disaster prevention, and increased
+              graph plotting, our Map Section becomes your command center for
+              informed decisions, disaster prevention, and greater
               efficiency.{" "}
               <span className="font-semibold text-gray-200">
                 Welcome to the future of infrastructure management.
@@ -334,21 +351,21 @@ const features1 = [
     icon: Activity,
     title: "Visualizing Construction Dynamics",
     description:
-      "Navigate the movement patterns of your construction with Heat Maps. Select multiple instruments to create a dynamic visual representation, empowering proactive decision-making.",
+      "Track the movement patterns of your construction with Heat Maps. Select multiple instruments to build a dynamic visual representation that supports proactive decision-making.",
     image: "/media/immersive/heatmap.png", // or video: "/media/immersive/heatmap.mp4"
   },
   {
     icon: ImageIcon,
     title: "Real-Time Context with Construction Services",
     description:
-      "Overlay live construction services and site context onto your data, so every reading is grounded in what is happening on the ground right now.",
+      "Layer live construction services and site context over your data, so every reading is anchored in what is happening on the ground right now.",
     image: "/media/immersive/context.png",
   },
   {
     icon: Box,
     title: "Explore your Project in Depth with 3D",
     description:
-      "Step into immersive 3D views of your project, inspecting structures and sensor placements from any angle for a holistic perspective.",
+      "Step into immersive 3D views of your project, examining structures and sensor placements from any angle for a complete perspective.",
     image: "/media/immersive/3d.png",
   },
   {
@@ -356,7 +373,7 @@ const features1 = [
     title: "Digital Twins Integration",
     badge: "COMING SOON!",
     description:
-      "A living, real-time replica of your infrastructure is on the way, connecting every instrument into one continuously updated digital twin.",
+      "A living, real-time replica of your infrastructure is on its way, linking every instrument into one continuously updated digital twin.",
     image: "/media/immersive/digital-twins.png",
   },
 ];
@@ -430,11 +447,11 @@ const ImmersiveExperience = () => {
               A New Immersive Experience
             </h2>
             <p className="mt-4 max-w-xl text-gray-400 leading-relaxed">
-              From dynamic Heat Maps that reveal infrastructure movement to
-              immersive 3D views offering a holistic perspective and, soon, the
-              revolutionary Digital Twins functionality. Gain unparalleled
-              insights into your projects, making infrastructure management an
-              intuitive and immersive experience.
+              From dynamic Heat Maps that surface infrastructure movement to
+              immersive 3D views giving a complete perspective and, soon, the
+              game-changing Digital Twins functionality. Gain unmatched
+              insights into your projects, turning infrastructure management
+              into an intuitive and immersive experience.
             </p>
           </motion.div>
 

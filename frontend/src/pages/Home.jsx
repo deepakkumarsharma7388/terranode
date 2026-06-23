@@ -27,6 +27,7 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 
+import { MessageCircle} from "lucide-react";
 
 
 
@@ -46,7 +47,7 @@ const APPS = [
 ];
 
 const HeroSection = () => (
-  <section className="relative flex min-h-[600px] items-center overflow-hidden bg-ink md:min-h-[700px]">
+  <section className="relative flex min-h-[750px] items-center overflow-hidden bg-ink md:min-h-[850px] lg:min-h-screen font-body">
     <video
       autoPlay
       loop
@@ -55,22 +56,27 @@ const HeroSection = () => (
       className="absolute inset-0 h-full w-full object-cover opacity-100"
       src="/herovideo.mp4"
     />
+
     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20" />
 
     <div className="relative mx-auto max-w-7xl px-4 py-16 text-center md:px-6 md:py-24 md:text-left lg:px-8">
-      <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-        Your <span className="text-accent">all‑in‑one</span> platform
+      <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        Smarter <span className="text-accent">digital insights</span>
         <br className="hidden sm:block" /> for infrastructure
-        <br className="hidden sm:block" /> monitoring
+        <br className="hidden sm:block" /> performance
       </h1>
+
       <p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg md:mx-0">
-        Full project control: unify data, visualize risk, and drive smarter decisions.
+        TeraStamp brings monitoring data, analytics, and project intelligence
+        together in one platform to help teams act faster and make informed
+        decisions.
       </p>
+
       <Link
         to="/contact"
         className="mt-6 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 md:mt-8 md:px-7 md:py-3.5"
       >
-        Claim demo now <span aria-hidden>→</span>
+        Book a Demo <span aria-hidden>→</span>
       </Link>
     </div>
   </section>
@@ -79,61 +85,81 @@ const HeroSection = () => (
 
 
 
-
-
-
 const DataPlatformSection = () => {
   const features = [
-    { name: "Construction Data", icon: Building2 },
-    { name: "Geology and Geotech", icon: Mountain },
-    { name: "Instrumentation & Monitoring", icon: Activity },
-    { name: "Environmental Monitoring", icon: Leaf },
-    { name: "AI Project Insights", icon: Brain },
-    { name: "Surveying and LiDAR", icon: Ruler },
+    { name: "Infrastructure Data Hub", icon: Building2 },
+    { name: "Geotechnical Analysis", icon: Mountain },
+    { name: "Sensor Monitoring", icon: Activity },
+    { name: "Environmental Intelligence", icon: Leaf },
+    { name: "AI-Powered Analytics", icon: Brain },
+    { name: "Survey & LiDAR Mapping", icon: Ruler },
   ];
 
   return (
-    <section className="bg-[#2B2935] py-16 px-4 sm:px-6 md:py-24 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="overflow-hidden bg-[#2B2935]">
+      {/* Standard Site Padding */}
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left: Heading, Description, CTA */}
+          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-300 leading-tight">
-              All your infrastructure data.
+            <h2 className="font-body text-3xl leading-tight text-gray-300 sm:text-4xl md:text-5xl">
+              Every project dataset.
               <br />
               <span className="font-bold text-white">
-                One single platform
+                Connected in one workspace
               </span>
             </h2>
-
-            <p className="mt-4 text-base sm:text-lg text-gray-400 max-w-lg leading-relaxed">
-              Proqio unifies all key data from construction and infrastructure
-              projects in one collaborative environment, giving engineers full
-              control, clarity, and confidence without switching tools.
+            <p className="mt-4 max-w-lg font-body text-base leading-relaxed text-gray-400 sm:text-lg">
+              TeraStamp brings together critical project information,
+              monitoring records, and engineering insights into a single
+              digital environment, helping teams collaborate efficiently
+              and make informed decisions with confidence.
             </p>
 
             <motion.a
-              href="#demo"
-              // ✅ Button border-radius set to exactly 5px
-              className="mt-8 inline-flex items-center gap-2 rounded-[5px] bg-indigo-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-indigo-400 hover:scale-105 hover:shadow-indigo-500/40 active:scale-95"
+              href="/contact"
               whileHover={{ x: 4 }}
               whileTap={{ scale: 0.95 }}
+              className="
+                mt-8
+                inline-flex
+                items-center
+                gap-2
+                rounded-[5px]
+                bg-indigo-500
+                px-7
+                py-3.5
+                text-sm
+                font-semibold
+                text-white
+                shadow-lg
+                shadow-indigo-500/25
+                transition-all
+                duration-300
+                hover:scale-105
+                hover:bg-indigo-400
+                hover:shadow-indigo-500/40
+              "
             >
               Claim a Demo →
             </motion.a>
           </motion.div>
 
-          {/* Right: Feature Grid */}
+          {/* Right Grid */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+              delay: 0.15,
+            }}
             className="grid grid-cols-1 gap-4 sm:grid-cols-2"
           >
             {features.map(({ name, icon: Icon }, index) => (
@@ -146,14 +172,27 @@ const DataPlatformSection = () => {
                   duration: 0.4,
                   delay: index * 0.08,
                 }}
-                // ✅ Permanent border and consistent styling
-                className="flex items-center gap-3 rounded-[5px] border border-white/15 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10 hover:shadow-lg hover:shadow-indigo-500/5"
+                className="
+                  flex
+                  items-center
+                  gap-3
+                  rounded-[5px]
+                  border
+                  border-indigo-400/40       /* ← 1px border with indigo colour */
+                  bg-white/5
+                  p-4
+                  transition-all
+                  duration-300
+                  hover:bg-white/10
+                  hover:shadow-lg
+                  hover:shadow-indigo-500/5
+                "
               >
                 <Icon
-                  className="h-5 w-5 text-indigo-400 flex-shrink-0"
+                  className="h-5 w-5 flex-shrink-0 text-indigo-400"
                   strokeWidth={1.8}
                 />
-                <span className="text-sm font-medium text-gray-200">
+                <span className="font-body text-sm font-medium text-gray-200">
                   {name}
                 </span>
               </motion.div>
@@ -166,59 +205,53 @@ const DataPlatformSection = () => {
 };
 
 
-
-
-
-
-
-
 const applications = [
   {
     title: "Bridges",
     description:
-      "Bridge structural intelligence with real-time data analysis for safety and longevity. Address maintenance issues proactively.",
+      "Monitor structural performance, identify risks early, and improve long-term asset reliability with real-time engineering insights.",
     image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2000&auto=format&fit=crop",
+      "/bridge.jpeg",
     link: "/applications/bridges",
   },
   {
     title: "Tunnels",
     description:
-      "Advance tunnel projects with data-driven insights and TBM monitoring. Harness data for efficient excavation.",
+      "Track excavation progress, analyze ground conditions, and enhance tunnel safety through continuous monitoring and analytics.",
     image:
-      "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=2000&auto=format&fit=crop",
+      "/tunnel.jpeg",
     link: "/applications/tunnels",
   },
   {
     title: "Mining",
     description:
-      "Optimize mine and tailings dam operations with intelligent data insights. Enhance safety and environmental compliance.",
+      "Improve operational visibility, strengthen safety practices, and optimize resource management with data-driven intelligence.",
     image:
-      "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2000&auto=format&fit=crop",
+      "/mine.jpeg",
     link: "/applications/mining",
   },
   {
     title: "Dams",
     description:
-      "Harness data intelligence for enhanced dam safety, maintenance, and performance analysis.",
+      "Enhance dam performance and safety with continuous monitoring, predictive analytics, and centralized reporting.",
     image:
-      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2000&auto=format&fit=crop",
+      "/dam.jpeg",
     link: "/applications/dams",
   },
   {
     title: "Transportation",
     description:
-      "Elevate transport infrastructure with intelligent data solutions for roads, highways, rails, metros, and transit systems.",
+      "Support roads, railways, metro systems, and transit networks with actionable infrastructure intelligence.",
     image:
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2000&auto=format&fit=crop",
+      "/road.jpeg",
     link: "/applications/transportation",
   },
   {
     title: "Construction & Civil",
     description:
-      "Transform civil projects with data-led insights for airports, ports, construction sites, earthworks, and site investigations.",
+      "Streamline construction projects with unified data, field monitoring, and real-time project visibility.",
     image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop",
+      "/builapar.jpeg",
     link: "/applications/construction",
   },
 ];
@@ -284,11 +317,13 @@ const HorizontalScrollSection = () => {
           </p>
 
           <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
-            Tailored for every sector
+            Built for every infrastructure challenge
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-base text-gray-300">
-            Beyond construction, explore Proqio's applications across industries
+            Discover how TeraStamp supports monitoring, analytics, and decision-making
+            across multiple infrastructure sectors.
+
           </p>
         </div>
 
@@ -377,10 +412,6 @@ const HorizontalScrollSection = () => {
     </section>
   );
 };
-
-
-
-
 
 
 const LogoSlider = () => {
@@ -484,24 +515,21 @@ const ProjectSlider = () => {
   ];
 
   return (
-    <section className="w-full bg-[#171722] py-8 md:py-12 overflow-hidden">
+    <section className="overflow-hidden bg-[#171722] pt-[68px] pb-16 md:pb-20">
       <div className="relative overflow-hidden">
         <div className="flex w-max animate-project-slider hover:[animation-play-state:paused]">
           {[...projects, ...projects].map((project, index) => (
-            <div
-              key={index}
-              className="relative flex-shrink-0 mx-3 md:mx-4"
-            >
-              <div className="w-[220px] sm:w-[280px] md:w-[340px] h-[140px] sm:h-[170px] md:h-[210px] overflow-hidden rounded-3xl">
+            <div key={index} className="mx-3 flex-shrink-0 md:mx-4">
+              <div className="relative h-[140px] w-[220px] overflow-hidden rounded-3xl sm:h-[170px] sm:w-[280px] md:h-[210px] md:w-[340px]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
 
                 <div className="absolute inset-0 bg-black/30" />
 
-                <h3 className="absolute bottom-4 left-4 text-white font-semibold text-lg sm:text-xl md:text-3xl">
+                <h3 className="absolute bottom-4 left-4 text-lg font-semibold text-white sm:text-xl md:text-3xl">
                   {project.title}
                 </h3>
               </div>
@@ -515,7 +543,10 @@ const ProjectSlider = () => {
           animation: projectSlider 25s linear infinite;
         }
 
-        /* Left -> Right */
+        .animate-project-slider:hover {
+          animation-play-state: paused;
+        }
+
         @keyframes projectSlider {
           from {
             transform: translateX(-50%);
@@ -534,46 +565,46 @@ const ProjectSlider = () => {
 const benefits = [
   {
     icon: FileBarChart,
-    title: "Real-time dashboards & reporting",
+    title: "Live Monitoring & Insights",
     description:
-      "Access live data and generate reports instantly, no spreadsheets, no delays.",
+      "Track project performance in real time with interactive dashboards and instant reporting.",
   },
   {
     icon: Sparkles,
-    title: "AI Assistant",
+    title: "AI-Powered Intelligence",
     description:
-      "Get alerts, detect trends, and receive context-based recommendations.",
+      "Identify patterns, receive proactive alerts, and uncover actionable recommendations.",
   },
   {
     icon: MousePointerClick,
-    title: "User-friendly interface",
+    title: "Designed for Simplicity",
     description:
-      "Engineered for technical users, powerful tools, intuitive layout.",
+      "A clean and intuitive experience that makes complex infrastructure data easy to manage.",
   },
   {
     icon: BarChart3,
-    title: "Collaborative environment",
+    title: "Connected Team Collaboration",
     description:
-      "Share insights, comments, and decisions across teams and stakeholders.",
+      "Keep teams aligned with shared data, centralized communication, and streamlined workflows.",
   },
   {
     icon: Globe,
-    title: "24/7 expert support",
+    title: "Dedicated Expert Assistance",
     description:
-      "Direct access to our infrastructure and monitoring specialists, anytime.",
+      "Access guidance from industry specialists whenever you need support or technical expertise.",
   },
   {
     icon: Puzzle,
-    title: "Scalable & customizable",
+    title: "Flexible & Future-Ready",
     description:
-      "Adapt the platform to any project size, data type, or workflow.",
+      "Scale seamlessly across projects, integrate diverse datasets, and adapt to evolving requirements.",
   },
 ];
 
 const BenefitsSection = () => {
   return (
-    <section className="bg-[#2B2935] py-14 md:py-16 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -582,7 +613,7 @@ const BenefitsSection = () => {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center rounded-xl bg-[#6366F1]/20 px-5 py-2 text-sm font-semibold text-[#A5B4FC]"
         >
-          BENEFITS
+          PLATFORM ADVANTAGES
         </motion.div>
 
         {/* Heading */}
@@ -591,13 +622,13 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-6 max-w-4xl text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-white"
+          className="mt-6 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl"
         >
-          How terranode helps keep your project under control
+          How TeraStamp keeps your infrastructure projects on track
         </motion.h2>
 
         {/* Cards */}
-       <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {benefits.map((item, index) => {
             const Icon = item.icon;
 
@@ -614,20 +645,20 @@ const BenefitsSection = () => {
                 whileHover={{
                   y: -8,
                 }}
-                className="group rounded-2xl border border-[#A5B4FC]/60 bg-transparent p-5 md:p-6 transition-all duration-300 hover:border-[#6366F1] hover:shadow-[0_0_30px_rgba(99,102,241,0.15)]"
+                className="group rounded-2xl border border-[#A5B4FC]/60 bg-transparent p-5 transition-all duration-300 hover:border-[#6366F1] hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] md:p-6"
               >
                 <div className="flex gap-4">
                   <Icon
-                    size={34}
+                    size={40}
                     className="text-[#A5B4FC] transition-all duration-300 group-hover:text-[#6366F1]"
                   />
 
                   <div>
-                    <h3 className="text-lg md:text-xl font-semibold text-white">
+                    <h3 className="text-lg font-semibold text-white md:text-xl">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-sm md:text-base leading-relaxed text-gray-300">
+                    <p className="mt-2 text-sm leading-relaxed text-gray-300 md:text-base">
                       {item.description}
                     </p>
                   </div>
@@ -642,38 +673,40 @@ const BenefitsSection = () => {
 };
 
 
+
+
 const testimonials = [
   {
-    name: "John Smith",
-    role: "Project Director",
-    company: "Metro Rail Corporation",
+    name: "David Carter",
+    role: "Infrastructure Program Manager",
+    company: "Transportation Authority",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
     quote:
-      "Terranode transformed how we monitor and manage infrastructure projects. The platform is intuitive and delivers real-time insights.",
+      "TeraStamp has simplified the way our teams monitor project performance. Having all critical information in one place has significantly improved decision-making.",
   },
   {
-    name: "Sarah Johnson",
-    role: "Engineering Manager",
-    company: "AECOM",
+    name: "Sophia Mitchell",
+    role: "Engineering Lead",
+    company: "Infrastructure Consultancy",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
     quote:
-      "The platform provides real-time insights that save us hours every week. Reporting is now faster and more accurate.",
+      "The platform provides excellent visibility into project data and monitoring activities. Reporting processes are now much faster and more efficient.",
   },
   {
-    name: "Michael Brown",
-    role: "Operations Lead",
-    company: "Bechtel",
+    name: "James Walker",
+    role: "Operations Manager",
+    company: "Construction Group",
     image: "https://randomuser.me/api/portraits/men/75.jpg",
     quote:
-      "A powerful solution for managing large-scale infrastructure projects. The AI-driven recommendations are a game changer.",
+      "TeraStamp gives us a clear understanding of project risks and performance trends. The analytics capabilities have become an essential part of our workflow.",
   },
   {
-    name: "Emma Wilson",
-    role: "Senior Consultant",
-    company: "WSP",
+    name: "Olivia Thompson",
+    role: "Project Consultant",
+    company: "Engineering Solutions",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
     quote:
-      "Collaboration across teams has improved dramatically since implementing Terranode across our projects.",
+      "Collaboration between project teams has improved considerably. Access to centralized information has reduced delays and increased productivity.",
   },
 ];
 
@@ -684,60 +717,38 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="bg-[#1E1E24] py-16 md:py-20 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 text-center">
+    <section className="overflow-hidden bg-[#1E1E24] py-16 md:py-20">
+      {/* Heading */}
+      <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6366F1]">
           Testimonials
         </p>
 
         <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
-          Trusted by Industry Leaders
+          Helping teams build with confidence
         </h2>
 
         <p className="mx-auto mt-4 max-w-2xl text-gray-300">
-          See how organizations across construction, mining,
-          transportation, and infrastructure are using
-          Terranode to make smarter decisions.
+          Discover how organizations across tunneling, mining, transportation, and infrastructure projects use TeraStamp to improve visibility, reduce risk, and make data-driven decisions.
         </p>
       </div>
 
+      {/* Slider */}
       <div className="relative mt-12">
         <div className="testimonial-track flex w-max gap-5">
           {duplicatedTestimonials.map((item, index) => (
             <div
               key={index}
-              className="
-                w-[300px]
-                md:w-[340px]
-                shrink-0
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/5
-                p-6
-                backdrop-blur-sm
-                transition-all
-                duration-300
-                hover:border-[#6366F1]/50
-                hover:-translate-y-2
-              "
+              className="w-[300px] shrink-0 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#6366F1]/50 md:w-[340px]"
             >
-              {/* Profile */}
               <div className="flex items-center gap-4">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="
-                    h-14
-                    w-14
-                    rounded-full
-                    object-cover
-                    border-2
-                    border-[#6366F1]
-                  "
+                  className="h-14 w-14 rounded-full border-2 border-[#6366F1] object-cover"
                 />
 
-                <div>
+                <div className="text-left">
                   <h4 className="font-semibold text-white">
                     {item.name}
                   </h4>
@@ -752,58 +763,189 @@ const TestimonialsSection = () => {
                 </div>
               </div>
 
-              {/* Quote */}
-              <p className="mt-5 text-sm leading-7 text-gray-300">
+              <p className="mt-5 text-left text-sm leading-7 text-gray-300">
                 {item.quote}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Left Gradient */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 md:w-32 bg-gradient-to-r from-[#1E1E24] to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#1E1E24] to-transparent md:w-32" />
 
-        {/* Right Gradient */}
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 md:w-32 bg-gradient-to-l from-[#1E1E24] to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#1E1E24] to-transparent md:w-32" />
       </div>
 
-      <style>
-        {`
-          .testimonial-track {
-            animation: scrollTestimonials 35s linear infinite;
+      <style>{`
+        .testimonial-track {
+          animation: scrollTestimonials 35s linear infinite;
+        }
+
+        .testimonial-track:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes scrollTestimonials {
+          from {
+            transform: translateX(0);
           }
 
-          .testimonial-track:hover {
-            animation-play-state: paused;
+          to {
+            transform: translateX(-50%);
           }
-
-          @keyframes scrollTestimonials {
-            from {
-              transform: translateX(0);
-            }
-
-            to {
-              transform: translateX(-50%);
-            }
-          }
-        `}
-      </style>
+        }
+      `}</style>
     </section>
   );
 };
 
 
+
+
+
+
+const SupportSection = () => {
+  return (
+    <section className="bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="overflow-hidden rounded-[28px] bg-[#A5B4FC]"
+        >
+          <div className="grid lg:grid-cols-2">
+            {/* Left Content */}
+            <div className="flex items-center px-6 py-8 md:px-10 md:py-10 lg:px-12">
+              <div>
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#4F46E5] md:h-16 md:w-16">
+                    <MessageCircle
+                      size={28}
+                      className="text-white"
+                    />
+                  </div>
+
+                  <span className="rounded-lg bg-white/30 px-3 py-1.5 text-sm font-semibold text-[#4F46E5] md:text-base">
+                    NEW
+                  </span>
+                </div>
+
+                <h2 className="max-w-xl text-3xl font-extrabold leading-tight text-[#16151D] sm:text-4xl md:text-5xl">
+                  Dedicated support
+                  <br />
+                  from real experts
+                </h2>
+
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-[#2E2D36] md:text-lg">
+                  Connect directly with the TeraStamp support team and
+                  receive fast, reliable guidance whenever you need help.
+                  Get answers, troubleshooting assistance, and expert
+                  recommendations without delays.
+                </p>
+
+                <button
+                  className="
+                    mt-6
+                    inline-flex
+                    items-center
+                    gap-2
+                    rounded-xl
+                    bg-[#4F46E5]
+                    px-6
+                    py-3
+                    text-base
+                    font-semibold
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:scale-105
+                    hover:bg-[#4338CA]
+                  "
+                >
+                  Contact Support →
+                </button>
+              </div>
+            </div>
+
+            {/* Right Chat UI */}
+            <div className="flex items-center justify-center bg-[#ECECF4] p-4 md:p-5">
+              <div className="w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#D5D8F6] bg-white shadow-xl">
+                {/* Header */}
+                <div className="bg-[#4F46E5] p-4 text-white">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-white p-2">
+                      <Sparkles
+                        size={18}
+                        className="text-[#4F46E5]"
+                      />
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold md:text-base">
+                        Welcome to TeraStamp Support
+                      </h4>
+
+                      <p className="text-xs text-white/80 md:text-sm">
+                        Our team is ready to assist you
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div className="space-y-3 bg-[#F7F8FC] p-4 md:p-5">
+                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                    Hi there! How can we help you today?
+                  </div>
+
+                  <div className="ml-auto max-w-[80%] rounded-xl bg-[#4F46E5] px-3 py-2 text-xs text-white md:text-sm">
+                    I need help setting up monitoring dashboards for
+                    my project.
+                  </div>
+
+                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                    Absolutely! Our specialists can guide you through
+                    dashboard setup, data integration, alerts, and
+                    reporting configuration.
+                  </div>
+
+                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                    1. Open your workspace
+                    <br />
+                    2. Navigate to Dashboards
+                    <br />
+                    3. Choose a template
+                    <br />
+                    4. Add widgets & reports
+                    <br />
+                    5. Save and share
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
 const FeatureSection = () => {
   const features = [
-    "Identify alerts easily",
-    "Analyze data through intuitive graphs",
-    "Monitor project progress in real-time",
-    "Generate reports instantly",
+    "Track infrastructure performance in real time",
+    "Visualize critical data through interactive dashboards",
+    "Monitor assets, sensors, and project activities",
+    "Create reports and insights with a single click",
   ];
 
   return (
-    <section className="bg-[#2B2935] py-12 md:py-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="overflow-hidden bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -813,7 +955,7 @@ const FeatureSection = () => {
           className="inline-flex items-center rounded-lg bg-[#6366F1]/15 px-4 py-2"
         >
           <span className="text-sm font-semibold uppercase tracking-wider text-[#A5B4FC]">
-            Features
+            Core Capabilities
           </span>
         </motion.div>
 
@@ -825,13 +967,12 @@ const FeatureSection = () => {
           transition={{ duration: 0.7 }}
           className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl"
         >
-          Powerful Features
+          Platform Capabilities
         </motion.h2>
 
         {/* Content */}
         <div className="mt-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          
-          {/* Left Side Content */}
+          {/* Left Side */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -839,7 +980,7 @@ const FeatureSection = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-              Real-Time Data on a Dynamic Map
+              Visualize Critical Project Data in Real Time
             </h3>
 
             <motion.p
@@ -849,9 +990,10 @@ const FeatureSection = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="mt-5 text-base leading-relaxed text-gray-300 md:text-lg"
             >
-              Experience construction project management like never before.
-              Gain real-time insights into your project data and monitor
-              everything from one centralized platform.
+              TeraStamp brings project data, monitoring systems, and
+              operational insights together in a single platform,
+              helping infrastructure teams improve visibility,
+              reduce risks, and make faster decisions.
             </motion.p>
 
             <div className="mt-6 space-y-4">
@@ -868,10 +1010,7 @@ const FeatureSection = () => {
                   className="flex items-center gap-3"
                 >
                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/20">
-                    <Check
-                      size={14}
-                      className="text-[#6366F1]"
-                    />
+                    <Check size={14} className="text-[#6366F1]" />
                   </div>
 
                   <span className="text-sm text-gray-300 md:text-base">
@@ -899,16 +1038,12 @@ const FeatureSection = () => {
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
               >
-                <source
-                  src="/herovideo.mp4"
-                  type="video/mp4"
-                />
+                <source src="/herovideo.mp4" type="video/mp4" />
               </video>
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>
@@ -918,12 +1053,12 @@ const FeatureSection = () => {
 
 
 
+
 const HeatmapSection = () => {
   return (
-    <section className="bg-[#2B2935] py-12 md:py-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="overflow-hidden bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-[15px] lg:grid-cols-2 lg:gap-10">
-          
           {/* Left Side - Video */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -938,12 +1073,9 @@ const HeatmapSection = () => {
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
               >
-                <source
-                  src="/herovideo.mp4"
-                  type="video/mp4"
-                />
+                <source src="/herovideo.mp4" type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -963,73 +1095,59 @@ const HeatmapSection = () => {
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold leading-tight text-white sm:text-2xl md:text-5xl"
             >
-              Get deformation insights
+              Gain monitoring insights
               <br />
-              through{" "}
-              <span className="text-[#6366F1]">
-                Heatmaps
-              </span>
+              through <span className="text-[#6366F1]">Heatmaps</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                delay: 0.2,
-                duration: 0.6,
-              }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
             >
-              Experience unmatched insight into your construction
-              projects through our advanced Heatmap feature.
-              Visualize deformations with clarity, gaining a
-              deeper understanding of structural dynamics.
+              Gain a clear visual understanding of ground movement,
+              asset behavior, and structural performance through
+              interactive heatmaps. Transform complex monitoring
+              data into actionable insights for faster decision-making.
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                delay: 0.4,
-                duration: 0.6,
-              }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
             >
-              Early detection of potential issues empowers your
-              team to optimize decision-making and ensure the
-              ongoing structural integrity of projects.
-              Monitor changes in real time and stay ahead of
-              critical risks before they become problems.
+              Identify emerging risks early, track changes in real
+              time, and maintain visibility across tunnels, mining
+              operations, transportation networks, and critical
+              infrastructure assets before small issues escalate.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                delay: 0.6,
-                duration: 0.6,
-              }}
+              transition={{ delay: 0.6, duration: 0.6 }}
               className="mt-8 flex flex-wrap gap-4"
             >
-               
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>
   );
 };
 
+
+
 const ReportingSection = () => {
   return (
-    <section className="bg-[#2B2935] py-12 md:py-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="overflow-hidden bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -1039,9 +1157,10 @@ const ReportingSection = () => {
             className="order-1"
           >
             <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-              Strategic reporting for
+              Advanced Reporting for
+
               <br />
-              in-depth analysis
+              Smarter Decisions
             </h2>
 
             <motion.p
@@ -1051,12 +1170,11 @@ const ReportingSection = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
             >
-              Unlock{" "}
+              Transform{" "}
               <span className="font-semibold text-white">
-                in-depth insights
+                complex project data
               </span>{" "}
-              with our Reporting section. Generate strategic reports tailored
-              to your project's needs.
+              into meaningful insights with TeraStamp's advanced reporting tools. Create customized reports that highlight the metrics and trends that matter most.
             </motion.p>
 
             <motion.p
@@ -1066,19 +1184,20 @@ const ReportingSection = () => {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
             >
-              Whether it's for regular meetings or specific deadlines,
-              our Reporting feature ensures you have a
+              From routine project reviews to critical stakeholder updates, generate detailed reports that provide a
               <span className="font-semibold text-white">
-                {" "}comprehensive view of your project's performance.
+                {" "} complete picture of performance, risks, and operational progress.
               </span>
             </motion.p>
 
             <div className="mt-8 space-y-5">
               {[
-                "Craft your own templates that capture key metrics",
-                "Schedule reports for timely delivery",
-                "Generate detailed reports instantly",
-                "Share insights across teams easily",
+
+                "Build custom report templates for critical KPIs",
+                "Automate report scheduling and delivery",
+                "Generate project insights in seconds",
+                "Collaborate and share findings across teams",
+
               ].map((item, index) => (
                 <motion.div
                   key={item}
@@ -1093,7 +1212,7 @@ const ReportingSection = () => {
                 >
                   <Check
                     size={20}
-                    className="text-[#A5B4FC] flex-shrink-0"
+                    className="flex-shrink-0 text-[#A5B4FC]"
                   />
 
                   <span className="text-base text-gray-300 md:text-lg">
@@ -1122,7 +1241,7 @@ const ReportingSection = () => {
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
               >
                 <source
                   src="/herovideo.mp4"
@@ -1130,6 +1249,175 @@ const ReportingSection = () => {
                 />
               </video>
             </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
+const ThreeDSection = () => {
+  return (
+    <section className="overflow-hidden bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid items-center gap-[15px] lg:grid-cols-2 lg:gap-10">
+
+          {/* Left Side - Video */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="order-2 lg:order-1"
+          >
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-full w-full object-cover"
+              >
+                <source
+                  src="/herovideo.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </motion.div>
+
+          {/* Right Side - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="order-1 lg:order-2"
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
+            >
+              Explore projects through
+immersive <span className="text-[#6366F1]">3D insights</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+            >
+              Experience a more interactive way to visualize your
+              projects with advanced 3D modeling. Navigate through
+              assets, structures, and surrounding environments in a
+              realistic digital workspace designed for infrastructure
+              teams.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+            >
+              Bring monitoring data, alerts, sensors, and project
+              intelligence together in one three-dimensional view.
+              Gain deeper context, improve situational awareness,
+              and make faster decisions across tunnels, mining,
+              transportation, and critical infrastructure projects.
+            </motion.p>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+const DashboardSection = () => {
+  return (
+    <section className="overflow-hidden bg-[#2B2935]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
+            >
+              Project Intelligence Through Live
+              <br />
+              <span className="text-[#6366F1]">
+                 Project Visibility
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+            >
+              Create personalized dashboard experiences that
+              bring your project data together in one place.
+              Combine maps, charts, monitoring records, and
+              operational metrics into a clear and interactive
+              workspace.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+            >
+              Gain instant visibility into project performance,
+              monitor trends as they happen, and make faster,
+              data-driven decisions across infrastructure,
+              transportation, mining, and construction projects.
+            </motion.p>
+          </motion.div>
+
+          {/* Right Video */}
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="overflow-hidden rounded-2xl border border-[#6366F1]/30 bg-white/5 shadow-xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-full w-full object-cover"
+              >
+                <source src="/herovideo.mp4" type="video/mp4" />
+              </video>
+            </div>
           </motion.div>
 
         </div>
@@ -1142,187 +1430,182 @@ const ReportingSection = () => {
 
 
 const CounterSection = () => {
-    return (
-        <section className="bg-[#1E1E24] py-16 px-4 md:py-24">
-            <div className="max-w-6xl mx-auto">
-                {/* Section heading */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                        Our Impact in Numbers
-                    </h2>
-                    <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-                        Delivering measurable results that transform businesses and save lives.
-                    </p>
-                </div>
+  return (
+    <section className="bg-[#1E1E24]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        {/* Section heading */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl">
+            Infrastructure Intelligence That Delivers Results
+          </h2>
 
-                {/* Counter cards grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                    <CounterCard
-                        icon="💰"
-                        target={20}
-                        suffix="%"
-                        prefix="+"
-                        label="Saved Costs"
-                        description="Empower your projects with cost-efficient strategies derived from actionable insights."
-                        delay={0}
-                    />
-                    <CounterCard
-                        icon="⚡"
-                        target={2}
-                        suffix="K"
-                        prefix="+"
-                        label="Actionable Insights"
-                        description="Proactive alerts ensure safety, prevent disasters, and save lives before they occur."
-                        delay={300}
-                    />
-                    <CounterCard
-                        icon="⏱️"
-                        target={5}
-                        suffix="x"
-                        prefix=""
-                        label="Time efficiency"
-                        description="Streamline workflows, accelerate project timelines, and meet deadlines with confidence."
-                        delay={600}
-                    />
-                </div>
-            </div>
-        </section>
-    );
+          <p className="mx-auto max-w-2xl text-base text-gray-400 md:text-lg">
+            Helping infrastructure teams improve efficiency, reduce risk,
+            and make faster data-driven decisions.
+          </p>
+        </div>
+
+        {/* Counter cards */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          <CounterCard
+            icon="💰"
+            target={20}
+            suffix="%"
+            prefix="+"
+            label="Cost Reduction"
+            description="Optimize operations and reduce project expenses through real-time visibility and intelligent analytics."
+            delay={0}
+          />
+
+          <CounterCard
+            icon="⚡"
+            target={2}
+            suffix="K"
+            prefix="+"
+            label="Monitoring Events"
+            description="Receive critical alerts and actionable intelligence to identify risks before they impact operations."
+            delay={300}
+          />
+
+          <CounterCard
+            icon="⏱️"
+            target={5}
+            suffix="x"
+            prefix=""
+            label="Faster Decisions"
+            description="Enable teams to act quickly with centralized data, automated reporting, and live project visibility."
+            delay={600}
+          />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 
 const CounterCard = ({ icon, target, suffix, prefix, label, description, delay }) => {
-    const [count, setCount] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
-    const cardRef = useRef(null);
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
 
-    // Intersection Observer to trigger animation when card comes into view
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const [entry] = entries;
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        if (cardRef.current) {
-            observer.observe(cardRef.current);
+  // Intersection Observer to trigger animation when card comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
         }
+      },
+      { threshold: 0.3 }
+    );
 
-        return () => observer.disconnect();
-    }, []);
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
 
-    // Counter animation
-    useEffect(() => {
-        if (!isVisible) return;
+    return () => observer.disconnect();
+  }, []);
 
-        let startTime = null;
-        const duration = 2000; // 2 seconds
-        const startValue = 0;
-        const endValue = target;
+  // Counter animation
+  useEffect(() => {
+    if (!isVisible) return;
 
-        const animate = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
+    let startTime = null;
+    const duration = 2000; // 2 seconds
+    const startValue = 0;
+    const endValue = target;
 
-            // Ease out cubic for smooth deceleration
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const currentValue = startValue + (endValue - startValue) * eased;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
 
-            setCount(currentValue);
+      // Ease out cubic for smooth deceleration
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const currentValue = startValue + (endValue - startValue) * eased;
 
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                setCount(endValue);
-            }
-        };
+      setCount(currentValue);
 
-        // Add a small delay before starting
-        const timeoutId = setTimeout(() => {
-            requestAnimationFrame(animate);
-        }, delay);
-
-        return () => clearTimeout(timeoutId);
-    }, [isVisible, target, delay]);
-
-    // Format the display value
-    const formattedValue = () => {
-        if (target === 20) {
-            // For percentage, show with 0 decimal places
-            return Math.round(count);
-        } else if (target === 2) {
-            // For 2K, show with 1 decimal place until it reaches the target
-            if (count >= 1.9) {
-                return count.toFixed(1);
-            }
-            return count.toFixed(1);
-        } else {
-            // For 5x, show with 0 decimal places
-            return Math.round(count);
-        }
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(endValue);
+      }
     };
 
-    const displayValue = formattedValue();
+    // Add a small delay before starting
+    const timeoutId = setTimeout(() => {
+      requestAnimationFrame(animate);
+    }, delay);
 
-    return (
-        <div
-            ref={cardRef}
-            className="bg-[#2B2935] rounded-2xl p-8 text-center border border-[#2A3A4A] hover:border-[#4A6A8A] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 group"
-        >
-            {/* Icon */}
-            <div className="text-4xl mb-4">{icon}</div>
+    return () => clearTimeout(timeoutId);
+  }, [isVisible, target, delay]);
 
-            {/* Counter value */}
-            <div className="text-5xl md:text-6xl font-bold text-white mb-2 font-mono tracking-tight">
-                {prefix}
-                {displayValue}
-                {suffix}
-            </div>
+  // Format the display value
+  const formattedValue = () => {
+    if (target === 20) {
+      // For percentage, show with 0 decimal places
+      return Math.round(count);
+    } else if (target === 2) {
+      // For 2K, show with 1 decimal place until it reaches the target
+      if (count >= 1.9) {
+        return count.toFixed(1);
+      }
+      return count.toFixed(1);
+    } else {
+      // For 5x, show with 0 decimal places
+      return Math.round(count);
+    }
+  };
 
-            {/* Label */}
-            <h3 className="text-lg font-semibold text-white mb-3">{label}</h3>
+  const displayValue = formattedValue();
 
-            {/* Description */}
-            <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
-        </div>
-    );
+  return (
+    <div
+      ref={cardRef}
+      className="bg-[#2B2935] rounded-2xl p-8 text-center border border-[#2A3A4A] hover:border-[#4A6A8A] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 group"
+    >
+      {/* Icon */}
+      <div className="text-4xl mb-4">{icon}</div>
+
+      {/* Counter value */}
+      <div className="text-5xl md:text-6xl font-bold text-white mb-2 font-mono tracking-tight">
+        {prefix}
+        {displayValue}
+        {suffix}
+      </div>
+
+      {/* Label */}
+      <h3 className="text-lg font-semibold text-white mb-3">{label}</h3>
+
+      {/* Description */}
+      <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+    </div>
+  );
 };
 
 const CTASection = () => (
-  <section className="bg-[#2B2935] py-16 text-center text-white sm:py-20">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 className="font-display text-2xl font-semibold sm:text-3xl md:text-4xl">
-        See Terranode on your project
+  <section className="bg-[#2B2935] text-white">
+    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8 text-center font-body">
+      <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">
+        Discover TeraStamp in Action
       </h2>
+
       <p className="mx-auto mt-3 max-w-md text-sm text-white/60 sm:text-base">
-        A 30-minute walkthrough, configured around the data you already collect.
+        Book a personalized demo and explore how TeraStamp transforms
+        project data into actionable insights.
       </p>
+
       <Link
         to="/contact"
         className="mt-6 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold transition hover:bg-accent/90 sm:mt-7 sm:px-7 sm:py-3.5"
       >
-        Claim demo →
+        Request a Demo →
       </Link>
     </div>
   </section>
 );
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1334,16 +1617,19 @@ export default function Home() {
       <HeroSection />
       <DataPlatformSection />
       <HorizontalScrollSection />
-     
+
       <LogoSlider />
-      <ProjectSlider/>
-      <BenefitsSection/>
-      <TestimonialsSection/>
-      <FeatureSection/>
-      <HeatmapSection/>
-      <ReportingSection/>
-      <CounterSection/>
-    
+      <ProjectSlider />
+      <BenefitsSection />
+      <TestimonialsSection />
+      <SupportSection/>
+      <FeatureSection />
+      <HeatmapSection />
+      <ReportingSection />
+      <ThreeDSection />
+      <DashboardSection/>
+      <CounterSection />
+
       <CTASection />
     </div>
   );
