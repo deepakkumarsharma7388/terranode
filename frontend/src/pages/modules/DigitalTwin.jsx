@@ -1,16 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
-
   useScroll,
   useTransform,
   useMotionValueEvent,
 } from "framer-motion";
 import { useRef, useState } from "react";
-
-
 import {
   Radio,
   BadgeDollarSign,
@@ -21,16 +18,41 @@ import {
   Eye,
 } from "lucide-react";
 
+/* Color palette */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+  cardHover: "#F1F3F5",
+  inputBg: "#F3F4F6",
+};
 
+// Helper to highlight last word in orange
+const highlightLastWord = (text) => {
+  const words = text.split(" ");
+  const last = words.pop();
+  return (
+    <>
+      {words.join(" ")} <span style={{ color: colors.accent }}>{last}</span>
+    </>
+  );
+};
 
-
-
-
-
+// Reusable scroll-in animation
+const rise = (i = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-10%" },
+  transition: { duration: 0.55, delay: i * 0.08 },
+});
 
 const DigitalTwinSection = () => {
   return (
-    <section className="bg-[#1F1F2B]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-0 sm:px-6 md:pt-20 md:pb-0 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -39,11 +61,11 @@ const DigitalTwinSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            TeraStamp's Digital Twin
+          <h2 className="text-3xl font-bold text-black md:text-5xl">
+            TeraStamp's Digital <span style={{ color: colors.accent }}>Twin</span>
           </h2>
 
-          <p className="mt-4 text-base text-gray-300 md:text-xl">
+          <p className="mt-4 text-base text-[#7C8595] md:text-xl">
             A living virtual model of your infrastructure, reaching from
             the surface down to the subsurface
           </p>
@@ -56,9 +78,9 @@ const DigitalTwinSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-2xl font-bold text-white md:text-4xl lg:text-5xl"
+            className="text-2xl font-bold text-black md:text-4xl lg:text-5xl"
           >
-            Understand, Anticipate, Decide
+            Understand, Anticipate, <span style={{ color: colors.accent }}>Decide</span>
           </motion.h3>
 
           <motion.p
@@ -66,7 +88,7 @@ const DigitalTwinSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-5 max-w-5xl text-base leading-relaxed text-gray-300 md:text-lg"
+            className="mt-5 max-w-5xl text-base leading-relaxed text-[#7C8595] md:text-lg"
           >
             Looking after a critical asset takes far more than knowing its
             physical and structural characteristics. You need to grasp how
@@ -84,7 +106,7 @@ const DigitalTwinSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-10 overflow-hidden rounded-[24px] border border-white/10 shadow-2xl"
+          className="mt-10 overflow-hidden rounded-[24px] border border-[#E2E8F0] shadow-lg"
         >
           <div className="h-[220px] sm:h-[300px] md:h-[400px] lg:h-[500px]">
             <video
@@ -111,10 +133,9 @@ const DigitalTwinSection = () => {
         >
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-3 rounded-xl bg-[#6C72FF] px-6 py-4 text-base font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#7B80FF]"
+            className="group inline-flex items-center gap-3 rounded-xl bg-[#F26418] px-6 py-4 text-base font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#E05A10]"
           >
             Claim a Digital Twin Demo
-
             <ArrowRight
               size={20}
               className="transition-transform duration-300 group-hover:translate-x-1"
@@ -125,10 +146,6 @@ const DigitalTwinSection = () => {
     </section>
   );
 };
-
-
-
-
 
 const steps = [
   {
@@ -167,7 +184,6 @@ const steps = [
   },
 ];
 
-
 const DigitalTwinExplained = () => {
   const sectionRef = useRef(null);
   const [active, setActive] = useState(0);
@@ -192,18 +208,15 @@ const DigitalTwinExplained = () => {
   });
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-[#1F1F2B]"
-    >
+    <section ref={sectionRef} className="bg-white">
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-0 sm:px-6 md:pt-20 md:pb-0 lg:px-8">
         {/* Heading */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            What is TeraStamp's Digital Twin?
+          <h2 className="text-3xl font-bold text-black md:text-5xl">
+            What is TeraStamp's Digital <span style={{ color: colors.accent }}>Twin?</span>
           </h2>
 
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+          <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
             <p>
               TeraStamp's Digital Twin is a dynamic digital representation of
               infrastructure such as dams, tunnels, bridges, mines,
@@ -229,24 +242,24 @@ const DigitalTwinExplained = () => {
             <div className="sticky top-28 flex gap-5">
               {/* Progress Bar */}
               <div className="flex flex-col items-center">
-                <span className="text-base text-white">01</span>
+                <span className="text-base text-black">01</span>
 
-                <div className="relative my-4 h-[320px] w-[3px] rounded-full bg-white/10">
+                <div className="relative my-4 h-[320px] w-[3px] rounded-full bg-[#E2E8F0]">
                   <motion.div
                     style={{
                       height: fillHeight,
                     }}
-                    className="absolute left-0 top-0 w-full rounded-full bg-[#7C83FF]"
+                    className="absolute left-0 top-0 w-full rounded-full bg-[#F26418]"
                   />
                 </div>
 
-                <span className="text-base text-white">
+                <span className="text-base text-black">
                   0{steps.length}
                 </span>
               </div>
 
               {/* Image */}
-              <div className="relative h-[360px] flex-1 overflow-hidden rounded-3xl">
+              <div className="relative h-[360px] flex-1 overflow-hidden rounded-3xl border border-[#E2E8F0]">
                 {steps.map((step, index) => (
                   <motion.img
                     key={index}
@@ -291,7 +304,7 @@ const DigitalTwinExplained = () => {
                   }}
                 >
                   {/* Mobile Image */}
-                  <div className="mb-8 overflow-hidden rounded-2xl lg:hidden">
+                  <div className="mb-8 overflow-hidden rounded-2xl border border-[#E2E8F0] lg:hidden">
                     <img
                       src={step.image}
                       alt=""
@@ -300,30 +313,27 @@ const DigitalTwinExplained = () => {
                   </div>
 
                   {/* Number */}
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white text-2xl font-bold text-[#6366F1]">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#F26418] text-2xl font-bold text-white">
                     {index + 1}
                   </div>
 
                   {/* Heading */}
-                  <h3 className="mt-4 text-2xl font-bold text-white md:text-4xl">
-                    {step.title}
+                  <h3 className="mt-4 text-2xl font-bold text-black md:text-4xl">
+                    {highlightLastWord(step.title)}
                   </h3>
 
                   {/* Bullet Points */}
-                  <ul className="mt-4 space-y-2 text-base text-white md:text-lg">
+                  <ul className="mt-4 space-y-2 text-base text-black md:text-lg">
                     {step.content.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex gap-3"
-                      >
-                        <span>•</span>
+                      <li key={i} className="flex gap-3">
+                        <span className="text-[#F26418]">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Description */}
-                  <p className="mt-4 max-w-4xl text-base leading-relaxed text-gray-300 md:text-lg">
+                  <p className="mt-4 max-w-4xl text-base leading-relaxed text-[#7C8595] md:text-lg">
                     {step.description}
                   </p>
                 </motion.div>
@@ -335,8 +345,6 @@ const DigitalTwinExplained = () => {
     </section>
   );
 };
-
-
 
 const benefits = [
   {
@@ -365,19 +373,18 @@ const benefits = [
   },
 ];
 
-
 const KeyBenefits = () => {
   return (
-    <section className="bg-[#1F1F2B]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-0 sm:px-6 md:pt-20 md:pb-0 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex rounded-lg bg-[#A5B4FC] px-4 py-2"
+          className="inline-flex rounded-lg bg-[#F26418]/10 px-4 py-2 border border-[#F26418]"
         >
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#4F46E5]">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#F26418]">
             Key Benefits
           </span>
         </motion.div>
@@ -388,9 +395,9 @@ const KeyBenefits = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mt-6 text-3xl font-bold text-white md:text-5xl"
+          className="mt-6 text-3xl font-bold text-black md:text-5xl"
         >
-          What makes it unique
+          What makes it <span style={{ color: colors.accent }}>unique</span>
         </motion.h2>
 
         {/* Cards */}
@@ -417,23 +424,23 @@ const KeyBenefits = () => {
                 className="
                   group
                   rounded-3xl
-                  border
-                  border-[#A5B4FC]
-                  bg-transparent
+                  border-2
+                  border-[#F26418]
+                  bg-white
                   p-5
                   transition-all
                   duration-300
-                  hover:bg-[#2A2940]
-                  hover:shadow-[0_0_25px_rgba(165,180,252,0.15)]
+                  hover:bg-[#F9FAFB]
+                  hover:shadow-lg
                 "
               >
                 <div className="flex items-start gap-4">
                   <Icon
                     size={24}
-                    className="mt-1 flex-shrink-0 text-[#A5B4FC]"
+                    className="mt-1 flex-shrink-0 text-[#F26418]"
                   />
 
-                  <p className="text-base font-semibold leading-relaxed text-white md:text-lg">
+                  <p className="text-base font-semibold leading-relaxed text-black md:text-lg">
                     {item.text}
                   </p>
                 </div>
@@ -459,8 +466,9 @@ const KeyBenefits = () => {
           className="
             mt-5
             rounded-3xl
-            border
-            border-[#A5B4FC]
+            border-2
+            border-[#F26418]
+            bg-white
             p-5
             md:p-6
           "
@@ -468,10 +476,10 @@ const KeyBenefits = () => {
           <div className="flex items-center gap-4">
             <Eye
               size={26}
-              className="text-[#A5B4FC]"
+              className="text-[#F26418]"
             />
 
-            <h3 className="text-lg font-semibold text-white md:text-xl">
+            <h3 className="text-lg font-semibold text-black md:text-xl">
               High-end visual realism Powered by Unreal Engine 5
             </h3>
           </div>
@@ -480,10 +488,6 @@ const KeyBenefits = () => {
     </section>
   );
 };
-
-
-
-
 
 const DemoFormSection = () => {
   const [formData, setFormData] = useState({
@@ -509,15 +513,15 @@ const DemoFormSection = () => {
   };
 
   return (
-    <section className="bg-[#1F1F2B]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            See the TeraStamp Digital Twin in action
+          <h2 className="text-3xl font-bold text-black md:text-5xl">
+            See the TeraStamp Digital Twin in <span style={{ color: colors.accent }}>action</span>
           </h2>
 
-          <p className="mt-5 text-base italic text-white/90 md:text-xl">
+          <p className="mt-5 text-base italic text-[#7C8595] md:text-xl">
             Watch how your project can come to life in a real-time 3D model
           </p>
         </div>
@@ -537,14 +541,16 @@ const DemoFormSection = () => {
               h-14
               w-full
               rounded-xl
-              border-none
-              bg-[#666577]
+              border-2
+              border-[#E2E8F0]
+              bg-[#F9FAFB]
               px-5
-              text-white
-              placeholder:text-gray-300
+              text-black
+              placeholder:text-[#7C8595]
               outline-none
+              focus:border-[#F26418]
               focus:ring-2
-              focus:ring-[#6366F1]
+              focus:ring-[#F26418]/20
             "
           />
 
@@ -558,14 +564,16 @@ const DemoFormSection = () => {
               h-14
               w-full
               rounded-xl
-              border-none
-              bg-[#666577]
+              border-2
+              border-[#E2E8F0]
+              bg-[#F9FAFB]
               px-5
-              text-white
-              placeholder:text-gray-300
+              text-black
+              placeholder:text-[#7C8595]
               outline-none
+              focus:border-[#F26418]
               focus:ring-2
-              focus:ring-[#6366F1]
+              focus:ring-[#F26418]/20
             "
           />
 
@@ -579,14 +587,16 @@ const DemoFormSection = () => {
               h-14
               w-full
               rounded-xl
-              border-none
-              bg-[#666577]
+              border-2
+              border-[#E2E8F0]
+              bg-[#F9FAFB]
               px-5
-              text-white
-              placeholder:text-gray-300
+              text-black
+              placeholder:text-[#7C8595]
               outline-none
+              focus:border-[#F26418]
               focus:ring-2
-              focus:ring-[#6366F1]
+              focus:ring-[#F26418]/20
             "
           />
 
@@ -597,22 +607,16 @@ const DemoFormSection = () => {
               name="privacy"
               checked={formData.privacy}
               onChange={handleChange}
-              className="mt-1 h-5 w-5 rounded"
+              className="mt-1 h-5 w-5 rounded border-[#D1D9E6] text-[#F26418] focus:ring-[#F26418]"
             />
 
-            <span className="text-sm leading-relaxed text-white md:text-base">
+            <span className="text-sm leading-relaxed text-black md:text-base">
               I understand and agree that my data will be used according to the{" "}
-              <a
-                href="#"
-                className="text-[#8B95FF] hover:underline"
-              >
+              <a href="#" className="text-[#F26418] hover:underline">
                 privacy policy
               </a>{" "}
               and{" "}
-              <a
-                href="#"
-                className="text-[#8B95FF] hover:underline"
-              >
+              <a href="#" className="text-[#F26418] hover:underline">
                 GDPR regulations
               </a>.
             </span>
@@ -625,10 +629,10 @@ const DemoFormSection = () => {
               name="consent"
               checked={formData.consent}
               onChange={handleChange}
-              className="mt-1 h-5 w-5 rounded"
+              className="mt-1 h-5 w-5 rounded border-[#D1D9E6] text-[#F26418] focus:ring-[#F26418]"
             />
 
-            <span className="text-sm leading-relaxed text-white md:text-base">
+            <span className="text-sm leading-relaxed text-black md:text-base">
               I give my consent to TeraStamp to send me electronic commercial
               communication about their services.
             </span>
@@ -642,14 +646,14 @@ const DemoFormSection = () => {
               h-14
               w-full
               rounded-xl
-              bg-[#6366F1]
+              bg-[#F26418]
               text-base
               font-semibold
               text-white
               transition-all
               duration-300
               hover:scale-[1.01]
-              hover:bg-[#5658E8]
+              hover:bg-[#E05A10]
             "
           >
             Request a Demo
@@ -660,133 +664,42 @@ const DemoFormSection = () => {
   );
 };
 
-
-
-
-
-
-
+// ===== UPDATED CTA SECTION – MATCHES YOUR SCREENSHOT DESIGN =====
 const DigitalTwinCTA = () => {
   return (
-    <section className="bg-[#1F1F2B]">
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-0 sm:px-6 md:pt-20 md:pb-0 lg:px-8">
-        {/* Top Content */}
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="rounded-[32px] bg-[#E05A10] px-8 py-12 md:px-16 md:py-16 lg:px-20 lg:py-20"
         >
-          <h2 className="text-3xl font-bold text-white md:text-5xl">
-            Protect what matters
-          </h2>
+          <div className="flex flex-col items-center text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-[#ffffff] sm:text-5xl md:text-6xl">
+              Discover the <br className="sm:hidden" />
+              <span className="relative">
+                <span className="relative z-10">"New" New</span>
+              </span>{' '}
+              with <br className="hidden sm:inline" />
+              TeraStamp
+            </h2>
 
-          <p className="mt-6 max-w-6xl text-base leading-relaxed text-gray-300 md:text-lg">
-            Critical infrastructure calls for continuous, context-rich
-            understanding and the ability to anticipate. TeraStamp's
-            Digital Twin is a living virtual model that evolves with
-            reality, helping you{" "}
-            <span className="font-semibold text-white">
-              anticipate risks, make confident decisions,
-              and protect people and assets.
-            </span>
-          </p>
+            <p className="mt-4 text-lg font-medium text-[#00000]/80 sm:text-xl md:text-2xl">
+              Start building faster today
+            </p>
 
-          <p className="mt-6 text-lg font-semibold text-gray-200 md:text-2xl">
-            Want to see your site as a living digital
-            model? Claim a demo today!
-          </p>
-        </motion.div>
-
-        {/* CTA Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="
-            mt-10
-            overflow-hidden
-            rounded-[28px]
-            bg-[#C7CCFF]
-            p-6
-            md:p-8
-            lg:p-10
-          "
-        >
-          <div className="grid items-center gap-8 lg:grid-cols-2">
-            {/* Left */}
-            <div>
-              {/* Badge */}
-              <div className="inline-flex rounded-xl bg-white px-4 py-2 shadow-sm">
-                <span className="text-sm font-medium text-black">
-                  New
-                </span>
-              </div>
-
-              {/* Heading */}
-              <h3 className="mt-6 text-3xl font-bold leading-tight text-black md:text-5xl">
-                Your project, alive.
-              </h3>
-
-              <h4 className="mt-2 text-2xl text-black md:text-4xl">
-                TeraStamp Digital Twin
-              </h4>
-
-              {/* Description */}
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-black md:text-2xl">
-                A living virtual model of your infrastructure,
-                from the surface to the subsurface.
-              </p>
-
-              {/* Button */}
-              <Link
-                to="/contact"
-                className="
-                  group
-                  mt-8
-                  inline-flex
-                  items-center
-                  gap-4
-                  rounded-xl
-                  bg-[#5146E5]
-                  px-6
-                  py-4
-                  text-base
-                  font-medium
-                  text-white
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                "
-              >
-                Claim a Demo
-
-                <ArrowRight
-                  size={22}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-
-            {/* Right Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+            <Link
+              to="/contact"
+              className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#111216] transition-all duration-200 hover:bg-gray-50 hover:scale-105 sm:text-base"
             >
-              <img
-                src="/pipelin.jpeg"
-                alt="Digital Twin"
-                className="
-                  w-full
-                  rounded-2xl
-                  object-cover
-                  shadow-2xl
-                "
+              Claim demo now
+              <ArrowRight
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </motion.div>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -794,28 +707,16 @@ const DigitalTwinCTA = () => {
   );
 };
 
-
-
-
-
-
-
-
-
-
-
-
 const DigitalTwin = () => {
   return (
     <div>
       <DigitalTwinSection />
-       
-       <DigitalTwinExplained/>
-        <KeyBenefits/>
-        <DigitalTwinCTA/>
-        <DemoFormSection/>
+      <DigitalTwinExplained />
+      <KeyBenefits />
+      <DigitalTwinCTA />
+      <DemoFormSection />
     </div>
-  )
-}
+  );
+};
 
-export default DigitalTwin
+export default DigitalTwin;

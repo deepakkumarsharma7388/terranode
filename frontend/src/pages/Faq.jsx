@@ -1,9 +1,17 @@
 import React from 'react'
-
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
-
+/* Color palette */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+};
 
 const FAQS = [
   {
@@ -35,11 +43,7 @@ const FAQS = [
 const FaqItem = ({ item, isOpen, onToggle }) => {
   return (
     <div
-      className={`rounded-2xl border transition-colors duration-300 ${
-        isOpen
-          ? "border-white/10 bg-white/[0.02]"
-          : "border-white/[0.06] bg-transparent hover:border-white/10"
-      }`}
+      className="rounded-2xl border-2 border-[#F26418] bg-white transition-colors duration-300"
     >
       <button
         type="button"
@@ -47,12 +51,14 @@ const FaqItem = ({ item, isOpen, onToggle }) => {
         aria-expanded={isOpen}
         className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left sm:px-7 sm:py-6"
       >
-        <span className="text-base font-semibold tracking-tight text-white sm:text-lg">
+        <span className="text-base font-semibold tracking-tight text-black sm:text-lg">
           {item.q}
         </span>
         <span
-          className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/[0.04] text-zinc-300 transition-transform duration-300 ease-out ${
-            isOpen ? "rotate-45" : "rotate-0"
+          className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg transition-colors duration-300 ${
+            isOpen
+              ? "bg-[#F26418] text-white"
+              : "bg-[#F1F3F5] text-[#7C8595]"
           }`}
         >
           <Plus className="h-5 w-5" strokeWidth={2.25} />
@@ -68,8 +74,8 @@ const FaqItem = ({ item, isOpen, onToggle }) => {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="mx-6 border-t border-white/[0.06] sm:mx-7" />
-          <p className="px-6 pb-6 pt-4 text-[15px] leading-relaxed text-zinc-400 sm:px-7">
+          <div className="mx-6 border-t border-[#E2E8F0] sm:mx-7" />
+          <p className="px-6 pb-6 pt-4 text-[15px] leading-relaxed text-[#7C8595] sm:px-7">
             {item.a}
           </p>
         </div>
@@ -90,12 +96,12 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#1f1e24] px-5 py-20 text-white sm:px-8">
+    <section className="min-h-screen bg-white px-5 py-20 text-black sm:px-8">
       <div className="mx-auto max-w-4xl">
-        <h2 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+        <h2 className="text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl">
           Still not convinced?
           <br />
-          We&rsquo;ve got the answers
+          We&rsquo;ve got <span style={{ color: "#F26418" }}>the answers</span>
         </h2>
 
         <div className="mt-12 space-y-4 sm:mt-16">
@@ -109,11 +115,11 @@ const FaqSection = () => {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-sm text-zinc-400 sm:text-base">
+        <p className="mt-12 text-center text-sm text-[#7C8595] sm:text-base">
           Still have more questions?{" "}
           <a
             href="#contact"
-            className="font-medium text-white underline underline-offset-4 transition-opacity hover:opacity-70"
+            className="font-medium text-[#F26418] underline underline-offset-4 transition-opacity hover:opacity-70"
           >
             Contact us
           </a>
@@ -123,17 +129,12 @@ const FaqSection = () => {
   );
 };
 
-
-
-
-
 const Faq = () => {
   return (
     <div>
-     
-      <FaqSection/>
+      <FaqSection />
     </div>
-  )
-}
+  );
+};
 
-export default Faq
+export default Faq;

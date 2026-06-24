@@ -19,10 +19,10 @@ import HowItWorks from "./pages/HowItWorks.jsx";
 import Faq from "./pages/Faq.jsx";
 import Tunnels from './pages/applications/Tunnels.jsx'
 import Bridges from './pages/applications/Bridges.jsx'
-import AnjiKhadBridge from './use-cases/anji-khad-bridge.jsx'
-import MetroSantiago from './use-cases/metro-santiago.jsx'
-import HowardStreetTunnel from './use-cases/howard-street-tunnel.jsx'
-import NeomRunningTunnels from './use-cases/neom-running-tunnels.jsx'
+
+
+
+
 import BlogPostGeotechnical from './blog/proqio-joins-aetos.jsx'
 import BlogPostDesignChallenges from './blog/tunnel-design-challenges.jsx'
 import Transportation from './pages/applications/Transportation.jsx'
@@ -33,6 +33,12 @@ import LandslidesAndDisasterManagement from './pages/applications/Landslides.jsx
 import Pipelines from './pages/applications/Pipelines.jsx'
 import SmartCities from './pages/applications/SmartCities.jsx'
 import StructuralHealthMonitoring from './pages/applications/StructuralHealth.jsx'
+import NewsletterSection from './pages/NewsletterSection.jsx'
+import LegalNoticePage from './pages/Legalnotice.jsx'
+import PurpleLineSection2 from './use-cases/purplelinesection2.jsx'
+import PurpleLine3Stations from './use-cases/PurpleLine3Stations.jsx'
+import PurpleLine3Tunnels from './use-cases/PurpleLine3Tunnels.jsx'
+import VtaBartPhase2 from './use-cases/VtaBartPhase2.jsx'
 
 
 
@@ -64,10 +70,10 @@ export default function App() {
             <Route path="/modules" element={<Modules />} />
             <Route path="/features" element={<Features />} />
             <Route path="/use-cases" element={<UseCases />} />
-            <Route path="/use-cases/anji-khad-bridge" element={<AnjiKhadBridge/>} />
-            <Route path="/use-cases/howard-street-tunnel" element={<HowardStreetTunnel />} />
-            <Route path="/use-cases/metro-santiago" element={<MetroSantiago/>} />
-            <Route path="/use-cases/neom-running-tunnels" element={<NeomRunningTunnels/>} />
+            <Route path="/use-cases/purplelinesection2" element={<PurpleLineSection2/>} />
+            <Route path="/use-cases/vtaBartPhase2" element={<VtaBartPhase2 />} />
+            <Route path="/use-cases/purpleline3station" element={<PurpleLine3Stations/>} />
+            <Route path="/use-cases/purpleline3tunnels" element={<PurpleLine3Tunnels/>} />
             <Route path="/about" element={<About />} />
             <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/blog" element={<Blog />} />
@@ -81,7 +87,8 @@ export default function App() {
             <Route path="/modules/ada" element={<OurAIAssistant />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/faq" element={<Faq />} />
-
+             <Route path="/newsletter" element={<NewsletterSection/>} />
+             <Route path="/legal-notice" element={<LegalNoticePage/>} />
          
               
           </Routes>

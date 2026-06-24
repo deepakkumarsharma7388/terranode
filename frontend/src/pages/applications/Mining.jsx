@@ -9,6 +9,18 @@ import {
   BarChart3,
 } from "lucide-react";
 
+/* Color palette */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+  cardHover: "#F1F3F5",
+};
+
 const heroImage = "/mine.jpeg"; // <-- replace with your image
 
 const benefits = [
@@ -55,7 +67,18 @@ const vizPoints = [
   "All of this is rounded out by automated and customizable reports that address the varied needs of mining industry stakeholders.",
 ];
 
-// Reusable scroll-in animation. `i` adds a small stagger delay.
+// Helper to highlight last word in orange
+const highlightLastWord = (text) => {
+  const words = text.split(" ");
+  const last = words.pop();
+  return (
+    <>
+      {words.join(" ")} <span style={{ color: colors.accent }}>{last}</span>
+    </>
+  );
+};
+
+// Reusable scroll-in animation
 const rise = (i = 0) => ({
   initial: { opacity: 0, y: 32 },
   whileInView: { opacity: 1, y: 0 },
@@ -63,26 +86,21 @@ const rise = (i = 0) => ({
   transition: { duration: 0.55, delay: i * 0.08 },
 });
 
-// `leading-[1.2] pb-1` gives descenders (g, y, p) room so bg-clip-text
-// doesn't crop them — Tailwind's text-5xl/6xl set line-height:1 otherwise.
-const gradientHeading =
-  "bg-gradient-to-r from-[#B6C2FF] to-white bg-clip-text text-transparent leading-[1.2] pb-1";
-
 const Mining = () => {
   return (
-    <main className="bg-[#1A1822] py-16 md:py-20">
+    <main className="bg-white py-16 md:py-20">
       {/* Hero */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6">
         <motion.h1
           {...rise(0)}
-          className={`${gradientHeading} text-5xl font-extrabold tracking-tight md:text-6xl`}
+          className="text-5xl font-extrabold tracking-tight text-black md:text-6xl"
         >
-          Mines and Tailings Dams
+          Mines and Tailings <span style={{ color: colors.accent }}>Dams</span>
         </motion.h1>
 
         <motion.p
           {...rise(1)}
-          className="mt-5 text-lg leading-relaxed text-white md:text-xl"
+          className="mt-5 text-lg leading-relaxed text-[#7C8595] md:text-xl"
         >
           Mines, including open-pit mines and tailings dams, are essential parts
           of resource extraction but also carry substantial risks. The success
@@ -94,7 +112,7 @@ const Mining = () => {
 
         <motion.div
           {...rise(2)}
-          className="mt-9 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br from-[#8a7f72] to-[#3a352c]"
+          className="mt-9 aspect-[16/9] overflow-hidden rounded-2xl bg-[#F9FAFB]"
         >
           <img
             src={heroImage}
@@ -109,10 +127,10 @@ const Mining = () => {
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <motion.h2
           {...rise(0)}
-          className={`${gradientHeading} text-4xl font-bold tracking-tight md:text-5xl`}
+          className="text-4xl font-bold tracking-tight text-black md:text-5xl"
         >
           Ensure Safety and Operational continuity in Mine sites with TeraStamp's
-          Data Intelligence Platform
+          Data Intelligence <span style={{ color: colors.accent }}>Platform</span>
         </motion.h2>
       </section>
 
@@ -120,14 +138,15 @@ const Mining = () => {
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <motion.h2
           {...rise(0)}
-          className="mb-5 text-3xl font-bold tracking-tight text-white md:text-4xl"
+          className="mb-5 text-3xl font-bold tracking-tight text-black md:text-4xl"
         >
-          Comprehensive monitoring of mining operations
+          Comprehensive monitoring of mining{" "}
+          <span style={{ color: colors.accent }}>operations</span>
         </motion.h2>
 
         <motion.p
           {...rise(1)}
-          className="text-lg leading-relaxed text-white"
+          className="text-lg leading-relaxed text-[#7C8595]"
         >
           At TeraStamp, we help mining operations boost safety and efficiency
           with our advanced data management software.
@@ -136,11 +155,10 @@ const Mining = () => {
         <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2">
           {monitoring.map((m, i) => (
             <motion.div key={m.title} {...rise(i % 2)}>
-              <h3 className="mb-3 text-2xl font-bold text-white">
-                {m.title}
+              <h3 className="mb-3 text-2xl font-bold text-black">
+                {highlightLastWord(m.title)}
               </h3>
-
-              <p className="text-lg leading-relaxed text-white">
+              <p className="text-lg leading-relaxed text-[#7C8595]">
                 {m.text}
               </p>
             </motion.div>
@@ -152,14 +170,15 @@ const Mining = () => {
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <motion.h2
           {...rise(0)}
-          className={`${gradientHeading} mb-5 text-4xl font-bold tracking-tight md:text-5xl`}
+          className="mb-5 text-4xl font-bold tracking-tight text-black md:text-5xl"
         >
-          Advanced Visualization Tailored for Mines, Tailings Dams and Open-pits
+          Advanced Visualization Tailored for Mines, Tailings Dams and{" "}
+          <span style={{ color: colors.accent }}>Open-pits</span>
         </motion.h2>
 
         <motion.p
           {...rise(1)}
-          className="mb-6 text-lg leading-relaxed text-white"
+          className="mb-6 text-lg leading-relaxed text-[#7C8595]"
         >
           TeraStamp provides advanced visualization tools that give a more
           accurate grasp of complex geotechnical conditions.
@@ -170,9 +189,9 @@ const Mining = () => {
             <motion.li
               key={i}
               {...rise(i)}
-              className="flex gap-3 text-lg leading-relaxed text-white"
+              className="flex gap-3 text-lg leading-relaxed text-[#7C8595]"
             >
-              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#8B8FF5]" />
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#F26418]" />
               <span>{p}</span>
             </motion.li>
           ))}
@@ -183,14 +202,15 @@ const Mining = () => {
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <motion.h2
           {...rise(0)}
-          className={`${gradientHeading} mb-5 text-4xl font-bold tracking-tight md:text-5xl`}
+          className="mb-5 text-4xl font-bold tracking-tight text-black md:text-5xl"
         >
-          Intelligent Monitoring and Early Warning Systems in Mining
+          Intelligent Monitoring and Early Warning Systems in{" "}
+          <span style={{ color: colors.accent }}>Mining</span>
         </motion.h2>
 
         <motion.p
           {...rise(1)}
-          className="text-lg leading-relaxed text-white"
+          className="text-lg leading-relaxed text-[#7C8595]"
         >
           TeraStamp allows continuous monitoring of key risk indicators, such as
           water levels, pressure, deformation, vibration, and environmental
@@ -202,10 +222,10 @@ const Mining = () => {
       <section className="mx-auto mt-16 max-w-6xl px-4 sm:px-6">
         <motion.div
           {...rise(0)}
-          className="rounded-3xl border border-white/[0.05] bg-[#211F29] p-6 md:p-9"
+          className="rounded-3xl border border-[#E2E8F0] bg-white p-6 md:p-9"
         >
-          <h2 className="mb-7 text-2xl font-bold text-white md:text-3xl">
-            Benefits of Using TeraStamp
+          <h2 className="mb-7 text-2xl font-bold text-black md:text-3xl">
+            Benefits of Using <span style={{ color: colors.accent }}>TeraStamp</span>
           </h2>
 
           <div className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
@@ -213,13 +233,12 @@ const Mining = () => {
               <motion.div
                 key={label}
                 {...rise(i)}
-                className={`flex flex-col items-center justify-center gap-3 rounded-xl border border-[#6366F1]/40 bg-white/[0.02] px-3 py-7 text-center ${
+                className={`flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-[#F26418] bg-white px-3 py-7 text-center ${
                   wide ? "col-span-2" : ""
                 }`}
               >
-                <Icon size={26} className="text-[#8B8FF5]" />
-
-                <span className="text-sm font-semibold leading-snug text-white md:text-base">
+                <Icon size={26} className="text-[#F26418]" />
+                <span className="text-sm font-semibold leading-snug text-black md:text-base">
                   {label}
                 </span>
               </motion.div>

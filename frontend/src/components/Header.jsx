@@ -23,7 +23,9 @@ export default function Header() {
   const companyTimer = useRef(null)
 
   const navLinkClass = ({ isActive }) =>
-    `text-[15px] font-semibold transition-colors hover:text-white ${isActive ? 'text-white' : 'text-white/80'}`
+    `text-[15px] font-semibold transition-colors hover:text-[#F26418] ${
+      isActive ? 'text-[#F26418]' : 'text-white/80'
+    }`
 
   const openProduct = () => {
     clearTimeout(productTimer.current)
@@ -41,19 +43,22 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-ink">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#26282C]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-white sm:text-xl">
-          <span className="text-accent">◆</span>
-          TeraStamp
-          <span className="text-xs align-top text-white/40">®</span>
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src="/logo.png"
+            alt="TeraStamp"
+            className="h-7 w-auto sm:h-8 lg:h-9"
+          />
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 lg:gap-9 md:flex">
           <div className="relative" onMouseEnter={openProduct} onMouseLeave={closeProduct}>
             <button
-              className="flex items-center gap-1.5 text-[15px] font-semibold text-white/80 hover:text-white"
+              className="flex items-center gap-1.5 text-[15px] font-semibold text-white/80 transition-colors hover:text-[#F26418]"
               aria-expanded={productOpen}
             >
               Product
@@ -64,13 +69,13 @@ export default function Header() {
 
             {productOpen && (
               <div className="absolute left-0 top-full w-56 pt-3">
-                <div className="rounded-xl bg-ink py-2 shadow-2xl ring-1 ring-white/10">
+                <div className="overflow-hidden rounded-xl bg-[#2E3036] py-2 shadow-2xl ring-1 ring-white/10">
                   {PRODUCT_LINKS.map((item) => (
                     <Link
                       key={item.to}
                       to={item.to}
                       onClick={() => setProductOpen(false)}
-                      className="block px-5 py-2.5 text-[15px] font-medium text-white/85 hover:bg-white/5 hover:text-white"
+                      className="block px-5 py-2.5 text-[15px] font-medium text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
                     >
                       {item.label}
                     </Link>
@@ -82,7 +87,7 @@ export default function Header() {
 
           <div className="relative" onMouseEnter={openCompany} onMouseLeave={closeCompany}>
             <button
-              className="flex items-center gap-1.5 text-[15px] font-semibold text-white/80 hover:text-white"
+              className="flex items-center gap-1.5 text-[15px] font-semibold text-white/80 transition-colors hover:text-[#F26418]"
               aria-expanded={companyOpen}
             >
               Company
@@ -93,13 +98,13 @@ export default function Header() {
 
             {companyOpen && (
               <div className="absolute left-0 top-full w-48 pt-3">
-                <div className="rounded-xl bg-ink py-2 shadow-2xl ring-1 ring-white/10">
+                <div className="overflow-hidden rounded-xl bg-[#2E3036] py-2 shadow-2xl ring-1 ring-white/10">
                   {COMPANY_LINKS.map((item) => (
                     <Link
                       key={item.to}
                       to={item.to}
                       onClick={() => setCompanyOpen(false)}
-                      className="block px-5 py-2.5 text-[15px] font-medium text-white/85 hover:bg-white/5 hover:text-white"
+                      className="block px-5 py-2.5 text-[15px] font-medium text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
                     >
                       {item.label}
                     </Link>
@@ -113,10 +118,11 @@ export default function Header() {
           <NavLink to="/Blog" className={navLinkClass}>Blog</NavLink>
         </nav>
 
+        {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link
             to="/contact"
-            className="rounded-lg bg-accent px-5 py-2.5 text-[15px] font-bold text-white transition-colors hover:bg-accent/90 lg:px-6 lg:py-3"
+            className="rounded-lg bg-[#F26418] px-5 py-2.5 text-[15px] font-bold text-white shadow-lg shadow-[#F26418]/25 transition-all hover:scale-105 hover:bg-[#D9550F] lg:px-6 lg:py-3"
           >
             Claim demo
           </Link>
@@ -137,30 +143,30 @@ export default function Header() {
 
       {/* Mobile nav */}
       <div
-        className={`overflow-hidden border-t border-white/10 bg-ink transition-[max-height] duration-300 md:hidden ${
-          mobileOpen ? 'max-h-[480px]' : 'max-h-0 border-t-0'
+        className={`overflow-hidden border-t border-white/10 bg-[#26282C] transition-[max-height] duration-300 md:hidden ${
+          mobileOpen ? 'max-h-[520px]' : 'max-h-0 border-t-0'
         }`}
       >
         <div className="px-4 py-4 sm:px-6">
-          <p className="px-1 pb-1 pt-2 text-xs uppercase tracking-wider text-white/40">Product</p>
+          <p className="px-1 pb-1 pt-2 text-xs uppercase tracking-wider text-[#7C8595]">Product</p>
           {PRODUCT_LINKS.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setMobileOpen(false)}
-              className="block rounded-lg px-1 py-2 text-sm text-white/85 hover:bg-white/5"
+              className="block rounded-lg px-1 py-2 text-sm text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
             >
               {item.label}
             </Link>
           ))}
 
-          <p className="px-1 pb-1 pt-4 text-xs uppercase tracking-wider text-white/40">Company</p>
+          <p className="px-1 pb-1 pt-4 text-xs uppercase tracking-wider text-[#7C8595]">Company</p>
           {COMPANY_LINKS.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setMobileOpen(false)}
-              className="block rounded-lg px-1 py-2 text-sm text-white/85 hover:bg-white/5"
+              className="block rounded-lg px-1 py-2 text-sm text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
             >
               {item.label}
             </Link>
@@ -169,14 +175,14 @@ export default function Header() {
           <NavLink
             to="/use-cases"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 block rounded-lg px-1 py-2 text-sm font-semibold text-white/85 hover:bg-white/5"
+            className="mt-4 block rounded-lg px-1 py-2 text-sm font-semibold text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
           >
             Use Cases
           </NavLink>
           <NavLink
             to="/Blog"
             onClick={() => setMobileOpen(false)}
-            className="block rounded-lg px-1 py-2 text-sm font-semibold text-white/85 hover:bg-white/5"
+            className="block rounded-lg px-1 py-2 text-sm font-semibold text-white/85 transition-colors hover:bg-[#F26418]/10 hover:text-[#F26418]"
           >
             Blog
           </NavLink>
@@ -184,7 +190,7 @@ export default function Header() {
           <Link
             to="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 block rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-bold text-white"
+            className="mt-4 block rounded-lg bg-[#F26418] px-5 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-[#D9550F]"
           >
             Claim demo
           </Link>

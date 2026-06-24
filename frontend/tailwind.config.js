@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#0B0F19',
-        accent: '#6366F1',
+        ink: '#161B26',     // logo jaisa navy-charcoal (hero background)
+        accent: '#F26418',  // logo ka orange  ← yahi asli change hai
+        slate: '#7C8595',   // logo ka grey (optional, kaam aaye to)
         cloud: '#F5F3EE',
       },
       fontFamily: {

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Footer = () => {
   const productLinks = [
@@ -65,21 +65,24 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-950 text-gray-300">
+    <footer className="bg-[#26282C] text-white/70">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 lg:py-16">
         {/* Main footer grid - responsive: 2 columns on mobile, 2 on tablet, 5 on desktop */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 pb-12 border-b border-gray-800 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 pb-12 border-b border-white/10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand & Social Column - spans full width on mobile */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-white">TeraStamp</span>
-              <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-            </div>
-            <p className="text-base text-gray-300 max-w-xs">
+            <Link to="/" className="inline-block">
+              <img
+                src="/logo.png"
+                alt="TeraStamp"
+                className="h-8 w-auto"
+              />
+            </Link>
+            <p className="text-base text-white/60 max-w-xs">
               Infrastructure data intelligence for civil, tunneling, mining, and smart cities.
             </p>
             <div>
-              <p className="text-sm font-medium uppercase tracking-wider text-gray-300">
+              <p className="text-sm font-medium uppercase tracking-wider text-[#7C8595]">
                 Follow us on:
               </p>
               <div className="flex gap-4 mt-3">
@@ -89,7 +92,7 @@ const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-blue-400"
+                    className="text-white/80 transition-colors hover:text-[#F26418]"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -101,7 +104,7 @@ const Footer = () => {
 
           {/* Product Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7C8595]">
               Product
             </h3>
             <ul className="mt-4 space-y-2">
@@ -110,8 +113,8 @@ const Footer = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-base transition-colors hover:text-blue-400 ${
-                        isActive ? 'text-blue-400 font-semibold' : 'text-white'
+                      `text-base transition-colors hover:text-[#F26418] ${
+                        isActive ? 'text-[#F26418] font-semibold' : 'text-white/70'
                       }`
                     }
                   >
@@ -124,7 +127,7 @@ const Footer = () => {
 
           {/* Company Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7C8595]">
               Company
             </h3>
             <ul className="mt-4 space-y-2">
@@ -133,8 +136,8 @@ const Footer = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-base transition-colors hover:text-blue-400 ${
-                        isActive ? 'text-blue-400 font-semibold' : 'text-white'
+                      `text-base transition-colors hover:text-[#F26418] ${
+                        isActive ? 'text-[#F26418] font-semibold' : 'text-white/70'
                       }`
                     }
                   >
@@ -147,7 +150,7 @@ const Footer = () => {
 
           {/* Legal Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7C8595]">
               Legal
             </h3>
             <ul className="mt-4 space-y-2">
@@ -156,8 +159,8 @@ const Footer = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-base transition-colors hover:text-blue-400 ${
-                        isActive ? 'text-blue-400 font-semibold' : 'text-white'
+                      `text-base transition-colors hover:text-[#F26418] ${
+                        isActive ? 'text-[#F26418] font-semibold' : 'text-white/70'
                       }`
                     }
                   >
@@ -170,7 +173,7 @@ const Footer = () => {
 
           {/* Legal Forms Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7C8595]">
               Legal Forms
             </h3>
             <ul className="mt-4 space-y-2">
@@ -179,8 +182,8 @@ const Footer = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-base transition-colors hover:text-blue-400 ${
-                        isActive ? 'text-blue-400 font-semibold' : 'text-white'
+                      `text-base transition-colors hover:text-[#F26418] ${
+                        isActive ? 'text-[#F26418] font-semibold' : 'text-white/70'
                       }`
                     }
                   >
@@ -193,7 +196,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 text-center text-sm text-gray-400 lg:text-left">
+        <div className="pt-8 text-center text-sm text-white/50 lg:text-left">
           <p>© {new Date().getFullYear()} TeraStamp. All Rights Reserved.</p>
         </div>
       </div>

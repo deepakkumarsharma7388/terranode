@@ -16,7 +16,7 @@ import { ArrowRight } from "lucide-react";
 
 /**
  * About Us hero — "Improving the Civil Engineering World".
- * Full-width periwinkle block with rounded bottom corners on the dark page.
+ * Full-width orange block with rounded bottom corners on the light page.
  * Note: copy uses "TeraStamp".
  */
 
@@ -44,22 +44,22 @@ const Asterisk = ({ className = "" }) => (
 
 const AboutHero = () => {
   return (
-    <section className="bg-[#1E1C24]">
+    <section className="bg-white">
       <div
         className="
           relative
           overflow-hidden
           rounded-b-[40px]
-          bg-[#A6B4FD]
+          bg-[#F26418]
           px-4
           py-20
           md:px-8
           md:py-28
-          lg:px-[180px]
+          lg:px-[170px]
         "
       >
         {/* Decorations */}
-        <div className="pointer-events-none absolute inset-0 text-[#6B76E6]/85">
+        <div className="pointer-events-none absolute inset-0 text-white/30">
           <Starburst className="absolute right-[16%] top-8 h-16 w-16 md:h-20 md:w-20" />
 
           <svg
@@ -108,7 +108,7 @@ const AboutHero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-extrabold tracking-tight text-[#19181F]"
+            className="font-extrabold tracking-tight text-white"
             style={{
               fontFamily: 'Inter, "Inter Placeholder", sans-serif',
               fontSize: "clamp(38px, 6vw, 64px)",
@@ -123,7 +123,7 @@ const AboutHero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-[#46454C] md:text-xl"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl"
           >
             Backed by decades of experience in civil engineering and
             infrastructure monitoring, TeraStamp is reshaping how data
@@ -148,7 +148,7 @@ const AboutHero = () => {
 
 const OurStorySection = () => {
   return (
-    <section className="overflow-hidden bg-[#2B2935] py-12 md:py-20">
+    <section className="overflow-hidden bg-white py-12 md:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
@@ -158,19 +158,19 @@ const OurStorySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex rounded-xl bg-[#6366F1] px-4 py-2">
+            <div className="inline-flex rounded-xl bg-[#F26418] px-4 py-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-white sm:text-sm">
                 Our Story
               </span>
             </div>
 
-            <h2 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-5 text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl">
               Shaping Tomorrow's
               <br />
-              Infrastructure
+              <span className="text-[#F26418]">Infrastructure</span>
             </h2>
 
-            <div className="mt-6 space-y-5 text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg">
+            <div className="mt-6 space-y-5 text-sm leading-relaxed text-[#5C636E] sm:text-base md:text-lg">
               <p>
                 Built around a vision to transform infrastructure
                 intelligence, TeraStamp blends engineering expertise,
@@ -204,9 +204,9 @@ const OurStorySection = () => {
             <div className="relative flex w-full flex-col items-center">
               {/* Top Label */}
               <div className="mb-6 flex flex-col items-center">
-                <div className="h-8 w-20 border-x-4 border-t-4 border-white/40 sm:h-10 sm:w-28 md:h-12 md:w-32" />
+                <div className="h-8 w-20 border-x-4 border-t-4 border-[#F26418]/40 sm:h-10 sm:w-28 md:h-12 md:w-32" />
 
-                <p className="mt-2 text-sm text-gray-300 sm:text-base">
+                <p className="mt-2 text-sm text-[#5C636E] sm:text-base">
                   Intelligence
                 </p>
               </div>
@@ -221,7 +221,7 @@ const OurStorySection = () => {
                   text-center
                   font-bold
                   tracking-tight
-                  text-white
+                  text-[#32353A]
                   leading-none
                   text-5xl
                   sm:text-6xl
@@ -236,25 +236,25 @@ const OurStorySection = () => {
               <div className="mt-6 flex w-full justify-between gap-4 sm:gap-8">
                 {/* Engineering */}
                 <div className="flex flex-1 flex-col items-center">
-                  <div className="h-8 w-full max-w-[140px] border-b-4 border-l-4 border-white/40" />
+                  <div className="h-8 w-full max-w-[140px] border-b-4 border-l-4 border-[#F26418]/40" />
 
-                  <p className="mt-2 text-center text-xs text-gray-300 sm:text-sm md:text-base">
+                  <p className="mt-2 text-center text-xs text-[#5C636E] sm:text-sm md:text-base">
                     Engineering
                   </p>
                 </div>
 
                 {/* Technology */}
                 <div className="flex flex-1 flex-col items-center">
-                  <div className="h-8 w-full max-w-[140px] border-b-4 border-r-4 border-white/40" />
+                  <div className="h-8 w-full max-w-[140px] border-b-4 border-r-4 border-[#F26418]/40" />
 
-                  <p className="mt-2 text-center text-xs text-gray-300 sm:text-sm md:text-base">
+                  <p className="mt-2 text-center text-xs text-[#5C636E] sm:text-sm md:text-base">
                     Technology
                   </p>
                 </div>
               </div>
 
               {/* Glow Effect */}
-              <div className="absolute inset-0 -z-10 rounded-full bg-[#6366F1]/20 blur-3xl" />
+              <div className="absolute inset-0 -z-10 rounded-full bg-[#F26418]/15 blur-3xl" />
             </div>
           </motion.div>
         </div>
@@ -262,9 +262,6 @@ const OurStorySection = () => {
     </section>
   );
 };
-
-
-
 
 
 const DifferenceSection = () => {
@@ -305,13 +302,13 @@ const DifferenceSection = () => {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#0D1021]/90" />
+      <div className="absolute inset-0 bg-[#26282C]/90" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         {/* Heading */}
         <div className="mb-12 text-center md:mb-16">
           <h2 className="text-4xl font-semibold text-white md:text-6xl">
-            What's Different?
+            What's <span className="text-[#F26418]">Different?</span>
           </h2>
         </div>
 
@@ -332,8 +329,8 @@ const DifferenceSection = () => {
                   transition={{ duration: 0.3 }}
                   className={`text-4xl md:text-6xl font-bold transition-all duration-300 ${
                     active === index
-                      ? "text-indigo-400"
-                      : "text-indigo-400/60 hover:text-indigo-400"
+                      ? "text-[#F26418]"
+                      : "text-[#F26418]/50 hover:text-[#F26418]"
                   }`}
                 >
                   {item.title}
@@ -380,7 +377,7 @@ const DifferenceSection = () => {
             </AnimatePresence>
 
             {/* Glow */}
-            <div className="absolute -z-10 rounded-3xl bg-indigo-500/20 blur-3xl" />
+            <div className="absolute -z-10 rounded-3xl bg-[#F26418]/20 blur-3xl" />
           </div>
         </div>
       </div>
@@ -401,11 +398,11 @@ const StatCard = ({ value, suffix, label }) => {
 
   return (
     <div ref={ref} className="text-center">
-      <p className="mb-2 text-sm md:text-lg text-gray-400">
+      <p className="mb-2 text-sm md:text-lg text-[#7C8595]">
         {label}
       </p>
 
-      <h2 className="text-4xl md:text-6xl font-bold text-white">
+      <h2 className="text-4xl md:text-6xl font-bold text-[#32353A]">
         {inView && (
           <CountUp
             start={0}
@@ -421,7 +418,7 @@ const StatCard = ({ value, suffix, label }) => {
 
 const StatsSection = () => {
   return (
-    <section className="bg-[#2B2A35] py-[15px]">
+    <section className="bg-[#F5F6F7] py-[15px]">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           <StatCard
@@ -452,7 +449,7 @@ const StatsSection = () => {
 
 const TestimonialCTASection = () => {
   return (
-    <section className="relative overflow-hidden bg-[#1E1D2A] py-16 md:py-24">
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         {/* Testimonial */}
         <motion.div
@@ -469,19 +466,19 @@ const TestimonialCTASection = () => {
             transition={{ duration: 1 }}
             className="absolute right-0 top-10 hidden md:block"
           >
-            <span className="text-[180px] font-bold text-indigo-500">
+            <span className="text-[180px] font-bold text-[#F26418]">
               ”
             </span>
           </motion.div>
 
-          <h2 className="text-2xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">
-            We rely on TeraStamp to manage the geological mapping
+          <h2 className="text-2xl font-semibold leading-tight text-[#32353A] md:text-4xl lg:text-5xl">
+            We rely on <span className="text-[#F26418]">TeraStamp</span> to manage the geological mapping
             parameters, convergences, and displacement trends of the
             tunnels. It gives us unmatched control over the construction
             project.
           </h2>
 
-          <p className="mt-6 text-lg text-gray-400 md:text-2xl">
+          <p className="mt-6 text-lg text-[#7C8595] md:text-2xl">
             Pablo Corrales - Tunnel Engineer Leader at Neom Lot 2-3
           </p>
         </motion.div>
@@ -501,12 +498,12 @@ const TestimonialCTASection = () => {
             whileHover={{
               y: -6,
               boxShadow:
-                "0 25px 50px rgba(99,102,241,0.25)",
+                "0 25px 50px rgba(242,100,24,0.25)",
             }}
             transition={{ duration: 0.3 }}
             className="
               rounded-[32px]
-              bg-[#AAB3FF]
+              bg-[#F26418]
               px-6
               py-12
               md:px-12
@@ -522,7 +519,7 @@ const TestimonialCTASection = () => {
               className="
                 text-4xl
                 font-bold
-                text-[#121212]
+                text-white
                 md:text-6xl
               "
             >
@@ -539,7 +536,7 @@ const TestimonialCTASection = () => {
                 mt-6
                 max-w-3xl
                 text-lg
-                text-[#1B1B1B]
+                text-white/90
                 md:text-2xl
               "
             >
@@ -566,7 +563,7 @@ const TestimonialCTASection = () => {
                 py-3
                 text-lg
                 font-medium
-                text-indigo-600
+                text-[#F26418]
                 shadow-lg
               "
             >

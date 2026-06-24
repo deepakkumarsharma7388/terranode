@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 import {
@@ -47,26 +46,26 @@ const APPS = [
 ];
 
 const HeroSection = () => (
-  <section className="relative flex min-h-[750px] items-center overflow-hidden bg-ink md:min-h-[850px] lg:min-h-screen font-body">
+  <section className="relative flex min-h-[750px] items-center overflow-hidden bg-[#26282C] md:min-h-[850px] lg:min-h-screen font-body">
     <video
       autoPlay
       loop
       muted
       playsInline
       className="absolute inset-0 h-full w-full object-cover opacity-100"
-      src="/herovideo.mp4"
+      src="/herosectionvideo.mov"
     />
 
-    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20" />
+    <div className="absolute inset-0 bg-gradient-to-t from-[#26282C] via-[#26282C]/70 to-[#26282C]/20" />
 
-    <div className="relative mx-auto max-w-7xl px-4 py-16 text-center md:px-6 md:py-24 md:text-left lg:px-8">
-      <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-        Smarter <span className="text-accent">digital insights</span>
+    <div className="relative mx-auto max-w-7xl px-4 py-16 text-center md:px-6 md:py-24 lg:px-8">
+      <h1 className="text-5xl font-bold leading-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+        Smarter <span className="text-[#F26418]">digital insights</span>
         <br className="hidden sm:block" /> for infrastructure
         <br className="hidden sm:block" /> performance
       </h1>
 
-      <p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg md:mx-0">
+      <p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg">
         TeraStamp brings monitoring data, analytics, and project intelligence
         together in one platform to help teams act faster and make informed
         decisions.
@@ -74,14 +73,13 @@ const HeroSection = () => (
 
       <Link
         to="/contact"
-        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 md:mt-8 md:px-7 md:py-3.5"
+        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#F26418] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#D9550F] md:mt-8 md:px-7 md:py-3.5"
       >
         Book a Demo <span aria-hidden>→</span>
       </Link>
     </div>
   </section>
 );
-
 
 
 
@@ -96,7 +94,7 @@ const DataPlatformSection = () => {
   ];
 
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-white">
       {/* Standard Site Padding */}
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -107,14 +105,14 @@ const DataPlatformSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h2 className="font-body text-3xl leading-tight text-gray-300 sm:text-4xl md:text-5xl">
+            <h2 className="font-body text-3xl leading-tight text-[#32353A] sm:text-4xl md:text-5xl">
               Every project dataset.
               <br />
-              <span className="font-bold text-white">
-                Connected in one workspace
+              <span className="font-bold text-[#32353A]">
+                Connected in one <span className="text-[#F26418]">workspace</span>
               </span>
             </h2>
-            <p className="mt-4 max-w-lg font-body text-base leading-relaxed text-gray-400 sm:text-lg">
+            <p className="mt-4 max-w-lg font-body text-base leading-relaxed text-[#5C636E] sm:text-lg">
               TeraStamp brings together critical project information,
               monitoring records, and engineering insights into a single
               digital environment, helping teams collaborate efficiently
@@ -131,19 +129,19 @@ const DataPlatformSection = () => {
                 items-center
                 gap-2
                 rounded-[5px]
-                bg-indigo-500
+                bg-[#F26418]
                 px-7
                 py-3.5
                 text-sm
                 font-semibold
                 text-white
                 shadow-lg
-                shadow-indigo-500/25
+                shadow-[#F26418]/30
                 transition-all
                 duration-300
                 hover:scale-105
-                hover:bg-indigo-400
-                hover:shadow-indigo-500/40
+                hover:bg-[#D9550F]
+                hover:shadow-[#F26418]/40
               "
             >
               Claim a Demo →
@@ -175,24 +173,24 @@ const DataPlatformSection = () => {
                 className="
                   flex
                   items-center
-                  gap-3
-                  rounded-[5px]
-                  border
-                  border-indigo-400/40       /* ← 1px border with indigo colour */
-                  bg-white/5
-                  p-4
+                  gap-4
+                  rounded-[14px]
+                  border-2
+                  border-[#F26418]
+                  bg-white
+                  p-6
                   transition-all
                   duration-300
-                  hover:bg-white/10
+                  hover:bg-[#FFF4EC]
                   hover:shadow-lg
-                  hover:shadow-indigo-500/5
+                  hover:shadow-[#F26418]/10
                 "
               >
                 <Icon
-                  className="h-5 w-5 flex-shrink-0 text-indigo-400"
+                  className="h-7 w-7 flex-shrink-0 text-[#F26418]"
                   strokeWidth={1.8}
                 />
-                <span className="font-body text-sm font-medium text-gray-200">
+                <span className="font-body text-base font-medium text-[#32353A] md:text-lg">
                   {name}
                 </span>
               </motion.div>
@@ -308,19 +306,19 @@ const HorizontalScrollSection = () => {
   };
 
   return (
-    <section className="bg-[#1E1E24]">
+    <section className="bg-[#F5F6F7]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#F26418]">
             Applications
           </p>
 
-          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
-            Built for every infrastructure challenge
+          <h2 className="mt-3 text-3xl font-semibold text-[#32353A] sm:text-4xl md:text-5xl">
+            Built for every infrastructure <span className="text-[#F26418]">challenge</span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-[#5C636E]">
             Discover how TeraStamp supports monitoring, analytics, and decision-making
             across multiple infrastructure sectors.
 
@@ -332,10 +330,10 @@ const HorizontalScrollSection = () => {
           {showLeftButton && (
             <button
               onClick={() => scroll("left")}
-              className="absolute left-2 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 shadow-lg transition hover:scale-105"
+              className="absolute left-2 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 shadow-lg ring-1 ring-[#E2E5E9] transition hover:scale-105"
               aria-label="Scroll Left"
             >
-              <ChevronLeft className="h-5 w-5 text-black" />
+              <ChevronLeft className="h-5 w-5 text-[#32353A]" />
             </button>
           )}
 
@@ -366,7 +364,7 @@ const HorizontalScrollSection = () => {
 
                   <Link
                     to={app.link}
-                    className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#6366F1] px-4 py-2 text-sm font-semibold transition hover:bg-blue-700"
+                    className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#F26418] px-4 py-2 text-sm font-semibold transition hover:bg-[#D9550F]"
                   >
                     Read More →
                   </Link>
@@ -379,10 +377,10 @@ const HorizontalScrollSection = () => {
           {showRightButton && (
             <button
               onClick={() => scroll("right")}
-              className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 shadow-lg transition hover:scale-105"
+              className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-3 shadow-lg ring-1 ring-[#E2E5E9] transition hover:scale-105"
               aria-label="Scroll Right"
             >
-              <ChevronRight className="h-5 w-5 text-black" />
+              <ChevronRight className="h-5 w-5 text-[#32353A]" />
             </button>
           )}
         </div>
@@ -390,7 +388,7 @@ const HorizontalScrollSection = () => {
         <div className="mt-10 text-center">
           <Link
             to="/applications"
-            className="inline-flex items-center gap-2 font-semibold text-blue-400 hover:underline"
+            className="inline-flex items-center gap-2 font-semibold text-[#F26418] hover:underline"
           >
             View More Applications →
           </Link>
@@ -436,7 +434,7 @@ const LogoSlider = () => {
   ];
 
   return (
-    <section className="w-full bg-[#2B2935] py-6 md:py-10 overflow-hidden">
+    <section className="w-full bg-white py-6 md:py-10 overflow-hidden">
       <div className="relative overflow-hidden">
         <div className="flex w-max animate-logo-slider hover:[animation-play-state:paused]">
           {[...logos, ...logos].map((logo, index) => (
@@ -456,8 +454,7 @@ const LogoSlider = () => {
                   w-auto
                   object-contain
                   brightness-0
-                  invert
-                  opacity-90
+                  opacity-50
                 "
               />
             </div>
@@ -515,7 +512,7 @@ const ProjectSlider = () => {
   ];
 
   return (
-    <section className="overflow-hidden bg-[#171722] pt-[68px] pb-16 md:pb-20">
+    <section className="overflow-hidden bg-[#F5F6F7] pt-[68px] pb-16 md:pb-20">
       <div className="relative overflow-hidden">
         <div className="flex w-max animate-project-slider hover:[animation-play-state:paused]">
           {[...projects, ...projects].map((project, index) => (
@@ -603,7 +600,7 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="bg-[#2B2935]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Badge */}
         <motion.div
@@ -611,7 +608,7 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center rounded-xl bg-[#6366F1]/20 px-5 py-2 text-sm font-semibold text-[#A5B4FC]"
+          className="inline-flex items-center rounded-xl bg-[#FFF4EC] px-5 py-2 text-sm font-semibold text-[#C2410C]"
         >
           PLATFORM ADVANTAGES
         </motion.div>
@@ -622,9 +619,9 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-6 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-4xl text-3xl font-semibold leading-tight text-[#32353A] sm:text-4xl md:text-5xl"
         >
-          How TeraStamp keeps your infrastructure projects on track
+          How TeraStamp keeps your infrastructure projects <span className="text-[#F26418]">on track</span>
         </motion.h2>
 
         {/* Cards */}
@@ -645,20 +642,20 @@ const BenefitsSection = () => {
                 whileHover={{
                   y: -8,
                 }}
-                className="group rounded-2xl border border-[#A5B4FC]/60 bg-transparent p-5 transition-all duration-300 hover:border-[#6366F1] hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] md:p-6"
+                className="group rounded-2xl border-2 border-[#F26418] bg-white p-5 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(242,100,24,0.12)] md:p-6"
               >
                 <div className="flex gap-4">
                   <Icon
                     size={40}
-                    className="text-[#A5B4FC] transition-all duration-300 group-hover:text-[#6366F1]"
+                    className="text-[#F26418] transition-all duration-300 group-hover:text-[#D9550F]"
                   />
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white md:text-xl">
+                    <h3 className="text-lg font-semibold text-[#32353A] md:text-xl">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-relaxed text-gray-300 md:text-base">
+                    <p className="mt-2 text-sm leading-relaxed text-[#5C636E] md:text-base">
                       {item.description}
                     </p>
                   </div>
@@ -717,18 +714,18 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="overflow-hidden bg-[#1E1E24] py-16 md:py-20">
+    <section className="overflow-hidden bg-[#F5F6F7] py-16 md:py-20">
       {/* Heading */}
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6366F1]">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F26418]">
           Testimonials
         </p>
 
-        <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
-          Helping teams build with confidence
+        <h2 className="mt-4 text-3xl font-bold text-[#32353A] md:text-5xl">
+          Helping teams build with <span className="text-[#F26418]">confidence</span>
         </h2>
 
-        <p className="mx-auto mt-4 max-w-2xl text-gray-300">
+        <p className="mx-auto mt-4 max-w-2xl text-[#5C636E]">
           Discover how organizations across tunneling, mining, transportation, and infrastructure projects use TeraStamp to improve visibility, reduce risk, and make data-driven decisions.
         </p>
       </div>
@@ -739,40 +736,40 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((item, index) => (
             <div
               key={index}
-              className="w-[300px] shrink-0 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#6366F1]/50 md:w-[340px]"
+              className="w-[300px] shrink-0 rounded-2xl border border-[#E2E5E9] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#F26418]/50 hover:shadow-md md:w-[340px]"
             >
               <div className="flex items-center gap-4">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-14 w-14 rounded-full border-2 border-[#6366F1] object-cover"
+                  className="h-14 w-14 rounded-full border-2 border-[#F26418] object-cover"
                 />
 
                 <div className="text-left">
-                  <h4 className="font-semibold text-white">
+                  <h4 className="font-semibold text-[#32353A]">
                     {item.name}
                   </h4>
 
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-[#7C8595]">
                     {item.role}
                   </p>
 
-                  <p className="text-sm text-[#6366F1]">
+                  <p className="text-sm text-[#F26418]">
                     {item.company}
                   </p>
                 </div>
               </div>
 
-              <p className="mt-5 text-left text-sm leading-7 text-gray-300">
+              <p className="mt-5 text-left text-sm leading-7 text-[#5C636E]">
                 {item.quote}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#1E1E24] to-transparent md:w-32" />
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#F5F6F7] to-transparent md:w-32" />
 
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#1E1E24] to-transparent md:w-32" />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#F5F6F7] to-transparent md:w-32" />
       </div>
 
       <style>{`
@@ -805,39 +802,39 @@ const TestimonialsSection = () => {
 
 const SupportSection = () => {
   return (
-    <section className="bg-[#2B2935]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="overflow-hidden rounded-[28px] bg-[#A5B4FC]"
+          className="overflow-hidden rounded-[28px] bg-[#F26418]"
         >
           <div className="grid lg:grid-cols-2">
             {/* Left Content */}
             <div className="flex items-center px-6 py-8 md:px-10 md:py-10 lg:px-12">
               <div>
                 <div className="mb-6 flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#4F46E5] md:h-16 md:w-16">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white md:h-16 md:w-16">
                     <MessageCircle
                       size={28}
-                      className="text-white"
+                      className="text-[#F26418]"
                     />
                   </div>
 
-                  <span className="rounded-lg bg-white/30 px-3 py-1.5 text-sm font-semibold text-[#4F46E5] md:text-base">
+                  <span className="rounded-lg bg-white/20 px-3 py-1.5 text-sm font-semibold text-white md:text-base">
                     NEW
                   </span>
                 </div>
 
-                <h2 className="max-w-xl text-3xl font-extrabold leading-tight text-[#16151D] sm:text-4xl md:text-5xl">
+                <h2 className="max-w-xl text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
                   Dedicated support
                   <br />
                   from real experts
                 </h2>
 
-                <p className="mt-5 max-w-lg text-base leading-relaxed text-[#2E2D36] md:text-lg">
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/90 md:text-lg">
                   Connect directly with the TeraStamp support team and
                   receive fast, reliable guidance whenever you need help.
                   Get answers, troubleshooting assistance, and expert
@@ -851,16 +848,16 @@ const SupportSection = () => {
                     items-center
                     gap-2
                     rounded-xl
-                    bg-[#4F46E5]
+                    bg-white
                     px-6
                     py-3
                     text-base
                     font-semibold
-                    text-white
+                    text-[#F26418]
                     transition-all
                     duration-300
                     hover:scale-105
-                    hover:bg-[#4338CA]
+                    hover:bg-white/90
                   "
                 >
                   Contact Support →
@@ -869,15 +866,15 @@ const SupportSection = () => {
             </div>
 
             {/* Right Chat UI */}
-            <div className="flex items-center justify-center bg-[#ECECF4] p-4 md:p-5">
-              <div className="w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#D5D8F6] bg-white shadow-xl">
+            <div className="flex items-center justify-center bg-[#FFF4EC] p-4 md:p-5">
+              <div className="w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#F3C9A3] bg-white shadow-xl">
                 {/* Header */}
-                <div className="bg-[#4F46E5] p-4 text-white">
+                <div className="bg-[#F26418] p-4 text-white">
                   <div className="flex items-center gap-3">
                     <div className="rounded-full bg-white p-2">
                       <Sparkles
                         size={18}
-                        className="text-[#4F46E5]"
+                        className="text-[#F26418]"
                       />
                     </div>
 
@@ -894,23 +891,23 @@ const SupportSection = () => {
                 </div>
 
                 {/* Messages */}
-                <div className="space-y-3 bg-[#F7F8FC] p-4 md:p-5">
-                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                <div className="space-y-3 bg-[#FDF8F3] p-4 md:p-5">
+                  <div className="max-w-[80%] rounded-xl bg-[#F1F2F4] px-3 py-2 text-xs text-[#32353A] md:text-sm">
                     Hi there! How can we help you today?
                   </div>
 
-                  <div className="ml-auto max-w-[80%] rounded-xl bg-[#4F46E5] px-3 py-2 text-xs text-white md:text-sm">
+                  <div className="ml-auto max-w-[80%] rounded-xl bg-[#F26418] px-3 py-2 text-xs text-white md:text-sm">
                     I need help setting up monitoring dashboards for
                     my project.
                   </div>
 
-                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                  <div className="max-w-[80%] rounded-xl bg-[#F1F2F4] px-3 py-2 text-xs text-[#32353A] md:text-sm">
                     Absolutely! Our specialists can guide you through
                     dashboard setup, data integration, alerts, and
                     reporting configuration.
                   </div>
 
-                  <div className="max-w-[80%] rounded-xl bg-[#E8EBF6] px-3 py-2 text-xs text-[#222] md:text-sm">
+                  <div className="max-w-[80%] rounded-xl bg-[#F1F2F4] px-3 py-2 text-xs text-[#32353A] md:text-sm">
                     1. Open your workspace
                     <br />
                     2. Navigate to Dashboards
@@ -944,7 +941,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-[#F5F6F7]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Badge */}
         <motion.div
@@ -952,9 +949,9 @@ const FeatureSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center rounded-lg bg-[#6366F1]/15 px-4 py-2"
+          className="inline-flex items-center rounded-lg bg-[#FFF4EC] px-4 py-2"
         >
-          <span className="text-sm font-semibold uppercase tracking-wider text-[#A5B4FC]">
+          <span className="text-sm font-semibold uppercase tracking-wider text-[#C2410C]">
             Core Capabilities
           </span>
         </motion.div>
@@ -965,9 +962,9 @@ const FeatureSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl"
+          className="mt-4 text-3xl font-bold text-[#32353A] sm:text-4xl md:text-5xl"
         >
-          Platform Capabilities
+          Platform <span className="text-[#F26418]">Capabilities</span>
         </motion.h2>
 
         {/* Content */}
@@ -979,8 +976,8 @@ const FeatureSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-              Visualize Critical Project Data in Real Time
+            <h3 className="text-2xl font-bold leading-tight text-[#32353A] sm:text-3xl md:text-4xl">
+              Visualize Critical Project Data in <span className="text-[#F26418]">Real Time</span>
             </h3>
 
             <motion.p
@@ -988,7 +985,7 @@ const FeatureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="mt-5 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-5 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               TeraStamp brings project data, monitoring systems, and
               operational insights together in a single platform,
@@ -1009,11 +1006,11 @@ const FeatureSection = () => {
                   }}
                   className="flex items-center gap-3"
                 >
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#6366F1]/20">
-                    <Check size={14} className="text-[#6366F1]" />
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FFF4EC]">
+                    <Check size={14} className="text-[#F26418]" />
                   </div>
 
-                  <span className="text-sm text-gray-300 md:text-base">
+                  <span className="text-sm text-[#5C636E] md:text-base">
                     {item}
                   </span>
                 </motion.div>
@@ -1031,7 +1028,7 @@ const FeatureSection = () => {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl"
+              className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg"
             >
               <video
                 autoPlay
@@ -1056,7 +1053,7 @@ const FeatureSection = () => {
 
 const HeatmapSection = () => {
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-[15px] lg:grid-cols-2 lg:gap-10">
           {/* Left Side - Video */}
@@ -1067,7 +1064,7 @@ const HeatmapSection = () => {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg">
               <video
                 autoPlay
                 muted
@@ -1093,11 +1090,11 @@ const HeatmapSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold leading-tight text-white sm:text-2xl md:text-5xl"
+              className="text-3xl font-bold leading-tight text-[#32353A] sm:text-2xl md:text-5xl"
             >
               Gain monitoring insights
               <br />
-              through <span className="text-[#6366F1]">Heatmaps</span>
+              through <span className="text-[#F26418]">Heatmaps</span>
             </motion.h2>
 
             <motion.p
@@ -1105,7 +1102,7 @@ const HeatmapSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-6 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Gain a clear visual understanding of ground movement,
               asset behavior, and structural performance through
@@ -1118,7 +1115,7 @@ const HeatmapSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-4 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Identify emerging risks early, track changes in real
               time, and maintain visibility across tunnels, mining
@@ -1145,7 +1142,7 @@ const HeatmapSection = () => {
 
 const ReportingSection = () => {
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-[#F5F6F7]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
@@ -1156,11 +1153,11 @@ const ReportingSection = () => {
             transition={{ duration: 0.8 }}
             className="order-1"
           >
-            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl">
               Advanced Reporting for
 
               <br />
-              Smarter Decisions
+              <span className="text-[#F26418]">Smarter Decisions</span>
             </h2>
 
             <motion.p
@@ -1168,10 +1165,10 @@ const ReportingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-6 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Transform{" "}
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-[#32353A]">
                 complex project data
               </span>{" "}
               into meaningful insights with TeraStamp's advanced reporting tools. Create customized reports that highlight the metrics and trends that matter most.
@@ -1182,10 +1179,10 @@ const ReportingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-4 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               From routine project reviews to critical stakeholder updates, generate detailed reports that provide a
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-[#32353A]">
                 {" "} complete picture of performance, risks, and operational progress.
               </span>
             </motion.p>
@@ -1212,10 +1209,10 @@ const ReportingSection = () => {
                 >
                   <Check
                     size={20}
-                    className="flex-shrink-0 text-[#A5B4FC]"
+                    className="flex-shrink-0 text-[#F26418]"
                   />
 
-                  <span className="text-base text-gray-300 md:text-lg">
+                  <span className="text-base text-[#5C636E] md:text-lg">
                     {item}
                   </span>
                 </motion.div>
@@ -1234,7 +1231,7 @@ const ReportingSection = () => {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl"
+              className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-xl"
             >
               <video
                 autoPlay
@@ -1262,7 +1259,7 @@ const ReportingSection = () => {
 
 const ThreeDSection = () => {
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-[15px] lg:grid-cols-2 lg:gap-10">
 
@@ -1274,7 +1271,7 @@ const ThreeDSection = () => {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg">
               <video
                 autoPlay
                 muted
@@ -1303,10 +1300,10 @@ const ThreeDSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
+              className="text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl"
             >
               Explore projects through
-immersive <span className="text-[#6366F1]">3D insights</span>
+immersive <span className="text-[#F26418]">3D insights</span>
             </motion.h2>
 
             <motion.p
@@ -1314,7 +1311,7 @@ immersive <span className="text-[#6366F1]">3D insights</span>
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-6 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Experience a more interactive way to visualize your
               projects with advanced 3D modeling. Navigate through
@@ -1328,7 +1325,7 @@ immersive <span className="text-[#6366F1]">3D insights</span>
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-4 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Bring monitoring data, alerts, sensors, and project
               intelligence together in one three-dimensional view.
@@ -1347,7 +1344,7 @@ immersive <span className="text-[#6366F1]">3D insights</span>
 
 const DashboardSection = () => {
   return (
-    <section className="overflow-hidden bg-[#2B2935]">
+    <section className="overflow-hidden bg-[#F5F6F7]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
@@ -1363,11 +1360,11 @@ const DashboardSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
+              className="text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl"
             >
               Project Intelligence Through Live
               <br />
-              <span className="text-[#6366F1]">
+              <span className="text-[#F26418]">
                  Project Visibility
               </span>
             </motion.h2>
@@ -1377,7 +1374,7 @@ const DashboardSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mt-6 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-6 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Create personalized dashboard experiences that
               bring your project data together in one place.
@@ -1391,7 +1388,7 @@ const DashboardSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-4 text-base leading-relaxed text-gray-300 md:text-lg"
+              className="mt-4 text-base leading-relaxed text-[#5C636E] md:text-lg"
             >
               Gain instant visibility into project performance,
               monitor trends as they happen, and make faster,
@@ -1407,7 +1404,7 @@ const DashboardSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="overflow-hidden rounded-2xl border border-[#6366F1]/30 bg-white/5 shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg">
               <video
                 autoPlay
                 muted
@@ -1431,15 +1428,15 @@ const DashboardSection = () => {
 
 const CounterSection = () => {
   return (
-    <section className="bg-[#1E1E24]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Section heading */}
         <div className="mb-12 text-center">
-          <h2 className="mb-3 text-3xl font-bold text-white md:text-4xl">
-            Infrastructure Intelligence That Delivers Results
+          <h2 className="mb-3 text-3xl font-bold text-[#32353A] md:text-4xl">
+            Infrastructure Intelligence That Delivers <span className="text-[#F26418]">Results</span>
           </h2>
 
-          <p className="mx-auto max-w-2xl text-base text-gray-400 md:text-lg">
+          <p className="mx-auto max-w-2xl text-base text-[#7C8595] md:text-lg">
             Helping infrastructure teams improve efficiency, reduce risk,
             and make faster data-driven decisions.
           </p>
@@ -1564,42 +1561,42 @@ const CounterCard = ({ icon, target, suffix, prefix, label, description, delay }
   return (
     <div
       ref={cardRef}
-      className="bg-[#2B2935] rounded-2xl p-8 text-center border border-[#2A3A4A] hover:border-[#4A6A8A] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 group"
+      className="bg-[#F5F6F7] rounded-2xl p-8 text-center border-2 border-[#F26418] transition-all duration-300 hover:shadow-[0_10px_30px_rgba(242,100,24,0.12)] group"
     >
       {/* Icon */}
       <div className="text-4xl mb-4">{icon}</div>
 
       {/* Counter value */}
-      <div className="text-5xl md:text-6xl font-bold text-white mb-2 font-mono tracking-tight">
+      <div className="text-5xl md:text-6xl font-bold text-[#32353A] mb-2 font-mono tracking-tight">
         {prefix}
         {displayValue}
         {suffix}
       </div>
 
       {/* Label */}
-      <h3 className="text-lg font-semibold text-white mb-3">{label}</h3>
+      <h3 className="text-lg font-semibold text-[#32353A] mb-3">{label}</h3>
 
       {/* Description */}
-      <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+      <p className="text-[#7C8595] text-sm leading-relaxed">{description}</p>
     </div>
   );
 };
 
 const CTASection = () => (
-  <section className="bg-[#2B2935] text-white">
+  <section className="bg-[#F26418] text-white">
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8 text-center font-body">
       <h2 className="text-2xl font-semibold sm:text-3xl md:text-4xl">
         Discover TeraStamp in Action
       </h2>
 
-      <p className="mx-auto mt-3 max-w-md text-sm text-white/60 sm:text-base">
+      <p className="mx-auto mt-3 max-w-md text-sm text-white/90 sm:text-base">
         Book a personalized demo and explore how TeraStamp transforms
         project data into actionable insights.
       </p>
 
       <Link
         to="/contact"
-        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold transition hover:bg-accent/90 sm:mt-7 sm:px-7 sm:py-3.5"
+        className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#F26418] transition hover:bg-white/90 sm:mt-7 sm:px-7 sm:py-3.5"
       >
         Request a Demo →
       </Link>

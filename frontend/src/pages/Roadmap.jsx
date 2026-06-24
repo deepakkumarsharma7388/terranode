@@ -14,34 +14,30 @@ import {
 } from "lucide-react";
 
 /* ================================================================== *
- *  TeraStamp Roadmap
- *  - Portal card with year tabs + month-grouped feature cards
- *  - Each card opens a full detail view (image, author + date, rich
- *    English content, share-to-copy-link, and a working feedback form)
- *  - "Submit idea" modal
- *  - Careers CTA banner at the bottom
- *  All static — no backend, no API. Arrow functions + Tailwind only.
+ *  TeraStamp Roadmap – Light theme with custom colors
+ *  Colors: #F26418 (accent), #FFFFFF (background), #7C8595 (text)
+ *  Heading: "Roadmap" in orange, rest black
  * ================================================================== */
 
 const c = {
-  section: "#121016",
-  card: "#1c1b22",
-  cardHead: "#201e26",
-  tile: "#27252e",
-  tileHover: "#2f2c37",
-  border: "#332f3b",
-  borderSoft: "#2a2733",
-  heading: "#e6e3ea",
-  text: "#cfccd6",
-  muted: "#8e8a98",
-  faint: "#6f6b79",
-  accent: "#6d5ce7",
-  accentSoft: "#8b80c9",
-  accentText: "#cfc8f3",
-  field: "#16151c",
-  cta: "#afbcff",
-  ctaText: "#15132a",
-  ctaBtn: "#4b3fd1",
+  section: "#FFFFFF",
+  card: "#FFFFFF",
+  cardHead: "#F8FAFC",
+  tile: "#F9FAFB",
+  tileHover: "#F1F3F5",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  heading: "#000000",        // black for main headings (except highlighted word)
+  text: "#7C8595",          // main body text
+  muted: "#7C8595",
+  faint: "#A0AEC0",
+  accent: "#F26418",        // primary orange
+  accentSoft: "#F26418",
+  accentText: "#FFFFFF",    // text on accent buttons
+  field: "#F8FAFC",
+  cta: "#F26418",
+  ctaText: "#FFFFFF",
+  ctaBtn: "#FFFFFF",
 };
 
 /* ------------------------------------------------------------------ *
@@ -707,19 +703,19 @@ const FeedbackForm = ({ onDone, reasonPlaceholder }) => {
 const Modal = ({ children, onClose, wide }) => (
   <div
     className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-3 sm:p-8"
-    style={{ background: "rgba(8,7,12,0.74)", backdropFilter: "blur(2px)" }}
+    style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
     onClick={onClose}
   >
     <div
       className={`relative my-auto w-full ${wide ? "max-w-3xl" : "max-w-xl"} rounded-2xl shadow-2xl`}
-      style={{ background: c.cardHead, border: `1px solid ${c.border}` }}
+      style={{ background: c.card, border: `1px solid ${c.border}` }}
       onClick={(e) => e.stopPropagation()}
     >
       <button
         onClick={onClose}
         aria-label="Close"
         className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full"
-        style={{ background: "rgba(0,0,0,0.45)", color: "#fff" }}
+        style={{ background: "rgba(0,0,0,0.1)", color: c.text }}
       >
         <X size={18} />
       </button>
@@ -730,11 +726,11 @@ const Modal = ({ children, onClose, wide }) => (
 
 const Submitted = ({ onClose }) => (
   <div className="flex flex-col items-center gap-3 px-6 py-14 text-center">
-    <CheckCircle2 size={44} style={{ color: c.accentSoft }} />
+    <CheckCircle2 size={44} style={{ color: c.accent }} />
     <h3 className="text-lg font-semibold" style={{ color: c.heading }}>
       Thanks for your feedback
     </h3>
-    <p className="max-w-xs text-sm" style={{ color: c.muted }}>
+    <p className="max-w-xs text-sm" style={{ color: c.text }}>
       We log every response against the roadmap — it directly shapes what we build next.
     </p>
     <button onClick={onClose} className="mt-2 rounded-lg px-5 py-2 text-sm font-semibold text-white" style={{ background: c.accent }}>
@@ -798,7 +794,7 @@ const FeatureModal = ({ feature, onClose }) => {
     <Modal onClose={onClose} wide>
       <div className="max-h-[88vh] overflow-y-auto">
         {/* hero image */}
-        <div className="overflow-hidden rounded-t-2xl" style={{ height: 220, background: "#dfe2f2" }}>
+        <div className="overflow-hidden rounded-t-2xl" style={{ height: 220, background: "#e2e8f0" }}>
           <CardImage card={feature} />
         </div>
 
@@ -810,11 +806,11 @@ const FeatureModal = ({ feature, onClose }) => {
             </h3>
             <div className="flex shrink-0 items-center gap-3">
               <div className="relative">
-                <button onClick={share} aria-label="Copy link" className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: c.field, border: `1px solid ${c.border}`, color: copied ? "#7ee0a6" : c.muted }}>
+                <button onClick={share} aria-label="Copy link" className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: c.field, border: `1px solid ${c.border}`, color: copied ? "#38a169" : c.muted }}>
                   {copied ? <Check size={17} /> : <Share2 size={16} />}
                 </button>
                 {copied && (
-                  <span className="absolute right-0 top-11 whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-medium" style={{ background: "#1a1822", border: `1px solid ${c.border}`, color: "#9ee7b8" }}>
+                  <span className="absolute right-0 top-11 whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-medium" style={{ background: c.card, border: `1px solid ${c.border}`, color: c.text }}>
                     Link copied!
                   </span>
                 )}
@@ -834,7 +830,7 @@ const FeatureModal = ({ feature, onClose }) => {
               {feature.author}
             </span>
             <span style={{ color: c.faint }}>|</span>
-            <span className="text-sm" style={{ color: "#cfccd6" }}>
+            <span className="text-sm" style={{ color: c.text }}>
               Posted on {feature.postedOn}
             </span>
           </div>
@@ -844,7 +840,7 @@ const FeatureModal = ({ feature, onClose }) => {
           ) : (
             <>
               {/* intro */}
-              <div className="mt-5 space-y-3 border-t pt-5 text-sm leading-relaxed sm:text-[15px]" style={{ borderColor: c.borderSoft, color: "#f2f1f6" }}>
+              <div className="mt-5 space-y-3 border-t pt-5 text-sm leading-relaxed sm:text-[15px]" style={{ borderColor: c.borderSoft, color: c.text }}>
                 {feature.intro.map((p, i) => (
                   <p key={i}>
                     <Rich parts={p} />
@@ -853,20 +849,20 @@ const FeatureModal = ({ feature, onClose }) => {
               </div>
 
               {/* key features */}
-              <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: "#ffffff" }}>
+              <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
                 Key Features &amp; Benefits
               </h4>
-              <ul className="space-y-2.5 text-sm leading-relaxed" style={{ color: "#f2f1f6" }}>
+              <ul className="space-y-2.5 text-sm leading-relaxed" style={{ color: c.text }}>
                 {feature.features.map((f, i) => (
                   <li key={i}>
-                    <span className="mr-1.5" style={{ color: c.accentSoft }}>•</span>
-                    <strong className="font-semibold" style={{ color: "#ffffff" }}>{f.lead}</strong> {f.text}
+                    <span className="mr-1.5" style={{ color: c.accent }}>•</span>
+                    <strong className="font-semibold" style={{ color: c.heading }}>{f.lead}</strong> {f.text}
                     {f.children && (
                       <ul className="mt-2 space-y-2 pl-6">
                         {f.children.map((ch, j) => (
                           <li key={j}>
                             <span className="mr-1.5" style={{ color: c.faint }}>◦</span>
-                            <strong className="font-semibold" style={{ color: "#ffffff" }}>{ch.lead}</strong> {ch.text}
+                            <strong className="font-semibold" style={{ color: c.heading }}>{ch.lead}</strong> {ch.text}
                           </li>
                         ))}
                       </ul>
@@ -876,15 +872,15 @@ const FeatureModal = ({ feature, onClose }) => {
               </ul>
 
               {/* how to use */}
-              <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: "#ffffff" }}>
+              <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
                 How to Use It
               </h4>
-              <ol className="space-y-2.5 text-sm leading-relaxed" style={{ color: "#f2f1f6" }}>
+              <ol className="space-y-2.5 text-sm leading-relaxed" style={{ color: c.text }}>
                 {feature.steps.map((s, i) => (
                   <li key={i} className="flex gap-2.5">
-                    <span className="font-bold" style={{ color: c.accentSoft }}>{i + 1}.</span>
+                    <span className="font-bold" style={{ color: c.accent }}>{i + 1}.</span>
                     <span>
-                      {s.lead && <strong className="font-semibold" style={{ color: "#ffffff" }}>{s.lead} </strong>}
+                      {s.lead && <strong className="font-semibold" style={{ color: c.heading }}>{s.lead} </strong>}
                       {s.text}
                     </span>
                   </li>
@@ -937,14 +933,14 @@ const MonthDivider = ({ name }) => (
 /* careers CTA banner (third screenshot) */
 const CareersCTA = () => (
   <div className="mx-auto mt-10 max-w-5xl">
-    <div className="rounded-3xl px-6 py-10 sm:px-14 sm:py-14" style={{ background: c.cta }}>
-      <h3 className="text-3xl font-extrabold leading-tight sm:text-5xl" style={{ color: c.ctaText }}>
+    <div className="rounded-3xl px-6 py-10 sm:px-14 sm:py-14" style={{ background: c.accent }}>
+      <h3 className="text-3xl font-extrabold leading-tight sm:text-5xl" style={{ color: "#fff" }}>
         Help us build a platform that saves lives
       </h3>
       <button
         onClick={() => window.open("#open-positions", "_self")}
         className="mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold sm:text-base"
-        style={{ color: c.ctaBtn }}
+        style={{ color: c.accent }}
       >
         View open positions <ArrowRight size={18} />
       </button>
@@ -971,10 +967,10 @@ const TeraStampRoadmap = () => {
   return (
     <section className="w-full px-5 py-16 sm:px-8 lg:py-24" style={{ background: c.section }}>
       <div className="mx-auto max-w-5xl">
-        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: c.heading }}>
-          About the TeraStamp Roadmap
+        <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "#000000" }}>
+          About the TeraStamp <span style={{ color: c.accent }}>Roadmap</span>
         </h2>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed" style={{ color: c.muted }}>
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed" style={{ color: c.text }}>
           Keep up with how TeraStamp grows. Browse upcoming features, follow progress, and share
           your feedback through our roadmap and wishlist. Every improvement reflects our goal of making
           infrastructure monitoring more connected, flexible, and data-driven.
@@ -997,7 +993,7 @@ const TeraStampRoadmap = () => {
                   style={{ color: c.text, transition: "width .2s" }}
                 />
               </div>
-              <button onClick={() => setShowSubmit(true)} className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold" style={{ background: c.accentSoft, color: "#171527" }}>
+              <button onClick={() => setShowSubmit(true)} className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold" style={{ background: c.accent, color: "#fff" }}>
                 <Plus size={16} /> Submit idea
               </button>
             </div>
@@ -1011,9 +1007,9 @@ const TeraStampRoadmap = () => {
                   key={y.id}
                   onClick={() => { setActiveYear(y.id); setQuery(""); }}
                   className="flex shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-3 text-xs font-semibold tracking-wide"
-                  style={{ color: active ? c.accentText : c.muted, borderBottom: `2px solid ${active ? c.accent : "transparent"}` }}
+                  style={{ color: active ? c.accent : c.muted, borderBottom: `2px solid ${active ? c.accent : "transparent"}` }}
                 >
-                  <Rocket size={13} style={{ color: active ? c.accentSoft : c.faint }} />
+                  <Rocket size={13} style={{ color: active ? c.accent : c.faint }} />
                   {y.label}
                 </button>
               );

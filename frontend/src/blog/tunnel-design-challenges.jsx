@@ -2,6 +2,18 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
+/* ---------- Color Palette ---------- */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+  cardHover: "#F1F3F5",
+};
+
 /* ------------------------------------------------------------------ */
 /*  Article meta + tags                                                */
 /* ------------------------------------------------------------------ */
@@ -54,24 +66,39 @@ const rise = (i = 0) => ({
 });
 
 /* ------------------------------------------------------------------ */
+/*  Helper to highlight last word in orange                           */
+/* ------------------------------------------------------------------ */
+const highlightLastWord = (text) => {
+  const words = text.split(" ");
+  const last = words.pop();
+  return (
+    <>
+      {words.join(" ")} <span style={{ color: colors.accent }}>{last}</span>
+    </>
+  );
+};
+
+/* ------------------------------------------------------------------ */
 /*  Small building blocks                                              */
 /* ------------------------------------------------------------------ */
-const SectionTitle = ({ children }) => (
-  <motion.h2
-    {...rise(0)}
-    className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
-  >
-    {children}
-  </motion.h2>
-);
+const SectionTitle = ({ children }) => {
+  return (
+    <motion.h2
+      {...rise(0)}
+      className="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl"
+    >
+      {typeof children === "string" ? highlightLastWord(children) : children}
+    </motion.h2>
+  );
+};
 
-// Brand-coloured inline mention.
+// Brand-coloured inline mention (orange now).
 const Hl = ({ children }) => (
-  <span className="font-semibold text-[#A4B3FF]">{children}</span>
+  <span className="font-semibold text-[#F26418]">{children}</span>
 );
 
-// Framed article image with gradient fallback.
-const ArticleImage = ({ src, alt, accent = "from-[#1b2530] to-[#0d141b]" }) => (
+// Framed article image – natural, no border.
+const ArticleImage = ({ src, alt, accent = "from-[#f0f2f5] to-[#d9dde4]" }) => (
   <motion.div
     {...rise(1)}
     className={`mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-gradient-to-br ${accent}`}
@@ -87,59 +114,60 @@ const ArticleImage = ({ src, alt, accent = "from-[#1b2530] to-[#0d141b]" }) => (
 );
 
 /* ------------------------------------------------------------------ */
-/*  Recommended card — blog-card look with hover glow + arrow          */
+/*  Recommended card — light theme, orange border                     */
 /* ------------------------------------------------------------------ */
-const RecommendedCard = ({ post }) => (
-  <Link
-    to={post.link}
-    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#818CF8]/30 bg-[#26262E] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#818CF8]/70 hover:bg-[#2E2E38] hover:shadow-2xl hover:shadow-black/40"
-  >
-    {/* Radial glow that fades into the bottom-right corner on hover */}
-    <span
-      aria-hidden="true"
-      className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(129,140,248,0.45),rgba(129,140,248,0)_70%)] opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100"
-    />
+const RecommendedCard = ({ post }) => {
+  // Extract last word of title to highlight
+  const titleWords = post.title.split(" ");
+  const lastWord = titleWords.pop();
+  const titleRest = titleWords.join(" ");
 
-    {/* Image */}
-    <div
-      className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent}`}
+  return (
+    <Link
+      to={post.link}
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#F26418] hover:bg-[#F9FAFB] hover:shadow-lg"
     >
-      <img
-        src={post.image}
-        alt={post.title}
-        loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        onError={(e) => (e.currentTarget.style.opacity = "0")}
-      />
-    </div>
-
-    {/* Body */}
-    <div className="relative z-10 flex flex-1 flex-col px-1 pt-5">
-      <span className="text-sm text-gray-400">{post.tags}</span>
-      <h3 className="mt-2 text-lg font-bold leading-snug text-white transition-colors duration-300 group-hover:text-indigo-200">
-        {post.title}
-      </h3>
-      <div className="mt-auto flex items-end justify-between pt-4">
-        <span className="text-sm text-gray-500">{post.date}</span>
-        <ArrowRight
-          aria-hidden="true"
-          className="h-5 w-5 -translate-x-2 text-[#A4B3FF] opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+      {/* Image */}
+      <div
+        className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent}`}
+      >
+        <img
+          src={post.image}
+          alt={post.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => (e.currentTarget.style.opacity = "0")}
         />
       </div>
-    </div>
-  </Link>
-);
+
+      {/* Body */}
+      <div className="relative z-10 flex flex-1 flex-col px-1 pt-5">
+        <span className="text-sm text-[#7C8595]">{post.tags}</span>
+        <h3 className="mt-2 text-lg font-bold leading-snug text-black transition-colors duration-300 group-hover:text-[#F26418]">
+          {titleRest} <span className="text-[#F26418]">{lastWord}</span>
+        </h3>
+        <div className="mt-auto flex items-end justify-between pt-4">
+          <span className="text-sm text-[#7C8595]">{post.date}</span>
+          <ArrowRight
+            aria-hidden="true"
+            className="h-5 w-5 -translate-x-2 text-[#F26418] opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+          />
+        </div>
+      </div>
+    </Link>
+  );
+};
 
 /* ------------------------------------------------------------------ */
-/*  CTA banner (same as the use-case pages)                            */
+/*  CTA banner – orange background, white text, natural image        */
 /* ------------------------------------------------------------------ */
 const CtaBanner = () => (
   <motion.div
     {...rise(0)}
-    className="relative flex flex-col items-center justify-between gap-8 overflow-hidden rounded-[32px] bg-[#A4B3FF] px-8 pt-8 pb-8 md:flex-row md:px-14 md:pt-14 md:pb-14"
+    className="relative flex flex-col items-center justify-between gap-8 overflow-hidden rounded-[32px] bg-[#F26418] px-8 pt-8 pb-8 md:flex-row md:px-14 md:pt-14 md:pb-14"
   >
     {/* Left copy */}
-    <div className="z-10 max-w-md text-[#111216]">
+    <div className="z-10 max-w-md text-white">
       <h2 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
         Turn your data into smart decisions
       </h2>
@@ -148,58 +176,58 @@ const CtaBanner = () => (
       </p>
       <Link
         to="/contact"
-        className="group mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#111216] shadow-sm transition-all duration-200 hover:bg-gray-50"
+        className="group mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#F26418] shadow-sm transition-all duration-200 hover:bg-gray-50"
       >
         Claim a demo now
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Link>
     </div>
 
-    {/* Right dashboard mock */}
-    <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/10 shadow-2xl sm:h-[340px] md:w-[55%]">
+    {/* Right dashboard mock – natural image, no grayscale */}
+    <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/20 shadow-2xl sm:h-[340px] md:w-[55%]">
       <img
         src="/test1.webp"
         alt="TeraStamp dashboard interface"
-        className="h-full w-full bg-slate-800 object-cover opacity-40 mix-blend-luminosity grayscale"
+        className="h-full w-full object-cover"
         onError={(e) => (e.currentTarget.style.opacity = "0")}
       />
 
-      {/* Mock top app bar */}
-      <div className="absolute inset-x-0 top-0 flex h-11 items-center justify-between border-b border-white/5 bg-[#1e2026] px-4 text-xs text-white">
+      {/* Mock top app bar – subtle overlay */}
+      <div className="absolute inset-x-0 top-0 flex h-11 items-center justify-between border-b border-white/10 bg-black/30 px-4 text-xs text-white backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-red-500/80" />
           <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
           <span className="h-3 w-3 rounded-full bg-green-500/80" />
         </div>
         <div className="flex items-center gap-2">
-          <span className="rounded bg-[#2a2d36] px-3 py-1 text-gray-400">
+          <span className="rounded bg-white/20 px-3 py-1 text-white/80">
             Filters
           </span>
-          <span className="rounded bg-[#4f46e5] px-3 py-1 font-medium">
+          <span className="rounded bg-white px-3 py-1 font-medium text-[#F26418]">
             + Add Advance
           </span>
         </div>
       </div>
 
-      {/* Floating data popover */}
-      <div className="absolute left-5 top-16 z-20 max-w-[210px] rounded-xl border border-white/10 bg-[#1a1b20]/95 p-4 text-xs text-white shadow-xl backdrop-blur-md">
+      {/* Floating data popover – light theme */}
+      <div className="absolute left-5 top-16 z-20 max-w-[210px] rounded-xl border border-[#F26418]/30 bg-white/95 p-4 text-xs text-black shadow-xl backdrop-blur-md">
         <div className="mb-2 flex items-center justify-between">
-          <span className="rounded-full border border-purple-500/30 bg-purple-900/50 px-2 py-0.5 text-[10px] font-semibold text-purple-300">
+          <span className="rounded-full border border-[#F26418]/30 bg-[#F26418]/20 px-2 py-0.5 text-[10px] font-semibold text-[#F26418]">
             Under review
           </span>
-          <span className="text-[10px] text-gray-500">10 min ago</span>
+          <span className="text-[10px] text-[#7C8595]">10 min ago</span>
         </div>
-        <p className="font-semibold text-gray-300">S514</p>
-        <p className="mb-2 text-gray-400">Optical Target | Tunnel Site</p>
+        <p className="font-semibold text-black">S514</p>
+        <p className="mb-2 text-[#7C8595]">Optical Target | Tunnel Site</p>
         <div className="space-y-1 font-mono text-[11px]">
-          <p className="text-emerald-400">
-            Delta X: <span className="text-white">-6.7 m</span>
+          <p className="text-emerald-600">
+            Delta X: <span className="text-black">-6.7 m</span>
           </p>
-          <p className="text-emerald-400">
-            Delta Y: <span className="text-white">-7.7 m</span>
+          <p className="text-emerald-600">
+            Delta Y: <span className="text-black">-7.7 m</span>
           </p>
-          <p className="text-emerald-400">
-            Delta Z: <span className="text-white">-0.7 m</span>
+          <p className="text-emerald-600">
+            Delta Z: <span className="text-black">-0.7 m</span>
           </p>
         </div>
       </div>
@@ -219,34 +247,40 @@ const CtaBanner = () => (
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 const BlogPostDesignChallenges = () => {
+  // Hero title: "Top 5 Design Challenges in Tunnel Projects" – last word "Projects" orange
+  const heroTitle = "Top 5 Design Challenges in Tunnel Projects";
+  const heroWords = heroTitle.split(" ");
+  const heroLast = heroWords.pop();
+  const heroRest = heroWords.join(" ");
+
   return (
-    <main className="bg-[#141519]">
+    <main className="bg-white">
       {/* ===== Hero ===== */}
       <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 md:pt-20">
         <motion.h1
           {...rise(0)}
-          className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
+          className="text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl"
         >
-          Top 5 Design Challenges in Tunnel Projects
+          {heroRest} <span style={{ color: colors.accent }}>{heroLast}</span>
         </motion.h1>
 
         <motion.p
           {...rise(1)}
-          className="mt-5 max-w-3xl text-base leading-relaxed text-gray-400 md:text-lg"
+          className="mt-5 max-w-3xl text-base leading-relaxed text-[#7C8595] md:text-lg"
         >
           Tunnel design is a high‑stakes balancing act. Discover the five most
           common hurdles consultants encounter – from limited early data to
           on‑site responsiveness – and learn how to turn them into advantages.
         </motion.p>
 
-        <motion.p {...rise(2)} className="mt-4 text-sm text-gray-500">
+        <motion.p {...rise(2)} className="mt-4 text-sm text-[#7C8595]">
           1 Oct 2025
         </motion.p>
 
-        {/* Hero cover — natural image, no overlay, no text */}
+        {/* Hero cover — natural image, no border */}
         <motion.div
           {...rise(3)}
-          className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[#1b2530]"
+          className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[#F9FAFB]"
         >
           <img
             src="/test2.jpg"
@@ -256,12 +290,12 @@ const BlogPostDesignChallenges = () => {
           />
         </motion.div>
 
-        {/* Tags */}
+        {/* Tags – orange border style */}
         <motion.div {...rise(4)} className="mt-6 flex flex-wrap gap-2.5">
           {TAGS.map((tag) => (
             <span
               key={tag}
-              className="rounded-md bg-white/[0.06] px-3 py-1 text-sm font-medium text-[#A4B3FF]"
+              className="rounded-md border-2 border-[#F26418] bg-white px-3 py-1 text-sm font-medium text-black"
             >
               {tag}
             </span>
@@ -271,7 +305,7 @@ const BlogPostDesignChallenges = () => {
 
       {/* ===== Intro ===== */}
       <section className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
-        <div className="space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(0)}>
             Tunnel projects are among the most demanding endeavours in civil
             engineering – precisely where platforms like <Hl>TeraStamp</Hl> prove
@@ -294,7 +328,7 @@ const BlogPostDesignChallenges = () => {
           </motion.p>
           <motion.p {...rise(2)}>
             In this article, we examine the{" "}
-            <span className="font-semibold text-white">
+            <span className="font-semibold text-black">
               five most significant challenges designers and consultants face in
               tunnel projects today
             </span>
@@ -307,7 +341,7 @@ const BlogPostDesignChallenges = () => {
       {/* ===== Challenge #1 ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <SectionTitle>Challenge #1: Designing with Limited Early Data</SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             At the outset of a tunnel project, designers are expected to produce
             accurate, risk‑informed designs using very little project‑specific
@@ -334,7 +368,7 @@ const BlogPostDesignChallenges = () => {
       {/* ===== Challenge #2 ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <SectionTitle>Challenge #2: Balancing Client and Contractor Priorities</SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             Tunnel projects bring together stakeholders with fundamentally
             different goals. Clients tend to prioritise long‑term performance,
@@ -361,7 +395,7 @@ const BlogPostDesignChallenges = () => {
       {/* ===== Challenge #3 ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <SectionTitle>Challenge #3: Managing Assumptions and Uncertainty</SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             In the early phases, designers and contractors often operate on
             assumptions regarding ground behaviour, construction risks, and
@@ -392,10 +426,8 @@ const BlogPostDesignChallenges = () => {
 
       {/* ===== Challenge #4 ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
-        <SectionTitle>
-          Challenge #4: Maintaining Independent Records During Construction
-        </SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <SectionTitle>Challenge #4: Maintaining Independent Records During Construction</SectionTitle>
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             During construction, consultants play a crucial role in safeguarding
             the client's interests and ensuring that work conforms to design
@@ -423,7 +455,7 @@ const BlogPostDesignChallenges = () => {
       {/* ===== Challenge #5 ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <SectionTitle>Challenge #5: Responding Quickly to Site Changes</SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             For designers working alongside contractors during construction, one
             of the greatest difficulties is reacting swiftly to unexpected site
@@ -448,7 +480,7 @@ const BlogPostDesignChallenges = () => {
       {/* ===== Turning Challenges into Opportunities ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
         <SectionTitle>Turning Challenges into Opportunities</SectionTitle>
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-gray-300 md:text-lg">
+        <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
             These five challenges illustrate the pressure tunnel projects place
             on designers and consultants – from initial sketches right through
@@ -459,7 +491,7 @@ const BlogPostDesignChallenges = () => {
             To explore practical approaches to overcoming these hurdles,{" "}
             <Link
               to="/guides/tunnel-design-solutions"
-              className="font-semibold text-[#A4B3FF] underline-offset-2 hover:underline"
+              className="font-semibold text-[#F26418] underline-offset-2 hover:underline"
             >
               download our free guide "Practical Solutions for Designers and
               Consultants in Tunnel Projects"
@@ -479,9 +511,9 @@ const BlogPostDesignChallenges = () => {
       <section className="mx-auto mt-20 max-w-6xl px-4 pb-20 sm:px-6">
         <motion.h2
           {...rise(0)}
-          className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+          className="text-3xl font-bold tracking-tight text-black sm:text-4xl"
         >
-          Recommended from TeraStamp
+          Recommended from <span style={{ color: colors.accent }}>TeraStamp</span>
         </motion.h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -492,7 +524,7 @@ const BlogPostDesignChallenges = () => {
 
         <Link
           to="/blog"
-          className="group mt-9 inline-flex items-center gap-2 rounded-lg border border-[#818CF8]/40 px-4 py-2.5 text-sm font-semibold text-[#A4B3FF] transition-colors hover:bg-[#818CF8]/10"
+          className="group mt-9 inline-flex items-center gap-2 rounded-lg border-2 border-[#F26418] px-4 py-2.5 text-sm font-semibold text-[#F26418] transition-colors hover:bg-[#F26418]/10"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
           Back to Blog

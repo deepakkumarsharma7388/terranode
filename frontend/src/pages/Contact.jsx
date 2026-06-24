@@ -93,7 +93,7 @@ const LetsTalk = () => {
         error.message || "Something went wrong",
         {
           style: {
-            background: "#1E1C24",
+            background: "#26282C",
             color: "#fff",
             border: "1px solid #ef4444",
           },
@@ -105,24 +105,24 @@ const LetsTalk = () => {
   };
 
   const inputClass =
-    "w-full rounded-lg border border-white/5 bg-[#3F3C49] px-3.5 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50";
+    "w-full rounded-lg border border-[#E2E5E9] bg-[#F5F6F7] px-3.5 py-2.5 text-sm text-[#32353A] placeholder-[#7C8595] focus:outline-none focus:ring-2 focus:ring-[#F26418]/50";
 
   return (
-    <section className="bg-[#1E1C24] py-20">
+    <section className="bg-white py-20">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 lg:grid-cols-2 lg:gap-16">
         {/* Left — form */}
         <div>
-          <h2 className="text-5xl font-extrabold tracking-tight text-white">
-            Let's talk
+          <h2 className="text-5xl font-extrabold tracking-tight text-[#32353A]">
+            Let's <span className="text-[#F26418]">talk</span>
           </h2>
           <div className="mt-4 text-3xl">👋</div>
-          <p className="mt-2 max-w-sm text-gray-300">
+          <p className="mt-2 max-w-sm text-[#5C636E]">
             Book a demo, and we'll walk you through how TeraStamp can support your
             project and teams.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-7">
-            <label className="mb-1.5 block text-sm font-semibold text-gray-200">
+            <label className="mb-1.5 block text-sm font-semibold text-[#32353A]">
               Name
             </label>
             <input
@@ -133,7 +133,7 @@ const LetsTalk = () => {
               className={inputClass}
             />
 
-            <label className="mb-1.5 mt-4 block text-sm font-semibold text-gray-200">
+            <label className="mb-1.5 mt-4 block text-sm font-semibold text-[#32353A]">
               Email
             </label>
             <input
@@ -145,7 +145,7 @@ const LetsTalk = () => {
               className={inputClass}
             />
 
-            <label className="mb-1.5 mt-4 block text-sm font-semibold text-gray-200">
+            <label className="mb-1.5 mt-4 block text-sm font-semibold text-[#32353A]">
               Company
             </label>
             <input
@@ -156,7 +156,7 @@ const LetsTalk = () => {
               className={inputClass}
             />
 
-            <label className="mb-1.5 mt-4 block text-sm font-semibold text-gray-200">
+            <label className="mb-1.5 mt-4 block text-sm font-semibold text-[#32353A]">
               Message
             </label>
             <textarea
@@ -168,32 +168,32 @@ const LetsTalk = () => {
             />
 
             {/* Consent checkboxes */}
-            <label className="mt-4 flex gap-2.5 text-xs leading-snug text-gray-400">
+            <label className="mt-4 flex gap-2.5 text-xs leading-snug text-[#5C636E]">
               <input
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
-                className="mt-0.5 h-4 w-4 flex-none accent-[#6366F1]"
+                className="mt-0.5 h-4 w-4 flex-none accent-[#F26418]"
               />
               <span>
                 I understand and agree that my data will be used according to the{" "}
-                <Link to="/privacy" className="text-[#8B8FF5] hover:underline">
+                <Link to="/privacy" className="text-[#F26418] hover:underline">
                   privacy policy
                 </Link>{" "}
                 and{" "}
-                <Link to="/gdpr" className="text-[#8B8FF5] hover:underline">
+                <Link to="/gdpr" className="text-[#F26418] hover:underline">
                   GDPR regulations
                 </Link>
                 .
               </span>
             </label>
 
-            <label className="mt-3 flex gap-2.5 text-xs leading-snug text-gray-400">
+            <label className="mt-3 flex gap-2.5 text-xs leading-snug text-[#5C636E]">
               <input
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-0.5 h-4 w-4 flex-none accent-[#6366F1]"
+                className="mt-0.5 h-4 w-4 flex-none accent-[#F26418]"
               />
               <span>
                 I give my consent to TeraStamp to send me electronic commercial
@@ -204,7 +204,7 @@ const LetsTalk = () => {
             <button
               type="submit"
               disabled={!agree || loading}
-              className="mt-5 w-full rounded-lg bg-[#6366F1] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#5457E0] disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-5 w-full rounded-lg bg-[#F26418] py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#D9550F] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -216,11 +216,11 @@ const LetsTalk = () => {
               )}
             </button>
 
-            <p className="mt-4 text-center text-sm font-semibold text-gray-200">
+            <p className="mt-4 text-center text-sm font-semibold text-[#5C636E]">
               You can also reach us by email at:{" "}
               <a
                 href="mailto:hello@terastamp.com"
-                className="text-[#8B8FF5] underline"
+                className="text-[#F26418] underline"
               >
                 hello@terastamp.com
               </a>
@@ -230,11 +230,11 @@ const LetsTalk = () => {
 
         {/* Right — video + benefits */}
         <div>
-          <h3 className="text-xl font-bold text-white">
-            Request Your TeraStamp Demo
+          <h3 className="text-xl font-bold text-[#32353A]">
+            Request Your TeraStamp <span className="text-[#F26418]">Demo</span>
           </h3>
 
-          <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-black">
+          <div className="mt-5 overflow-hidden rounded-xl border border-[#E2E5E9] bg-black">
             <video
               src={videoSrc}
               poster={poster}
@@ -249,14 +249,14 @@ const LetsTalk = () => {
 
           <ul className="mt-6 space-y-2.5">
             {benefits.map((b) => (
-              <li key={b} className="flex items-start gap-2.5 text-gray-300">
-                <Check size={16} className="mt-0.5 flex-none text-[#6C7BF0]" />
+              <li key={b} className="flex items-start gap-2.5 text-[#5C636E]">
+                <Check size={16} className="mt-0.5 flex-none text-[#F26418]" />
                 <span className="text-sm">{b}</span>
               </li>
             ))}
           </ul>
 
-          <p className="mt-7 text-lg font-semibold leading-relaxed text-gray-200">
+          <p className="mt-7 text-lg font-semibold leading-relaxed text-[#32353A]">
             See how TeraStamp brings geotechnical, satellite, and sensor data
             together into one powerful platform. Request a personalized demo and
             find out how our tools help infrastructure teams make faster,

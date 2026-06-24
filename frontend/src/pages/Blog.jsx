@@ -27,7 +27,7 @@ const posts = [
     tags: "Infrastructure",
     date: "8 Oct 2025",
     image: "/builapar.jpeg",
-    accent: "from-[#4b4bd6] to-[#2a2a6e]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Infrastructure"],
     link: "/blog/proqio-joins-aetos",
   },
@@ -37,7 +37,7 @@ const posts = [
     tags: "Infrastructure",
     date: "1 Oct 2025",
     image: "/tunnel.jpeg",
-    accent: "from-[#3f57b8] to-[#1f2a55]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Infrastructure"],
     link: "/blog/tunnel-design-challenges",
   },
@@ -48,7 +48,7 @@ const posts = [
     tags: "Infrastructure",
     date: "24 Jul 2025",
     image: "building.jpeg",
-    accent: "from-[#5151e6] to-[#2c2c8a]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Infrastructure", "Construction"],
     link: "/blog/tunnel-monitoring-made-simple",
   },
@@ -58,7 +58,7 @@ const posts = [
     tags: "Data Science , Construction",
     date: "2 Jan 2024",
     image: "/pipelin.jpeg",
-    accent: "from-[#123040] to-[#0a1820]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Construction", "Data Science"],
     link: "/blog/data-science-in-construction",
   },
@@ -69,7 +69,7 @@ const posts = [
     tags: "Data-Driven Infrastructures , Construction",
     date: "1 Jan 2024",
     image: "/road.jpeg",
-    accent: "from-[#1a2a4a] to-[#0c1428]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Construction"],
     link: "/blog/data-driven-infrastructure",
   },
@@ -79,7 +79,7 @@ const posts = [
     tags: "Infrastructure Data Intelligence , Construction",
     date: "3 Jan 2024",
     image: "/watersav.jpeg",
-    accent: "from-[#2a2a32] to-[#15151a]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Construction"],
     link: "/blog/digital-transformation-construction",
   },
@@ -90,7 +90,7 @@ const posts = [
     tags: "Smart Construction , Data Science",
     date: "3 Jan 2024",
     image: "/dam.jpeg",
-    accent: "from-[#3a2418] to-[#1a120c]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Data Science"],
     link: "/blog/critical-role-infrastructure-data",
   },
@@ -100,7 +100,7 @@ const posts = [
     tags: "Smart Cities , Infrastructure Data",
     date: "3 Jan 2024",
     image: "/cit.jpeg",
-    accent: "from-[#0c3a35] to-[#06201d]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Smart cities"],
     link: "/blog/transforming-smart-cities",
   },
@@ -111,7 +111,7 @@ const posts = [
     tags: "Mining",
     date: "3 Apr 2024",
     image: "/mine.jpeg",
-    accent: "from-[#3a4a2a] to-[#1c2415]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Mining"],
     link: "/blog/mining-tailings-operations",
   },
@@ -121,7 +121,7 @@ const posts = [
     tags: "Integration",
     date: "12 Aug 2025",
     image: "/test3.avif",
-    accent: "from-[#5151e6] to-[#2c2c8a]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Integration"],
     link: "/blog/proqio-deltaiot-integration",
   },
@@ -131,7 +131,7 @@ const posts = [
     tags: "Integration",
     date: "17 Jun 2025",
     image: "/test2.jpg",
-    accent: "from-[#4b4bd6] to-[#2a2a6e]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Integration"],
     link: "/blog/proqio-campbell-scientific",
   },
@@ -141,7 +141,7 @@ const posts = [
     tags: "Integration",
     date: "27 May 2025",
     image: "/test3.avif",
-    accent: "from-[#3f57b8] to-[#1f2a55]",
+    accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Integration"],
     link: "/blog/proqio-osprey-measurement",
   },
@@ -156,8 +156,8 @@ const FilterTab = ({ label, active, onClick }) => (
     onClick={onClick}
     className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${
       active
-        ? "bg-[#A4B3FF] text-[#16171c]"
-        : "bg-white/[0.04] text-gray-300 hover:bg-white/[0.08] hover:text-white"
+        ? "bg-[#F26418] text-white"
+        : "bg-[#F5F6F7] text-[#5C636E] hover:bg-[#FFF4EC] hover:text-[#F26418]"
     }`}
   >
     {label}
@@ -177,12 +177,12 @@ const BlogCard = ({ post }) => (
   >
     <Link
       to={post.link}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#818CF8]/30 bg-[#26262E] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#818CF8]/70 hover:bg-[#2E2E38] hover:shadow-2xl hover:shadow-black/40"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[#FFF4EC] hover:shadow-2xl hover:shadow-[#F26418]/15"
     >
       {/* Radial glow that fades into the bottom-right corner on hover */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(129,140,248,0.45),rgba(129,140,248,0)_70%)] opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100"
+        className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(242,100,24,0.35),rgba(242,100,24,0)_70%)] opacity-0 blur-2xl transition-opacity duration-500 ease-out group-hover:opacity-100"
       />
 
       {/* Image */}
@@ -200,16 +200,16 @@ const BlogCard = ({ post }) => (
 
       {/* Body */}
       <div className="relative z-10 flex flex-1 flex-col px-1 pt-5">
-        <span className="text-sm text-gray-400">{post.tags}</span>
-        <h3 className="mt-2 text-xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-indigo-200">
+        <span className="text-sm text-[#7C8595]">{post.tags}</span>
+        <h3 className="mt-2 text-xl font-bold leading-snug text-[#32353A] transition-colors duration-300 group-hover:text-[#F26418]">
           {post.title}
         </h3>
 
         <div className="mt-auto flex items-end justify-between pt-4">
-          <span className="text-sm text-gray-500">{post.date}</span>
+          <span className="text-sm text-[#7C8595]">{post.date}</span>
           <ArrowRight
             aria-hidden="true"
-            className="h-5 w-5 -translate-x-2 text-[#A4B3FF] opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+            className="h-5 w-5 -translate-x-2 text-[#F26418] opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
           />
         </div>
       </div>
@@ -237,7 +237,7 @@ const BlogResources = () => {
   }, [active, query]);
 
   return (
-    <section className="bg-[#121317]">
+    <section className="bg-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* Hero */}
         <motion.h1
@@ -245,16 +245,16 @@ const BlogResources = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
+          className="max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tight text-[#32353A] sm:text-5xl md:text-6xl"
         >
-          Real Projects, Future Visions, Industry Insights
+          Real Projects, Future Visions, <span className="text-[#F26418]">Industry Insights</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.08 }}
-          className="mt-5 text-lg text-gray-400 md:text-xl"
+          className="mt-5 text-lg text-[#5C636E] md:text-xl"
         >
           Explore TeraStamp's Blog for a pulse on innovation and success stories.
         </motion.p>
@@ -272,14 +272,14 @@ const BlogResources = () => {
         </div>
 
         {/* Search */}
-        <div className="mt-4 flex items-center gap-3 rounded-2xl bg-white/[0.05] px-5 py-4">
-          <Search className="h-5 w-5 flex-shrink-0 text-gray-400" />
+        <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[#E2E5E9] bg-[#F5F6F7] px-5 py-4">
+          <Search className="h-5 w-5 flex-shrink-0 text-[#7C8595]" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search blog articles..."
-            className="w-full bg-transparent text-base text-white placeholder:text-gray-500 focus:outline-none"
+            className="w-full bg-transparent text-base text-[#32353A] placeholder:text-[#7C8595] focus:outline-none"
           />
         </div>
 
@@ -298,7 +298,7 @@ const BlogResources = () => {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-lg text-gray-400">
+            <p className="text-lg text-[#5C636E]">
               No articles match your search.
             </p>
             <button
@@ -307,7 +307,7 @@ const BlogResources = () => {
                 setActive("All");
                 setQuery("");
               }}
-              className="mt-4 rounded-lg border border-[#818CF8]/40 px-4 py-2 text-sm font-semibold text-[#A4B3FF] transition-colors hover:bg-[#818CF8]/10"
+              className="mt-4 rounded-lg border border-[#F26418]/50 px-4 py-2 text-sm font-semibold text-[#F26418] transition-colors hover:bg-[#F26418]/10"
             >
               Clear filters
             </button>

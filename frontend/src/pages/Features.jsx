@@ -1,15 +1,22 @@
 import React from 'react'
-
 import { Link } from "react-router-dom";
-
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Radar, MessagesSquare, LineChart, SlidersHorizontal } from "lucide-react";
 import { Activity, Image as ImageIcon, Box, Rocket } from "lucide-react";
 
-
-
+/* Color palette */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+  cardHover: "#F1F3F5",
+};
 
 const Starburst = ({ className = "" }) => (
   <svg
@@ -63,27 +70,25 @@ const Asterisk = ({ className = "" }) => (
 
 const Hero = () => {
   return (
-    <section className="bg-[#1E1C24]">
+    <section className="bg-white">
       <div
         className="
           relative
           overflow-hidden
           rounded-b-[40px]
-          bg-[#A6B4FD]
+          bg-[#F26418]      /* orange background */
           px-6
           pb-20
           pt-16
           md:px-14
           md:pb-24
           md:pt-20
-          lg:px-60              {/* ← extra horizontal padding on laptops/desktops */}
+          lg:px-60
         "
       >
-        {/* Decorations */}
-        <div className="pointer-events-none absolute inset-0 text-[#6B76E6]/85">
+        {/* Decorations – white with opacity */}
+        <div className="pointer-events-none absolute inset-0 text-white/60">
           <Starburst className="absolute right-10 top-7 h-16 w-16 md:right-12 md:h-[78px] md:w-[78px]" />
-
-          {/* sparkle */}
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -94,8 +99,6 @@ const Hero = () => {
           >
             <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" />
           </svg>
-
-          {/* small circle */}
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -105,8 +108,6 @@ const Hero = () => {
           >
             <circle cx="12" cy="12" r="9" />
           </svg>
-
-          {/* wavy line */}
           <svg
             viewBox="0 0 120 24"
             fill="none"
@@ -117,11 +118,10 @@ const Hero = () => {
           >
             <path d="M2 12 Q12 2 22 12 T42 12 T62 12 T82 12 T102 12 T118 12" />
           </svg>
-
           <Asterisk className="absolute bottom-9 right-12 h-10 w-10 md:h-12 md:w-12" />
         </div>
 
-        {/* Content */}
+        {/* Content – white text */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ const Hero = () => {
           className="relative z-10 max-w-4xl"
         >
           <h1
-            className="font-extrabold tracking-tight text-[#19181F]"
+            className="font-extrabold tracking-tight text-white"
             style={{
               fontFamily: 'Inter, "Inter Placeholder", sans-serif',
               fontSize: "clamp(36px, 6vw, 60px)",
@@ -137,10 +137,11 @@ const Hero = () => {
               letterSpacing: "-1.5px",
             }}
           >
-            Elevate Your Civil Infrastructure Experience with TeraStamp
+            Elevate Your Civil Infrastructure Experience with
+           TeraStamp
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-[#525D7E]">
+          <p className="mt-6 max-w-xl text-lg text-white/80">
             Discover a world of possibilities and unlock the features that
             turn data into decisions.
           </p>
@@ -149,8 +150,8 @@ const Hero = () => {
             to="/contact"
             className="
               group mt-7 inline-flex items-center gap-2 rounded-lg
-              bg-[#5B5CF0] px-5 py-3 text-sm font-semibold text-white
-              transition-colors duration-300 hover:bg-[#4A4BE3]
+              bg-white px-5 py-3 text-sm font-semibold text-[#F26418]
+              transition-colors duration-300 hover:bg-gray-100
             "
           >
             Claim demo now
@@ -165,12 +166,6 @@ const Hero = () => {
   );
 };
 
-
-
-
-
-
-
 const AUTO_ROTATE = true;
 const ROTATE_MS = 5000;
 
@@ -180,7 +175,7 @@ const features = [
     title: "Explore Instrument Insights",
     description:
       "Tune into the pulse of your project by opening individual instruments. Dig into real-time data, read alert statuses, and kick off informed decision-making.",
-    image: "/test1.webp", // or use video: "/media/showcase/explore.mp4"
+    image: "/watersav.jpeg",
   },
   {
     icon: MessagesSquare,
@@ -201,7 +196,7 @@ const features = [
     title: "Key Insights with Dynamic Map Filters",
     description:
       "Easily filter instruments by criteria such as number of readings, alert status, category, and more. Tailor your map view to zero in on the instruments that matter most at any given moment.",
-    image: "/media/showcase/filters.png",
+    image: "/tunnel.jpeg",
   },
 ];
 
@@ -209,7 +204,6 @@ const FeatureShowcase = () => {
   const [active, setActive] = useState(0);
   const paused = useRef(false);
 
-  // Auto-advance through the features (pauses on hover).
   useEffect(() => {
     if (!AUTO_ROTATE) return;
     const id = setInterval(() => {
@@ -222,7 +216,7 @@ const FeatureShowcase = () => {
 
   return (
     <section
-      className="bg-[#1E1C24] py-20 overflow-hidden"
+      className="bg-white py-20 overflow-hidden"
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
     >
@@ -235,16 +229,16 @@ const FeatureShowcase = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
-              Visualize, Analyze, and Decide
+            <h2 className="text-3xl font-bold text-black md:text-4xl">
+              Visualize, Analyze, and <span style={{ color: colors.accent }}>Decide</span>
             </h2>
-            <p className="mt-4 max-w-xl text-gray-400 leading-relaxed">
+            <p className="mt-4 max-w-xl text-[#7C8595] leading-relaxed">
               Unlock the power of your engineering project at a glance. From
               sensor insights to collaborative alert management and dynamic
               graph plotting, our Map Section becomes your command center for
               informed decisions, disaster prevention, and greater
               efficiency.{" "}
-              <span className="font-semibold text-gray-200">
+              <span className="font-semibold text-black">
                 Welcome to the future of infrastructure management.
               </span>
             </p>
@@ -260,23 +254,23 @@ const FeatureShowcase = () => {
                   type="button"
                   onClick={() => setActive(i)}
                   className={`
-                    rounded-2xl border px-4 py-3.5 text-left transition-all duration-300
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B8FFF]/50
+                    rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
                     ${
                       isActive
-                        ? "border-white/[0.06] bg-[#2A2731]"
-                        : "border-transparent hover:bg-white/[0.03]"
+                        ? "border-[#F26418] bg-[#F9FAFB]"
+                        : "border-[#E2E8F0] bg-white hover:bg-[#F9FAFB]"
                     }
                   `}
                 >
                   <div className="flex items-center gap-3">
                     <Icon
                       size={19}
-                      className={isActive ? "text-white" : "text-gray-400"}
+                      className={isActive ? "text-[#F26418]" : "text-[#7C8595]"}
                     />
                     <span
                       className={`font-semibold ${
-                        isActive ? "text-white" : "text-gray-300"
+                        isActive ? "text-black" : "text-[#7C8595]"
                       }`}
                     >
                       {f.title}
@@ -290,7 +284,7 @@ const FeatureShowcase = () => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-gray-400"
+                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#7C8595]"
                       >
                         <span className="block pt-2">{f.description}</span>
                       </motion.p>
@@ -303,7 +297,7 @@ const FeatureShowcase = () => {
         </div>
 
         {/* Right: synced preview panel */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-[#211F29] lg:aspect-auto lg:h-[460px]">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[#F9FAFB] lg:aspect-auto lg:h-[460px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -340,33 +334,27 @@ const FeatureShowcase = () => {
   );
 };
 
-
-
-
-
-
-
 const features1 = [
   {
     icon: Activity,
     title: "Visualizing Construction Dynamics",
     description:
       "Track the movement patterns of your construction with Heat Maps. Select multiple instruments to build a dynamic visual representation that supports proactive decision-making.",
-    image: "/media/immersive/heatmap.png", // or video: "/media/immersive/heatmap.mp4"
+    image: "/pipelin.jpeg",
   },
   {
     icon: ImageIcon,
     title: "Real-Time Context with Construction Services",
     description:
       "Layer live construction services and site context over your data, so every reading is anchored in what is happening on the ground right now.",
-    image: "/media/immersive/context.png",
+    image: "/builapar.jpeg",
   },
   {
     icon: Box,
     title: "Explore your Project in Depth with 3D",
     description:
       "Step into immersive 3D views of your project, examining structures and sensor placements from any angle for a complete perspective.",
-    image: "/media/immersive/3d.png",
+    image: "/watersav.jpeg",
   },
   {
     icon: Rocket,
@@ -374,7 +362,7 @@ const features1 = [
     badge: "COMING SOON!",
     description:
       "A living, real-time replica of your infrastructure is on its way, linking every instrument into one continuously updated digital twin.",
-    image: "/media/immersive/digital-twins.png",
+    image: "/windmi.jpeg",
   },
 ];
 
@@ -385,23 +373,23 @@ const ImmersiveExperience = () => {
   useEffect(() => {
     if (!AUTO_ROTATE) return;
     const id = setInterval(() => {
-      if (!paused.current) setActive((i) => (i + 1) % features.length);
+      if (!paused.current) setActive((i) => (i + 1) % features1.length);
     }, ROTATE_MS);
     return () => clearInterval(id);
   }, []);
 
-  const current = features[active];
+  const current = features1[active];
 
   return (
     <section
-      className="bg-[#1B1A20] py-20 overflow-hidden"
+      className="bg-white py-20 overflow-hidden"
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
-        {/* Media — left on desktop, below the text on mobile */}
+        {/* Media — left on desktop */}
         <div className="order-2 lg:order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-[#232129] lg:h-[460px] lg:aspect-auto">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[#F9FAFB] lg:h-[460px] lg:aspect-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -435,7 +423,7 @@ const ImmersiveExperience = () => {
           </div>
         </div>
 
-        {/* Text + accordion — first on mobile, right on desktop */}
+        {/* Text + accordion — right */}
         <div className="order-1 lg:order-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -443,10 +431,10 @@ const ImmersiveExperience = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
-              A New Immersive Experience
+            <h2 className="text-3xl font-bold text-black md:text-4xl">
+              A New Immersive <span style={{ color: colors.accent }}>Experience</span>
             </h2>
-            <p className="mt-4 max-w-xl text-gray-400 leading-relaxed">
+            <p className="mt-4 max-w-xl text-[#7C8595] leading-relaxed">
               From dynamic Heat Maps that surface infrastructure movement to
               immersive 3D views giving a complete perspective and, soon, the
               game-changing Digital Twins functionality. Gain unmatched
@@ -456,7 +444,7 @@ const ImmersiveExperience = () => {
           </motion.div>
 
           <div className="mt-8 flex flex-col gap-1.5">
-            {features.map((f, i) => {
+            {features1.map((f, i) => {
               const Icon = f.icon;
               const isActive = i === active;
               return (
@@ -465,29 +453,29 @@ const ImmersiveExperience = () => {
                   type="button"
                   onClick={() => setActive(i)}
                   className={`
-                    rounded-2xl border px-4 py-3.5 text-left transition-all duration-300
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B8FFF]/50
+                    rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
                     ${
                       isActive
-                        ? "border-white/[0.06] bg-[#262430]"
-                        : "border-transparent hover:bg-white/[0.03]"
+                        ? "border-[#F26418] bg-[#F9FAFB]"
+                        : "border-[#E2E8F0] bg-white hover:bg-[#F9FAFB]"
                     }
                   `}
                 >
                   <div className="flex items-center gap-3">
                     <Icon
                       size={19}
-                      className={isActive ? "text-white" : "text-gray-400"}
+                      className={isActive ? "text-[#F26418]" : "text-[#7C8595]"}
                     />
                     <span
                       className={`font-semibold ${
-                        isActive ? "text-white" : "text-gray-300"
+                        isActive ? "text-black" : "text-[#7C8595]"
                       }`}
                     >
                       {f.title}
                     </span>
                     {f.badge && (
-                      <span className="ml-auto whitespace-nowrap rounded-md bg-[#CDCCF7] px-2 py-1 text-[11px] font-semibold text-[#5A59C4]">
+                      <span className="ml-auto whitespace-nowrap rounded-md bg-[#F26418] px-2 py-1 text-[11px] font-semibold text-white">
                         {f.badge}
                       </span>
                     )}
@@ -500,7 +488,7 @@ const ImmersiveExperience = () => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-gray-400"
+                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#7C8595]"
                       >
                         <span className="block pt-2">{f.description}</span>
                       </motion.p>
@@ -516,21 +504,14 @@ const ImmersiveExperience = () => {
   );
 };
 
-
-
-
-
-
 const Features = () => {
   return (
     <div>
-      <Hero/>
-      <FeatureShowcase/>
-      <ImmersiveExperience/>
-    
-    
+      <Hero />
+      <FeatureShowcase />
+      <ImmersiveExperience />
     </div>
-  )
-}
+  );
+};
 
-export default Features
+export default Features;
