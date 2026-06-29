@@ -47,11 +47,11 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img
-            src="/logo.png"
-            alt="TeraStamp"
-            className="h-7 w-auto sm:h-8 lg:h-9"
-          />
+       <img
+  src="/logo5.png"
+  alt="TeraStamp"
+  className="h-14 w-auto sm:h-16 lg:h-[72px]"
+/>
         </Link>
 
         {/* Desktop nav */}

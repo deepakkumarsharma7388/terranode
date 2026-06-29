@@ -138,14 +138,6 @@ const AboutHero = () => {
 
 
 
-
-
-
-
-
-
-
-
 const OurStorySection = () => {
   return (
     <section className="overflow-hidden bg-white py-12 md:py-20">
@@ -229,7 +221,7 @@ const OurStorySection = () => {
                   lg:text-[110px]
                 "
               >
-                terastamp
+                TeraStamp
               </motion.h1>
 
               {/* Bottom Labels */}
@@ -273,21 +265,21 @@ const DifferenceSection = () => {
       description:
         "Intuitive design, total control – our user-friendly interface and experience bring efficiency together with simplicity.",
       image:
-        "/test1.webp",
+        "/simplicity.jpeg",
     },
     {
       title: "Flexibility",
       description:
         "Tailored reporting, limitless visualization, customized dashboards, and multiple data integrations through our adaptable platform.",
       image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+        "/flexibility.jpeg",
     },
     {
       title: "Versatility",
       description:
         "From start to finish – smoothly connects applications, modules, and technologies for complete coverage across the project lifecycle.",
       image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+        "/versatility.jpeg",
     },
   ];
 
@@ -388,65 +380,6 @@ const DifferenceSection = () => {
 
 
 
-
-
-const StatCard = ({ value, suffix, label }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
-  });
-
-  return (
-    <div ref={ref} className="text-center">
-      <p className="mb-2 text-sm md:text-lg text-[#7C8595]">
-        {label}
-      </p>
-
-      <h2 className="text-4xl md:text-6xl font-bold text-[#32353A]">
-        {inView && (
-          <CountUp
-            start={0}
-            end={value}
-            duration={2}
-            suffix={suffix}
-          />
-        )}
-      </h2>
-    </div>
-  );
-};
-
-const StatsSection = () => {
-  return (
-    <section className="bg-[#F5F6F7] py-[15px]">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-          <StatCard
-            value={2}
-            suffix="+"
-            label="Years of experience"
-          />
-
-          <StatCard
-            value={2}
-            suffix="K+"
-            label="Projects"
-          />
-
-          <StatCard
-            value={500}
-            suffix="+"
-            label="Clients"
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-
-
-
 const TestimonialCTASection = () => {
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-24">
@@ -478,100 +411,9 @@ const TestimonialCTASection = () => {
             project.
           </h2>
 
-          <p className="mt-6 text-lg text-[#7C8595] md:text-2xl">
-            Pablo Corrales - Tunnel Engineer Leader at Neom Lot 2-3
-          </p>
         </motion.div>
 
-        {/* CTA Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 120 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: 0.9,
-            delay: 0.2,
-          }}
-          className="mx-auto mt-16 max-w-5xl"
-        >
-          <motion.div
-            whileHover={{
-              y: -6,
-              boxShadow:
-                "0 25px 50px rgba(242,100,24,0.25)",
-            }}
-            transition={{ duration: 0.3 }}
-            className="
-              rounded-[32px]
-              bg-[#F26418]
-              px-6
-              py-12
-              md:px-12
-              md:py-16
-              text-center
-            "
-          >
-            <motion.h3
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="
-                text-4xl
-                font-bold
-                text-white
-                md:text-6xl
-              "
-            >
-              Join our team
-            </motion.h3>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="
-                mx-auto
-                mt-6
-                max-w-3xl
-                text-lg
-                text-white/90
-                md:text-2xl
-              "
-            >
-              Interested in applying for a position?
-              Check our careers page for open roles
-              and apply.
-            </motion.p>
-
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              className="
-                mt-8
-                inline-flex
-                items-center
-                gap-2
-                rounded-xl
-                bg-white
-                px-6
-                py-3
-                text-lg
-                font-medium
-                text-[#F26418]
-                shadow-lg
-              "
-            >
-              View open positions
-              <ArrowRight size={20} />
-            </motion.button>
-          </motion.div>
-        </motion.div>
+       
       </div>
     </section>
   );
@@ -588,7 +430,7 @@ const About = () => {
      < AboutHero/>
      <OurStorySection/>
      <DifferenceSection/>
-     <StatsSection/>
+     
      <TestimonialCTASection/>
     
     

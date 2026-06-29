@@ -18,108 +18,93 @@ import React from 'react';
 
 
 
+
 const Applicards = () => {
   const cards = [
     {
-      title: "Dams",
+      title: 'Dams',
       icon: Landmark,
-      link: "/applications/dams",
+      link: '/applications/dams',
       span: 1,
       description:
-        "Put data intelligence to work for stronger dam safety, maintenance, and performance analysis.",
+        'Put data intelligence to work for stronger dam safety, maintenance, and performance analysis.',
     },
     {
-      title: "Mining",
+      title: 'Mining',
       icon: Factory,
-      link: "/applications/mining",
+      link: '/applications/mining',
       span: 1,
       description:
-        "Fine-tune mine and tailings dam operations with smart data insights.",
+        'Fine-tune mine and tailings dam operations with smart data insights.',
     },
     {
-      title: "Tunnels",
+      title: 'Tunnels',
       icon: Mountain,
-      link: "/applications/tunnels",
+      link: '/applications/tunnels',
       span: 1,
       description:
-        "Improve TBM and Drill & Blast tunnel construction with real-time monitoring and analytics.",
+        'Improve TBM and Drill & Blast tunnel construction with real-time monitoring and analytics.',
     },
     {
-      title: "Transportation",
+      title: 'Transportation',
       icon: Train,
-      link: "/applications/transportation",
+      link: '/applications/transportation',
       span: 1,
       description:
-        "Boost transport infrastructure with smart data solutions for roads, railways, and transit systems.",
+        'Boost transport infrastructure with smart data solutions for roads, railways, and transit systems.',
     },
     {
-      title: "Construction",
+      title: 'Construction',
       icon: Building2,
-      link: "/applications/construction",
+      link: '/applications/construction',
       span: 2,
       description:
-        "Reshape civil projects with data-driven insights for airports, ports, construction sites, and more.",
+        'Reshape civil projects with data-driven insights for airports, ports, construction sites, and more.',
     },
     {
-      title: "Bridges",
+      title: 'Bridges',
       icon: Waypoints,
-      link: "/applications/bridges",
+      link: '/applications/bridges',
       span: 1,
       description:
-        "Add structural intelligence to bridges with real-time data analysis for safety and longevity.",
+        'Add structural intelligence to bridges with real-time data analysis for safety and longevity.',
     },
     {
-      title: "Energy Infrastructure",
+      title: 'Energy Infrastructure',
       icon: Zap,
-      link: "/applications/energy",
+      link: '/applications/energy',
       span: 1,
       description:
-        "Strengthen energy projects with focused data analysis for wind, nuclear, and solar sectors.",
+        'Strengthen energy projects with focused data analysis for wind, nuclear, and solar sectors.',
     },
     {
-      title: "Environmental Monitoring",
+      title: 'Environmental Monitoring',
       icon: Leaf,
-      link: "/applications/environment",
+      link: '/applications/environment',
       span: 1,
       description:
-        "Use remote sensing and climate data for environmental management and sustainability.",
+        'Use remote sensing and climate data for environmental management and sustainability.',
     },
     {
-      title: "Landslides & Disaster Management",
+      title: 'Landslides & Disaster Management',
       icon: TriangleAlert,
-      link: "/applications/landslides",
-      span: 2,
+      link: '/applications/landslides',
+      span: 1, // changed from 2 → 1
       description:
-        "Tap into predictive intelligence for effective landslide and disaster response.",
+        'Tap into predictive intelligence for effective landslide and disaster response.',
     },
     {
-      title: "Pipelines",
-      icon: Activity,
-      link: "/applications/pipelines",
-      span: 1,
-      description:
-        "Make pipelines more efficient with smart monitoring for oil, water, and gas.",
-    },
-    {
-      title: "Smart Cities",
-      icon: Building,
-      link: "/applications/smart-cities",
-      span: 1,
-      description:
-        "Advance smart city growth with integrated data analytics and urban intelligence.",
-    },
-    {
-      title: "Structural Health Monitoring",
+      title: 'Structural Health Monitoring',
       icon: BarChart3,
-      link: "/applications/structural-health",
-      span: 2,
+      link: '/applications/structural-health',
+      span: 1, // changed from 2 → 1
       description:
-        "Strengthen structural integrity with data-focused monitoring for buildings and infrastructure.",
+        'Strengthen structural integrity with data-focused monitoring for buildings and infrastructure.',
     },
   ];
 
   return (
-    <section className="bg-white py-16 md:py-20 overflow-hidden">
+    <section className="overflow-hidden bg-white py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Heading */}
         <motion.div
@@ -128,11 +113,10 @@ const Applicards = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-[#32353A]">
+          <h2 className="text-4xl font-bold text-[#32353A] md:text-6xl">
             Tailored for every <span className="text-[#F26418]">sector</span>
           </h2>
-
-          <p className="mt-3 text-[#5C636E] text-base md:text-lg">
+          <p className="mt-3 text-base text-[#5C636E] md:text-lg">
             Beyond construction, discover how TeraStamp applies across industries.
           </p>
         </motion.div>
@@ -152,52 +136,29 @@ const Applicards = () => {
                   duration: 0.5,
                   delay: index * 0.05,
                 }}
-                className={card.span === 2 ? "lg:col-span-2" : ""}
+                className={card.span === 2 ? 'lg:col-span-2' : ''}
               >
                 <Link
                   to={card.link}
-                  className="
-                  group
-                  relative
-                  block
-                  h-full
-                  overflow-hidden
-                  rounded-2xl
-                  border-2
-                  border-[#F26418]
-                  bg-white
-                  p-6
-                  transition-all
-                  duration-500
-                  hover:-translate-y-2
-                  hover:shadow-[0_0_40px_rgba(242,100,24,0.18)]
-                "
+                  className="group relative block h-full overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(242,100,24,0.18)]"
                 >
                   {/* Animated Rings */}
                   <div className="absolute -bottom-24 -right-24 h-56 w-56 rounded-full border-[22px] border-[#F26418]/10 transition-all duration-700 group-hover:scale-125 group-hover:border-[#F26418]/20" />
-
                   <div className="absolute -bottom-20 -right-20 h-44 w-44 rounded-full border-[18px] border-[#F26418]/15 transition-all duration-700 delay-75 group-hover:scale-125 group-hover:border-[#F26418]/30" />
-
                   <div className="absolute -bottom-16 -right-16 h-32 w-32 rounded-full border-[14px] border-[#F26418]/20 transition-all duration-700 delay-100 group-hover:scale-125 group-hover:border-[#F26418]/40" />
 
                   {/* Hover Glow */}
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br from-[#F26418]/10 via-transparent to-[#F26418]/5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#F26418]/10 via-transparent to-[#F26418]/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div className="relative z-10">
                     {/* Icon */}
                     <Icon
                       size={28}
-                      className="
-                      text-[#F26418]
-                      transition-all
-                      duration-500
-                      group-hover:scale-110
-                      group-hover:-translate-y-1
-                    "
+                      className="text-[#F26418] transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1"
                     />
 
                     {/* Title */}
-                    <h3 className="mt-5 text-lg md:text-xl font-semibold text-[#32353A]">
+                    <h3 className="mt-5 text-lg font-semibold text-[#32353A] md:text-xl">
                       {card.title}
                     </h3>
 
@@ -206,17 +167,15 @@ const Applicards = () => {
                       {card.description}
                     </p>
 
-                    {/* Explore */}
-                    <div className="mt-6 flex items-center gap-2 text-[#F26418] opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                      <span className="text-sm font-medium">
-                        Explore
-                      </span>
+                    {/* Explore link */}
+                    <div className="mt-6 flex translate-x-2 items-center gap-2 text-[#F26418] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                      <span className="text-sm font-medium">Explore</span>
                       <span>→</span>
                     </div>
                   </div>
 
                   {/* Arrow Button */}
-                  <div className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF4EC] text-[#F26418] transition-all duration-500 group-hover:bg-[#F26418] group-hover:text-white group-hover:translate-x-1">
+                  <div className="absolute bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF4EC] text-[#F26418] transition-all duration-500 group-hover:translate-x-1 group-hover:bg-[#F26418] group-hover:text-white">
                     →
                   </div>
                 </Link>
@@ -228,6 +187,8 @@ const Applicards = () => {
     </section>
   );
 };
+
+
 
 
 

@@ -26,9 +26,17 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 
-import { MessageCircle} from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
-
+import {
+  
+  Map,
+  Zap,
+ 
+  Layers,
+  Bell,
+  ArrowRight,
+} from "lucide-react";
 
 
 
@@ -52,25 +60,22 @@ const HeroSection = () => (
       loop
       muted
       playsInline
-      className="absolute inset-0 h-full w-full object-cover opacity-100"
+      className="absolute inset-0 h-full w-full scale-[3] object-cover object-center sm:scale-100"
       src="/herosectionvideo.mov"
     />
-
     <div className="absolute inset-0 bg-gradient-to-t from-[#26282C] via-[#26282C]/70 to-[#26282C]/20" />
-
     <div className="relative mx-auto max-w-7xl px-4 py-16 text-center md:px-6 md:py-24 lg:px-8">
-      <h1 className="text-5xl font-bold leading-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
-        Smarter <span className="text-[#F26418]">digital insights</span>
-        <br className="hidden sm:block" /> for infrastructure
-        <br className="hidden sm:block" /> performance
+      <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+        <span className="block sm:whitespace-nowrap">
+          Smarter <span className="text-[#F26418]">digital insights</span>
+        </span>
+        <span className="block sm:whitespace-nowrap">
+          for infrastructure performance monitoring
+        </span>
       </h1>
-
-      <p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg">
-        TeraStamp brings monitoring data, analytics, and project intelligence
-        together in one platform to help teams act faster and make informed
-        decisions.
+      <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-white/90 sm:text-2xl md:text-3xl">
+        Visualize, Monitor, Build with Confidence
       </p>
-
       <Link
         to="/contact"
         className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#F26418] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#D9550F] md:mt-8 md:px-7 md:py-3.5"
@@ -80,8 +85,6 @@ const HeroSection = () => (
     </div>
   </section>
 );
-
-
 
 const DataPlatformSection = () => {
   const features = [
@@ -109,14 +112,11 @@ const DataPlatformSection = () => {
               Every project dataset.
               <br />
               <span className="font-bold text-[#32353A]">
-                Connected in one <span className="text-[#F26418]">workspace</span>
+                Connected in a single workspace-<span className="text-[#F26418]">TeraStamp</span>
               </span>
             </h2>
             <p className="mt-4 max-w-lg font-body text-base leading-relaxed text-[#5C636E] sm:text-lg">
-              TeraStamp brings together critical project information,
-              monitoring records, and engineering insights into a single
-              digital environment, helping teams collaborate efficiently
-              and make informed decisions with confidence.
+              TeraStamp integrates project information, monitoring records, and engineering insights into a single digital platform, facilitating seamless collobration and informed decision making.
             </p>
 
             <motion.a
@@ -412,72 +412,162 @@ const HorizontalScrollSection = () => {
 };
 
 
-const LogoSlider = () => {
-  const logos = [
-    "/logos/logo1.png",
-    "/logos/logo2.png",
-    "/logos/logo3.png",
-    "/logos/logo4.png",
-    "/logos/logo5.png",
-    "/logos/logo6.png",
-    "/logos/logo7.png",
-    "/logos/logo8.png",
-    "/logos/logo10.png",
-    "/logos/logo11.png",
-    "/logos/logo12.png",
-    "/logos/logo13.png",
-    "/logos/logo14.png",
-    "/logos/logo15.png",
-    "/logos/logo16.png",
-    "/logos/logo17.png",
-    "/logos/logo18.png",
-  ];
+const slides = [
+  {
+    title: "Geo-referenced live monitoring",
+    description:
+      "TeraStamp plots every sensor on a live Google Maps view — not static maps like most competitors — so teams see exactly where each instrument sits along the tunnel alignment.",
+    image: "/terastamp-geo-monitoring-map.jpg",
+  },
+  {
+    title: "Real-time time-series insights",
+    description:
+      "Query millions of data points in seconds and view continuous time-series for every anchor, with action and alert levels overlaid for instant decision-making.",
+    image: "/terastamp-realtime-timeseries.jpg",
+  },
+  {
+    title: "Advanced data visualization",
+    description:
+      "Display multiple parameters on a single graph and reference real-world locations — like the I-405 crossing or grouting zones — for richer, context-aware analytics.",
+    image: "/terastamp-shape-array-analytics.jpg",
+  },
+  {
+    title: "Custom instrument display",
+    description:
+      "Show distinct instrument types — shape arrays, settlement markers, load cells, inclinometers and more — in any colors you choose, with no restrictions.",
+    image: "/terastamp-instrument-overview.jpg",
+  },
+  {
+    title: "10+ miles of tunnel coverage",
+    description:
+      "Built for mega projects: real-time monitoring across the LA Metro Purple Line extensions, covering 10.28 miles of tunnels and four station excavations.",
+    image: "/purple-line-tunnel-route-map.jpg",
+  },
+];
+
+const FeatureCarousel = () => {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const total = slides.length;
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % total);
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, [total, isPaused]);
+
+  const getOffset = (index) => {
+    let offset = index - active;
+    if (offset > total / 2) offset -= total;
+    if (offset < -total / 2) offset += total;
+    return offset;
+  };
 
   return (
-    <section className="w-full bg-white py-6 md:py-10 overflow-hidden">
-      <div className="relative overflow-hidden">
-        <div className="flex w-max animate-logo-slider hover:[animation-play-state:paused]">
-          {[...logos, ...logos].map((logo, index) => (
-            <div
+    <section className="overflow-hidden bg-white py-[54px] md:py-[86px] font-body">
+      <div className="mx-auto max-w-[100rem] px-4 md:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-block rounded-full bg-[#F26418]/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider text-[#F26418]">
+            Features
+          </span>
+
+          <h2 className="mt-3 text-3xl font-bold text-[#26282C] sm:text-4xl md:text-5xl">
+            Built to keep you <span className="text-[#F26418]">ahead</span>
+          </h2>
+
+          <p className="mt-3 text-base text-[#26282C]/60 sm:text-lg">
+            Explore the features that power smarter infrastructure decisions.
+          </p>
+        </div>
+
+        {/* Carousel */}
+        <div
+          className="relative mx-auto mt-8 flex h-[300px] items-center justify-center sm:h-[420px] md:mt-12 md:h-[530px] lg:h-[590px]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {slides.map((slide, index) => {
+            const offset = getOffset(index);
+            const isActive = offset === 0;
+            const isVisible = Math.abs(offset) <= 1;
+
+            return (
+              <div
+                key={slide.title}
+                className="group absolute transition-all duration-700 ease-out"
+                style={{
+                  transform: `translateX(${offset * 56}%) scale(${
+                    isActive ? 1 : 0.6
+                  })`,
+                  opacity: isVisible ? (isActive ? 1 : 0.4) : 0,
+                  zIndex: isActive ? 20 : 10,
+                  pointerEvents: isActive ? "auto" : "none",
+                }}
+              >
+                {/* Image Card */}
+                <div
+                  className={`relative h-[260px] w-[300px] overflow-hidden rounded-2xl bg-[#26282C] transition-shadow duration-500 sm:h-[380px] sm:w-[520px] md:h-[490px] md:w-[800px] lg:h-[550px] lg:w-[920px] ${
+                    isActive
+                      ? "shadow-2xl ring-4 ring-[#F26418]"
+                      : "shadow-lg ring-1 ring-black/5"
+                  }`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="block h-full w-full object-fill"
+                  />
+
+                  {/* Hover Overlay */}
+                  {isActive && (
+                    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:p-10">
+                      <h3 className="text-xl font-bold text-white sm:text-2xl md:text-4xl">
+                        {slide.title}
+                      </h3>
+
+                      <p className="mt-2 max-w-xl text-sm text-white/85 sm:text-base md:text-lg">
+                        {slide.description}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Caption */}
+        <div className="mx-auto mt-6 max-w-xl text-center">
+          <h3 className="text-xl font-bold text-[#26282C] sm:text-2xl">
+            {slides[active].title}
+          </h3>
+
+          <p className="mt-2 text-sm text-[#26282C]/60 sm:text-base">
+            {slides[active].description}
+          </p>
+        </div>
+
+        {/* Dots */}
+        <div className="mt-5 flex items-center justify-center gap-2">
+          {slides.map((_, index) => (
+            <button
               key={index}
-              className="flex-shrink-0 flex items-center justify-center
-                         mx-4 sm:mx-6 md:mx-8 lg:mx-10"
-            >
-              <img
-                src={logo}
-                alt={`logo-${index}`}
-                className="
-                  h-8
-                  sm:h-10
-                  md:h-12
-                  lg:h-14
-                  w-auto
-                  object-contain
-                  brightness-0
-                  opacity-50
-                "
-              />
-            </div>
+              onClick={() => setActive(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                index === active
+                  ? "w-6 bg-[#F26418]"
+                  : "w-2 bg-[#26282C]/20 hover:bg-[#26282C]/40"
+              }`}
+            />
           ))}
         </div>
       </div>
-
-      <style>{`
-        .animate-logo-slider {
-          animation: logoSlider 30s linear infinite;
-        }
-
-        /* Right -> Left */
-        @keyframes logoSlider {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </section>
   );
 };
@@ -485,50 +575,77 @@ const LogoSlider = () => {
 const ProjectSlider = () => {
   const projects = [
     {
-      title: "Delhi Metro",
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200",
+      title: "LA Purple Line Extension (Section 2)",
+      location: "Los Angeles, CA",
+      image: "/la-purple-line-section2.jpg",
     },
     {
-      title: "Taiba Palace",
-      image:
-        "https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1200",
+      title: "LA Purple Line 3 Stations",
+      location: "Los Angeles, CA",
+      image: "/la-purple-line-3-stations.jpg",
     },
     {
-      title: "Doha Metro",
-      image:
-        "https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=1200",
+      title: "VTA's BART Phase II — CP2 EWP 3C",
+      location: "San Jose, CA",
+      image: "/vta-bart-phase2-cp2.jpg",
     },
     {
-      title: "Neom Project",
-      image:
-        "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200",
-    },
-    {
-      title: "Dubai Creek",
-      image:
-        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200",
+      title: "Purple Line 3 Tunnels",
+      location: "Los Angeles, CA",
+      image: "/la-purple-line-3-tunnels.jpg",
     },
   ];
 
   return (
-    <section className="overflow-hidden bg-[#F5F6F7] pt-[68px] pb-16 md:pb-20">
-      <div className="relative overflow-hidden">
-        <div className="flex w-max animate-project-slider hover:[animation-play-state:paused]">
+    <section className="overflow-hidden bg-[#F5F6F7] py-[58px] font-body md:py-20">
+      {/* Heading */}
+      <div className="mx-auto mb-10 max-w-2xl px-4 text-center md:mb-14">
+        <span className="inline-block rounded-full bg-[#F26418]/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider text-[#F26418]">
+          Our Projects
+        </span>
+
+        <h2 className="mt-3 text-3xl font-bold text-[#26282C] sm:text-4xl md:text-5xl">
+          Trusted on major{" "}
+          <span className="text-[#F26418]">infrastructure</span>
+        </h2>
+
+        <p className="mt-3 text-base text-[#26282C]/60 sm:text-lg">
+          Powering real-time monitoring across landmark tunnel and station
+          projects.
+        </p>
+      </div>
+
+      {/* Slider */}
+      <div className="marquee-viewport relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#F5F6F7] to-transparent md:w-28" />
+
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#F5F6F7] to-transparent md:w-28" />
+
+        <div className="marquee-track">
           {[...projects, ...projects].map((project, index) => (
-            <div key={index} className="mx-3 flex-shrink-0 md:mx-4">
-              <div className="relative h-[140px] w-[220px] overflow-hidden rounded-3xl sm:h-[170px] sm:w-[280px] md:h-[210px] md:w-[340px]">
+            <div
+              key={index}
+              className="card-wrapper mx-3 flex-shrink-0 md:mx-4"
+            >
+              <div className="group relative h-[170px] w-[280px] overflow-hidden rounded-3xl shadow-lg ring-1 ring-black/5 transition-all duration-300 hover:shadow-2xl hover:ring-[#F26418] sm:h-[200px] sm:w-[330px] md:h-[240px] md:w-[400px]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
 
-                <div className="absolute inset-0 bg-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-                <h3 className="absolute bottom-4 left-4 text-lg font-semibold text-white sm:text-xl md:text-3xl">
-                  {project.title}
-                </h3>
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <span className="text-xs font-medium uppercase tracking-wider text-[#F26418]">
+                    {project.location}
+                  </span>
+
+                  <h3 className="mt-1 text-base font-semibold leading-snug text-white sm:text-lg md:text-xl">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
             </div>
           ))}
@@ -536,27 +653,219 @@ const ProjectSlider = () => {
       </div>
 
       <style>{`
-        .animate-project-slider {
-          animation: projectSlider 25s linear infinite;
+        .marquee-viewport {
+          overflow: hidden;
+          padding: 10px 0;
         }
 
-        .animate-project-slider:hover {
+        .marquee-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          animation: marquee 28s linear infinite;
+          will-change: transform;
+          transform: translate3d(0,0,0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+
+        .marquee-track:hover {
           animation-play-state: paused;
         }
 
-        @keyframes projectSlider {
-          from {
-            transform: translateX(-50%);
-          }
+        .card-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 170px;
+        }
 
+        @media (min-width:640px){
+          .card-wrapper{
+            height:200px;
+          }
+        }
+
+        @media (min-width:768px){
+          .card-wrapper{
+            height:240px;
+          }
+        }
+
+        @keyframes marquee {
+          from {
+            transform: translate3d(0,0,0);
+          }
           to {
-            transform: translateX(0);
+            transform: translate3d(-50%,0,0);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
           }
         }
       `}</style>
     </section>
   );
 };
+
+
+const features = [
+  {
+    icon: Activity,
+    title: "Real-Time Monitoring",
+    points: [
+      "Live & manual instrument readings",
+      "Continuous time-series data",
+      "Action & alert levels overlaid",
+      "Automatic data validation",
+    ],
+  },
+  {
+    icon: Map,
+    title: "GIS Monitoring Map",
+    points: [
+      "Live Google Maps integration",
+      "Instrument & asset layers",
+      "Geo-referenced analytics",
+      "Tunnel alignment & zones",
+    ],
+  },
+  {
+    icon: Zap,
+    title: "Lightning-Fast Queries",
+    points: [
+      "Millions of data points in seconds",
+      "3× faster than competition",
+      "Instant historical lookups",
+      "Smooth, responsive dashboards",
+    ],
+  },
+  {
+    icon: BarChart3,
+    title: "Advanced Visualization",
+    points: [
+      "Advanced 3D visualization tools",
+      "Multiple parameters per graph",
+      "Shape array & settlement charts",
+      "Location-referenced plots",
+    ],
+  },
+  {
+    icon: Layers,
+    title: "Custom Instrument Display",
+    points: [
+      "Any instrument type supported",
+      "Custom colors, no restrictions",
+      "Seamless per-instrument notes",
+      "Drawings, images & map services",
+    ],
+  },
+  {
+    icon: Bell,
+    title: "Alerts & Risk Management",
+    points: [
+      "Custom thresholds & triggers",
+      "Action, alert & alarm levels",
+      "Automatic notifications",
+      "Escalation workflows",
+    ],
+  },
+];
+
+const FeaturesGrid = () => (
+  <section className="relative overflow-hidden bg-[#F26418] py-[58px] md:py-20 font-body">
+    {/* Subtle decorative glow */}
+    <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+    <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-black/10 blur-3xl" />
+
+    <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      {/* Heading */}
+      <div className="mx-auto max-w-2xl text-center">
+        <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider text-white">
+          Core Platform Features
+        </span>
+        <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+          Everything You Need.{" "}
+          <span className="text-[#26282C]">All in One Place.</span>
+        </h2>
+        <p className="mt-3 text-base text-white/85 sm:text-lg">
+          TeraStamp brings monitoring, analytics, and project intelligence
+          together in a single platform — so your team sees more, knows sooner,
+          and acts faster.
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+        {features.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={feature.title}
+              className="group relative flex flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-lg shadow-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/10 md:p-7"
+            >
+              {/* Concentric ring outlines — radiating from bottom-right corner */}
+              <div aria-hidden className="pointer-events-none absolute bottom-0 right-0">
+                <span className="absolute bottom-0 right-0 h-[340px] w-[340px] translate-x-1/2 translate-y-1/2 rounded-full border-2 border-[#F26418]/[0.10]" />
+                <span className="absolute bottom-0 right-0 h-[250px] w-[250px] translate-x-1/2 translate-y-1/2 rounded-full border-2 border-[#F26418]/[0.16]" />
+                <span className="absolute bottom-0 right-0 h-[165px] w-[165px] translate-x-1/2 translate-y-1/2 rounded-full border-2 border-[#F26418]/[0.24]" />
+                <span className="absolute bottom-0 right-0 h-[90px] w-[90px] translate-x-1/2 translate-y-1/2 rounded-full border-2 border-[#F26418]/[0.32]" />
+              </div>
+
+              {/* Card content (rings ke upar) */}
+              <div className="relative flex flex-1 flex-col">
+                {/* Icon tile */}
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F26418]/10 text-[#F26418] transition-colors duration-300 group-hover:bg-[#F26418] group-hover:text-white">
+                  <Icon className="h-6 w-6" strokeWidth={2} />
+                </div>
+
+                <h3 className="mt-5 text-lg font-bold text-[#26282C] md:text-xl">
+                  {feature.title}
+                </h3>
+
+                {/* Bullets */}
+                <ul className="mt-4 flex-1 space-y-2.5">
+                  {feature.points.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start gap-2.5 text-sm text-[#26282C]/70"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#F26418]" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Bottom row: Learn more + arrow button */}
+                <div className="mt-6 flex items-center justify-between">
+                  {/* Fixed anchor for "Learn more" */}
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#F26418] transition-all hover:gap-2.5"
+                  >
+                    Learn more <ArrowRight className="h-4 w-4" />
+                  </a>
+
+                  {/* Fixed anchor for circular arrow button */}
+                  <a
+                    href="#"
+                    aria-label={`Explore ${feature.title}`}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-[#F26418] text-white shadow-lg shadow-[#F26418]/30 transition-all duration-300 hover:bg-[#D9550F] group-hover:scale-110"
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
 
 
 const benefits = [
@@ -668,8 +977,6 @@ const BenefitsSection = () => {
     </section>
   );
 };
-
-
 
 
 const testimonials = [
@@ -795,11 +1102,6 @@ const TestimonialsSection = () => {
   );
 };
 
-
-
-
-
-
 const SupportSection = () => {
   return (
     <section className="bg-white">
@@ -841,27 +1143,28 @@ const SupportSection = () => {
                   recommendations without delays.
                 </p>
 
-                <button
+                <Link
+                  to="/contact"
                   className="
-                    mt-6
-                    inline-flex
-                    items-center
-                    gap-2
-                    rounded-xl
-                    bg-white
-                    px-6
-                    py-3
-                    text-base
-                    font-semibold
-                    text-[#F26418]
-                    transition-all
-                    duration-300
-                    hover:scale-105
-                    hover:bg-white/90
-                  "
+    mt-6
+    inline-flex
+    items-center
+    gap-2
+    rounded-xl
+    bg-white
+    px-6
+    py-3
+    text-base
+    font-semibold
+    text-[#F26418]
+    transition-all
+    duration-300
+    hover:scale-105
+    hover:bg-white/90
+  "
                 >
                   Contact Support →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -929,9 +1232,6 @@ const SupportSection = () => {
 };
 
 
-
-
-
 const FeatureSection = () => {
   const features = [
     "Track infrastructure performance in real time",
@@ -969,7 +1269,7 @@ const FeatureSection = () => {
 
         {/* Content */}
         <div className="mt-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Side */}
+          {/* Left side text */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -977,7 +1277,8 @@ const FeatureSection = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold leading-tight text-[#32353A] sm:text-3xl md:text-4xl">
-              Visualize Critical Project Data in <span className="text-[#F26418]">Real Time</span>
+              Visualize Critical Project Data in{" "}
+              <span className="text-[#F26418]">Real Time</span>
             </h3>
 
             <motion.p
@@ -985,12 +1286,12 @@ const FeatureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="mt-5 text-base leading-relaxed text-[#5C636E] md:text-lg"
+              className="mt-5 text-[18px] leading-[1.6] text-[#5C636E]"
             >
               TeraStamp brings project data, monitoring systems, and
-              operational insights together in a single platform,
-              helping infrastructure teams improve visibility,
-              reduce risks, and make faster decisions.
+              operational insights together in a single platform, helping
+              infrastructure teams improve visibility, reduce risks, and make
+              faster decisions.
             </motion.p>
 
             <div className="mt-6 space-y-4">
@@ -1000,17 +1301,14 @@ const FeatureSection = () => {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{
-                    delay: 0.3 + index * 0.15,
-                    duration: 0.4,
-                  }}
-                  className="flex items-center gap-3"
+                  transition={{ delay: 0.3 + index * 0.15, duration: 0.4 }}
+                  className="flex items-start gap-3"
                 >
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FFF4EC]">
-                    <Check size={14} className="text-[#F26418]" />
-                  </div>
-
-                  <span className="text-sm text-[#5C636E] md:text-base">
+                  <Check
+                    size={20}
+                    className="mt-0.5 flex-shrink-0 rounded-full bg-[#F26418] p-1 text-white"
+                  />
+                  <span className="text-[18px] leading-[1.5] text-[#5C636E]">
                     {item}
                   </span>
                 </motion.div>
@@ -1018,7 +1316,7 @@ const FeatureSection = () => {
             </div>
           </motion.div>
 
-          {/* Right Side Video */}
+          {/* Right side video */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1037,7 +1335,7 @@ const FeatureSection = () => {
                 playsInline
                 className="h-full w-full object-cover"
               >
-                <source src="/herovideo.mp4" type="video/mp4" />
+                <source src="/terastamp-dynamic-map.mp4" type="video/mp4" />
               </video>
             </motion.div>
           </motion.div>
@@ -1046,9 +1344,6 @@ const FeatureSection = () => {
     </section>
   );
 };
-
-
-
 
 
 const HeatmapSection = () => {
@@ -1072,7 +1367,7 @@ const HeatmapSection = () => {
                 playsInline
                 className="h-full w-full object-cover"
               >
-                <source src="/herovideo.mp4" type="video/mp4" />
+                <source src="/terastamp-heatmap-map.mp4" type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -1139,7 +1434,6 @@ const HeatmapSection = () => {
 };
 
 
-
 const ReportingSection = () => {
   return (
     <section className="overflow-hidden bg-[#F5F6F7]">
@@ -1155,7 +1449,6 @@ const ReportingSection = () => {
           >
             <h2 className="text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl">
               Advanced Reporting for
-
               <br />
               <span className="text-[#F26418]">Smarter Decisions</span>
             </h2>
@@ -1183,18 +1476,16 @@ const ReportingSection = () => {
             >
               From routine project reviews to critical stakeholder updates, generate detailed reports that provide a
               <span className="font-semibold text-[#32353A]">
-                {" "} complete picture of performance, risks, and operational progress.
+                {" "}complete picture of performance, risks, and operational progress.
               </span>
             </motion.p>
 
             <div className="mt-8 space-y-5">
               {[
-
                 "Build custom report templates for critical KPIs",
                 "Automate report scheduling and delivery",
                 "Generate project insights in seconds",
                 "Collaborate and share findings across teams",
-
               ].map((item, index) => (
                 <motion.div
                   key={item}
@@ -1207,11 +1498,11 @@ const ReportingSection = () => {
                   }}
                   className="flex items-center gap-3"
                 >
+                  {/* ✅ यहाँ बदलाव किया गया – ऑरेंज बैकग्राउंड और सफेद टिक */}
                   <Check
                     size={20}
-                    className="flex-shrink-0 text-[#F26418]"
+                    className="flex-shrink-0 rounded-full bg-[#F26418] p-0.5 text-white"
                   />
-
                   <span className="text-base text-[#5C636E] md:text-lg">
                     {item}
                   </span>
@@ -1220,7 +1511,7 @@ const ReportingSection = () => {
             </div>
           </motion.div>
 
-          {/* Right Video */}
+          {/* Right side – image */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1233,18 +1524,11 @@ const ReportingSection = () => {
               transition={{ duration: 0.3 }}
               className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-xl"
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src="/terastamp-report-mocku.jpeg"
+                alt="Advanced reporting dashboard showing project insights and KPIs"
                 className="h-full w-full object-cover"
-              >
-                <source
-                  src="/herovideo.mp4"
-                  type="video/mp4"
-                />
-              </video>
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -1280,7 +1564,7 @@ const ThreeDSection = () => {
                 className="h-full w-full object-cover"
               >
                 <source
-                  src="/herovideo.mp4"
+                  src="/terastamp-3d-city.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -1303,7 +1587,7 @@ const ThreeDSection = () => {
               className="text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl"
             >
               Explore projects through
-immersive <span className="text-[#F26418]">3D insights</span>
+              immersive <span className="text-[#F26418]">3D insights</span>
             </motion.h2>
 
             <motion.p
@@ -1342,12 +1626,13 @@ immersive <span className="text-[#F26418]">3D insights</span>
 };
 
 
+
+
 const DashboardSection = () => {
   return (
     <section className="overflow-hidden bg-[#F5F6F7]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -1365,7 +1650,7 @@ const DashboardSection = () => {
               Project Intelligence Through Live
               <br />
               <span className="text-[#F26418]">
-                 Project Visibility
+                Project Visibility
               </span>
             </motion.h2>
 
@@ -1397,7 +1682,7 @@ const DashboardSection = () => {
             </motion.p>
           </motion.div>
 
-          {/* Right Video */}
+          {/* Right side - Image (replaced video) */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1405,18 +1690,13 @@ const DashboardSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src="/terastamp-convergence-dashboard.png" 
+                alt="Interactive dashboard showing project visibility and metrics"
                 className="h-full w-full object-cover"
-              >
-                <source src="/herovideo.mp4" type="video/mp4" />
-              </video>
+              />
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
@@ -1615,16 +1895,18 @@ export default function Home() {
       <DataPlatformSection />
       <HorizontalScrollSection />
 
-      <LogoSlider />
+  
+      <FeatureCarousel/>
+      <FeaturesGrid/>
       <ProjectSlider />
       <BenefitsSection />
       <TestimonialsSection />
-      <SupportSection/>
+      <SupportSection />
       <FeatureSection />
       <HeatmapSection />
       <ReportingSection />
       <ThreeDSection />
-      <DashboardSection/>
+      <DashboardSection />
       <CounterSection />
 
       <CTASection />
