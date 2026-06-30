@@ -196,30 +196,45 @@ const CTAsection = () => {
   return (
     <section className="bg-[#F5F6F7] min-h-screen w-full flex items-center justify-center p-6 sm:p-12">
       <div className="bg-[#F26418] rounded-[32px] w-full max-w-6xl overflow-hidden flex flex-col md:flex-row items-center justify-between px-8 pt-8 pb-6 md:px-16 md:pt-16 md:pb-12 gap-8 relative">
-        
+
         {/* Left Content Column */}
-        <div className="flex flex-col max-w-md z-10 text-white">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Discover the "New" New with TeraStamp
-          </h1>
-          <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
-            Start building faster today
+        {/* Left Content Column */}
+        {/* Left Content Column */}
+        <div className="relative z-10 flex max-w-md flex-col text-white">
+          <span className="mb-4 inline-flex w-fit items-center rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur">
+            Infrastructure Intelligence
+          </span>
+
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+            Smarter Infrastructure.
+            <br />
+            Better Decisions.
+          </h2>
+
+          <p className="mt-4 text-base leading-7 text-white/90">
+            Monitor, analyze, and manage your infrastructure with real-time insights,
+            predictive intelligence, and one connected platform.
           </p>
-          <div>
-            {/* Swapped to React Router Link tag */}
-            <Link 
-              to="/contact" // Set your internal route path here
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#F26418] font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:bg-white/90 transition-all duration-200 group"
+
+          <div className="mt-7">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-base font-semibold text-[#F26418] transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
-              Claim demo now
-              <svg 
-                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor" 
-                strokeWidth={2.5}
+              Schedule a Demo
+
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
               </svg>
             </Link>
           </div>
@@ -227,12 +242,12 @@ const CTAsection = () => {
 
         {/* Right Dashboard/Map Graphic Column */}
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/20 self-end">
-          <img 
-            src="/test1.webp" 
+          <img
+            src="/la-purple-line-section2.jpg"
             alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover"
           />
-          
+
           {/* Mock Top App Bar */}
           <div className="absolute top-0 left-0 right-0 h-12 bg-[#1e2026] flex items-center justify-between px-4 text-white text-xs border-b border-white/5">
             <div className="flex items-center gap-2">
@@ -280,11 +295,11 @@ const CTAsection = () => {
   );
 };
 
-const Applications=()=>{
-  return(
+const Applications = () => {
+  return (
     <div>
-     < Applicards/>
-     <CTAsection/> 
+      < Applicards />
+      <CTAsection />
     </div>
   )
 }

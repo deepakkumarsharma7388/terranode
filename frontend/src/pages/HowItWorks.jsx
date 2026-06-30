@@ -23,7 +23,7 @@ const colors = {
 
 /* ---------- VIDEO SOURCE – replace with your own URL ---------- */
 const videoSrc =
-  "https://cdn.example.com/videos/terastamp-demo.mp4"; // <-- PUT YOUR VIDEO URL HERE
+  "/terastamp-promo.mp4"; // <-- PUT YOUR VIDEO URL HERE
 const poster = "/images/how-it-works-poster.png";
 
 const InfrastructureHero = () => {
@@ -48,12 +48,11 @@ const InfrastructureHero = () => {
                 letterSpacing: "-1.5px",
               }}
             >
-              Your Infrastructure, <span style={{ color: "#ffffff" }}>Simplified</span>
+              Streamline Your <span style={{ color: "#ffffff" }}>Infrastructure Management</span>
             </h1>
 
             <p className="mt-5 max-w-md text-lg leading-relaxed text-white/80">
-              Discover a world of possibilities! Unlock the features that
-              turn data into decisions.
+              Unlock the full potential of your data with powerful features designed for smarter decisions.
             </p>
 
             <Link
@@ -64,7 +63,7 @@ const InfrastructureHero = () => {
                 transition-colors duration-300 hover:bg-gray-100
               "
             >
-              Try it now
+              Get Started
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -82,7 +81,7 @@ const InfrastructureHero = () => {
             <div className="relative overflow-hidden rounded-xl">
               <video
                 ref={videoRef}
-                src="/herovideo.mp4"
+                src="/terastamp-promo.mp4"
                 poster={poster}
                 autoPlay
                 loop
@@ -99,35 +98,34 @@ const InfrastructureHero = () => {
   );
 };
 
-/* ---------- Steps data (same as before) ---------- */
+/* ---------- Steps data (paraphrased) ---------- */
 const steps = [
   {
-    heading: "We create your own secure and scalable environment",
+    heading: "We build your dedicated, secure, and scalable workspace",
     description:
-      "We kick off your journey by setting up a personalized, secure, scalable environment shaped to your needs. Your data deserves a space that keeps it secure and lets it scale smoothly as your requirements change.",
-    image: "/windmi.jpeg",
+      "We start by creating a personalized, secure, and scalable environment tailored to your specific requirements. Your data needs a protected home that can grow alongside your evolving demands.",
+    image: "/features/howitworks1.jpeg",
     placeholder: "from-[#f0ede8] to-[#d9d6d0]",
   },
   {
-    heading:
-      "Configure data, instruments, model constructions, etc. Alerts included!",
+    heading: "Set up data, sensors, models, and alerts—all with 24/7 support",
     description:
-      "Take charge as you easily configure your data, instruments, and model constructions. Our 24/7 support stays right beside you, so you're never on your own through this process. And yes, alerts come with the package – keeping you informed and in control.",
-    image: "/test2.jpg",
+      "Take full control as you easily configure your data streams, monitoring instruments, and construction models. Our round‑the‑clock support team is always available to guide you through every step. Plus, built‑in alerts keep you instantly informed and fully in command.",
+    image: "/features/howitworks2.jpeg",
     placeholder: "from-[#ede8f0] to-[#d9d0dd]",
   },
   {
-    heading: "Customize your dashboard and reports",
+    heading: "Customize your dashboards and reporting tools",
     description:
-      "Make it yours! Tailor your dashboard to surface the insights that matter most to you. Whether it's key performance indicators or specific data points, customization is right at your fingertips. Build reports that line up with your goals and present information in the way that makes the most sense for you.",
-    image: "/test3.avif",
+      "Make the platform your own by tailoring dashboards to highlight the metrics that matter most to you. Whether you're tracking KPIs or drilling into specific data points, you have full flexibility to build reports that align with your objectives and present information exactly the way you need it.",
+    image: "/features/howitworks3.jpeg",
     placeholder: "from-[#e8ecf0] to-[#d0d5dd]",
   },
   {
-    heading: "Gain insights and enjoy your intelligent infrastructure",
+    heading: "Unlock insights and embrace intelligent infrastructure",
     description:
-      "The moment you've been waiting for! With insights from your personalized dashboard and reports in hand, you're ready to make informed decisions, seize opportunities, and truly enjoy the power of your data.",
-    image: "/mine.jpeg",
+      "The moment you've been waiting for! With actionable insights from your customized dashboards and reports, you're equipped to make informed decisions, seize new opportunities, and truly harness the power of your data.",
+    image: "/features/howitworks4.jpeg",
     placeholder: "from-[#ede8f0] to-[#d5d0e0]",
   },
 ];
@@ -192,9 +190,11 @@ const HowItWorksslider = () => {
               <span className="text-xs text-[#7C8595]">{pad(1)}</span>
               <div className="relative w-[3px] flex-1 overflow-hidden rounded-full bg-[#E2E8F0]">
                 <motion.div
-                  style={{ height: fillHeight }}
+                  style={{
+                    height: fillHeight,
+                    background: colors.accent,
+                  }}
                   className="absolute left-0 top-0 w-full rounded-full"
-                  style={{ background: colors.accent }}
                 />
               </div>
               <span className="text-xs text-[#7C8595]">{pad(steps.length)}</span>
@@ -269,17 +269,17 @@ const CTAsection = () => {
         {/* Left Content */}
         <div className="flex flex-col max-w-md z-10 text-white">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Discover the "New" New with TeraStamp
+            Explore the Next Generation with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
-            Start building faster today
+            Accelerate your projects now
           </p>
           <div>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white text-[#F26418] font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:bg-gray-50 transition-all duration-200 group"
             >
-              Claim demo now
+              Book your demo
               <svg
                 className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -296,7 +296,7 @@ const CTAsection = () => {
         {/* Right – natural image */}
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/20 self-end">
           <img
-            src="/test1.webp"
+            src="/la-purple-line-section2.jpg"
             alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover"
           />

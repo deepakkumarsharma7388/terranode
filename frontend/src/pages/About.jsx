@@ -1,27 +1,14 @@
 import React from 'react'
-
-
 import { useScroll, useTransform } from "framer-motion";
-
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-
 import { ArrowRight } from "lucide-react";
 
-
-
-/**
- * About Us hero — "Improving the Civil Engineering World".
- * Full-width orange block with rounded bottom corners on the light page.
- * Note: copy uses "TeraStamp".
- */
-
-
-
+/* ---------- Helper Decorations (unchanged) ---------- */
 const Starburst = ({ className = "" }) => (
   <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={className}>
     {Array.from({ length: 24 }).map((_, i) => {
@@ -42,6 +29,9 @@ const Asterisk = ({ className = "" }) => (
   </svg>
 );
 
+/* ================================================================
+   HERO SECTION – paraphrased
+   ================================================================ */
 const AboutHero = () => {
   return (
     <section className="bg-white">
@@ -58,10 +48,9 @@ const AboutHero = () => {
           lg:px-[170px]
         "
       >
-        {/* Decorations */}
+        {/* Decorations (unchanged) */}
         <div className="pointer-events-none absolute inset-0 text-white/30">
           <Starburst className="absolute right-[16%] top-8 h-16 w-16 md:h-20 md:w-20" />
-
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -72,7 +61,6 @@ const AboutHero = () => {
           >
             <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" />
           </svg>
-
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -82,7 +70,6 @@ const AboutHero = () => {
           >
             <circle cx="12" cy="12" r="9" />
           </svg>
-
           <svg
             viewBox="0 0 120 24"
             fill="none"
@@ -93,11 +80,10 @@ const AboutHero = () => {
           >
             <path d="M2 12 Q12 2 22 12 T42 12 T62 12 T82 12 T102 12 T118 12" />
           </svg>
-
           <Asterisk className="absolute right-2 top-[58%] h-10 w-10 md:h-12 md:w-12" />
         </div>
 
-        {/* Content */}
+        {/* Content – paraphrased */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,7 +102,7 @@ const AboutHero = () => {
               letterSpacing: "-2px",
             }}
           >
-            Improving the Civil Engineering World
+            Advancing the Future of Civil Engineering
           </motion.h1>
 
           <motion.p
@@ -125,10 +111,9 @@ const AboutHero = () => {
             transition={{ duration: 0.6, delay: 0.12 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl"
           >
-            Backed by decades of experience in civil engineering and
-            infrastructure monitoring, TeraStamp is reshaping how data
-            intelligence strengthens safety, efficiency, and sustainability
-            across modern infrastructure projects.
+            With deep roots in civil engineering and infrastructure monitoring,
+            TeraStamp is transforming how data intelligence enhances safety,
+            efficiency, and sustainability across modern infrastructure projects.
           </motion.p>
         </motion.div>
       </div>
@@ -136,8 +121,9 @@ const AboutHero = () => {
   );
 };
 
-
-
+/* ================================================================
+   OUR STORY – paraphrased
+   ================================================================ */
 const OurStorySection = () => {
   return (
     <section className="overflow-hidden bg-white py-12 md:py-20">
@@ -152,40 +138,39 @@ const OurStorySection = () => {
           >
             <div className="inline-flex rounded-xl bg-[#F26418] px-4 py-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-white sm:text-sm">
-                Our Story
+                Our Journey
               </span>
             </div>
 
             <h2 className="mt-5 text-3xl font-bold leading-tight text-[#32353A] sm:text-4xl md:text-5xl">
-              Shaping Tomorrow's
+              Building Tomorrow's
               <br />
               <span className="text-[#F26418]">Infrastructure</span>
             </h2>
 
             <div className="mt-6 space-y-5 text-sm leading-relaxed text-[#5C636E] sm:text-base md:text-lg">
               <p>
-                Built around a vision to transform infrastructure
-                intelligence, TeraStamp blends engineering expertise,
-                geospatial analytics, and real-time monitoring to help
-                organizations make smarter decisions.
+                Born from a vision to revolutionise infrastructure intelligence,
+                TeraStamp combines engineering expertise, geospatial analytics,
+                and real‑time monitoring to empower organisations with smarter
+                decision‑making.
               </p>
 
               <p>
-                Our platform equips teams with actionable insights,
-                advanced visualization, and smooth data integration,
-                making infrastructure projects safer, more sustainable,
-                and more efficient.
+                Our platform delivers actionable insights, advanced visualisation,
+                and seamless data integration, helping infrastructure projects
+                become safer, more sustainable, and more efficient.
               </p>
 
               <p>
-                We are more than a technology provider—we are a trusted
-                partner helping engineers, governments, and enterprises
-                unlock the full potential of their infrastructure data.
+                We are more than a technology provider – we are a trusted ally
+                for engineers, governments, and enterprises striving to unlock
+                the full value of their infrastructure data.
               </p>
             </div>
           </motion.div>
 
-          {/* Right Visual */}
+          {/* Right Visual – unchanged (TeraStamp name remains) */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -194,16 +179,13 @@ const OurStorySection = () => {
             className="relative mt-8 flex items-center justify-center lg:mt-0"
           >
             <div className="relative flex w-full flex-col items-center">
-              {/* Top Label */}
               <div className="mb-6 flex flex-col items-center">
                 <div className="h-8 w-20 border-x-4 border-t-4 border-[#F26418]/40 sm:h-10 sm:w-28 md:h-12 md:w-32" />
-
                 <p className="mt-2 text-sm text-[#5C636E] sm:text-base">
                   Intelligence
                 </p>
               </div>
 
-              {/* Main Text */}
               <motion.h1
                 initial={{ scale: 0.8 }}
                 whileInView={{ scale: 1 }}
@@ -224,28 +206,21 @@ const OurStorySection = () => {
                 TeraStamp
               </motion.h1>
 
-              {/* Bottom Labels */}
               <div className="mt-6 flex w-full justify-between gap-4 sm:gap-8">
-                {/* Engineering */}
                 <div className="flex flex-1 flex-col items-center">
                   <div className="h-8 w-full max-w-[140px] border-b-4 border-l-4 border-[#F26418]/40" />
-
                   <p className="mt-2 text-center text-xs text-[#5C636E] sm:text-sm md:text-base">
                     Engineering
                   </p>
                 </div>
-
-                {/* Technology */}
                 <div className="flex flex-1 flex-col items-center">
                   <div className="h-8 w-full max-w-[140px] border-b-4 border-r-4 border-[#F26418]/40" />
-
                   <p className="mt-2 text-center text-xs text-[#5C636E] sm:text-sm md:text-base">
                     Technology
                   </p>
                 </div>
               </div>
 
-              {/* Glow Effect */}
               <div className="absolute inset-0 -z-10 rounded-full bg-[#F26418]/15 blur-3xl" />
             </div>
           </motion.div>
@@ -255,7 +230,9 @@ const OurStorySection = () => {
   );
 };
 
-
+/* ================================================================
+   WHAT'S DIFFERENT – paraphrased
+   ================================================================ */
 const DifferenceSection = () => {
   const [active, setActive] = useState(0);
 
@@ -264,22 +241,19 @@ const DifferenceSection = () => {
       title: "Simplicity",
       description:
         "Intuitive design, total control – our user-friendly interface and experience bring efficiency together with simplicity.",
-      image:
-        "/simplicity.jpeg",
+      image: "/simplicity.jpeg",
     },
     {
       title: "Flexibility",
       description:
         "Tailored reporting, limitless visualization, customized dashboards, and multiple data integrations through our adaptable platform.",
-      image:
-        "/flexibility.jpeg",
+      image: "/flexibility.jpeg",
     },
     {
       title: "Versatility",
       description:
         "From start to finish – smoothly connects applications, modules, and technologies for complete coverage across the project lifecycle.",
-      image:
-        "/versatility.jpeg",
+      image: "/versatility.jpeg",
     },
   ];
 
@@ -293,20 +267,16 @@ const DifferenceSection = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-[#26282C]/90" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
-        {/* Heading */}
         <div className="mb-12 text-center md:mb-16">
           <h2 className="text-4xl font-semibold text-white md:text-6xl">
-            What's <span className="text-[#F26418]">Different?</span>
+            What Sets Us <span className="text-[#F26418]">Apart?</span>
           </h2>
         </div>
 
-        {/* Content */}
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-20">
-          {/* Left Side */}
           <div className="order-2 flex flex-col gap-8 lg:order-1">
             {features.map((item, index) => (
               <div
@@ -335,7 +305,6 @@ const DifferenceSection = () => {
             ))}
           </div>
 
-          {/* Right Side Image */}
           <div className="order-1 lg:order-2">
             <AnimatePresence mode="wait">
               <motion.div
@@ -368,7 +337,6 @@ const DifferenceSection = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Glow */}
             <div className="absolute -z-10 rounded-3xl bg-[#F26418]/20 blur-3xl" />
           </div>
         </div>
@@ -377,14 +345,13 @@ const DifferenceSection = () => {
   );
 };
 
-
-
-
+/* ================================================================
+   TESTIMONIAL – paraphrased
+   ================================================================ */
 const TestimonialCTASection = () => {
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        {/* Testimonial */}
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -405,38 +372,29 @@ const TestimonialCTASection = () => {
           </motion.div>
 
           <h2 className="text-2xl font-semibold leading-tight text-[#32353A] md:text-4xl lg:text-5xl">
-            We rely on <span className="text-[#F26418]">TeraStamp</span> to manage the geological mapping
-            parameters, convergences, and displacement trends of the
-            tunnels. It gives us unmatched control over the construction
-            project.
+            We rely on <span className="text-[#F26418]">TeraStamp</span> to manage geological mapping
+            parameters, convergence data, and displacement patterns across our
+            tunnels. It gives us total visibility and control over the entire
+            construction process.
           </h2>
-
         </motion.div>
-
-       
       </div>
     </section>
   );
 };
 
-
-
-
-
-
+/* ================================================================
+   MAIN EXPORT
+   ================================================================ */
 const About = () => {
   return (
     <div>
-     < AboutHero/>
-     <OurStorySection/>
-     <DifferenceSection/>
-     
-     <TestimonialCTASection/>
-    
-    
-   
+      <AboutHero />
+      <OurStorySection />
+      <DifferenceSection />
+      <TestimonialCTASection />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

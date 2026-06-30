@@ -236,29 +236,29 @@ const roadmap = [
             postedOn: "May 12",
             intro: [
               [
-                { t: "We're excited to close the gap between raw data and actionable decisions with our newest innovation: " },
-                { t: 'AI-Powered "Get Insights" with ADA Chat.', b: true },
+                { t: "We're shrinking the distance between raw measurements and the decisions they should drive, thanks to our newest addition: " },
+                { t: 'AI-powered "Get Insights", driven by GEO Chat.', b: true },
               ],
-              "Rather than manually working through complex graphs or chasing the root cause of every alert, you can now hand the heavy lifting to our AI assistant, ADA. With a single click, ADA grabs the full context of your data and returns a detailed analysis in seconds.",
+              "Rather than picking apart dense graphs or tracing every alert back to its origin by hand, you can now pass that effort to GEO, our built-in AI assistant. A single click is all it takes — GEO gathers the full context around your data and replies with a detailed breakdown in just seconds.",
             ],
             features: [
-              { lead: 'Contextual "Get Insights" Button:', text: 'Find the new "Get Insights" button right on your Charts and inside the Alerts view.' },
+              { lead: 'Context-aware "Get Insights" button:', text: 'You\'ll find the new "Get Insights" action right on your charts and inside the Alerts screen.' },
               {
-                lead: "Automatic Context Sharing:",
-                text: "No more typing out long explanations. ADA automatically picks up:",
+                lead: "Context shared for you:",
+                text: "No need to write out long descriptions — GEO collects everything on its own:",
                 children: [
-                  { lead: "For Charts:", text: "A screenshot of the current visualization, with all selected instruments and fields included." },
-                  { lead: "For Alerts:", text: "The current alert details plus the historical context of previous alerts for that specific instrument." },
+                  { lead: "On charts:", text: "A snapshot of what you're currently viewing, including every instrument and field you've selected." },
+                  { lead: "On alerts:", text: "The details of the active alert together with the earlier alert history for that specific instrument." },
                 ],
               },
-              { lead: "Intelligent Analysis:", text: "ADA looks over trends, spots anomalies, and cross-checks historical behavior to explain what is happening and why." },
-              { lead: "Real-Time Progress Tracking:", text: "AI analysis is deep and thorough. To keep you in the loop, ADA shows you exactly what it's doing with live status updates." },
+              { lead: "Smart interpretation:", text: "GEO studies the trends, flags anything out of the ordinary, and weighs it against past behaviour to explain both what's going on and why." },
+              { lead: "Live progress updates:", text: "Because a deep analysis takes a moment, GEO keeps you posted with real-time status as it works." },
             ],
             steps: [
-              { text: "Open a chart you want to investigate or head to an active alert in your log." },
-              { lead: 'Click "Get Insights".', text: "Look for the button in the top-right corner of the chart or beside the alert entry." },
-              { lead: "ADA Takes Over:", text: "The ADA chat panel opens on its own, attaches the relevant screenshot or alert history, and starts its analysis." },
-              { lead: "Review the Takeaways:", text: "Once processing wraps up, ADA hands you a summarized report of the key findings and suggested next steps." },
+              { text: "Open the chart you'd like to dig into, or jump to an active alert in your log." },
+              { lead: 'Press "Get Insights".', text: "Look for it in the chart's top-right corner or right beside the alert row." },
+              { lead: "Let GEO take it from here:", text: "The GEO panel opens on its own, attaches the relevant snapshot or alert history, and begins its review." },
+              { lead: "Read the summary:", text: "Once it wraps up, GEO hands you a tidy rundown of the main findings along with suggested next steps." },
             ],
           },
           {
@@ -267,16 +267,16 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "May 8",
-            intro: ["Sign in to TeraStamp through your own identity provider using OpenID Connect. No more juggling a separate password for every user — access stays in step with the systems your team already relies on."],
+            intro: ["Sign in to TeraStamp through your own identity provider using OpenID Connect. There's no longer a separate password to manage per person — access simply mirrors the systems your team already depends on."],
             features: [
-              { lead: "Single sign-on:", text: "Connect providers like Azure AD and Okta so users log in with their existing credentials." },
-              { lead: "Automatic provisioning:", text: "Roles and permissions sync from your provider, so access changes take effect instantly." },
-              { lead: "Audit-ready logs:", text: "Every sign-in is recorded for compliance and security reviews." },
+              { lead: "Single sign-on:", text: "Wire up providers such as Azure AD or Okta so people log in with the credentials they already have." },
+              { lead: "Hands-off provisioning:", text: "Roles and permissions flow straight in from your provider, so any access change applies right away." },
+              { lead: "Audit-ready logs:", text: "Each sign-in is captured for compliance checks and security reviews." },
             ],
             steps: [
-              { text: "Open Settings and select Authentication." },
-              { lead: "Add your provider:", text: "Paste your OIDC client ID, secret, and issuer URL." },
-              { lead: "Map roles:", text: "Match provider groups to TeraStamp roles, then enable SSO for your workspace." },
+              { text: "Head to Settings and choose Authentication." },
+              { lead: "Register your provider:", text: "Enter your OIDC client ID, secret, and issuer URL." },
+              { lead: "Match your roles:", text: "Link provider groups to TeraStamp roles, then switch on SSO for the workspace." },
             ],
           },
         ],
@@ -290,15 +290,15 @@ const roadmap = [
             kind: "gauge",
             author: "TERASTAMP",
             postedOn: "April 22",
-            intro: ["Every instrument now displays a clear, color-coded state, so problems are easy to catch at a glance across your whole network."],
+            intro: ["Every instrument now shows a clear, colour-coded state, making it simple to catch trouble at a glance across your whole network."],
             features: [
-              { lead: "Live status:", text: "Active, warning, and offline states update in real time for each sensor." },
-              { lead: "Automatic flags:", text: "Offline or stalled instruments are highlighted without any manual checks." },
-              { lead: "State history:", text: "Review how an instrument's state shifted over time to dig into past issues." },
+              { lead: "Status in real time:", text: "Active, warning, and offline states refresh live for each sensor." },
+              { lead: "Hands-free flagging:", text: "Stalled or offline instruments get highlighted automatically — no manual checking needed." },
+              { lead: "State history:", text: "Trace how an instrument's state shifted over time to investigate earlier issues." },
             ],
             steps: [
-              { text: "Open any site to see instrument states on the map and list." },
-              { lead: "Filter by state:", text: "Show only warnings or offline instruments to focus on what needs attention." },
+              { text: "Open any site to view instrument states on both the map and the list." },
+              { lead: "Filter by state:", text: "Narrow to just warnings or offline units so you can focus on what needs attention." },
             ],
           },
           {
@@ -307,15 +307,15 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "April 15",
-            intro: ["Drop a configurable table onto any dashboard and compare readings from many instruments side by side."],
+            intro: ["Drop a configurable table onto any dashboard and line up readings from many instruments side by side."],
             features: [
-              { lead: "Choose your columns:", text: "Pick the fields you care about and reorder them with a drag." },
-              { lead: "Sort and filter:", text: "Work with the data right inside the widget." },
-              { lead: "Quick export:", text: "Download the table to CSV in one click." },
+              { lead: "Pick your columns:", text: "Choose the fields that matter and rearrange them with a simple drag." },
+              { lead: "Sort and filter inline:", text: "Shape the data without ever leaving the widget." },
+              { lead: "One-click export:", text: "Send the table to CSV instantly." },
             ],
             steps: [
-              { text: "Edit a dashboard and add the Table widget." },
-              { lead: "Configure it:", text: "Select instruments, choose columns, then save the layout." },
+              { text: "Edit a dashboard and drop in the Table widget." },
+              { lead: "Set it up:", text: "Choose your instruments and columns, then save the layout." },
             ],
           },
           {
@@ -324,15 +324,15 @@ const roadmap = [
             kind: "bars",
             author: "TERASTAMP",
             postedOn: "April 3",
-            intro: ["Cut through the noise by filtering alerts on more than one condition at once, so you only see what matters."],
+            intro: ["Cut through the noise by filtering alerts on several conditions at once, so only the relevant ones reach you."],
             features: [
-              { lead: "Combine conditions:", text: "Filter by site, severity, and instrument type using AND/OR logic." },
-              { lead: "Saved views:", text: "Store useful filters and share them with your team." },
-              { lead: "Bulk actions:", text: "Acknowledge or resolve filtered alerts together." },
+              { lead: "Stack conditions:", text: "Filter across site, severity, and instrument type using AND/OR logic." },
+              { lead: "Reusable views:", text: "Save the filters you rely on and share them with your team." },
+              { lead: "Act in bulk:", text: "Acknowledge or clear the filtered alerts together." },
             ],
             steps: [
-              { text: "Open the Alerts view and click Filter." },
-              { lead: "Build your rule:", text: "Add conditions, then save the view for later." },
+              { text: "Go to the Alerts view and open Filter." },
+              { lead: "Define your rule:", text: "Add the conditions, then store the view for next time." },
             ],
           },
         ],
@@ -352,15 +352,15 @@ const roadmap = [
             kind: "map",
             author: "TERASTAMP",
             postedOn: "November 19",
-            intro: ["Treat a camera feed like any other instrument and watch how a site changes over time."],
+            intro: ["Bring a camera feed in as just another instrument and follow how a site changes over time."],
             features: [
-              { lead: "Scheduled capture:", text: "Snapshots are taken automatically on a schedule you set." },
-              { lead: "Playback:", text: "Scrub through a time-lapse straight from the dashboard." },
-              { lead: "Aligned data:", text: "Line up the image timeline with sensor readings to see cause and effect." },
+              { lead: "Automatic capture:", text: "Snapshots are recorded on whatever schedule you set." },
+              { lead: "Replay anytime:", text: "Scrub through the time-lapse directly from the dashboard." },
+              { lead: "Synced with data:", text: "Match the image timeline to sensor readings to see what caused what." },
             ],
             steps: [
               { text: "Add a camera as a new instrument." },
-              { lead: "Set the interval:", text: "Choose how often snapshots are captured, then open playback." },
+              { lead: "Choose the interval:", text: "Decide how often snapshots are taken, then open replay." },
             ],
           },
           {
@@ -369,15 +369,15 @@ const roadmap = [
             kind: "area",
             author: "TERASTAMP",
             postedOn: "November 6",
-            intro: ["Inclinometer readings can now be calculated relative to any reference depth for more accurate movement analysis."],
+            intro: ["Inclinometer data can now be referenced against any chosen depth, giving you a more precise read on movement."],
             features: [
-              { lead: "Pick a reference:", text: "Choose any point along the profile as your baseline." },
-              { lead: "Two views:", text: "See cumulative and incremental movement together." },
-              { lead: "Auto-recalculation:", text: "Results refresh whenever new data arrives." },
+              { lead: "Choose a baseline:", text: "Set any point along the profile as your reference." },
+              { lead: "Both perspectives:", text: "View cumulative and incremental movement side by side." },
+              { lead: "Refreshes itself:", text: "Values update automatically whenever new data lands." },
             ],
             steps: [
               { text: "Open an inclinometer chart." },
-              { lead: "Set the reference:", text: "Select the reference depth and the chart recalculates instantly." },
+              { lead: "Set the reference:", text: "Pick the reference depth and the chart recalculates on the spot." },
             ],
           },
           {
@@ -386,15 +386,15 @@ const roadmap = [
             kind: "line",
             author: "TERASTAMP",
             postedOn: "November 1",
-            intro: ["Overlay data from several instruments to understand long-term behavior and catch patterns early."],
+            intro: ["Layer data from several instruments together to grasp long-term behaviour and spot patterns sooner."],
             features: [
-              { lead: "Multi-instrument overlay:", text: "Compare several series on a single chart." },
-              { lead: "Adjustable windows:", text: "Zoom from hours to years with one control." },
-              { lead: "Pattern highlights:", text: "Trend lines and seasonal patterns are easy to see." },
+              { lead: "Overlay instruments:", text: "Show several series together on a single chart." },
+              { lead: "Flexible time spans:", text: "Move from hours to years with one control." },
+              { lead: "Patterns made clear:", text: "Trend lines and seasonal cycles are easy to read." },
             ],
             steps: [
               { text: "Open the Trends view." },
-              { lead: "Add instruments:", text: "Select the series to compare and choose a time window." },
+              { lead: "Add your instruments:", text: "Choose the series to compare and set a time span." },
             ],
           },
         ],
@@ -408,15 +408,15 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "July 24",
-            intro: ["Find documents, reports, and attachments across your whole account from a single search bar."],
+            intro: ["Track down documents, reports, and attachments from anywhere in your account using one search bar."],
             features: [
-              { lead: "Search everything:", text: "Match on both file names and content." },
-              { lead: "Smart filters:", text: "Narrow results by site and file type." },
-              { lead: "Recent files:", text: "Jump back to what you opened last." },
+              { lead: "Search it all:", text: "Match against both file names and their contents." },
+              { lead: "Helpful filters:", text: "Trim results by site and file type." },
+              { lead: "Recent files:", text: "Return quickly to whatever you opened last." },
             ],
             steps: [
               { text: "Click the search icon in the top bar." },
-              { lead: "Type a term:", text: "Open a result or refine with filters." },
+              { lead: "Enter a term:", text: "Open a match or fine-tune it with filters." },
             ],
           },
           {
@@ -425,15 +425,15 @@ const roadmap = [
             kind: "donut",
             author: "TERASTAMP",
             postedOn: "July 9",
-            intro: ["Export any dashboard as a PDF or image, complete with your layout and branding, ready to drop into a report."],
+            intro: ["Save any dashboard as a PDF or image, complete with your layout and branding, ready to slot straight into a report."],
             features: [
-              { lead: "PDF and PNG:", text: "Choose the format that fits your report." },
-              { lead: "Scheduled exports:", text: "Have exports emailed on a recurring schedule." },
-              { lead: "Branding preserved:", text: "Layout and logos carry over exactly." },
+              { lead: "PDF or PNG:", text: "Pick whichever format suits your report." },
+              { lead: "Scheduled delivery:", text: "Have exports emailed to you on a repeating schedule." },
+              { lead: "Branding intact:", text: "Your layout and logos carry across unchanged." },
             ],
             steps: [
               { text: "Open a dashboard and click Export." },
-              { lead: "Pick a format:", text: "Download now or set up a schedule." },
+              { lead: "Select a format:", text: "Download straight away or set up a schedule." },
             ],
           },
         ],
@@ -453,15 +453,15 @@ const roadmap = [
             kind: "bars",
             author: "TERASTAMP",
             postedOn: "September 18",
-            intro: ["Set thresholds on any instrument and get notified the moment a reading crosses the line."],
+            intro: ["Define thresholds on any instrument and be alerted the instant a reading crosses the line."],
             features: [
-              { lead: "Multiple levels:", text: "Define separate warning and critical thresholds." },
+              { lead: "Several tiers:", text: "Set distinct warning and critical thresholds." },
               { lead: "Your channels:", text: "Receive alerts by email, SMS, or in-app." },
-              { lead: "Flexible scope:", text: "Apply rules per instrument or across a whole site." },
+              { lead: "Adjustable scope:", text: "Apply the rule to a single instrument or an entire site." },
             ],
             steps: [
               { text: "Open an instrument's settings." },
-              { lead: "Add a threshold:", text: "Set the value and choose how you want to be notified." },
+              { lead: "Create a threshold:", text: "Enter the value and pick how you'd like to be notified." },
             ],
           },
           {
@@ -470,15 +470,15 @@ const roadmap = [
             kind: "kanban",
             author: "TERASTAMP",
             postedOn: "September 5",
-            intro: ["Organize sites into groups and control exactly who can access each one."],
+            intro: ["Arrange sites into groups and decide exactly who can reach each one."],
             features: [
-              { lead: "Nested groups:", text: "Structure sites to match how your teams work." },
-              { lead: "Role-based access:", text: "Assign permissions per group." },
-              { lead: "Bulk assignment:", text: "Add users to many sites at once." },
+              { lead: "Nested groups:", text: "Shape sites to fit the way your teams operate." },
+              { lead: "Access by role:", text: "Grant permissions group by group." },
+              { lead: "Assign in bulk:", text: "Add people to many sites at once." },
             ],
             steps: [
               { text: "Open Settings and select Sites." },
-              { lead: "Create a group:", text: "Add sites, then assign roles to users." },
+              { lead: "Build a group:", text: "Add sites, then hand roles to users." },
             ],
           },
           {
@@ -487,15 +487,15 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "September 2",
-            intro: ["Import many instruments at once from a spreadsheet instead of adding them one by one."],
+            intro: ["Bring in many instruments at once from a spreadsheet instead of entering them one at a time."],
             features: [
-              { lead: "Template support:", text: "Start from a CSV or Excel template." },
-              { lead: "Validation:", text: "Catch errors before anything is imported." },
-              { lead: "Fix and retry:", text: "Correct flagged rows and re-upload." },
+              { lead: "Template support:", text: "Begin from a CSV or Excel template." },
+              { lead: "Built-in checks:", text: "Spot errors before anything gets imported." },
+              { lead: "Fix and re-run:", text: "Correct any flagged rows and upload again." },
             ],
             steps: [
               { text: "Open Instruments and click Import." },
-              { lead: "Upload your file:", text: "Review the validation results, then confirm." },
+              { lead: "Add your file:", text: "Look over the validation results, then confirm." },
             ],
           },
         ],
@@ -515,15 +515,15 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "October 27",
-            intro: ["Turn raw readings into meaningful values with your own calculated channels."],
+            intro: ["Convert raw readings into values that matter using your own calculated channels."],
             features: [
-              { lead: "Rich functions:", text: "Use arithmetic and statistical operations." },
-              { lead: "Combine instruments:", text: "Reference several inputs in one formula." },
-              { lead: "Use anywhere:", text: "Add calculated channels to charts and alerts." },
+              { lead: "Plenty of functions:", text: "Apply arithmetic and statistical operations." },
+              { lead: "Mix instruments:", text: "Pull several inputs into one formula." },
+              { lead: "Use them anywhere:", text: "Bring calculated channels into charts and alerts." },
             ],
             steps: [
               { text: "Open the Calculations panel." },
-              { lead: "Write a formula:", text: "Reference instruments and save the channel." },
+              { lead: "Compose a formula:", text: "Reference your instruments and save the channel." },
             ],
           },
           {
@@ -532,15 +532,15 @@ const roadmap = [
             kind: "map",
             author: "TERASTAMP",
             postedOn: "October 19",
-            intro: ["Add a 3D buildings layer to the map so instruments make sense in their real-world surroundings."],
+            intro: ["Switch on a 3D buildings layer so instruments make sense within their real-world surroundings."],
             features: [
-              { lead: "3D footprints:", text: "See buildings rendered in context." },
-              { lead: "Overlay instruments:", text: "Place sensors against the structures they monitor." },
-              { lead: "Camera controls:", text: "Tilt and rotate for the best view." },
+              { lead: "3D footprints:", text: "View buildings drawn in context." },
+              { lead: "Place instruments:", text: "Position sensors against the structures they watch over." },
+              { lead: "Camera controls:", text: "Tilt and spin for the clearest angle." },
             ],
             steps: [
               { text: "Open the map and click Layers." },
-              { lead: "Enable 3D buildings:", text: "Tilt the view to explore." },
+              { lead: "Turn on 3D buildings:", text: "Tilt the view to explore." },
             ],
           },
           {
@@ -549,15 +549,15 @@ const roadmap = [
             kind: "kanban",
             author: "TERASTAMP",
             postedOn: "October 12",
-            intro: ["Create a new tag right from the dropdown without leaving what you're doing."],
+            intro: ["Add a brand-new tag straight from the dropdown without stepping away from what you're doing."],
             features: [
-              { lead: "Inline creation:", text: "Type a new tag and add it on the spot." },
-              { lead: "Instantly available:", text: "New tags appear everywhere immediately." },
-              { lead: "Color-coded:", text: "Tell tags apart at a glance." },
+              { lead: "Create inline:", text: "Type a fresh tag and add it then and there." },
+              { lead: "Ready instantly:", text: "New tags show up everywhere right away." },
+              { lead: "Colour-coded:", text: "Tell your tags apart at a glance." },
             ],
             steps: [
               { text: "Open any tag dropdown." },
-              { lead: "Type a new name:", text: "Select Create to add it." },
+              { lead: "Type a new name:", text: "Choose Create to add it." },
             ],
           },
           {
@@ -566,15 +566,15 @@ const roadmap = [
             kind: "heatmap",
             author: "TERASTAMP",
             postedOn: "October 6",
-            intro: ["Visualize reading intensity as a heatmap so hotspots stand out."],
+            intro: ["Render reading intensity as a heatmap so the hotspots jump out."],
             features: [
-              { lead: "Color scale:", text: "Configure the range to suit your data." },
-              { lead: "Animate over time:", text: "Watch how intensity shifts." },
-              { lead: "Two views:", text: "Switch between spatial and grid layouts." },
+              { lead: "Custom colour scale:", text: "Set the range to match your data." },
+              { lead: "Play over time:", text: "Watch how intensity moves." },
+              { lead: "Two layouts:", text: "Flip between spatial and grid views." },
             ],
             steps: [
-              { text: "Open a dataset and choose Heatmap." },
-              { lead: "Adjust the scale:", text: "Tune colors and play the timeline." },
+              { text: "Open a dataset and pick Heatmap." },
+              { lead: "Tune the scale:", text: "Adjust the colours and run the timeline." },
             ],
           },
           {
@@ -583,15 +583,15 @@ const roadmap = [
             kind: "table",
             author: "TERASTAMP",
             postedOn: "October 3",
-            intro: ["Discuss alerts in context by commenting directly on them, keeping decisions in one place."],
+            intro: ["Talk through alerts where they live by commenting on them directly, keeping every decision in one spot."],
             features: [
-              { lead: "Threaded comments:", text: "Keep the conversation organized per alert." },
-              { lead: "Mentions:", text: "Notify teammates with @mentions." },
-              { lead: "Full history:", text: "Keep a record for audits." },
+              { lead: "Threaded discussion:", text: "Keep each alert's conversation tidy." },
+              { lead: "Mentions:", text: "Loop teammates in with @mentions." },
+              { lead: "Complete trail:", text: "Hold on to the record for audits." },
             ],
             steps: [
               { text: "Open an alert." },
-              { lead: "Add a comment:", text: "Mention people who need to weigh in." },
+              { lead: "Leave a comment:", text: "Mention anyone who should weigh in." },
             ],
           },
           {
@@ -600,15 +600,15 @@ const roadmap = [
             kind: "donut",
             author: "TERASTAMP",
             postedOn: "October 1",
-            intro: ["Write complex formulas with confidence using a richer editor with helpers and a live preview."],
+            intro: ["Build complex formulas with confidence in a richer editor that offers helpers and a live preview."],
             features: [
-              { lead: "Autocomplete:", text: "Get function suggestions as you type." },
+              { lead: "Autocomplete:", text: "Receive function suggestions as you type." },
               { lead: "Live preview:", text: "See the result while you edit." },
-              { lead: "Error highlighting:", text: "Spot mistakes before saving." },
+              { lead: "Error highlighting:", text: "Catch slip-ups before you save." },
             ],
             steps: [
               { text: "Open the Advanced Formula Editor." },
-              { lead: "Build your formula:", text: "Use autocomplete and check the preview." },
+              { lead: "Assemble your formula:", text: "Lean on autocomplete and keep an eye on the preview." },
             ],
           },
         ],
@@ -658,7 +658,7 @@ const FeedbackForm = ({ onDone, reasonPlaceholder }) => {
     <div>
       <div className="space-y-2 border-t pt-5" style={{ borderColor: c.borderSoft }}>
         <p className="text-sm font-medium" style={{ color: c.text }}>
-          How much do you like this feature?
+          How do you feel about this feature?
         </p>
         <RatingRow value={rating} onChange={setRating} />
       </div>
@@ -728,10 +728,10 @@ const Submitted = ({ onClose }) => (
   <div className="flex flex-col items-center gap-3 px-6 py-14 text-center">
     <CheckCircle2 size={44} style={{ color: c.accent }} />
     <h3 className="text-lg font-semibold" style={{ color: c.heading }}>
-      Thanks for your feedback
+      Thank you for sharing
     </h3>
     <p className="max-w-xs text-sm" style={{ color: c.text }}>
-      We log every response against the roadmap — it directly shapes what we build next.
+      Every response is matched back to the roadmap and helps steer what we work on next.
     </p>
     <button onClick={onClose} className="mt-2 rounded-lg px-5 py-2 text-sm font-semibold text-white" style={{ background: c.accent }}>
       Done
@@ -749,16 +749,16 @@ const SubmitIdeaModal = ({ onClose }) => {
       ) : (
         <div className="px-6 pb-6 pt-12 sm:px-8">
           <h3 className="mb-5 text-xl font-bold" style={{ color: c.heading }}>
-            Submit new idea
+            Share a new idea
           </h3>
           <textarea
             rows={4}
-            placeholder="What would you like to be able to do? How would that help you?"
+            placeholder="What would you like to be able to do, and how would it help your work?"
             className="w-full resize-none rounded-lg px-3 py-2.5 text-sm outline-none"
             style={{ background: c.field, color: c.text, border: `1px solid ${c.accent}` }}
           />
           <div className="mt-5">
-            <FeedbackForm onDone={() => setSent(true)} reasonPlaceholder="Any extra context? (Optional)" />
+            <FeedbackForm onDone={() => setSent(true)} reasonPlaceholder="Anything else we should know? (Optional)" />
           </div>
         </div>
       )}
@@ -889,7 +889,7 @@ const FeatureModal = ({ feature, onClose }) => {
 
               {/* feedback */}
               <div className="mt-7">
-                <FeedbackForm onDone={() => setSent(true)} reasonPlaceholder="Why do you need this? (Any context you provide will help us make this product better for you.)" />
+                <FeedbackForm onDone={() => setSent(true)} reasonPlaceholder="Why would this help you? (Anything you share helps us make the product better for you.)" />
               </div>
             </>
           )}
@@ -935,14 +935,14 @@ const CareersCTA = () => (
   <div className="mx-auto mt-10 max-w-5xl">
     <div className="rounded-3xl px-6 py-10 sm:px-14 sm:py-14" style={{ background: c.accent }}>
       <h3 className="text-3xl font-extrabold leading-tight sm:text-5xl" style={{ color: "#fff" }}>
-        Help us build a platform that saves lives
+        Join us in building technology that helps keep people safe
       </h3>
       <button
         onClick={() => window.open("#open-positions", "_self")}
         className="mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold sm:text-base"
         style={{ color: c.accent }}
       >
-        View open positions <ArrowRight size={18} />
+        See open roles <ArrowRight size={18} />
       </button>
     </div>
   </div>
@@ -971,9 +971,9 @@ const TeraStampRoadmap = () => {
           About the TeraStamp <span style={{ color: c.accent }}>Roadmap</span>
         </h2>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed" style={{ color: c.text }}>
-          Keep up with how TeraStamp grows. Browse upcoming features, follow progress, and share
-          your feedback through our roadmap and wishlist. Every improvement reflects our goal of making
-          infrastructure monitoring more connected, flexible, and data-driven.
+          Follow along as TeraStamp evolves. Explore what's on the way, watch features take shape, and
+          tell us what you think through our roadmap and wishlist. Every update moves us closer to
+          infrastructure monitoring that's more connected, more adaptable, and more driven by your data.
         </p>
 
         <div className="mt-12 overflow-hidden rounded-2xl shadow-2xl" style={{ background: c.card, border: `1px solid ${c.border}` }}>
@@ -1020,7 +1020,7 @@ const TeraStampRoadmap = () => {
             {months.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-center">
                 <p className="text-sm font-medium" style={{ color: c.text }}>No features match “{query}”.</p>
-                <p className="mt-1 text-sm" style={{ color: c.faint }}>Try another term, or submit it as a new idea.</p>
+                <p className="mt-1 text-sm" style={{ color: c.faint }}>Try a different term, or add it as a new idea.</p>
               </div>
             ) : (
               months.map((m) => (

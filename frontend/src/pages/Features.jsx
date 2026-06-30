@@ -1,204 +1,229 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Radar, MessagesSquare, LineChart, SlidersHorizontal } from "lucide-react";
-import { Activity, Image as ImageIcon, Box, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Zap,
+  Radar,
+  MessagesSquare,
+  LineChart,
+  SlidersHorizontal,
+  Activity,
+  Image as ImageIcon,
+  Box,
+  Rocket,
+  BarChart3,   // ← add
+  Database,    // ← add
+  Shield,      // ← add
+  Users,       // ← add
 
-/* Color palette */
+} from "lucide-react";
+
+/* ---------- Color Palette ---------- */
 const colors = {
   accent: "#F26418",
-  white: "#FFFFFF",
-  text: "#7C8595",
-  heading: "#000000",
-  border: "#D1D9E6",
-  borderSoft: "#E2E8F0",
-  cardBg: "#F9FAFB",
-  cardHover: "#F1F3F5",
+  lightAccent: "#FFF0E8",
+  text: "#4A5568",
+  heading: "#1A202C",
 };
 
-const Starburst = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 100 100"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    className={className}
-  >
-    {Array.from({ length: 24 }).map((_, i) => {
-      const a = (i * 15 * Math.PI) / 180;
-      const r1 = 22;
-      const r2 = i % 2 ? 40 : 46;
-      return (
-        <line
-          key={i}
-          x1={50 + r1 * Math.cos(a)}
-          y1={50 + r1 * Math.sin(a)}
-          x2={50 + r2 * Math.cos(a)}
-          y2={50 + r2 * Math.sin(a)}
-        />
-      );
-    })}
-  </svg>
-);
+/* ---------- Animation Helper ---------- */
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, delay },
+});
 
-const Asterisk = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 48 48"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.4"
-    strokeLinecap="round"
-    className={className}
-  >
-    {Array.from({ length: 6 }).map((_, i) => {
-      const a = (i * 30 * Math.PI) / 180;
-      return (
-        <line
-          key={i}
-          x1={24 - 18 * Math.cos(a)}
-          y1={24 - 18 * Math.sin(a)}
-          x2={24 + 18 * Math.cos(a)}
-          y2={24 + 18 * Math.sin(a)}
-        />
-      );
-    })}
-  </svg>
-);
+/* ---------- Carousel Images (for banner) ---------- */
+const carouselImages = [
+  "/la-purple-line-3-stations.jpg",
+  "/la-purple-line-3-tunnels.jpg",
+  "/la-purple-line-section2.jpg",
+  "/tunnel.jpeg",
+  "/pipelin.jpeg",
+];
+
+
+
+
 
 const Hero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) =>
+      prev === 0 ? carouselImages.length - 1 : prev - 1
+    );
+  };
+
+  const goToSlide = (index) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="bg-white">
-      <div
-        className="
-          relative
-          overflow-hidden
-          rounded-b-[40px]
-          bg-[#F26418]      /* orange background */
-          px-6
-          pb-20
-          pt-16
-          md:px-14
-          md:pb-24
-          md:pt-20
-          lg:px-60
-        "
-      >
-        {/* Decorations – white with opacity */}
-        <div className="pointer-events-none absolute inset-0 text-white/60">
-          <Starburst className="absolute right-10 top-7 h-16 w-16 md:right-12 md:h-[78px] md:w-[78px]" />
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-            className="absolute right-[18%] top-[16%] hidden h-7 w-7 md:block"
-          >
-            <path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" />
-          </svg>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            className="absolute right-[15%] top-[13%] hidden h-4 w-4 md:block"
-          >
-            <circle cx="12" cy="12" r="9" />
-          </svg>
-          <svg
-            viewBox="0 0 120 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            className="absolute right-[8%] top-[58%] hidden h-6 w-32 md:block"
-          >
-            <path d="M2 12 Q12 2 22 12 T42 12 T62 12 T82 12 T102 12 T118 12" />
-          </svg>
-          <Asterisk className="absolute bottom-9 right-12 h-10 w-10 md:h-12 md:w-12" />
-        </div>
-
-        {/* Content – white text */}
+    <section className="relative min-h-[80vh] overflow-hidden md:min-h-[90vh]">
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-4xl"
+          key={currentIndex}
+          custom={direction}
+          initial={{ x: direction > 0 ? "100%" : "-100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: direction > 0 ? "-100%" : "100%" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
         >
-          <h1
-            className="font-extrabold tracking-tight text-white"
-            style={{
-              fontFamily: 'Inter, "Inter Placeholder", sans-serif',
-              fontSize: "clamp(36px, 6vw, 60px)",
-              lineHeight: 1.05,
-              letterSpacing: "-1.5px",
-            }}
-          >
-            Elevate Your Civil Infrastructure Experience with
-           TeraStamp
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg text-white/80">
-            Discover a world of possibilities and unlock the features that
-            turn data into decisions.
-          </p>
-
-          <Link
-            to="/contact"
-            className="
-              group mt-7 inline-flex items-center gap-2 rounded-lg
-              bg-white px-5 py-3 text-sm font-semibold text-[#F26418]
-              transition-colors duration-300 hover:bg-gray-100
-            "
-          >
-            Claim demo now
-            <ArrowRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
+          <img
+            src={carouselImages[currentIndex]}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/45" />
         </motion.div>
+      </AnimatePresence>
+
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white hover:bg-black/50"
+      >
+        <ChevronLeft size={28} />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white hover:bg-black/50"
+      >
+        <ChevronRight size={28} />
+      </button>
+
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        {carouselImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goToSlide(i)}
+            className={`h-2.5 rounded-full transition-all ${
+              currentIndex === i
+                ? "w-8 bg-[#F26418]"
+                : "w-2.5 bg-white/60 hover:bg-white"
+            }`}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-0 z-10 flex items-center">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl text-left text-white"
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm backdrop-blur-sm">
+              <Zap size={16} />
+              Next‑Gen Platform
+            </div>
+
+            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              Elevate Your Civil Infrastructure
+              <br />
+              <span className="text-[#F26418]">with TeraStamp</span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
+              Discover a world of possibilities and unlock the intelligent
+              capabilities that transform infrastructure data into confident
+              decisions.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                to="/contact"
+                className="rounded-xl bg-[#F26418] px-6 py-3.5 font-semibold text-white hover:bg-[#E05A10]"
+              >
+                Request a Demo
+              </Link>
+
+              <Link
+                to="/modules"
+                className="rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-sm hover:bg-white/20"
+              >
+                Explore Features
+              </Link>
+            </div>
+
+            <div className="mt-10 flex gap-8 border-t border-white/20 pt-8">
+              <div>
+                <span className="text-2xl font-bold">Real-time</span>
+                <p className="text-sm text-white/70">Live Data</p>
+              </div>
+              <div>
+                <span className="text-2xl font-bold">4D</span>
+                <p className="text-sm text-white/70">Digital Views</p>
+              </div>
+              <div>
+                <span className="text-2xl font-bold">10x</span>
+                <p className="text-sm text-white/70">Faster Decisions</p>
+              </div>
+            </div>
+
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-const AUTO_ROTATE = true;
-const ROTATE_MS = 5000;
-
+/* ================================================================
+   FEATURE SHOWCASE – Accordion with image/video
+   ================================================================ */
 const features = [
   {
     icon: Radar,
     title: "Explore Instrument Insights",
     description:
-      "Tune into the pulse of your project by opening individual instruments. Dig into real-time data, read alert statuses, and kick off informed decision-making.",
-    image: "/watersav.jpeg",
+      "Access detailed information from every monitoring instrument in one place. Track live measurements, review historical trends, monitor alert conditions, and make faster, data-driven decisions with complete confidence.",
+    image: "/features/instrumentinsight.jpeg",
   },
   {
     icon: MessagesSquare,
-    title: "Collaborate on Alerts",
+    title: "Collaborative Alert Management",
     description:
-      "Enable smooth communication within your team. Comment on specific alerts to keep everyone informed and make collaborative problem-solving possible.",
-    image: "/test2.jpg",
+      "Improve team coordination by discussing alerts directly within the platform. Assign actions, share updates, and ensure every stakeholder stays informed throughout the investigation and resolution process.",
+    image: "/features/collaboration.jpeg",
   },
   {
     icon: LineChart,
-    title: "Dynamic Graph Plotting",
+    title: "Advanced Data Visualization",
     description:
-      "Plot and layer sensor readings on interactive graphs. Compare trends over time, zoom into critical windows, and turn raw data into clear visual stories.",
-    image: "/test3.avif",
+      "Transform complex monitoring data into intuitive, interactive charts. Compare multiple sensors, identify long-term trends, and uncover critical insights that support proactive project management.",
+    image: "/features/dynamicplotting.jpeg",
   },
   {
     icon: SlidersHorizontal,
-    title: "Key Insights with Dynamic Map Filters",
+    title: "Intelligent Map Filtering",
     description:
-      "Easily filter instruments by criteria such as number of readings, alert status, category, and more. Tailor your map view to zero in on the instruments that matter most at any given moment.",
-    image: "/tunnel.jpeg",
+      "Quickly locate the information that matters most using powerful filtering tools. Sort instruments by alert level, monitoring type, project area, or custom criteria for a focused operational view.",
+    image: "/features/keyinsights.jpeg",
   },
 ];
+
+const AUTO_ROTATE = true;
+const ROTATE_MS = 5000;
 
 const FeatureShowcase = () => {
   const [active, setActive] = useState(0);
@@ -216,180 +241,85 @@ const FeatureShowcase = () => {
 
   return (
     <section
-      className="bg-white py-20 overflow-hidden"
+      className="bg-white"
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
-        {/* Left: copy + accordion */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-black md:text-4xl">
-              Visualize, Analyze, and <span style={{ color: colors.accent }}>Decide</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-[#7C8595] leading-relaxed">
-              Unlock the power of your engineering project at a glance. From
-              sensor insights to collaborative alert management and dynamic
-              graph plotting, our Map Section becomes your command center for
-              informed decisions, disaster prevention, and greater
-              efficiency.{" "}
-              <span className="font-semibold text-black">
-                Welcome to the future of infrastructure management.
-              </span>
-            </p>
-          </motion.div>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left: text + accordion */}
+          <div>
+            <motion.div {...fadeUp()}>
+              <h2 className="text-3xl font-bold text-[#1A202C] md:text-4xl">
+                Explore Powerful <span className="text-[#F26418]">Platform Capabilities</span>
+              </h2>
 
-          <div className="mt-8 flex flex-col gap-1.5">
-            {features.map((f, i) => {
-              const Icon = f.icon;
-              const isActive = i === active;
-              return (
-                <button
-                  key={f.title}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  className={`
-                    rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
-                    ${
-                      isActive
-                        ? "border-[#F26418] bg-[#F9FAFB]"
-                        : "border-[#E2E8F0] bg-white hover:bg-[#F9FAFB]"
-                    }
-                  `}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon
-                      size={19}
-                      className={isActive ? "text-[#F26418]" : "text-[#7C8595]"}
-                    />
-                    <span
-                      className={`font-semibold ${
-                        isActive ? "text-black" : "text-[#7C8595]"
-                      }`}
-                    >
-                      {f.title}
-                    </span>
-                  </div>
+              <p className="mt-4 max-w-xl text-[#4A5568] leading-relaxed">
+                Discover the intelligent tools that simplify infrastructure monitoring,
+                improve collaboration, and transform complex project data into actionable
+                insights. From real-time sensor monitoring to advanced visualization and
+                interactive mapping, every feature is designed to help teams make faster,
+                smarter, and more confident decisions throughout the project lifecycle.
 
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.p
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#7C8595]"
-                      >
-                        <span className="block pt-2">{f.description}</span>
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Right: synced preview panel */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[#F9FAFB] lg:aspect-auto lg:h-[460px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.99 }}
-              transition={{ duration: 0.35 }}
-              className="absolute inset-0"
-            >
-              {current.video ? (
-                <video
-                  src={current.video}
-                  poster={current.poster}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="h-full w-full object-cover"
-                  onError={(e) => (e.currentTarget.style.display = "none")}
-                />
-              ) : (
-                <img
-                  src={current.image}
-                  alt={current.title}
-                  className="h-full w-full object-cover"
-                  onError={(e) => (e.currentTarget.style.display = "none")}
-                />
-              )}
+                <span className="block mt-3 font-semibold text-[#1A202C]">
+                  Everything you need to monitor, analyze, and manage your infrastructure
+                  from a single unified platform.
+                </span>
+              </p>
             </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-    </section>
-  );
-};
 
-const features1 = [
-  {
-    icon: Activity,
-    title: "Visualizing Construction Dynamics",
-    description:
-      "Track the movement patterns of your construction with Heat Maps. Select multiple instruments to build a dynamic visual representation that supports proactive decision-making.",
-    image: "/pipelin.jpeg",
-  },
-  {
-    icon: ImageIcon,
-    title: "Real-Time Context with Construction Services",
-    description:
-      "Layer live construction services and site context over your data, so every reading is anchored in what is happening on the ground right now.",
-    image: "/builapar.jpeg",
-  },
-  {
-    icon: Box,
-    title: "Explore your Project in Depth with 3D",
-    description:
-      "Step into immersive 3D views of your project, examining structures and sensor placements from any angle for a complete perspective.",
-    image: "/watersav.jpeg",
-  },
-  {
-    icon: Rocket,
-    title: "Digital Twins Integration",
-    badge: "COMING SOON!",
-    description:
-      "A living, real-time replica of your infrastructure is on its way, linking every instrument into one continuously updated digital twin.",
-    image: "/windmi.jpeg",
-  },
-];
+            <div className="mt-8 flex flex-col gap-1.5">
+              {features.map((f, i) => {
+                const Icon = f.icon;
+                const isActive = i === active;
+                return (
+                  <button
+                    key={f.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`
+                      rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
+                      ${isActive
+                        ? "border-[#F26418] bg-[#F8F9FC]"
+                        : "border-[#E2E8F0] bg-white hover:bg-[#F8F9FC]"
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon
+                        size={19}
+                        className={isActive ? "text-[#F26418]" : "text-[#4A5568]"}
+                      />
+                      <span
+                        className={`font-semibold ${isActive ? "text-[#1A202C]" : "text-[#4A5568]"
+                          }`}
+                      >
+                        {f.title}
+                      </span>
+                    </div>
 
-const ImmersiveExperience = () => {
-  const [active, setActive] = useState(0);
-  const paused = useRef(false);
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#4A5568]"
+                        >
+                          <span className="block pt-2">{f.description}</span>
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-  useEffect(() => {
-    if (!AUTO_ROTATE) return;
-    const id = setInterval(() => {
-      if (!paused.current) setActive((i) => (i + 1) % features1.length);
-    }, ROTATE_MS);
-    return () => clearInterval(id);
-  }, []);
-
-  const current = features1[active];
-
-  return (
-    <section
-      className="bg-white py-20 overflow-hidden"
-      onMouseEnter={() => (paused.current = true)}
-      onMouseLeave={() => (paused.current = false)}
-    >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
-        {/* Media — left on desktop */}
-        <div className="order-2 lg:order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[#F9FAFB] lg:h-[460px] lg:aspect-auto">
+          {/* Right: synced image/video */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-2 border-[#F26418] bg-white lg:aspect-auto lg:h-[460px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -407,14 +337,14 @@ const ImmersiveExperience = () => {
                     loop
                     muted
                     playsInline
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-fill"
                     onError={(e) => (e.currentTarget.style.display = "none")}
                   />
                 ) : (
                   <img
                     src={current.image}
                     alt={current.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-fill"
                     onError={(e) => (e.currentTarget.style.display = "none")}
                   />
                 )}
@@ -422,81 +352,177 @@ const ImmersiveExperience = () => {
             </AnimatePresence>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
 
-        {/* Text + accordion — right */}
-        <div className="order-1 lg:order-2">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-black md:text-4xl">
-              A New Immersive <span style={{ color: colors.accent }}>Experience</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-[#7C8595] leading-relaxed">
-              From dynamic Heat Maps that surface infrastructure movement to
-              immersive 3D views giving a complete perspective and, soon, the
-              game-changing Digital Twins functionality. Gain unmatched
-              insights into your projects, turning infrastructure management
-              into an intuitive and immersive experience.
-            </p>
-          </motion.div>
+/* ================================================================
+   IMMERSIVE EXPERIENCE – Second accordion set (with badge)
+   ================================================================ */
+const features1 = [
+  {
+    icon: Activity,
+    title: "Construction Activity Heat Maps",
+    description:
+      "Visualize construction activity through intelligent heat maps that reveal movement patterns and operational trends. Combine data from multiple instruments to identify high-impact areas and support faster, more informed decision-making.",
+    image: "/features/constructiondynamics.jpeg",
+  },
+  {
+    icon: ImageIcon,
+    title: "Real-Time Context Layers",
+    description:
+      "Enrich your monitoring data with live contextual overlays, including site imagery, project assets, and surrounding infrastructure. Gain a complete understanding of on-site conditions in real time.",
+    image: "/features/contextoverlay.jpeg",
+  },
+  {
+    icon: Box,
+    title: "Interactive 3D Visualization",
+    description:
+      "Explore your infrastructure within a fully interactive 3D environment. Inspect assets, analyze sensor locations, and understand spatial relationships from every perspective for enhanced project awareness.",
+    image: "/features/3dviews.jpeg",
+  },
+  {
+    icon: Rocket,
+    title: "Digital Twin Platform",
 
-          <div className="mt-8 flex flex-col gap-1.5">
-            {features1.map((f, i) => {
-              const Icon = f.icon;
-              const isActive = i === active;
-              return (
-                <button
-                  key={f.title}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  className={`
-                    rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
-                    ${
-                      isActive
-                        ? "border-[#F26418] bg-[#F9FAFB]"
-                        : "border-[#E2E8F0] bg-white hover:bg-[#F9FAFB]"
-                    }
-                  `}
+    description:
+      "Experience the next generation of infrastructure intelligence with a live Digital Twin. Connect monitoring data, project assets, and real-world conditions into a continuously updated virtual representation of your project.",
+    image: "/features/digitaltwins.jpeg",
+  },
+];
+const ImmersiveExperience = () => {
+  const [active, setActive] = useState(0);
+  const paused = useRef(false);
+
+  useEffect(() => {
+    if (!AUTO_ROTATE) return;
+    const id = setInterval(() => {
+      if (!paused.current) setActive((i) => (i + 1) % features1.length);
+    }, ROTATE_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const current = features1[active];
+
+  return (
+    <section
+      className="bg-[#F8F9FC]"
+      onMouseEnter={() => (paused.current = true)}
+      onMouseLeave={() => (paused.current = false)}
+    >
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Media – left on desktop */}
+          <div className="order-2 lg:order-1">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-2 border-[#F26418] bg-white lg:aspect-auto lg:h-[460px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.99 }}
+                  transition={{ duration: 0.35 }}
+                  className="absolute inset-0"
                 >
-                  <div className="flex items-center gap-3">
-                    <Icon
-                      size={19}
-                      className={isActive ? "text-[#F26418]" : "text-[#7C8595]"}
+                  {current.video ? (
+                    <video
+                      src={current.video}
+                      poster={current.poster}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="h-full w-full object-fill"
+                      onError={(e) => (e.currentTarget.style.display = "none")}
                     />
-                    <span
-                      className={`font-semibold ${
-                        isActive ? "text-black" : "text-[#7C8595]"
-                      }`}
-                    >
-                      {f.title}
-                    </span>
-                    {f.badge && (
-                      <span className="ml-auto whitespace-nowrap rounded-md bg-[#F26418] px-2 py-1 text-[11px] font-semibold text-white">
-                        {f.badge}
-                      </span>
-                    )}
-                  </div>
+                  ) : (
+                    <img
+                      src={current.image}
+                      alt={current.title}
+                      className="h-full w-full object-fill"
+                      onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
 
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.p
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#7C8595]"
+          {/* Right: text + accordion */}
+          <div className="order-1 lg:order-2">
+            <motion.div {...fadeUp()}>
+              <h2 className="text-3xl font-bold text-[#1A202C] md:text-4xl">
+                Experience Infrastructure in <span className="text-[#F26418]">a Whole New Dimension</span>
+              </h2>
+
+              <p className="mt-4 max-w-xl text-[#4A5568] leading-relaxed">
+                Go beyond traditional monitoring with immersive visualization tools designed
+                for modern infrastructure projects. From intelligent construction heat maps
+                and real-time context layers to interactive 3D environments and the upcoming
+                Digital Twin platform, every capability provides deeper insights, enhanced
+                situational awareness, and greater confidence in every decision.
+
+                <span className="block mt-3 font-semibold text-[#1A202C]">
+                  See more, understand faster, and manage your infrastructure with complete
+                  clarity.
+                </span>
+              </p>
+            </motion.div>
+
+            <div className="mt-8 flex flex-col gap-1.5">
+              {features1.map((f, i) => {
+                const Icon = f.icon;
+                const isActive = i === active;
+                return (
+                  <button
+                    key={f.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`
+                      rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
+                      ${isActive
+                        ? "border-[#F26418] bg-white"
+                        : "border-[#E2E8F0] bg-white hover:bg-[#F8F9FC]"
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon
+                        size={19}
+                        className={isActive ? "text-[#F26418]" : "text-[#4A5568]"}
+                      />
+                      <span
+                        className={`font-semibold ${isActive ? "text-[#1A202C]" : "text-[#4A5568]"
+                          }`}
                       >
-                        <span className="block pt-2">{f.description}</span>
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </button>
-              );
-            })}
+                        {f.title}
+                      </span>
+                      {f.badge && (
+                        <span className="ml-auto whitespace-nowrap rounded-md bg-[#F26418] px-2 py-1 text-[11px] font-semibold text-white">
+                          {f.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#4A5568]"
+                        >
+                          <span className="block pt-2">{f.description}</span>
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -504,12 +530,206 @@ const ImmersiveExperience = () => {
   );
 };
 
+
+/* ================================================================
+   PLATFORM CAPABILITIES – Updated with your data from screenshots
+   ================================================================ */
+const platformFeatures = [
+  {
+    icon: BarChart3,
+    title: "Customisable Reporting & Visualisation",
+    description:
+      "Users can create tailored reports and dashboards that fit the specific needs of the project underway.",
+    image: "/features/reporting.jpeg",
+  },
+  {
+    icon: Database,
+    title: "Automated Data Integration",
+    description:
+      "The platform automatically collects, processes data, and reduces manual work.",
+    image: "/features/dataintegration.jpeg",
+  },
+  {
+    icon: Shield,
+    title: "Proactive Decision-Making",
+    description:
+      "TeraStamp delivers real-time data from various instruments directly to project teams, reducing potential risks.",
+    image: "/features/decisionmaking.jpeg",
+  },
+  {
+    icon: Users,
+    title: "User-Specific Interfaces",
+    description:
+      "Exclusive users can access tailored dashboards and interfaces that highlight the information most relevant to their role.",
+    image: "/features/specificinterfaces.jpeg",
+  },
+];
+
+
+
+
+const PlatformCapabilities = () => {
+  const [active, setActive] = useState(0);
+  const paused = useRef(false);
+
+  useEffect(() => {
+    if (!AUTO_ROTATE) return;
+    const id = setInterval(() => {
+      if (!paused.current) setActive((i) => (i + 1) % platformFeatures.length);
+    }, ROTATE_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const current = platformFeatures[active];
+
+  return (
+    <section
+      className="bg-white"
+      onMouseEnter={() => (paused.current = true)}
+      onMouseLeave={() => (paused.current = false)}
+    >
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left: text + accordion */}
+          <div>
+            <motion.div {...fadeUp()}>
+              <h2 className="text-3xl font-bold text-[#1A202C] md:text-4xl">
+                Empower Every Decision with <span className="text-[#F26418]">Intelligent Data Management</span>
+              </h2>
+
+              <p className="mt-4 max-w-xl text-[#4A5568] leading-relaxed">
+                Unlock the full potential of your infrastructure data with powerful
+                reporting, seamless integrations, and personalized dashboards. TeraStamp
+                automatically consolidates information from multiple sources, transforms it
+                into actionable insights, and delivers the right data to the right people
+                at the right time.
+
+                <span className="block mt-3 font-semibold text-[#1A202C]">
+                  Streamline workflows, improve collaboration, and make faster, more
+                  confident decisions with a unified infrastructure intelligence platform.
+                </span>
+              </p>
+            </motion.div>
+
+            <div className="mt-8 flex flex-col gap-1.5">
+              {platformFeatures.map((f, i) => {
+                const Icon = f.icon;
+                const isActive = i === active;
+                return (
+                  <button
+                    key={f.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`
+                      rounded-2xl border-2 px-4 py-3.5 text-left transition-all duration-300
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F26418]/50
+                      ${isActive
+                        ? "border-[#F26418] bg-[#F8F9FC]"
+                        : "border-[#E2E8F0] bg-white hover:bg-[#F8F9FC]"
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon
+                        size={19}
+                        className={isActive ? "text-[#F26418]" : "text-[#4A5568]"}
+                      />
+                      <span
+                        className={`font-semibold ${isActive ? "text-[#1A202C]" : "text-[#4A5568]"
+                          }`}
+                      >
+                        {f.title}
+                      </span>
+                    </div>
+
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden pl-[30px] text-sm leading-relaxed text-[#4A5568]"
+                        >
+                          <span className="block pt-2">{f.description}</span>
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right: synced image */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-2 border-[#F26418] bg-white lg:aspect-auto lg:h-[460px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.99 }}
+                transition={{ duration: 0.35 }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="h-full w-full object-fill"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ================================================================
+   CTA BANNER
+   ================================================================ */
+const CtaBanner = () => {
+  return (
+    <section>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        <div className="relative overflow-hidden rounded-[40px] bg-gradient-to-br from-[#F26418] to-[#E05A10]">
+          <div className="flex flex-col items-center px-6 py-20 text-center text-white sm:px-10 md:py-24">
+            <h2 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+              Ready to transform your
+              <br className="hidden sm:block" />
+              <span>infrastructure management?</span>
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-base opacity-90 sm:text-lg">
+              Get a personalized demo and see how TeraStamp can elevate your projects.
+            </p>
+
+            <Link
+              to="/contact"
+              className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-base font-semibold text-[#F26418] transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              Schedule a demo
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
 const Features = () => {
   return (
-    <div>
+    <div className="bg-white overflow-hidden">
       <Hero />
       <FeatureShowcase />
       <ImmersiveExperience />
+      <PlatformCapabilities />
+      <CtaBanner />
+
     </div>
   );
 };

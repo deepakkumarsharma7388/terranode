@@ -18,31 +18,31 @@ const colors = {
 
 const successStories = [
   {
-    title: "Real-time monitoring for the LA Purple Line Extension (Section 2)",
+    title: "LA Purple Line Extension (Section 2)",
     description:
       "Supported the Purple Line 2 project in Los Angeles by providing digital monitoring and data management solutions that improved project visibility, reporting, and decision-making.",
-    image: "/purpleline.jpeg",
+    image: "/la-purple-line-section2.jpg",
     link: "/use-cases/purplelinesection2",
   },
   {
     title: "Purple Line 3 Stations, Los Angeles",
     description:
       "Provided digital monitoring and reporting solutions that enhanced project visibility, data accessibility, and decision-making throughout the construction of the Purple Line 3 Stations project.",
-    image: "/purpleline3statio.jpeg",
+    image: "/la-purple-line-3-stations.jpg",
     link: "/use-cases/purpleline3station",
   },
   {
     title: "VTA's BART Phase II – CP2 EWP 3C",
     description:
       "Delivered digital monitoring and reporting solutions for the VTA BART Phase II CP2 EWP 3C project, improving project visibility and operational efficiency.",
-    image: "/VT.jpeg",
+    image: "/vta-bart-phase2-cp2.jpg",
     link: "/use-cases/vtaBartPhase2",
   },
   {
     title: "Purple Line 3 Tunnels",
     description:
       "Provided digital monitoring and reporting solutions for the Purple Line 3 Tunnels project, improving project visibility and efficiency.",
-    image: "/purpleline3tunnel.jpeg",
+    image: "/la-purple-line-3-tunnels.jpg",
     link: "/use-cases/purpleline3tunnels",
   },
 ];

@@ -15,12 +15,12 @@ import {
 /* ------------------------------------------------------------------ */
 const successStories = [
   {
-    title: "Real-time monitoring for the LA Purple Line Extension (Section 2)",
+    title: "LA Purple Line Extension (Section 2)",
     category: "Transportation Infrastructure",
     location: "Los Angeles, California, USA",
     description:
       "Supported the Purple Line 2 project in Los Angeles by providing digital monitoring and data management solutions that improved project visibility, reporting, and decision-making.",
-    image: "/purpleline.jpeg",
+    image: "/la-purple-line-section2.jpg",
     link: "/use-cases/purplelinesection2",
   },
   {
@@ -29,7 +29,7 @@ const successStories = [
     location: "Los Angeles, California, USA",
     description:
       "Enhanced the Purple Line 3 Stations project with real-time monitoring, centralized data management, and streamlined reporting solutions.",
-    image: "/purpleline3statio.jpeg",
+    image: "/la-purple-line-3-stations.jpg",
     link: "/use-cases/purpleline3station",
   },
   {
@@ -38,7 +38,7 @@ const successStories = [
     location: "San Jose, California, USA",
     description:
       "Delivered digital monitoring and reporting solutions for the VTA BART Phase II CP2 EWP 3C project, improving project visibility and operational efficiency.",
-    image: "/VT.jpeg",
+    image: "/vta-bart-phase2-cp2.jpg",
     link: "/use-cases/vtaBartPhase2",
   },
   {
@@ -47,7 +47,7 @@ const successStories = [
     location: "Los Angeles, California, USA",
     description:
       "This case study looks at how TeraStamp supports one of the world's most ambitious infrastructure programs through integrated monitoring.",
-    image: "/purpleline3tunnel.jpeg",
+    image: "/la-purple-line-3-tunnels.jpg",
     link: "/use-cases/purpleline3tunnels",
   },
 ];
@@ -297,8 +297,8 @@ const PurpleLine3Stations = () => {
           {...rise(0)}
           className="text-4xl font-extrabold leading-[1.05] tracking-tight text-[#32353A] sm:text-5xl md:text-6xl"
         >
-          Digital intelligence for the LA{" "}
-          <span className="text-[#F26418]">Purple Line 3 Stations</span>
+           LA Purple Line 3{" "}
+          <span className="text-[#F26418]"> Stations</span>
         </motion.h1>
 
         <motion.p
@@ -315,7 +315,7 @@ const PurpleLine3Stations = () => {
           className="mt-9 aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br from-[#F5F6F7] to-[#E2E5E9]"
         >
           <img
-            src="/purpleline3statio.jpeg"
+            src="/la-purple-line-3-stations.jpg"
             alt="LA Metro Purple Line 3 underground station construction"
             className="h-full w-full object-cover"
             onError={(e) => (e.currentTarget.style.display = "none")}
@@ -375,7 +375,7 @@ const PurpleLine3Stations = () => {
 
       {/* ===== The challenge ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
-        <SectionTitle>The challenge</SectionTitle>
+        <SectionTitle>The Challenge</SectionTitle>
         <div className="mt-6 space-y-5 text-base leading-relaxed text-[#5C636E] md:text-lg">
           <motion.p {...rise(1)}>
             Building deep underground stations required continuous monitoring and

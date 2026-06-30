@@ -19,23 +19,23 @@ const colors = {
 const AdvancedModules = () => {
   const modules = [
     {
-      title: "Digital Twin",
+      title: "Spatial Digital Twin",
       link: "/modules/digital-twin",
-      video: "/herovideo.mp4",
+      video: "/terastamp-dam-monitoring.mp4",
       poster: "/images/modules/digital-twin.png",
       placeholder: "from-[#e8e0d0] to-[#c0c8d0]",
       description:
-        "Work with your data inside a 3D spatial environment. The Digital Twin pulls together sensors, GIS, and BIM to give a clear view of infrastructure conditions. Review data in context, compare behavior over time, and support technical analysis.",
+        "Interact with your data within an immersive 3D spatial context. The Digital Twin integrates sensor data, GIS, and BIM to provide a comprehensive view of infrastructure health. Analyze trends, compare performance over time, and facilitate technical evaluations.",
     },
     {
-      title: "Ada: Our AI Assistant",
-      link: "/modules/ada",
-      video: "/herovideo.mp4",
-      poster: "/images/modules/ada.png",
-      placeholder: "from-[#d0d8c0] to-[#b0b8a0]",
-      description:
-        "Engage with your project data using natural language. Ada links into your TeraStamp environment to reach real-time and historical data, analyze it, and give clear answers to your questions.",
-    },
+  title: "GEO: AI-Powered Assistant",
+  link: "/modules/ada",
+  video: "/terastamp-tsf-ai-assistant.mp4",
+  poster: "/images/modules/geo.png",
+  placeholder: "from-[#d0d8c0] to-[#b0b8a0]",
+  description:
+    "Meet GEO, TeraStamp's intelligent AI assistant built for infrastructure monitoring. Ask questions in natural language, explore live and historical project data, uncover patterns, generate insights, and receive instant, context-aware answers to support smarter engineering decisions.",
+},
   ];
 
   return (
@@ -49,12 +49,12 @@ const AdvancedModules = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-black md:text-5xl">
-            TeraStamp Advanced <span style={{ color: colors.accent }}>Modules</span>
+            Explore TeraStamp’s <span style={{ color: colors.accent }}>Advanced Modules</span>
           </h2>
           <p className="mt-4 max-w-2xl text-[#7C8595] text-lg">
-            Add targeted capabilities to your TeraStamp setup. These modules
-            help you visualize data more effectively and draw out insights for
-            analysis and decision-making.
+            Extend your TeraStamp environment with purpose‑built modules that
+            enhance data visualization and accelerate insight extraction for
+            better analysis and decision‑making.
           </p>
         </motion.div>
 
@@ -126,17 +126,17 @@ const CTAsection = () => {
         {/* Left Content Column – all white text */}
         <div className="flex flex-col max-w-md z-10 text-white">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Discover the "New" New with TeraStamp
+            Experience the Future with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
-            Start building faster today
+            Start building smarter and faster today
           </p>
           <div>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white text-[#F26418] font-semibold px-6 py-3.5 rounded-xl shadow-sm hover:bg-gray-50 transition-all duration-200 group"
             >
-              Claim demo now
+              Request a demo
               <svg
                 className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -153,7 +153,7 @@ const CTAsection = () => {
         {/* Right Dashboard/Map Graphic Column – natural image, no filters */}
         <div className="relative w-full md:w-[55%] h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/20 self-end">
           <img
-            src="/test1.webp"
+            src="/la-purple-line-section2.jpg"
             alt="TeraStamp 3D Map Interface"
             className="w-full h-full object-cover"
           />
