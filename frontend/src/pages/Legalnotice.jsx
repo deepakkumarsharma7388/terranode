@@ -1,5 +1,61 @@
-import { Shield, Scale, Lock, Globe, AlertTriangle, FileText, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Shield,
+  Scale,
+  Lock,
+  Globe,
+  AlertTriangle,
+  FileText,
+  Mail,
+  ArrowRight,
+} from "lucide-react";
 
+/* ---------- Color Palette ---------- */
+const colors = {
+  accent: "#F26418",
+  white: "#FFFFFF",
+  text: "#7C8595",
+  heading: "#000000",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  cardBg: "#F9FAFB",
+  cardHover: "#F1F3F5",
+};
+
+/* ------------------------------------------------------------------ */
+/*  Reusable scroll-in animation                                      */
+/* ------------------------------------------------------------------ */
+const rise = (i = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-10%" },
+  transition: { duration: 0.55, delay: i * 0.08 },
+});
+
+const highlightLastWord = (text) => {
+  const words = text.split(" ");
+  const last = words.pop();
+  return (
+    <>
+      {words.join(" ")} <span style={{ color: colors.accent }}>{last}</span>
+    </>
+  );
+};
+
+const SectionTitle = ({ children }) => {
+  return (
+    <motion.h2
+      {...rise(0)}
+      className="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl"
+    >
+      {typeof children === "string" ? highlightLastWord(children) : children}
+    </motion.h2>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  Main Legal Notice Page                                            */
+/* ------------------------------------------------------------------ */
 const LegalNoticePage = () => {
   const sections = [
     {
@@ -110,41 +166,51 @@ const LegalNoticePage = () => {
   ];
 
   return (
-    <section className="bg-[#151622] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-        {/* Header */}
-        <div className="max-w-4xl">
-          <span className="inline-flex rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-sm font-medium text-indigo-300">
-            Legal Information
+    <main className="bg-white">
+      {/* ===== Hero ===== */}
+      <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 md:pt-20">
+        <motion.span
+          {...rise(0)}
+          className="inline-flex rounded-full border border-[#F26418]/30 bg-[#F26418]/10 px-4 py-2 text-sm font-medium text-[#F26418]"
+        >
+          Legal Information
+        </motion.span>
+
+        <motion.h1
+          {...rise(1)}
+          className="mt-6 text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl"
+        >
+          Legal Notice &amp;
+          <span style={{ color: colors.accent }} className="block">
+            Website Terms of Use
           </span>
+        </motion.h1>
 
-          <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Legal Notice &
-            <span className="block text-indigo-400">
-              Website Terms of Use
-            </span>
-          </h1>
+        <motion.p
+          {...rise(2)}
+          className="mt-6 max-w-3xl text-lg leading-relaxed text-[#7C8595] md:text-xl"
+        >
+          This page outlines the terms, responsibilities, rights, and
+          conditions governing access to and use of the TeraStamp website and
+          its associated digital services.
+        </motion.p>
+      </section>
 
-          <p className="mt-6 text-lg leading-relaxed text-gray-400 md:text-xl">
-            This page outlines the terms, responsibilities, rights, and
-            conditions governing access to and use of the TeraStamp website and
-            its associated digital services.
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="mt-16 space-y-8">
+      {/* ===== Sections ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <div className="space-y-6">
           {sections.map((section, index) => (
-            <div
+            <motion.div
               key={index}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8"
+              {...rise(index + 1)}
+              className="rounded-2xl border-2 border-[#F26418] bg-white p-6 transition-all hover:shadow-md md:p-8"
             >
               <div className="mb-5 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F26418]/10 text-[#F26418]">
                   {section.icon}
                 </div>
 
-                <h2 className="text-xl font-bold md:text-2xl">
+                <h2 className="text-xl font-bold text-black md:text-2xl">
                   {section.title}
                 </h2>
               </div>
@@ -153,39 +219,50 @@ const LegalNoticePage = () => {
                 {section.content.map((item, idx) => (
                   <li
                     key={idx}
-                    className="flex gap-3 text-base leading-relaxed text-gray-300"
+                    className="flex gap-3 text-base leading-relaxed text-[#7C8595]"
                   >
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-indigo-400" />
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#F26418]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
+      </section>
 
-        {/* Contact Section */}
-        <div className="mt-16 rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-8 md:p-10">
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Contact Our Team
-          </h2>
-
-          <p className="mt-4 max-w-3xl text-gray-300">
-            If you have questions regarding these terms, privacy practices,
-            intellectual property matters, or website usage policies, our team
-            will be happy to assist you.
-          </p>
-
-          <a
-            href="mailto:legal@terastamp.com"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-500"
-          >
-            <Mail className="h-5 w-5" />
-            legal@terastamp.com
-          </a>
-        </div>
-      </div>
-    </section>
+      {/* ===== Contact Section ===== */}
+      <section className="mx-auto mt-16 max-w-4xl px-4 sm:px-6 pb-20">
+        <motion.div
+          {...rise(0)}
+          className="rounded-3xl border-2 border-[#F26418] bg-white p-8 md:p-10"
+        >
+          <div className="flex items-start gap-4">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#F26418]/10 text-[#F26418]">
+              <Mail className="h-7 w-7" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-black md:text-3xl">
+                Contact Our Team
+              </h2>
+              <p className="mt-3 text-[#7C8595]">
+                If you have questions regarding these terms, privacy practices,
+                intellectual property matters, or website usage policies, our
+                team will be happy to assist you.
+              </p>
+              <a
+                href="mailto:legal@terastamp.com"
+                className="group mt-5 inline-flex items-center gap-2 rounded-xl bg-[#F26418] px-6 py-3 font-semibold text-white transition-all hover:bg-[#D9550F] hover:shadow-lg"
+              >
+                <Mail className="h-5 w-5" />
+                legal@terastamp.com
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+    </main>
   );
 };
 

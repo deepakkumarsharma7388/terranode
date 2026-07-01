@@ -23,8 +23,8 @@ import Bridges from './pages/applications/Bridges.jsx'
 
 
 
-import BlogPostGeotechnical from './blog/proqio-joins-aetos.jsx'
-import BlogPostDesignChallenges from './blog/tunnel-design-challenges.jsx'
+import BlogPostGeotechnical from './blog/terastamp-joins-aetos.jsx'
+
 import Transportation from './pages/applications/Transportation.jsx'
 import Construction from './pages/applications/Construction.jsx'
 import EnergyInfrastructure from './pages/applications/Energy.jsx'
@@ -39,6 +39,15 @@ import PurpleLineSection2 from './use-cases/purplelinesection2.jsx'
 import PurpleLine3Stations from './use-cases/PurpleLine3Stations.jsx'
 import PurpleLine3Tunnels from './use-cases/PurpleLine3Tunnels.jsx'
 import VtaBartPhase2 from './use-cases/VtaBartPhase2.jsx'
+import TunnelMonitoringBlog from './blog/tunnel-monitoring-made-simple.jsx'
+import DigitalTransformationBlog from './blog/digital-transformation-construction.jsx'
+import HelpCenter from './pages/Helpcenter.jsx'
+import JoinUs from './pages/joinus.jsx'
+import PrivacyPolicyPage from './pages/Privacypolicy.jsx'
+import TermsOfUsePage from './pages/Termsofuses.jsx'
+import CookiePolicyPage from './pages/Cookies.jsx'
+import CopyrightPolicyPage from './pages/Copyright.jsx'
+import AccessibilityPage from './pages/Accessibility.jsx'
 
 
 
@@ -77,20 +86,25 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/tunnel-design-challenges" element={<BlogPostDesignChallenges/>} />
-            <Route path="/blog/data-science-in-construction" element={<Blog />} />
-            <Route path="/blog/digital-transformation-construction" element={<Blog />} />
-            <Route path="/blog/proqio-joins-aetos" element={<BlogPostGeotechnical/>} />
+            
+            <Route path="/blog/digital-transformation-construction" element={<DigitalTransformationBlog/>} />
+            <Route path="/blog/tunnel-monitoring-made-simple" element={<TunnelMonitoringBlog/>} />
+            <Route path="/blog/digitalmonitoring" element={<BlogPostGeotechnical/>} />
             <Route path="/contact" element={<Contact />} />
            
             <Route path="/modules/digital-twin" element={<DigitalTwin />} />
             <Route path="/modules/ada" element={<OurAIAssistant />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/Helpcenter" element={<HelpCenter/>} />
+            <Route path="/joinus" element={<JoinUs/>} />
              <Route path="/newsletter" element={<NewsletterSection/>} />
              <Route path="/legal-notice" element={<LegalNoticePage/>} />
-         
-              
+             <Route path="/privacy-policy" element={<PrivacyPolicyPage/>} />
+             <Route path="/terms" element={<TermsOfUsePage/>} />
+              <Route path="/cookies" element={<CookiePolicyPage/>}/>
+              <Route path="/copyright" element={<CopyrightPolicyPage/>}/>
+              <Route path="/accessibility" element={<AccessibilityPage/>}/>
           </Routes>
         </main>
         <Footer />

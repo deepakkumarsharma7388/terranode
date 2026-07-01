@@ -11,9 +11,8 @@ const CATEGORIES = [
   "Infrastructure",
   "Construction",
   "Data Science",
-  "Smart cities",
   "Mining",
-  "Integration",
+  
 ];
 
 /* ------------------------------------------------------------------ */
@@ -23,128 +22,43 @@ const CATEGORIES = [
 const posts = [
   {
     id: "aetos",
-    title: "TeraStamp Joins AETOS: Driving Innovation in Underground Construction",
+    title: "Digital Monitoring in Metro Construction: Lessons from Large Infrastructure Projects is project ",
     tags: "Infrastructure",
     date: "8 Oct 2025",
-    image: "/builapar.jpeg",
+    image: "/blogimage/digitalmonotoring.jpg",
     accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Infrastructure"],
-    link: "/blog/proqio-joins-aetos",
+    link: "/blog/digitalmonitoring",
   },
-  {
-    id: "design-challenges",
-    title: "Top 5 Design Challenges in Tunnel Projects",
-    tags: "Infrastructure",
-    date: "1 Oct 2025",
-    image: "/tunnel.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Infrastructure"],
-    link: "/blog/tunnel-design-challenges",
-  },
+
   {
     id: "tunnel-monitoring",
     title:
       "Simplified Tunnel Monitoring: Benefits of Using TeraStamp in Conventional and Mechanized Excavations",
     tags: "Infrastructure",
     date: "24 Jul 2025",
-    image: "building.jpeg",
+    image: "/blogimage/simplifiedtunnel.jpg",
     accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Infrastructure", "Construction"],
     link: "/blog/tunnel-monitoring-made-simple",
   },
-  {
-    id: "data-science-role",
-    title: "Data Science's Crucial Role in Modern Construction | TeraStamp",
-    tags: "Data Science , Construction",
-    date: "2 Jan 2024",
-    image: "/pipelin.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Construction", "Data Science"],
-    link: "/blog/data-science-in-construction",
-  },
-  {
-    id: "data-driven-infra",
-    title:
-      "Building Tomorrow: Leveraging Data-Driven Infrastructure in Construction | TeraStamp",
-    tags: "Data-Driven Infrastructures , Construction",
-    date: "1 Jan 2024",
-    image: "/road.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Construction"],
-    link: "/blog/data-driven-infrastructure",
-  },
+ 
   {
     id: "digital-transformation",
     title: "Digital Transformation in Construction: TeraStamp's Data Intelligence Revolution",
     tags: "Infrastructure Data Intelligence , Construction",
     date: "3 Jan 2024",
-    image: "/watersav.jpeg",
+    image: "/blogimage/digitaltransformation.jpg",
     accent: "from-[#F26418] to-[#D9550F]",
     categories: ["Construction"],
     link: "/blog/digital-transformation-construction",
   },
-  {
-    id: "critical-role",
-    title:
-      "The Critical Role of Infrastructure Data in Tunnels, Dams, and Metro Projects",
-    tags: "Smart Construction , Data Science",
-    date: "3 Jan 2024",
-    image: "/dam.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Data Science"],
-    link: "/blog/critical-role-infrastructure-data",
-  },
-  {
-    id: "smart-cities",
-    title: "Transforming Smart Cities: The Impact of Infrastructure Data on Urban Evolution",
-    tags: "Smart Cities , Infrastructure Data",
-    date: "3 Jan 2024",
-    image: "/cit.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Smart cities"],
-    link: "/blog/transforming-smart-cities",
-  },
-  {
-    id: "mining",
-    title:
-      "TeraStamp Data Intelligence: Enhancing Safety and Efficiency in Mining & Tailings Operations",
-    tags: "Mining",
-    date: "3 Apr 2024",
-    image: "/mine.jpeg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Mining"],
-    link: "/blog/mining-tailings-operations",
-  },
-  {
-    id: "deltaiot",
-    title: "TeraStamp Partners with DeltaIoT to Expand GNSS Monitoring Capabilities",
-    tags: "Integration",
-    date: "12 Aug 2025",
-    image: "/test3.avif",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Integration"],
-    link: "/blog/proqio-deltaiot-integration",
-  },
-  {
-    id: "campbell",
-    title: "TeraStamp Integrates Campbell Scientific's Monitoring Technology",
-    tags: "Integration",
-    date: "17 Jun 2025",
-    image: "/test2.jpg",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Integration"],
-    link: "/blog/proqio-campbell-scientific",
-  },
-  {
-    id: "osprey",
-    title: "TeraStamp Integrates Osprey Measurement Systems",
-    tags: "Integration",
-    date: "27 May 2025",
-    image: "/test3.avif",
-    accent: "from-[#F26418] to-[#D9550F]",
-    categories: ["Integration"],
-    link: "/blog/proqio-osprey-measurement",
-  },
+
+ 
+  
+
+
+
 ];
 
 /* ------------------------------------------------------------------ */

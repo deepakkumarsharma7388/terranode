@@ -17,33 +17,49 @@ const colors = {
 /* ------------------------------------------------------------------ */
 /*  Article meta + tags                                                */
 /* ------------------------------------------------------------------ */
-const TAGS = ["Tunnels", "AETOS", "Monitoring"];
+const TAGS = ["Metro Construction", "Digital Monitoring", "Infrastructure"];
 
-// This article lives in the blog list (id "aetos"); exclude it + find related.
-const CURRENT_LINK = "/blog/proqio-joins-aetos";
+// This article's link; we'll pick recommendations based on its categories.
+const CURRENT_LINK = "/blog/terastamp-joins-aetos";
 const CURRENT_CATEGORIES = ["Infrastructure"];
 
 /* ------------------------------------------------------------------ */
-/*  The blog list (same source as the /blog grid). Suggestions are     */
-/*  ONLY ever picked from here, so nothing shows up that isn't on the  */
-/*  blog page itself.                                                  */
+/*  The blog list – now exactly the three posts from BlogResources    */
 /* ------------------------------------------------------------------ */
 const BLOG_POSTS = [
-  { id: "aetos", title: "TeraStamp Joins AETOS: Driving Innovation in Underground Construction", tags: "Infrastructure", date: "8 Oct 2025", image: "/test1.webp", accent: "from-[#4b4bd6] to-[#2a2a6e]", categories: ["Infrastructure"], link: "/blog/proqio-joins-aetos" },
-  { id: "design-challenges", title: "Top 5 Design Challenges in Tunnel Projects", tags: "Infrastructure", date: "1 Oct 2025", image: "/test2.jpg", accent: "from-[#3f57b8] to-[#1f2a55]", categories: ["Infrastructure"], link: "/blog/tunnel-design-challenges" },
-  { id: "tunnel-monitoring", title: "Simplified Tunnel Monitoring: Benefits of Using TeraStamp in Conventional and Mechanized Excavations", tags: "Infrastructure", date: "24 Jul 2025", image: "/test3.avif", accent: "from-[#5151e6] to-[#2c2c8a]", categories: ["Infrastructure", "Construction"], link: "/blog/tunnel-monitoring-made-simple" },
-  { id: "data-science-role", title: "Data Science's Crucial Role in Modern Construction | TeraStamp", tags: "Data Science , Construction", date: "2 Jan 2024", image: "/test2.jpg", accent: "from-[#123040] to-[#0a1820]", categories: ["Construction", "Data Science"], link: "/blog/data-science-in-construction" },
-  { id: "data-driven-infra", title: "Building Tomorrow: Leveraging Data-Driven Infrastructure in Construction | TeraStamp", tags: "Data-Driven Infrastructures , Construction", date: "1 Jan 2024", image: "/test3.avif", accent: "from-[#1a2a4a] to-[#0c1428]", categories: ["Construction"], link: "/blog/data-driven-infrastructure" },
-  { id: "digital-transformation", title: "Digital Transformation in Construction: TeraStamp's Data Intelligence Revolution", tags: "Infrastructure Data Intelligence , Construction", date: "3 Jan 2024", image: "/test1.webp", accent: "from-[#2a2a32] to-[#15151a]", categories: ["Construction"], link: "/blog/digital-transformation-construction" },
-  { id: "critical-role", title: "The Critical Role of Infrastructure Data in Tunnels, Dams, and Metro Projects", tags: "Smart Construction , Data Science", date: "3 Jan 2024", image: "/test2.jpg", accent: "from-[#3a2418] to-[#1a120c]", categories: ["Data Science"], link: "/blog/critical-role-infrastructure-data" },
-  { id: "smart-cities", title: "Transforming Smart Cities: The Impact of Infrastructure Data on Urban Evolution", tags: "Smart Cities , Infrastructure Data", date: "3 Jan 2024", image: "/test3.avif", accent: "from-[#0c3a35] to-[#06201d]", categories: ["Smart cities"], link: "/blog/transforming-smart-cities" },
-  { id: "mining", title: "TeraStamp Data Intelligence: Enhancing Safety and Efficiency in Mining & Tailings Operations", tags: "Mining", date: "3 Apr 2024", image: "/test1.webp", accent: "from-[#3a4a2a] to-[#1c2415]", categories: ["Mining"], link: "/blog/mining-tailings-operations" },
-  { id: "deltaiot", title: "TeraStamp Partners with DeltaIoT to Expand GNSS Monitoring Capabilities", tags: "Integration", date: "12 Aug 2025", image: "/test3.avif", accent: "from-[#5151e6] to-[#2c2c8a]", categories: ["Integration"], link: "/blog/proqio-deltaiot-integration" },
-  { id: "campbell", title: "TeraStamp Integrates Campbell Scientific's Monitoring Technology", tags: "Integration", date: "17 Jun 2025", image: "/test2.jpg", accent: "from-[#4b4bd6] to-[#2a2a6e]", categories: ["Integration"], link: "/blog/proqio-campbell-scientific" },
-  { id: "osprey", title: "TeraStamp Integrates Osprey Measurement Systems", tags: "Integration", date: "27 May 2025", image: "/test3.avif", accent: "from-[#3f57b8] to-[#1f2a55]", categories: ["Integration"], link: "/blog/proqio-osprey-measurement" },
+  {
+    id: "aetos",
+    title: "Digital Monitoring in Metro Construction: Lessons from Large Infrastructure Projects",
+    tags: "Infrastructure",
+    date: "8 Oct 2025",
+    image: "/blogimage/digitalmonotoring.jpg",
+    accent: "from-[#F26418] to-[#D9550F]",
+    categories: ["Infrastructure"],
+    link: "/blog/digitalmonitoring",
+  },
+  {
+    id: "tunnel-monitoring",
+    title: "Simplified Tunnel Monitoring: Benefits of Using TeraStamp in Conventional and Mechanized Excavations",
+    tags: "Infrastructure",
+    date: "24 Jul 2025",
+    image: "/blogimage/simplifiedtunnel.jpg",
+    accent: "from-[#F26418] to-[#D9550F]",
+    categories: ["Infrastructure", "Construction"],
+    link: "/blog/tunnel-monitoring-made-simple",
+  },
+  {
+    id: "digital-transformation",
+    title: "Digital Transformation in Construction: TeraStamp's Data Intelligence Revolution",
+    tags: "Infrastructure Data Intelligence , Construction",
+    date: "3 Jan 2024",
+    image: "/blogimage/digitaltransformation.jpg",
+    accent: "from-[#F26418] to-[#D9550F]",
+    categories: ["Construction"],
+    link: "/blog/digital-transformation-construction",
+  },
 ];
 
-// Pick related posts first (shared category), then top up to `count` from the rest.
+// Pick related posts (share a category) then top up to 3
 const getRecommended = (currentLink, currentCategories, count = 3) => {
   const pool = BLOG_POSTS.filter((p) => p.link !== currentLink);
   const related = pool.filter((p) =>
@@ -82,7 +98,6 @@ const highlightLastWord = (text) => {
 /*  Small building blocks                                              */
 /* ------------------------------------------------------------------ */
 const SectionTitle = ({ children }) => {
-  // We'll apply highlightLastWord inside the component
   return (
     <motion.h2
       {...rise(0)}
@@ -102,7 +117,6 @@ const Hl = ({ children }) => (
 /*  Recommended card — light theme, orange border                     */
 /* ------------------------------------------------------------------ */
 const RecommendedCard = ({ post }) => {
-  // Extract the last word of the title to highlight later
   const titleWords = post.title.split(" ");
   const lastWord = titleWords.pop();
   const titleRest = titleWords.join(" ");
@@ -112,7 +126,6 @@ const RecommendedCard = ({ post }) => {
       to={post.link}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#F26418] hover:bg-[#F9FAFB] hover:shadow-lg"
     >
-      {/* Image */}
       <div
         className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent}`}
       >
@@ -125,7 +138,6 @@ const RecommendedCard = ({ post }) => {
         />
       </div>
 
-      {/* Body */}
       <div className="relative z-10 flex flex-1 flex-col px-1 pt-5">
         <span className="text-sm text-[#7C8595]">{post.tags}</span>
         <h3 className="mt-2 text-lg font-bold leading-snug text-black transition-colors duration-300 group-hover:text-[#F26418]">
@@ -151,7 +163,6 @@ const CtaBanner = () => (
     {...rise(0)}
     className="relative flex flex-col items-center justify-between gap-8 overflow-hidden rounded-[32px] bg-[#F26418] px-8 pt-8 pb-8 md:flex-row md:px-14 md:pt-14 md:pb-14"
   >
-    {/* Left copy */}
     <div className="z-10 max-w-md text-white">
       <h2 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
         Turn your data into smart decisions
@@ -168,7 +179,6 @@ const CtaBanner = () => (
       </Link>
     </div>
 
-    {/* Right dashboard mock – natural image, no grayscale */}
     <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/20 shadow-2xl sm:h-[340px] md:w-[55%]">
       <img
         src="/test1.webp"
@@ -176,8 +186,6 @@ const CtaBanner = () => (
         className="h-full w-full object-cover"
         onError={(e) => (e.currentTarget.style.opacity = "0")}
       />
-
-      {/* Mock top app bar – subtle overlay */}
       <div className="absolute inset-x-0 top-0 flex h-11 items-center justify-between border-b border-white/10 bg-black/30 px-4 text-xs text-white backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-red-500/80" />
@@ -193,8 +201,6 @@ const CtaBanner = () => (
           </span>
         </div>
       </div>
-
-      {/* Floating data popover – light theme */}
       <div className="absolute left-5 top-16 z-20 max-w-[210px] rounded-xl border border-[#F26418]/30 bg-white/95 p-4 text-xs text-black shadow-xl backdrop-blur-md">
         <div className="mb-2 flex items-center justify-between">
           <span className="rounded-full border border-[#F26418]/30 bg-[#F26418]/20 px-2 py-0.5 text-[10px] font-semibold text-[#F26418]">
@@ -216,8 +222,6 @@ const CtaBanner = () => (
           </p>
         </div>
       </div>
-
-      {/* Map node pins */}
       <div className="pointer-events-none absolute inset-0">
         <span className="absolute bottom-1/4 left-1/3 h-3 w-3 animate-pulse rounded-full bg-blue-500 ring-4 ring-blue-500/30" />
         <span className="absolute right-1/4 top-1/3 h-3 w-3 rounded-full bg-purple-500 ring-4 ring-purple-500/30" />
@@ -229,11 +233,11 @@ const CtaBanner = () => (
 );
 
 /* ------------------------------------------------------------------ */
-/*  Page                                                               */
+/*  Main Blog Component – same article content, only the recommendation list changed */
 /* ------------------------------------------------------------------ */
-const BlogPostAetos = () => {
-  // For the hero title, we'll highlight the last word "Construction"
-  const heroTitle = "TeraStamp Joins AETOS: Driving Innovation in Underground Construction";
+const MetroMonitoringBlog = () => {
+  // Split hero title for highlighting last word
+  const heroTitle = "Digital Monitoring in Metro Construction: Lessons from Large Infrastructure Projects";
   const heroWords = heroTitle.split(" ");
   const heroLast = heroWords.pop();
   const heroRest = heroWords.join(" ");
@@ -253,32 +257,28 @@ const BlogPostAetos = () => {
           {...rise(1)}
           className="mt-5 max-w-3xl text-base leading-relaxed text-[#7C8595] md:text-lg"
         >
-          TeraStamp has become a member of AETOS, the Spanish Association of
-          Tunnels and Underground Works, reaffirming its dedication to
-          innovation and collaboration in the underground construction sector.
-          As a Spain‑based company, TeraStamp aims to shape the future of
-          intelligent, data‑driven tunnel monitoring and to connect with the
-          broader tunnelling community across Spain and beyond.
+          Learn how digital monitoring improves visibility, reporting,
+          collaboration, and project control in complex metro construction.
         </motion.p>
 
         <motion.p {...rise(2)} className="mt-4 text-sm text-[#7C8595]">
-          8 Oct 2025
+          1 Jul 2026
         </motion.p>
 
-        {/* Hero cover — natural image, no border */}
+        {/* Hero cover image */}
         <motion.div
           {...rise(3)}
           className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[#F9FAFB]"
         >
           <img
-            src="/watersav.jpeg"
-            alt="TeraStamp joins AETOS"
+            src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80"
+            alt="Metro construction"
             className="h-full w-full object-cover"
             onError={(e) => (e.currentTarget.style.opacity = "0")}
           />
         </motion.div>
 
-        {/* Tags – orange style */}
+        {/* Tags */}
         <motion.div {...rise(4)} className="mt-6 flex flex-wrap gap-2.5">
           {TAGS.map((tag) => (
             <span
@@ -291,64 +291,149 @@ const BlogPostAetos = () => {
         </motion.div>
       </section>
 
-      {/* ===== What Is AETOS ===== */}
+      {/* ===== What is Digital Monitoring? ===== */}
       <section className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
-        <SectionTitle>What Is AETOS</SectionTitle>
+        <SectionTitle>What Is Digital Monitoring</SectionTitle>
         <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
-            Founded to reinforce the importance of underground works in
-            infrastructure development, <Hl>AETOS</Hl> unites engineering
-            consultancies, universities, and technology providers to encourage
-            collaboration and innovation within the tunnelling industry.
-          </motion.p>
-          <motion.p {...rise(2)}>
-            According to <Hl>AETOS</Hl>, their mission is to promote innovation,
-            facilitate knowledge sharing, and strengthen the contribution of
-            underground infrastructure to sustainable development – values that
-            resonate deeply with us at <Hl>TeraStamp</Hl>.
-          </motion.p>
-          <motion.p {...rise(3)}>
-            Through technical workshops, conferences, and international events,
-            AETOS serves as a vital link between the Spanish tunnelling community
-            and global best practices. They also collaborate with ITA‑AITES (the
-            International Tunnelling and Underground Space Association) and help
-            shape standards that will define the future of underground
-            construction.
+            <Hl>Digital monitoring</Hl> is the process of collecting, organizing,
+            and visualizing construction data using modern software instead
+            of paper reports or disconnected spreadsheets. It enables
+            engineers, contractors, consultants, and project owners to
+            monitor progress from a centralized platform.
           </motion.p>
         </div>
       </section>
 
-      {/* ===== Why This Is Relevant to Proqio ===== */}
+      {/* Image between sections */}
+      <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+          alt="Construction site"
+          className="rounded-3xl shadow-lg w-full"
+        />
+      </motion.div>
+
+      {/* ===== Why Metro Projects Need Digital Monitoring ===== */}
       <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
-        <SectionTitle>Why This Matters for TeraStamp</SectionTitle>
+        <SectionTitle>Why Metro Projects Need Digital Monitoring</SectionTitle>
         <div className="mt-6 space-y-5 text-base leading-relaxed text-[#7C8595] md:text-lg">
           <motion.p {...rise(1)}>
-            Tunnel construction is evolving rapidly. As projects become more
-            complex and data‑intensive, the demand for smarter tools and
-            collective expertise continues to grow. Joining AETOS allows us to
-            contribute to that shared progress.
-          </motion.p>
-          <motion.p {...rise(2)}>
-            At TeraStamp, headquartered in Spain, our aim is to make tunnel
-            monitoring more intelligent, interconnected, and adaptable. Becoming
-            a member of AETOS enables us to learn from and actively contribute
-            to the ongoing transformation of underground works in Spain and
-            worldwide. We look forward to engaging with the community,
-            participating in discussions on data‑driven monitoring, and
-            supporting AETOS's mission through practical technology and
-            real‑world experience.
-          </motion.p>
-          <motion.p {...rise(3)}>
-            Discover how TeraStamp is revolutionising tunnel monitoring, explore
-            our projects and{" "}
-            <Link
-              to="/contact"
-              className="font-semibold text-[#F26418] underline-offset-2 hover:underline"
-            >
-              request a demo.
-            </Link>
+            Metro projects involve tunnels, stations, utilities, heavy
+            equipment, and multiple contractors working simultaneously.
+            <Hl> Digital monitoring</Hl> improves coordination, reduces reporting
+            delays, and provides a clear view of project progress.
           </motion.p>
         </div>
+
+        {/* Feature grid */}
+        <motion.div {...rise(2)} className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {[
+            "Centralized Reporting",
+            "Progress Tracking",
+            "Document Management",
+            "Site Collaboration",
+          ].map((item) => (
+            <div key={item} className="rounded-2xl bg-white p-6 shadow border border-[#E2E8F0]">
+              <h3 className="font-semibold text-[#F26418]">{item}</h3>
+              <p className="mt-3 text-gray-600">
+                Improve transparency and help teams make faster decisions.
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ===== Benefits ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <SectionTitle>Benefits of Digital Monitoring</SectionTitle>
+        <motion.ul {...rise(1)} className="mt-6 list-disc pl-6 space-y-3 text-[#7C8595] text-base md:text-lg">
+          <li>Better visibility into project progress</li>
+          <li>Faster reporting from site teams</li>
+          <li>Improved collaboration among stakeholders</li>
+          <li>Organized project documentation</li>
+          <li>Early identification of construction issues</li>
+        </motion.ul>
+      </section>
+
+      {/* Image */}
+      <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
+        <img
+          src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+          alt="Metro tunnel"
+          className="rounded-3xl shadow-lg w-full"
+        />
+      </motion.div>
+
+      {/* ===== Lessons from Large Infrastructure Projects ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <SectionTitle>Lessons from Large Infrastructure Projects</SectionTitle>
+        <div className="mt-6 space-y-4">
+          {[
+            "Centralized information speeds up decisions.",
+            "Standardized reporting reduces manual errors.",
+            "Continuous progress tracking keeps schedules under control.",
+            "Digital documentation simplifies audits and project reviews.",
+            "Collaboration improves when everyone works from the same platform.",
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              {...rise(idx + 1)}
+              className="rounded-2xl bg-white p-6 border-l-4 border-[#F26418] shadow"
+            >
+              {item}
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Real-World Experience ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <SectionTitle>Real-World Experience</SectionTitle>
+        <motion.p {...rise(1)} className="mt-6 text-base leading-relaxed text-[#7C8595] md:text-lg">
+          TeraStamp has contributed to digital monitoring and reporting
+          workflows for major metro infrastructure projects including:
+        </motion.p>
+
+        <motion.div {...rise(2)} className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {[
+            "LA Purple Line Extension (Section 2)",
+            "Purple Line 3 Stations",
+            "Purple Line 3 Tunnels",
+            "VTA's BART Phase II – CP2 EWP 3C",
+          ].map((project) => (
+            <div key={project} className="rounded-2xl bg-[#F9FAFB] p-5">
+              <h3 className="font-semibold text-[#F26418]">{project}</h3>
+              <p className="mt-2 text-gray-600">
+                Digital reporting, progress visibility, and better project coordination.
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ===== Best Practices ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <SectionTitle>Best Practices</SectionTitle>
+        <motion.ul {...rise(1)} className="mt-6 list-disc pl-6 space-y-3 text-[#7C8595] text-base md:text-lg">
+          <li>Standardize reporting formats.</li>
+          <li>Digitize daily site reports.</li>
+          <li>Maintain centralized project data.</li>
+          <li>Review project milestones regularly.</li>
+          <li>Improve communication across all stakeholders.</li>
+        </motion.ul>
+      </section>
+
+      {/* ===== Conclusion ===== */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6">
+        <SectionTitle>Conclusion</SectionTitle>
+        <motion.p {...rise(1)} className="mt-6 text-base leading-relaxed text-[#7C8595] md:text-lg">
+          <Hl>Digital monitoring</Hl> enables metro construction teams to improve
+          visibility, reporting, collaboration, and project management.
+          By replacing manual workflows with centralized digital systems,
+          organizations can deliver infrastructure projects more
+          efficiently and with greater confidence.
+        </motion.p>
       </section>
 
       {/* ===== CTA ===== */}
@@ -383,4 +468,4 @@ const BlogPostAetos = () => {
   );
 };
 
-export default BlogPostAetos;
+export default MetroMonitoringBlog;

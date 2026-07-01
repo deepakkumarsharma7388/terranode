@@ -13,6 +13,7 @@ import {
   BarChart3,
   Globe,
   Puzzle,
+ 
 } from 'lucide-react';
 
 import { useRef, useState, useEffect } from 'react';
@@ -32,14 +33,25 @@ import {
   
   Map,
   Zap,
- 
+  Clock,
+ CheckCircle,
   Layers,
   Bell,
-  ArrowRight,
+  
 } from "lucide-react";
 
 
 
+
+import {
+  X,
+ 
+  Rocket,
+  User,
+  Share2,
+
+  ArrowRight,
+} from "lucide-react";
 
 
 
@@ -1760,6 +1772,16 @@ const CounterSection = () => {
 };
 
 
+
+
+
+
+
+
+
+
+
+
 const CounterCard = ({ icon, target, suffix, prefix, label, description, delay }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -1888,6 +1910,11 @@ const CTASection = () => (
 
 
 
+
+
+
+
+
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
@@ -1908,7 +1935,7 @@ export default function Home() {
       <ThreeDSection />
       <DashboardSection />
       <CounterSection />
-
+        
       <CTASection />
     </div>
   );

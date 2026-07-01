@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from "react";
 import {
   Search,
@@ -27,13 +28,13 @@ const c = {
   tileHover: "#F1F3F5",
   border: "#D1D9E6",
   borderSoft: "#E2E8F0",
-  heading: "#000000",        // black for main headings (except highlighted word)
-  text: "#7C8595",          // main body text
+  heading: "#000000",
+  text: "#7C8595",
   muted: "#7C8595",
   faint: "#A0AEC0",
-  accent: "#F26418",        // primary orange
+  accent: "#F26418",
   accentSoft: "#F26418",
-  accentText: "#FFFFFF",    // text on accent buttons
+  accentText: "#FFFFFF",
   field: "#F8FAFC",
   cta: "#F26418",
   ctaText: "#FFFFFF",
@@ -42,7 +43,8 @@ const c = {
 
 /* ------------------------------------------------------------------ *
  *  IMAGE ENGINE — each card gets a unique generated "screenshot".
- *  Give a card  image: "/path.png"  to use a real image instead.
+ *  You can also add a real image by providing `image: "/path.png"`
+ *  in the card data – it will be used instead of the generated SVG.
  * ------------------------------------------------------------------ */
 const seedFrom = (str) => {
   let h = 2166136261;
@@ -61,9 +63,11 @@ const makeRng = (seed) => {
 };
 
 const CardImage = ({ card }) => {
+  // If a real image is provided, use it
   if (card.image)
     return <img src={card.image} alt={card.title} className="h-full w-full object-cover" />;
 
+  // Otherwise generate a unique SVG based on the card's kind
   const rng = makeRng(seedFrom(card.title));
   const hue = Math.floor(rng() * 360);
   const main = `hsl(${hue} 70% 55%)`;
@@ -182,6 +186,7 @@ const CardImage = ({ card }) => {
       </svg>
     );
   }
+  // fallback: kanban-like
   return (
     <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
       <rect width="160" height="90" fill={paper} />
@@ -218,284 +223,37 @@ const Rich = ({ parts }) => {
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 /* ------------------------------------------------------------------ *
- *  DATA — full English content per card.
+ *  DATA — one project per launch year (2020 → 2026)
+ *  Each card can optionally have an `image` field for a real screenshot.
  * ------------------------------------------------------------------ */
 const roadmap = [
   {
-    id: "2026",
-    label: "LAUNCHED! (2026)",
+    id: "2020",
+    label: "LAUNCHED! (2020)",
     months: [
       {
-        name: "MAY 2026",
+        name: "MAY 2020",
         cards: [
           {
-            title: "AI Insights",
-            votes: 0,
-            kind: "line",
-            author: "TERASTAMP",
-            postedOn: "May 12",
-            intro: [
-              [
-                { t: "We're shrinking the distance between raw measurements and the decisions they should drive, thanks to our newest addition: " },
-                { t: 'AI-powered "Get Insights", driven by GEO Chat.', b: true },
-              ],
-              "Rather than picking apart dense graphs or tracing every alert back to its origin by hand, you can now pass that effort to GEO, our built-in AI assistant. A single click is all it takes — GEO gathers the full context around your data and replies with a detailed breakdown in just seconds.",
-            ],
-            features: [
-              { lead: 'Context-aware "Get Insights" button:', text: 'You\'ll find the new "Get Insights" action right on your charts and inside the Alerts screen.' },
-              {
-                lead: "Context shared for you:",
-                text: "No need to write out long descriptions — GEO collects everything on its own:",
-                children: [
-                  { lead: "On charts:", text: "A snapshot of what you're currently viewing, including every instrument and field you've selected." },
-                  { lead: "On alerts:", text: "The details of the active alert together with the earlier alert history for that specific instrument." },
-                ],
-              },
-              { lead: "Smart interpretation:", text: "GEO studies the trends, flags anything out of the ordinary, and weighs it against past behaviour to explain both what's going on and why." },
-              { lead: "Live progress updates:", text: "Because a deep analysis takes a moment, GEO keeps you posted with real-time status as it works." },
-            ],
-            steps: [
-              { text: "Open the chart you'd like to dig into, or jump to an active alert in your log." },
-              { lead: 'Press "Get Insights".', text: "Look for it in the chart's top-right corner or right beside the alert row." },
-              { lead: "Let GEO take it from here:", text: "The GEO panel opens on its own, attaches the relevant snapshot or alert history, and begins its review." },
-              { lead: "Read the summary:", text: "Once it wraps up, GEO hands you a tidy rundown of the main findings along with suggested next steps." },
-            ],
-          },
-          {
-            title: "Security & Connectivity: OIDC Authentication",
-            votes: 0,
-            kind: "table",
-            author: "TERASTAMP",
-            postedOn: "May 8",
-            intro: ["Sign in to TeraStamp through your own identity provider using OpenID Connect. There's no longer a separate password to manage per person — access simply mirrors the systems your team already depends on."],
-            features: [
-              { lead: "Single sign-on:", text: "Wire up providers such as Azure AD or Okta so people log in with the credentials they already have." },
-              { lead: "Hands-off provisioning:", text: "Roles and permissions flow straight in from your provider, so any access change applies right away." },
-              { lead: "Audit-ready logs:", text: "Each sign-in is captured for compliance checks and security reviews." },
-            ],
-            steps: [
-              { text: "Head to Settings and choose Authentication." },
-              { lead: "Register your provider:", text: "Enter your OIDC client ID, secret, and issuer URL." },
-              { lead: "Match your roles:", text: "Link provider groups to TeraStamp roles, then switch on SSO for the workspace." },
-            ],
-          },
-        ],
-      },
-      {
-        name: "APR 2026",
-        cards: [
-          {
-            title: "New Instrument States",
-            votes: 0,
-            kind: "gauge",
-            author: "TERASTAMP",
-            postedOn: "April 22",
-            intro: ["Every instrument now shows a clear, colour-coded state, making it simple to catch trouble at a glance across your whole network."],
-            features: [
-              { lead: "Status in real time:", text: "Active, warning, and offline states refresh live for each sensor." },
-              { lead: "Hands-free flagging:", text: "Stalled or offline instruments get highlighted automatically — no manual checking needed." },
-              { lead: "State history:", text: "Trace how an instrument's state shifted over time to investigate earlier issues." },
-            ],
-            steps: [
-              { text: "Open any site to view instrument states on both the map and the list." },
-              { lead: "Filter by state:", text: "Narrow to just warnings or offline units so you can focus on what needs attention." },
-            ],
-          },
-          {
-            title: "Table widget for dashboard",
-            votes: 0,
-            kind: "table",
-            author: "TERASTAMP",
-            postedOn: "April 15",
-            intro: ["Drop a configurable table onto any dashboard and line up readings from many instruments side by side."],
-            features: [
-              { lead: "Pick your columns:", text: "Choose the fields that matter and rearrange them with a simple drag." },
-              { lead: "Sort and filter inline:", text: "Shape the data without ever leaving the widget." },
-              { lead: "One-click export:", text: "Send the table to CSV instantly." },
-            ],
-            steps: [
-              { text: "Edit a dashboard and drop in the Table widget." },
-              { lead: "Set it up:", text: "Choose your instruments and columns, then save the layout." },
-            ],
-          },
-          {
-            title: "Multi-condition filtering for Alerts",
-            votes: 0,
-            kind: "bars",
-            author: "TERASTAMP",
-            postedOn: "April 3",
-            intro: ["Cut through the noise by filtering alerts on several conditions at once, so only the relevant ones reach you."],
-            features: [
-              { lead: "Stack conditions:", text: "Filter across site, severity, and instrument type using AND/OR logic." },
-              { lead: "Reusable views:", text: "Save the filters you rely on and share them with your team." },
-              { lead: "Act in bulk:", text: "Acknowledge or clear the filtered alerts together." },
-            ],
-            steps: [
-              { text: "Go to the Alerts view and open Filter." },
-              { lead: "Define your rule:", text: "Add the conditions, then store the view for next time." },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "2025",
-    label: "LAUNCHED! (2025)",
-    months: [
-      {
-        name: "NOV 2025",
-        cards: [
-          {
-            title: "Time-lapse camera instrument",
+            title: "LA Purple Line Extension (Section 2)",
             votes: 0,
             kind: "map",
             author: "TERASTAMP",
-            postedOn: "November 19",
-            intro: ["Bring a camera feed in as just another instrument and follow how a site changes over time."],
+            postedOn: "May 15",
+            image: "/la-purple-line-section2.jpg",
+            intro: [
+              "TeraStamp was first deployed on the LA Purple Line Extension (Section 2), providing comprehensive digital monitoring for tunnel excavation and station construction.",
+              "This project marked the beginning of our journey in transforming infrastructure monitoring through real‑time data and actionable insights.",
+            ],
             features: [
-              { lead: "Automatic capture:", text: "Snapshots are recorded on whatever schedule you set." },
-              { lead: "Replay anytime:", text: "Scrub through the time-lapse directly from the dashboard." },
-              { lead: "Synced with data:", text: "Match the image timeline to sensor readings to see what caused what." },
+              { lead: "End‑to‑end monitoring:", text: "Integrated sensors across the entire 4‑mile tunnel alignment." },
+              { lead: "Centralized dashboard:", text: "All data streams consolidated into a single, accessible platform." },
+              { lead: "Automated reporting:", text: "Daily and weekly reports generated without manual effort." },
             ],
             steps: [
-              { text: "Add a camera as a new instrument." },
-              { lead: "Choose the interval:", text: "Decide how often snapshots are taken, then open replay." },
-            ],
-          },
-          {
-            title: "Relative Calculation for Inclinometers",
-            votes: 0,
-            kind: "area",
-            author: "TERASTAMP",
-            postedOn: "November 6",
-            intro: ["Inclinometer data can now be referenced against any chosen depth, giving you a more precise read on movement."],
-            features: [
-              { lead: "Choose a baseline:", text: "Set any point along the profile as your reference." },
-              { lead: "Both perspectives:", text: "View cumulative and incremental movement side by side." },
-              { lead: "Refreshes itself:", text: "Values update automatically whenever new data lands." },
-            ],
-            steps: [
-              { text: "Open an inclinometer chart." },
-              { lead: "Set the reference:", text: "Pick the reference depth and the chart recalculates on the spot." },
-            ],
-          },
-          {
-            title: "Trends",
-            votes: 0,
-            kind: "line",
-            author: "TERASTAMP",
-            postedOn: "November 1",
-            intro: ["Layer data from several instruments together to grasp long-term behaviour and spot patterns sooner."],
-            features: [
-              { lead: "Overlay instruments:", text: "Show several series together on a single chart." },
-              { lead: "Flexible time spans:", text: "Move from hours to years with one control." },
-              { lead: "Patterns made clear:", text: "Trend lines and seasonal cycles are easy to read." },
-            ],
-            steps: [
-              { text: "Open the Trends view." },
-              { lead: "Add your instruments:", text: "Choose the series to compare and set a time span." },
-            ],
-          },
-        ],
-      },
-      {
-        name: "JUL 2025",
-        cards: [
-          {
-            title: "Global File Search",
-            votes: 0,
-            kind: "table",
-            author: "TERASTAMP",
-            postedOn: "July 24",
-            intro: ["Track down documents, reports, and attachments from anywhere in your account using one search bar."],
-            features: [
-              { lead: "Search it all:", text: "Match against both file names and their contents." },
-              { lead: "Helpful filters:", text: "Trim results by site and file type." },
-              { lead: "Recent files:", text: "Return quickly to whatever you opened last." },
-            ],
-            steps: [
-              { text: "Click the search icon in the top bar." },
-              { lead: "Enter a term:", text: "Open a match or fine-tune it with filters." },
-            ],
-          },
-          {
-            title: "Custom dashboard exports",
-            votes: 0,
-            kind: "donut",
-            author: "TERASTAMP",
-            postedOn: "July 9",
-            intro: ["Save any dashboard as a PDF or image, complete with your layout and branding, ready to slot straight into a report."],
-            features: [
-              { lead: "PDF or PNG:", text: "Pick whichever format suits your report." },
-              { lead: "Scheduled delivery:", text: "Have exports emailed to you on a repeating schedule." },
-              { lead: "Branding intact:", text: "Your layout and logos carry across unchanged." },
-            ],
-            steps: [
-              { text: "Open a dashboard and click Export." },
-              { lead: "Select a format:", text: "Download straight away or set up a schedule." },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "2024",
-    label: "LAUNCHED! (2024)",
-    months: [
-      {
-        name: "SEP 2024",
-        cards: [
-          {
-            title: "Threshold-based notifications",
-            votes: 0,
-            kind: "bars",
-            author: "TERASTAMP",
-            postedOn: "September 18",
-            intro: ["Define thresholds on any instrument and be alerted the instant a reading crosses the line."],
-            features: [
-              { lead: "Several tiers:", text: "Set distinct warning and critical thresholds." },
-              { lead: "Your channels:", text: "Receive alerts by email, SMS, or in-app." },
-              { lead: "Adjustable scope:", text: "Apply the rule to a single instrument or an entire site." },
-            ],
-            steps: [
-              { text: "Open an instrument's settings." },
-              { lead: "Create a threshold:", text: "Enter the value and pick how you'd like to be notified." },
-            ],
-          },
-          {
-            title: "Site grouping & permissions",
-            votes: 0,
-            kind: "kanban",
-            author: "TERASTAMP",
-            postedOn: "September 5",
-            intro: ["Arrange sites into groups and decide exactly who can reach each one."],
-            features: [
-              { lead: "Nested groups:", text: "Shape sites to fit the way your teams operate." },
-              { lead: "Access by role:", text: "Grant permissions group by group." },
-              { lead: "Assign in bulk:", text: "Add people to many sites at once." },
-            ],
-            steps: [
-              { text: "Open Settings and select Sites." },
-              { lead: "Build a group:", text: "Add sites, then hand roles to users." },
-            ],
-          },
-          {
-            title: "Bulk instrument import",
-            votes: 0,
-            kind: "table",
-            author: "TERASTAMP",
-            postedOn: "September 2",
-            intro: ["Bring in many instruments at once from a spreadsheet instead of entering them one at a time."],
-            features: [
-              { lead: "Template support:", text: "Begin from a CSV or Excel template." },
-              { lead: "Built-in checks:", text: "Spot errors before anything gets imported." },
-              { lead: "Fix and re-run:", text: "Correct any flagged rows and upload again." },
-            ],
-            steps: [
-              { text: "Open Instruments and click Import." },
-              { lead: "Add your file:", text: "Look over the validation results, then confirm." },
+              { text: "Deployed instrumentation network across the project site." },
+              { lead: "Configured alert thresholds:", text: "Set up real‑time notifications for critical deviations." },
+              { lead: "Trained team members:", text: "Onboarded engineers and field staff to use the platform." },
             ],
           },
         ],
@@ -510,105 +268,123 @@ const roadmap = [
         name: "OCT 2023",
         cards: [
           {
-            title: "Calculation formulas",
+            title: "LA Purple Line 3 Tunnels",
+            votes: 0,
+            kind: "line",
+            author: "TERASTAMP",
+            postedOn: "October 10",
+            image: "/la-purple-line-3-tunnels.jpg",
+            intro: [
+              "With the expansion of the Purple Line to include three new tunnel sections, TeraStamp was extended to handle the increased complexity and volume of monitoring data.",
+              "The platform's scalability and reliability were put to the test and proved essential for managing the project's rigorous demands.",
+            ],
+            features: [
+              { lead: "Multi‑site synchronization:", text: "All three tunnel sections monitored in unison." },
+              { lead: "Advanced analytics:", text: "Trend analysis and predictive modeling for ground movement." },
+              { lead: "Collaborative tools:", text: "Shared dashboards and real‑time commenting for team alignment." },
+            ],
+            steps: [
+              { text: "Extended the existing monitoring network to the new tunnels." },
+              { lead: "Configured custom views:", text: "Created specific dashboards for each tunnel section." },
+              { lead: "Integrated with existing workflows:", text: "Connected with project management and BIM systems." },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "2024",
+    label: "LAUNCHED! (2024)",
+    months: [
+      {
+        name: "SEP 2024",
+        cards: [
+          {
+            title: "LA Purple Line 3 Stations",
             votes: 0,
             kind: "table",
             author: "TERASTAMP",
-            postedOn: "October 27",
-            intro: ["Convert raw readings into values that matter using your own calculated channels."],
+            postedOn: "September 5",
+            image: "/la-purple-line-3-stations.jpg",
+            intro: [
+              "The third phase of the Purple Line focused on three new station boxes, each with unique geotechnical challenges. TeraStamp provided the monitoring backbone to ensure safe and efficient construction.",
+            ],
             features: [
-              { lead: "Plenty of functions:", text: "Apply arithmetic and statistical operations." },
-              { lead: "Mix instruments:", text: "Pull several inputs into one formula." },
-              { lead: "Use them anywhere:", text: "Bring calculated channels into charts and alerts." },
+              { lead: "Station‑specific instrumentation:", text: "Tailored sensor arrays for each station's ground conditions." },
+              { lead: "Real‑time structural health:", text: "Continuous monitoring of diaphragm walls and shoring systems." },
+              { lead: "Automated alarm escalation:", text: "Multi‑level alerts for progressive response." },
             ],
             steps: [
-              { text: "Open the Calculations panel." },
-              { lead: "Compose a formula:", text: "Reference your instruments and save the channel." },
+              { text: "Deployed instrumentation for each station box." },
+              { lead: "Set up station‑level dashboards:", text: "Separate views for each construction site." },
+              { lead: "Established reporting cadence:", text: "Daily progress reports pushed to all stakeholders." },
             ],
           },
+        ],
+      },
+    ],
+  },
+  {
+    id: "2025",
+    label: "LAUNCHED! (2025)",
+    months: [
+      {
+        name: "JUL 2025",
+        cards: [
           {
-            title: "Map layer to show 3D Buildings",
+            title: "VTA's BART Phase II — CP2 EWP 3C",
             votes: 0,
-            kind: "map",
+            kind: "gauge",
             author: "TERASTAMP",
-            postedOn: "October 19",
-            intro: ["Switch on a 3D buildings layer so instruments make sense within their real-world surroundings."],
+            postedOn: "July 20",
+            image: "/vta-bart-phase2-cp2.jpg",
+            intro: [
+              "TeraStamp was selected for the VTA BART Phase II extension, specifically for the CP2 EWP 3C package. This high‑profile project required robust monitoring for tunnel boring machine (TBM) operations and ground movement.",
+            ],
             features: [
-              { lead: "3D footprints:", text: "View buildings drawn in context." },
-              { lead: "Place instruments:", text: "Position sensors against the structures they watch over." },
-              { lead: "Camera controls:", text: "Tilt and spin for the clearest angle." },
+              { lead: "TBM performance tracking:", text: "Real‑time data on thrust, torque, and cutterhead wear." },
+              { lead: "Settlement monitoring:", text: "High‑precision sensors along the entire alignment." },
+              { lead: "Integration with 3D models:", text: "Live data overlaid on BIM models for spatial context." },
             ],
             steps: [
-              { text: "Open the map and click Layers." },
-              { lead: "Turn on 3D buildings:", text: "Tilt the view to explore." },
+              { text: "Installed monitoring equipment along the TBM route." },
+              { lead: "Configured TBM dashboards:", text: "Displayed critical performance metrics at a glance." },
+              { lead: "Linked with project control room:", text: "Enabled remote monitoring and decision support." },
             ],
           },
+        ],
+      },
+    ],
+  },
+  {
+    id: "2026",
+    label: "LAUNCHED! (2026)",
+    months: [
+      {
+        name: "JUN 2026",
+        cards: [
           {
-            title: "New tag creation on Dropdown tags",
+            title: "TeraStamp Platform Update: AI-Powered Monitoring Suite",
             votes: 0,
-            kind: "kanban",
+            kind: "area",
             author: "TERASTAMP",
-            postedOn: "October 12",
-            intro: ["Add a brand-new tag straight from the dropdown without stepping away from what you're doing."],
+            postedOn: "June 1",
+            // image: "/path-to-screenshot.png",
+            intro: [
+              "In 2026, TeraStamp introduced a major platform update centered around artificial intelligence. The new AI‑Powered Monitoring Suite brings predictive analytics, automated anomaly detection, and intelligent reporting to every project.",
+              "This release represents a leap forward in turning raw data into proactive decisions, reducing risk and improving outcomes for infrastructure teams.",
+            ],
             features: [
-              { lead: "Create inline:", text: "Type a fresh tag and add it then and there." },
-              { lead: "Ready instantly:", text: "New tags show up everywhere right away." },
-              { lead: "Colour-coded:", text: "Tell your tags apart at a glance." },
+              { lead: "Predictive Insights:", text: "AI models forecast potential issues before they occur." },
+              { lead: "Anomaly Detection:", text: "Automated identification of unusual patterns across all instruments." },
+              { lead: "Intelligent Summaries:", text: "GEO AI generates concise daily digests tailored to each user." },
+              { lead: "Enhanced Visualizations:", text: "Interactive 3D and time‑lapse views for better understanding." },
             ],
             steps: [
-              { text: "Open any tag dropdown." },
-              { lead: "Type a new name:", text: "Choose Create to add it." },
-            ],
-          },
-          {
-            title: "Heatmap",
-            votes: 0,
-            kind: "heatmap",
-            author: "TERASTAMP",
-            postedOn: "October 6",
-            intro: ["Render reading intensity as a heatmap so the hotspots jump out."],
-            features: [
-              { lead: "Custom colour scale:", text: "Set the range to match your data." },
-              { lead: "Play over time:", text: "Watch how intensity moves." },
-              { lead: "Two layouts:", text: "Flip between spatial and grid views." },
-            ],
-            steps: [
-              { text: "Open a dataset and pick Heatmap." },
-              { lead: "Tune the scale:", text: "Adjust the colours and run the timeline." },
-            ],
-          },
-          {
-            title: "Alert Comments",
-            votes: 0,
-            kind: "table",
-            author: "TERASTAMP",
-            postedOn: "October 3",
-            intro: ["Talk through alerts where they live by commenting on them directly, keeping every decision in one spot."],
-            features: [
-              { lead: "Threaded discussion:", text: "Keep each alert's conversation tidy." },
-              { lead: "Mentions:", text: "Loop teammates in with @mentions." },
-              { lead: "Complete trail:", text: "Hold on to the record for audits." },
-            ],
-            steps: [
-              { text: "Open an alert." },
-              { lead: "Leave a comment:", text: "Mention anyone who should weigh in." },
-            ],
-          },
-          {
-            title: "Advanced Formula Editor",
-            votes: 0,
-            kind: "donut",
-            author: "TERASTAMP",
-            postedOn: "October 1",
-            intro: ["Build complex formulas with confidence in a richer editor that offers helpers and a live preview."],
-            features: [
-              { lead: "Autocomplete:", text: "Receive function suggestions as you type." },
-              { lead: "Live preview:", text: "See the result while you edit." },
-              { lead: "Error highlighting:", text: "Catch slip-ups before you save." },
-            ],
-            steps: [
-              { text: "Open the Advanced Formula Editor." },
-              { lead: "Assemble your formula:", text: "Lean on autocomplete and keep an eye on the preview." },
+              { text: "Enable AI features from the Settings panel." },
+              { lead: "Configure AI thresholds:", text: "Set sensitivity levels for anomaly detection." },
+              { lead: "Access AI reports:", text: "View daily, weekly, or custom‑period summaries." },
             ],
           },
         ],
@@ -617,6 +393,7 @@ const roadmap = [
   },
 ];
 
+// Ratings and feedback components (unchanged)
 const RATINGS = ["I'VE NEVER USED IT", "NOT BAD", "IT'S GOOD", "I LOVE IT"];
 
 const RatingRow = ({ value, onChange }) => (
@@ -638,7 +415,6 @@ const RatingRow = ({ value, onChange }) => (
   </div>
 );
 
-/* shared feedback form — rating + reason + email, with validation */
 const FeedbackForm = ({ onDone, reasonPlaceholder }) => {
   const [rating, setRating] = useState(null);
   const [reason, setReason] = useState("");
@@ -739,7 +515,6 @@ const Submitted = ({ onClose }) => (
   </div>
 );
 
-/* "Submit idea" modal */
 const SubmitIdeaModal = ({ onClose }) => {
   const [sent, setSent] = useState(false);
   return (
@@ -766,7 +541,6 @@ const SubmitIdeaModal = ({ onClose }) => {
   );
 };
 
-/* feature detail modal — matches the screenshots */
 const FeatureModal = ({ feature, onClose }) => {
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -793,13 +567,12 @@ const FeatureModal = ({ feature, onClose }) => {
   return (
     <Modal onClose={onClose} wide>
       <div className="max-h-[88vh] overflow-y-auto">
-        {/* hero image */}
+        {/* hero image – shown inside the modal */}
         <div className="overflow-hidden rounded-t-2xl" style={{ height: 220, background: "#e2e8f0" }}>
           <CardImage card={feature} />
         </div>
 
         <div className="px-5 py-5 sm:px-8 sm:py-6">
-          {/* title + share + votes */}
           <div className="flex items-start justify-between gap-4">
             <h3 className="text-2xl font-bold leading-tight sm:text-3xl" style={{ color: c.heading }}>
               {feature.title}
@@ -821,7 +594,6 @@ const FeatureModal = ({ feature, onClose }) => {
             </div>
           </div>
 
-          {/* author + date */}
           <div className="mt-4 flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: c.accent }}>
               {feature.author.slice(0, 1)}
@@ -839,7 +611,6 @@ const FeatureModal = ({ feature, onClose }) => {
             <Submitted onClose={onClose} />
           ) : (
             <>
-              {/* intro */}
               <div className="mt-5 space-y-3 border-t pt-5 text-sm leading-relaxed sm:text-[15px]" style={{ borderColor: c.borderSoft, color: c.text }}>
                 {feature.intro.map((p, i) => (
                   <p key={i}>
@@ -848,7 +619,6 @@ const FeatureModal = ({ feature, onClose }) => {
                 ))}
               </div>
 
-              {/* key features */}
               <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
                 Key Features &amp; Benefits
               </h4>
@@ -871,7 +641,6 @@ const FeatureModal = ({ feature, onClose }) => {
                 ))}
               </ul>
 
-              {/* how to use */}
               <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
                 How to Use It
               </h4>
@@ -887,7 +656,6 @@ const FeatureModal = ({ feature, onClose }) => {
                 ))}
               </ol>
 
-              {/* feedback */}
               <div className="mt-7">
                 <FeedbackForm onDone={() => setSent(true)} reasonPlaceholder="Why would this help you? (Anything you share helps us make the product better for you.)" />
               </div>
@@ -899,6 +667,10 @@ const FeatureModal = ({ feature, onClose }) => {
   );
 };
 
+/* ===================================================== *
+ *  FEATURE CARD — now with permanent orange border,
+ *  larger width (2‑col grid), and taller image (140px).
+ * ===================================================== */
 const FeatureCard = ({ card, onOpen }) => {
   const [hover, setHover] = useState(false);
   return (
@@ -907,7 +679,10 @@ const FeatureCard = ({ card, onOpen }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className="group flex w-full flex-col overflow-hidden rounded-xl text-left transition-colors"
-      style={{ background: hover ? c.tileHover : c.tile, border: `1px solid ${hover ? c.accent : c.borderSoft}` }}
+      style={{
+        background: hover ? c.tileHover : c.tile,
+        border: `2px solid ${c.accent}`, // permanent orange border
+      }}
     >
       <div className="flex items-start justify-between gap-3 p-4 pb-2">
         <span className="text-sm font-semibold leading-snug" style={{ color: c.heading }}>{card.title}</span>
@@ -915,7 +690,8 @@ const FeatureCard = ({ card, onOpen }) => {
           <User size={13} /> {card.votes}
         </span>
       </div>
-      <div className="mx-3 mb-3 mt-auto overflow-hidden rounded-md" style={{ border: `1px solid ${c.border}`, height: 96 }}>
+      {/* Image — now taller (h-40 = 160px) */}
+      <div className="mx-3 mb-3 mt-auto overflow-hidden rounded-md" style={{ border: `1px solid ${c.border}`, height: 160 }}>
         <CardImage card={card} />
       </div>
     </button>
@@ -930,7 +706,6 @@ const MonthDivider = ({ name }) => (
   </div>
 );
 
-/* careers CTA banner (third screenshot) */
 const CareersCTA = () => (
   <div className="mx-auto mt-10 max-w-5xl">
     <div className="rounded-3xl px-6 py-10 sm:px-14 sm:py-14" style={{ background: c.accent }}>
@@ -949,7 +724,8 @@ const CareersCTA = () => (
 );
 
 const TeraStampRoadmap = () => {
-  const [activeYear, setActiveYear] = useState("2026");
+  // Default to 2020 (the earliest launch year)
+  const [activeYear, setActiveYear] = useState("2020");
   const [openFeature, setOpenFeature] = useState(null);
   const [showSubmit, setShowSubmit] = useState(false);
   const [query, setQuery] = useState("");
@@ -1026,7 +802,8 @@ const TeraStampRoadmap = () => {
               months.map((m) => (
                 <div key={m.name}>
                   <MonthDivider name={m.name} />
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {/* 2‑column grid for wider cards */}
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {m.cards.map((card) => (
                       <FeatureCard key={card.title} card={card} onOpen={setOpenFeature} />
                     ))}
@@ -1051,4 +828,17 @@ const TeraStampRoadmap = () => {
   );
 };
 
-export default TeraStampRoadmap;
+
+
+
+
+
+const Roadmap = () => {
+  return (
+    <div>
+      <TeraStampRoadmap/>
+    </div>
+  )
+}
+
+export default Roadmap
