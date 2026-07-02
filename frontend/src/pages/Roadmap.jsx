@@ -706,22 +706,7 @@ const MonthDivider = ({ name }) => (
   </div>
 );
 
-const CareersCTA = () => (
-  <div className="mx-auto mt-10 max-w-5xl">
-    <div className="rounded-3xl px-6 py-10 sm:px-14 sm:py-14" style={{ background: c.accent }}>
-      <h3 className="text-3xl font-extrabold leading-tight sm:text-5xl" style={{ color: "#fff" }}>
-        Join us in building technology that helps keep people safe
-      </h3>
-      <button
-        onClick={() => window.open("#open-positions", "_self")}
-        className="mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold sm:text-base"
-        style={{ color: c.accent }}
-      >
-        See open roles <ArrowRight size={18} />
-      </button>
-    </div>
-  </div>
-);
+
 
 const TeraStampRoadmap = () => {
   // Default to 2020 (the earliest launch year)
@@ -820,7 +805,7 @@ const TeraStampRoadmap = () => {
         </div>
       </div>
 
-      <CareersCTA />
+      
 
       {showSubmit && <SubmitIdeaModal onClose={() => setShowSubmit(false)} />}
       {openFeature && <FeatureModal feature={openFeature} onClose={() => setOpenFeature(null)} />}

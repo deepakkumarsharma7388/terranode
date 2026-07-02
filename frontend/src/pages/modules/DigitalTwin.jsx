@@ -245,52 +245,7 @@ const DigitalTwin = () => {
   </div>
 </section>
 
-      {/* ----- DEMO FORM ----- */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-          <motion.div {...fadeUp()} className="text-center">
-            <h2 className="text-3xl font-bold text-[#1A202C] md:text-4xl">
-              Experience it for <span className="text-[#F26418]">yourself</span>
-            </h2>
-            <p className="mt-4 text-lg text-[#4A5568]">
-              Fill in the form and we’ll set up a live walkthrough of your own infrastructure.
-            </p>
-          </motion.div>
-
-          <form className="mt-10 space-y-5">
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <input
-                type="text"
-                placeholder="Full name"
-                className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Work email"
-                className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-              />
-            </div>
-            <input
-              type="text"
-              placeholder="Company / Organisation"
-              className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-            />
-            <div className="flex items-start gap-3">
-              <input type="checkbox" className="mt-1 h-5 w-5 rounded border-[#D1D9E6] text-[#F26418] focus:ring-[#F26418]" />
-              <span className="text-sm text-[#4A5568]">
-                I agree to the <a href="#" className="text-[#F26418] hover:underline">privacy policy</a> and consent to receiving relevant communications.
-              </span>
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-xl bg-[#F26418] py-3.5 text-base font-semibold text-white transition hover:bg-[#E05A10] hover:scale-[1.02]"
-            >
-              Request my demo
-            </button>          </form>
-        </div>
-      </div>
-    </section>
+    
     </div>
   );
 };

@@ -394,91 +394,7 @@ const AdaCTA = () => {
 /* ================================================================
    DEMO FORM – Same as DigitalTwin
    ================================================================ */
-const AdaDemoForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    privacy: false,
-    consent: false,
-  });
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
-
-  return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-        <motion.div {...fadeUp()} className="text-center">
-          <h2 className="text-3xl font-bold text-[#1A202C] md:text-4xl">
-            Experience TeraStamp's <span className="text-[#F26418]">GEO</span> live
-          </h2>
-          <p className="mt-4 text-lg text-[#4A5568]">
-            Fill in the form and we’ll set up a live walkthrough of how GEO can
-            enhance your decision‑making.
-          </p>
-        </motion.div>
-
-        <form onSubmit={handleSubmit} className="mt-10 space-y-5">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full name"
-              value={formData.name}
-              onChange={handleChange}
-              className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Work email"
-              value={formData.email}
-              onChange={handleChange}
-              className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-            />
-          </div>
-          <input
-            type="text"
-            name="company"
-            placeholder="Company / Organisation"
-            value={formData.company}
-            onChange={handleChange}
-            className="h-12 w-full rounded-xl border border-[#E2E8F0] bg-[#F8F9FC] px-4 text-[#1A202C] placeholder-[#A0AEC0] focus:border-[#F26418] focus:ring-2 focus:ring-[#F26418]/20 outline-none"
-          />
-          <div className="flex items-start gap-3">
-            <input
-              type="checkbox"
-              name="privacy"
-              checked={formData.privacy}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 rounded border-[#D1D9E6] text-[#F26418] focus:ring-[#F26418]"
-            />
-            <span className="text-sm text-[#4A5568]">
-              I agree to the <a href="#" className="text-[#F26418] hover:underline">privacy policy</a> and consent to receiving relevant communications.
-            </span>
-          </div>
-          <button
-            type="submit"
-            className="w-full rounded-xl bg-[#F26418] py-3.5 text-base font-semibold text-white transition hover:bg-[#E05A10] hover:scale-[1.02]"
-          >
-            Book a demo
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-};
 
 /* ================================================================
    MAIN EXPORT
@@ -491,7 +407,7 @@ const OurAIAssistant = () => {
       <AdaInsights />
       <AdaBenefits />
       <AdaCTA />
-      <AdaDemoForm />
+      
     </div>
   );
 };

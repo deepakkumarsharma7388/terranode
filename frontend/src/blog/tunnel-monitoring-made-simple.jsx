@@ -114,7 +114,7 @@ const Hl = ({ children }) => (
 );
 
 /* ------------------------------------------------------------------ */
-/*  Recommended card — light theme, orange border                     */
+/*  Recommended card — with h-48 and object-fill                      */
 /* ------------------------------------------------------------------ */
 const RecommendedCard = ({ post }) => {
   const titleWords = post.title.split(" ");
@@ -126,14 +126,15 @@ const RecommendedCard = ({ post }) => {
       to={post.link}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#F26418] hover:bg-[#F9FAFB] hover:shadow-lg"
     >
+      {/* Card image: fixed height h-48, object-fill to avoid cropping */}
       <div
-        className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent}`}
+        className={`relative w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent} h-48`}
       >
         <img
           src={post.image}
           alt={post.title}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-fill transition-transform duration-500 group-hover:scale-105"
           onError={(e) => (e.currentTarget.style.opacity = "0")}
         />
       </div>
@@ -156,7 +157,7 @@ const RecommendedCard = ({ post }) => {
 };
 
 /* ------------------------------------------------------------------ */
-/*  CTA banner – orange background, white text, natural image        */
+/*  CTA banner – unchanged                                            */
 /* ------------------------------------------------------------------ */
 const CtaBanner = () => (
   <motion.div
@@ -181,7 +182,7 @@ const CtaBanner = () => (
 
     <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/20 shadow-2xl sm:h-[340px] md:w-[55%]">
       <img
-        src="/test1.webp"
+        src="/blogimage/simplifiedtunnel.jpg"
         alt="TeraStamp dashboard interface"
         className="h-full w-full object-cover"
         onError={(e) => (e.currentTarget.style.opacity = "0")}
@@ -264,15 +265,15 @@ const TunnelMonitoringBlog = () => {
           24 Jul 2025
         </motion.p>
 
-        {/* Hero cover image */}
+        {/* Hero cover image – fixed height h-[450px] with object-fill */}
         <motion.div
           {...rise(3)}
-          className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[#F9FAFB]"
+          className="mt-8 w-full overflow-hidden rounded-2xl bg-[#F9FAFB] h-[450px]"
         >
           <img
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
+            src="/blogimage/simplifiedtunnel.jpg"
             alt="Tunnel excavation site"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-fill"
             onError={(e) => (e.currentTarget.style.opacity = "0")}
           />
         </motion.div>
@@ -304,12 +305,12 @@ const TunnelMonitoringBlog = () => {
         </div>
       </section>
 
-      {/* Image between sections */}
+      {/* Image between sections – fixed height h-[450px] with object-fill */}
       <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
         <img
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+          src="/blogimage/simplifiedtunnel2.jpg"
           alt="Construction workers in tunnel"
-          className="rounded-3xl shadow-lg w-full"
+          className="rounded-3xl shadow-lg w-full h-[450px] object-fill"
         />
       </motion.div>
 
@@ -358,12 +359,12 @@ const TunnelMonitoringBlog = () => {
         </motion.ul>
       </section>
 
-      {/* Image */}
+      {/* Image – fixed height h-[450px] with object-fill */}
       <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
         <img
-          src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80"
+          src="/blogimage/simplifiedtunnel3.jpg"
           alt="Tunnel boring machine"
-          className="rounded-3xl shadow-lg w-full"
+          className="rounded-3xl shadow-lg w-full h-[450px] object-fill"
         />
       </motion.div>
 

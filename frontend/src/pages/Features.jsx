@@ -43,8 +43,12 @@ const carouselImages = [
   "/la-purple-line-3-tunnels.jpg",
   "/la-purple-line-section2.jpg",
   "/tunnel.jpeg",
-  "/pipelin.jpeg",
+ 
 ];
+
+
+
+
 
 
 
@@ -77,7 +81,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] overflow-hidden md:min-h-[90vh]">
+    <section className="relative min-h-screen">
+      {/* Background Slider – absolute fill */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentIndex}
@@ -90,103 +95,119 @@ const Hero = () => {
         >
           <img
             src={carouselImages[currentIndex]}
-            alt=""
+            alt="Hero"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/45" />
+          {/* Overlay – mobile पर थोड़ा गहरा */}
+          <div className="absolute inset-0 bg-black/70 md:bg-black/55" />
         </motion.div>
       </AnimatePresence>
 
+      {/* ===== Desktop Navigation Buttons ===== */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white hover:bg-black/50"
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition hover:bg-black/50 md:block"
+        aria-label="Previous slide"
       >
         <ChevronLeft size={28} />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white hover:bg-black/50"
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition hover:bg-black/50 md:block"
+        aria-label="Next slide"
       >
         <ChevronRight size={28} />
       </button>
 
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+      {/* ===== Desktop Dots ===== */}
+      <div className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 gap-2 md:flex">
         {carouselImages.map((_, i) => (
           <button
             key={i}
             onClick={() => goToSlide(i)}
-            className={`h-2.5 rounded-full transition-all ${
+            className={`h-2.5 rounded-full transition-all duration-300 ${
               currentIndex === i
                 ? "w-8 bg-[#F26418]"
                 : "w-2.5 bg-white/60 hover:bg-white"
             }`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
 
+      {/* ===== Hero Content – with explicit top/bottom padding ===== */}
       <div className="absolute inset-0 z-10 flex items-center">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl px-5 pt-28 pb-28 sm:px-6 md:pt-16 md:pb-16 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            key={currentIndex}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="max-w-3xl text-left text-white"
           >
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm backdrop-blur-sm">
-              <Zap size={16} />
-              Next‑Gen Platform
+            {/* Badge */}
+            <div className="mb-5 inline-flex max-w-max items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-medium backdrop-blur-sm sm:text-sm">
+              <Zap size={16} className="shrink-0" />
+              <span className="whitespace-nowrap">Next-Gen Platform</span>
             </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            {/* Heading */}
+            <h1 className="text-3xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Elevate Your Civil Infrastructure
               <br />
               <span className="text-[#F26418]">with TeraStamp</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
+            {/* Description */}
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
               Discover a world of possibilities and unlock the intelligent
               capabilities that transform infrastructure data into confident
               decisions.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 to="/contact"
-                className="rounded-xl bg-[#F26418] px-6 py-3.5 font-semibold text-white hover:bg-[#E05A10]"
+                className="rounded-xl bg-[#F26418] px-6 py-3.5 text-center font-semibold text-white transition hover:bg-[#E05A10]"
               >
                 Request a Demo
               </Link>
-
               <Link
                 to="/modules"
-                className="rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-sm hover:bg-white/20"
+                className="rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-center font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
               >
                 Explore Features
               </Link>
             </div>
 
-            <div className="mt-10 flex gap-8 border-t border-white/20 pt-8">
+            {/* Stats */}
+            <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/20 pt-6 text-center sm:flex sm:gap-8 sm:text-left">
               <div>
-                <span className="text-2xl font-bold">Real-time</span>
-                <p className="text-sm text-white/70">Live Data</p>
+                <span className="text-xl font-bold sm:text-2xl">Real-time</span>
+                <p className="text-xs text-white/70 sm:text-sm">Live Data</p>
               </div>
               <div>
-                <span className="text-2xl font-bold">4D</span>
-                <p className="text-sm text-white/70">Digital Views</p>
+                <span className="text-xl font-bold sm:text-2xl">4D</span>
+                <p className="text-xs text-white/70 sm:text-sm">Digital Views</p>
               </div>
               <div>
-                <span className="text-2xl font-bold">10x</span>
-                <p className="text-sm text-white/70">Faster Decisions</p>
+                <span className="text-xl font-bold sm:text-2xl">10x</span>
+                <p className="text-xs text-white/70 sm:text-sm">Faster Decisions</p>
               </div>
             </div>
-
           </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+
+
+
+
 
 /* ================================================================
    FEATURE SHOWCASE – Accordion with image/video

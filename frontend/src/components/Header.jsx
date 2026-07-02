@@ -114,7 +114,7 @@ export default function Header() {
             )}
           </div>
 
-          <NavLink to="/use-cases" className={navLinkClass}>Use Cases</NavLink>
+          <NavLink to="/use-cases" className={navLinkClass}>Projects</NavLink>
           <NavLink to="/Blog" className={navLinkClass}>Blog</NavLink>
         </nav>
 

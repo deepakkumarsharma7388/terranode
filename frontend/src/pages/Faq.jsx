@@ -118,7 +118,7 @@ const FaqSection = () => {
         <p className="mt-12 text-center text-sm text-[#7C8595] sm:text-base">
           Still have more questions?{" "}
           <a
-            href="#contact"
+            href="/contact"
             className="font-medium text-[#F26418] underline underline-offset-4 transition-opacity hover:opacity-70"
           >
             Contact us

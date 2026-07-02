@@ -15,16 +15,14 @@ const colors = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Article meta + tags                                                */
+/* Article meta + tags                                               */
 /* ------------------------------------------------------------------ */
 const TAGS = ["Metro Construction", "Digital Monitoring", "Infrastructure"];
-
-// This article's link; we'll pick recommendations based on its categories.
 const CURRENT_LINK = "/blog/terastamp-joins-aetos";
 const CURRENT_CATEGORIES = ["Infrastructure"];
 
 /* ------------------------------------------------------------------ */
-/*  The blog list – now exactly the three posts from BlogResources    */
+/* The blog list – now exactly the three posts from BlogResources    */
 /* ------------------------------------------------------------------ */
 const BLOG_POSTS = [
   {
@@ -59,7 +57,6 @@ const BLOG_POSTS = [
   },
 ];
 
-// Pick related posts (share a category) then top up to 3
 const getRecommended = (currentLink, currentCategories, count = 3) => {
   const pool = BLOG_POSTS.filter((p) => p.link !== currentLink);
   const related = pool.filter((p) =>
@@ -72,17 +69,17 @@ const getRecommended = (currentLink, currentCategories, count = 3) => {
 const recommended = getRecommended(CURRENT_LINK, CURRENT_CATEGORIES);
 
 /* ------------------------------------------------------------------ */
-/*  Reusable scroll-in animation. `i` adds a small stagger delay.      */
+/* Reusable scroll-in animation                                       */
 /* ------------------------------------------------------------------ */
 const rise = (i = 0) => ({
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-10%" },
-  transition: { duration: 0.55, delay: i * 0.08 },
+  viewport: { once: true, amount: 0.1 },
+  transition: { duration: 0.5, delay: i * 0.08 },
 });
 
 /* ------------------------------------------------------------------ */
-/*  Helper to highlight last word in orange                           */
+/* Helper to highlight last word in orange                            */
 /* ------------------------------------------------------------------ */
 const highlightLastWord = (text) => {
   const words = text.split(" ");
@@ -95,7 +92,7 @@ const highlightLastWord = (text) => {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Small building blocks                                              */
+/* Small building blocks                                              */
 /* ------------------------------------------------------------------ */
 const SectionTitle = ({ children }) => {
   return (
@@ -108,13 +105,12 @@ const SectionTitle = ({ children }) => {
   );
 };
 
-// Brand-coloured inline mention (orange now).
 const Hl = ({ children }) => (
   <span className="font-semibold text-[#F26418]">{children}</span>
 );
 
 /* ------------------------------------------------------------------ */
-/*  Recommended card — light theme, orange border                     */
+/* Recommended card – image height halved to h-48                    */
 /* ------------------------------------------------------------------ */
 const RecommendedCard = ({ post }) => {
   const titleWords = post.title.split(" ");
@@ -126,15 +122,15 @@ const RecommendedCard = ({ post }) => {
       to={post.link}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-[#F26418] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#F26418] hover:bg-[#F9FAFB] hover:shadow-lg"
     >
+      {/* Card image height is now h-48 (192px) – half of h-96 */}
       <div
-        className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent}`}
+        className={`relative w-full overflow-hidden rounded-xl bg-gradient-to-br ${post.accent} h-48`}
       >
         <img
           src={post.image}
           alt={post.title}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => (e.currentTarget.style.opacity = "0")}
+          className="h-full w-full object-fill transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
@@ -156,7 +152,7 @@ const RecommendedCard = ({ post }) => {
 };
 
 /* ------------------------------------------------------------------ */
-/*  CTA banner – orange background, white text, natural image        */
+/* CTA banner – unchanged                                            */
 /* ------------------------------------------------------------------ */
 const CtaBanner = () => (
   <motion.div
@@ -181,10 +177,9 @@ const CtaBanner = () => (
 
     <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/20 shadow-2xl sm:h-[340px] md:w-[55%]">
       <img
-        src="/test1.webp"
+        src="/blogimage/digitalmonotoring.jpg"
         alt="TeraStamp dashboard interface"
         className="h-full w-full object-cover"
-        onError={(e) => (e.currentTarget.style.opacity = "0")}
       />
       <div className="absolute inset-x-0 top-0 flex h-11 items-center justify-between border-b border-white/10 bg-black/30 px-4 text-xs text-white backdrop-blur-sm">
         <div className="flex items-center gap-2">
@@ -233,10 +228,9 @@ const CtaBanner = () => (
 );
 
 /* ------------------------------------------------------------------ */
-/*  Main Blog Component – same article content, only the recommendation list changed */
+/* Main Blog Component                                               */
 /* ------------------------------------------------------------------ */
 const MetroMonitoringBlog = () => {
-  // Split hero title for highlighting last word
   const heroTitle = "Digital Monitoring in Metro Construction: Lessons from Large Infrastructure Projects";
   const heroWords = heroTitle.split(" ");
   const heroLast = heroWords.pop();
@@ -265,16 +259,15 @@ const MetroMonitoringBlog = () => {
           1 Jul 2026
         </motion.p>
 
-        {/* Hero cover image */}
+        {/* Hero cover image – tall (h-[450px]) */}
         <motion.div
           {...rise(3)}
-          className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[#F9FAFB]"
+          className="mt-8 w-full overflow-hidden rounded-2xl bg-[#F9FAFB] h-[450px]"
         >
           <img
-            src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80"
+            src="/blogimage/digitalmonotoring.jpg"
             alt="Metro construction"
-            className="h-full w-full object-cover"
-            onError={(e) => (e.currentTarget.style.opacity = "0")}
+            className="h-full w-full object-fill"
           />
         </motion.div>
 
@@ -305,12 +298,12 @@ const MetroMonitoringBlog = () => {
         </div>
       </section>
 
-      {/* Image between sections */}
+      {/* Unsplash image 1 – tall (h-[450px]) */}
       <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
         <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+          src="/blogimage/digitalmonitoring2.jpg"
           alt="Construction site"
-          className="rounded-3xl shadow-lg w-full"
+          className="rounded-3xl shadow-lg w-full h-[450px] object-fill"
         />
       </motion.div>
 
@@ -356,12 +349,12 @@ const MetroMonitoringBlog = () => {
         </motion.ul>
       </section>
 
-      {/* Image */}
+      {/* Unsplash image 2 – tall (h-[450px]) */}
       <motion.div {...rise(0)} className="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
         <img
-          src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+          src="/blogimage/digitalmonitoring3.jpg"
           alt="Metro tunnel"
-          className="rounded-3xl shadow-lg w-full"
+          className="rounded-3xl shadow-lg w-full h-[450px] object-fill"
         />
       </motion.div>
 

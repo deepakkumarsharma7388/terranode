@@ -4,7 +4,7 @@ const Footer = () => {
   const productLinks = [
     { name: "Applications", path: "/applications" },
     { name: "Modules", path: "/modules" },
-    { name: "Use Cases", path: "/use-cases" },
+    { name: "Projects", path: "/use-cases" },
     { name: "Features", path: "/features" },
     { name: "FAQ", path: "/faq" },
     { name: "Roadmap", path: "/roadmap" },
