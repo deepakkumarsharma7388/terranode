@@ -13,7 +13,7 @@ import {
   BarChart3,
   Globe,
   Puzzle,
- 
+
 } from 'lucide-react';
 
 import { useRef, useState, useEffect } from 'react';
@@ -30,14 +30,14 @@ import { useInView } from "react-intersection-observer";
 import { MessageCircle } from "lucide-react";
 
 import {
-  
+
   Map,
   Zap,
   Clock,
- CheckCircle,
+  CheckCircle,
   Layers,
   Bell,
-  
+
 } from "lucide-react";
 
 
@@ -45,7 +45,7 @@ import {
 
 import {
   X,
- 
+
   Rocket,
   User,
   Share2,
@@ -513,9 +513,8 @@ const FeatureCarousel = () => {
                 key={slide.title}
                 className="group absolute transition-all duration-700 ease-out"
                 style={{
-                  transform: `translateX(${offset * 56}%) scale(${
-                    isActive ? 1 : 0.6
-                  })`,
+                  transform: `translateX(${offset * 56}%) scale(${isActive ? 1 : 0.6
+                    })`,
                   opacity: isVisible ? (isActive ? 1 : 0.4) : 0,
                   zIndex: isActive ? 20 : 10,
                   pointerEvents: isActive ? "auto" : "none",
@@ -523,11 +522,10 @@ const FeatureCarousel = () => {
               >
                 {/* Image Card */}
                 <div
-                  className={`relative h-[260px] w-[300px] overflow-hidden rounded-2xl bg-[#26282C] transition-shadow duration-500 sm:h-[380px] sm:w-[520px] md:h-[490px] md:w-[800px] lg:h-[550px] lg:w-[920px] ${
-                    isActive
-                      ? "shadow-2xl ring-4 ring-[#F26418]"
-                      : "shadow-lg ring-1 ring-black/5"
-                  }`}
+                  className={`relative h-[260px] w-[300px] overflow-hidden rounded-2xl bg-[#26282C] transition-shadow duration-500 sm:h-[380px] sm:w-[520px] md:h-[490px] md:w-[800px] lg:h-[550px] lg:w-[920px] ${isActive
+                    ? "shadow-2xl ring-4 ring-[#F26418]"
+                    : "shadow-lg ring-1 ring-black/5"
+                    }`}
                 >
                   <img
                     src={slide.image}
@@ -571,11 +569,10 @@ const FeatureCarousel = () => {
               key={index}
               onClick={() => setActive(index)}
               aria-label={`Go to slide ${index + 1}`}
-              className={`h-2 rounded-full transition-all ${
-                index === active
-                  ? "w-6 bg-[#F26418]"
-                  : "w-2 bg-[#26282C]/20 hover:bg-[#26282C]/40"
-              }`}
+              className={`h-2 rounded-full transition-all ${index === active
+                ? "w-6 bg-[#F26418]"
+                : "w-2 bg-[#26282C]/20 hover:bg-[#26282C]/40"
+                }`}
             />
           ))}
         </div>
@@ -1703,7 +1700,7 @@ const DashboardSection = () => {
           >
             <div className="overflow-hidden rounded-2xl border border-[#E2E5E9] bg-white shadow-lg">
               <img
-                src="/terastamp-convergence-dashboard.png" 
+                src="/terastamp-convergence-dashboard.png"
                 alt="Interactive dashboard showing project visibility and metrics"
                 className="h-full w-full object-cover"
               />
@@ -1770,16 +1767,6 @@ const CounterSection = () => {
     </section>
   );
 };
-
-
-
-
-
-
-
-
-
-
 
 
 const CounterCard = ({ icon, target, suffix, prefix, label, description, delay }) => {
@@ -1909,6 +1896,576 @@ const CTASection = () => (
 
 
 
+/* ---------- Color Palette ---------- */
+const c = {
+  section: "#FFFFFF",
+  card: "#FFFFFF",
+  tile: "#F9FAFB",
+  tileHover: "#F1F3F5",
+  border: "#D1D9E6",
+  borderSoft: "#E2E8F0",
+  heading: "#000000",
+  text: "#7C8595",
+  muted: "#7C8595",
+  faint: "#A0AEC0",
+  accent: "#F26418",
+  accentSoft: "#F26418",
+  field: "#F8FAFC",
+};
+
+const seedFrom = (str) => {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+};
+const makeRng = (seed) => {
+  let s = seed || 1;
+  return () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+};
+
+const CardImage = ({ card }) => {
+  if (card.image)
+    return <img src={card.image} alt={card.title} className="h-full w-full object-cover" />;
+
+  const rng = makeRng(seedFrom(card.title));
+  const hue = Math.floor(rng() * 360);
+  const main = `hsl(${hue} 70% 55%)`;
+  const soft = `hsl(${hue} 55% 78%)`;
+  const paper = `hsl(${hue} 30% 96%)`;
+  const grid = `hsl(${hue} 20% 88%)`;
+  const box = { width: "100%", height: "100%", display: "block" };
+  const k = card.kind;
+
+  if (k === "line" || k === "area") {
+    const pts = Array.from({ length: 7 }, (_, i) => [8 + i * 24, 24 + rng() * 46]);
+    const path = pts.map((p) => p.join(",")).join(" ");
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        {[22, 44, 66].map((y) => (
+          <line key={y} x1="0" y1={y} x2="160" y2={y} stroke={grid} strokeWidth="0.6" />
+        ))}
+        {k === "area" && <polygon points={`8,90 ${path} 152,90`} fill={soft} opacity="0.6" />}
+        <polyline points={path} fill="none" stroke={main} strokeWidth="2.4" />
+        {pts.map((p, i) => (
+          <circle key={i} cx={p[0]} cy={p[1]} r="2.2" fill={main} />
+        ))}
+      </svg>
+    );
+  }
+  if (k === "bars") {
+    const bars = Array.from({ length: 9 }, () => 12 + rng() * 60);
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        {bars.map((h, i) => (
+          <rect key={i} x={10 + i * 16} y={84 - h} width="10" height={h} rx="1.5" fill={i % 3 === 0 ? main : soft} />
+        ))}
+      </svg>
+    );
+  }
+  if (k === "table") {
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        <rect width="160" height="15" fill={soft} />
+        {Array.from({ length: 5 }, (_, r) => (
+          <g key={r}>
+            <rect x="6" y={22 + r * 13} width={18 + rng() * 34} height="4" rx="2" fill={main} opacity="0.75" />
+            <rect x="70" y={22 + r * 13} width={20 + rng() * 30} height="4" rx="2" fill={grid} />
+            <rect x="118" y={22 + r * 13} width={14 + rng() * 22} height="4" rx="2" fill={grid} />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+  if (k === "map") {
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={`hsl(${hue} 25% 92%)`} />
+        <path d={`M0,${50 + rng() * 10} C40,${30 + rng() * 20} 80,70 120,50 150,40 160,55 160,55 L160,90 L0,90 Z`} fill={soft} opacity="0.7" />
+        <path d={`M0,${68 + rng() * 8} C50,58 90,80 140,68 160,64 160,72 160,72 L160,90 L0,90 Z`} fill={main} opacity="0.35" />
+        {Array.from({ length: 4 }, (_, i) => (
+          <circle key={i} cx={20 + rng() * 120} cy={18 + rng() * 40} r="3" fill={main} />
+        ))}
+      </svg>
+    );
+  }
+  if (k === "gauge") {
+    const val = 0.25 + rng() * 0.6;
+    const ang = Math.PI * (1 - val);
+    const x = 80 + 46 * Math.cos(ang);
+    const y = 68 - 46 * Math.sin(ang);
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        <path d="M34,68 A46,46 0 0 1 126,68" fill="none" stroke={grid} strokeWidth="9" strokeLinecap="round" />
+        <path d={`M34,68 A46,46 0 0 1 ${x},${y}`} fill="none" stroke={main} strokeWidth="9" strokeLinecap="round" />
+        <circle cx="80" cy="68" r="4" fill={main} />
+        <text x="80" y="50" textAnchor="middle" fontSize="16" fontWeight="700" fill={main}>
+          {Math.round(val * 100)}
+        </text>
+      </svg>
+    );
+  }
+  if (k === "donut") {
+    const a = 0.2 + rng() * 0.4;
+    const b = 0.15 + rng() * 0.35;
+    const seg = (start, frac, color) => {
+      const s = start * 2 * Math.PI - Math.PI / 2;
+      const e = (start + frac) * 2 * Math.PI - Math.PI / 2;
+      const large = frac > 0.5 ? 1 : 0;
+      const r = 30;
+      return (
+        <path
+          d={`M80,45 L${80 + r * Math.cos(s)},${45 + r * Math.sin(s)} A${r},${r} 0 ${large} 1 ${80 + r * Math.cos(e)},${45 + r * Math.sin(e)} Z`}
+          fill={color}
+        />
+      );
+    };
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        {seg(0, a, main)}
+        {seg(a, b, soft)}
+        {seg(a + b, 1 - a - b, grid)}
+        <circle cx="80" cy="45" r="15" fill={paper} />
+      </svg>
+    );
+  }
+  if (k === "heatmap") {
+    return (
+      <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+        <rect width="160" height="90" fill={paper} />
+        {Array.from({ length: 7 }, (_, x) =>
+          Array.from({ length: 4 }, (_, y) => (
+            <rect key={`${x}-${y}`} x={10 + x * 21} y={8 + y * 19} width="18" height="16" rx="2" fill={main} opacity={(0.15 + rng() * 0.8).toFixed(2)} />
+          ))
+        )}
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 160 90" style={box} preserveAspectRatio="none">
+      <rect width="160" height="90" fill={paper} />
+      {[0, 1, 2].map((col) => (
+        <g key={col}>
+          <rect x={8 + col * 50} y="8" width="44" height="74" rx="4" fill={`hsl(${hue} 25% 90%)`} />
+          {Array.from({ length: 1 + Math.floor(rng() * 3) }, (_, i) => (
+            <rect key={i} x={12 + col * 50} y={14 + i * 18} width="36" height="14" rx="2" fill={i === 0 ? main : soft} opacity={i === 0 ? 0.85 : 0.7} />
+          ))}
+        </g>
+      ))}
+    </svg>
+  );
+};
+
+const Rich = ({ parts }) => {
+  if (typeof parts === "string") return <span>{parts}</span>;
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.b ? (
+          <strong key={i} className="font-semibold" style={{ color: c.heading }}>
+            {p.t}
+          </strong>
+        ) : (
+          <span key={i}>{p.t}</span>
+        )
+      )}
+    </>
+  );
+};
+
+const Modal = ({ children, onClose }) => (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
+    style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
+    onClick={onClose}
+  >
+    <div
+      className="relative my-auto w-full max-w-3xl rounded-2xl shadow-2xl"
+      style={{ background: c.card, border: `1px solid ${c.border}` }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={onClose}
+        aria-label="Close"
+        className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full"
+        style={{ background: "rgba(0,0,0,0.1)", color: c.accent }}
+      >
+        <X size={18} />
+      </button>
+      {children}
+    </div>
+  </div>
+);
+
+const FeatureModal = ({ feature, onClose }) => {
+  const [copied, setCopied] = useState(false);
+
+  const share = async () => {
+    const link =
+      typeof window !== "undefined"
+        ? `${window.location.origin}${window.location.pathname}#${feature.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
+        : `#${feature.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+    try {
+      await navigator.clipboard.writeText(link);
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = link;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (_) { }
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
+  return (
+    <Modal onClose={onClose}>
+      <div className="max-h-[88vh] overflow-y-auto">
+        <div className="overflow-hidden rounded-t-2xl" style={{ height: 220, background: "#e2e8f0" }}>
+          <CardImage card={feature} />
+        </div>
+
+        <div className="px-5 py-5 sm:px-8 sm:py-6">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="text-2xl font-bold leading-tight sm:text-3xl" style={{ color: c.heading }}>
+              {feature.title}
+            </h3>
+            <div className="flex shrink-0 items-center gap-3">
+              <div className="relative">
+                <button onClick={share} aria-label="Copy link" className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: c.field, border: `1px solid ${c.border}`, color: copied ? "#38a169" : c.muted }}>
+                  {copied ? <Check size={17} /> : <Share2 size={16} />}
+                </button>
+                {copied && (
+                  <span className="absolute right-0 top-11 whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-medium" style={{ background: c.card, border: `1px solid ${c.border}`, color: c.text }}>
+                    Link copied!
+                  </span>
+                )}
+              </div>
+              <span className="flex items-center gap-1 text-sm" style={{ color: c.faint }}>
+                <User size={15} /> {feature.votes}
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: c.accent }}>
+              {feature.author.slice(0, 1)}
+            </div>
+            <span className="text-sm font-bold tracking-wide" style={{ color: c.heading }}>
+              {feature.author}
+            </span>
+            <span style={{ color: c.faint }}>|</span>
+            <span className="text-sm" style={{ color: c.text }}>
+              Posted on {feature.postedOn}
+            </span>
+          </div>
+
+          <div className="mt-5 space-y-3 border-t pt-5 text-sm leading-relaxed sm:text-[15px]" style={{ borderColor: c.borderSoft, color: c.text }}>
+            {feature.intro.map((p, i) => (
+              <p key={i}>
+                <Rich parts={p} />
+              </p>
+            ))}
+          </div>
+
+          <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
+            Key Features &amp; Benefits
+          </h4>
+          <ul className="space-y-2.5 text-sm leading-relaxed" style={{ color: c.text }}>
+            {feature.features.map((f, i) => (
+              <li key={i}>
+                <span className="mr-1.5" style={{ color: c.accent }}>•</span>
+                <strong className="font-semibold" style={{ color: c.heading }}>{f.lead}</strong> {f.text}
+                {f.children && (
+                  <ul className="mt-2 space-y-2 pl-6">
+                    {f.children.map((ch, j) => (
+                      <li key={j}>
+                        <span className="mr-1.5" style={{ color: c.faint }}>◦</span>
+                        <strong className="font-semibold" style={{ color: c.heading }}>{ch.lead}</strong> {ch.text}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <h4 className="mt-6 mb-2 text-lg font-bold" style={{ color: c.heading }}>
+            How to Use It
+          </h4>
+          <ol className="space-y-2.5 text-sm leading-relaxed" style={{ color: c.text }}>
+            {feature.steps.map((s, i) => (
+              <li key={i} className="flex gap-2.5">
+                <span className="font-bold" style={{ color: c.accent }}>{i + 1}.</span>
+                <span>
+                  {s.lead && <strong className="font-semibold" style={{ color: c.heading }}>{s.lead} </strong>}
+                  {s.text}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </Modal>
+  );
+};
+
+const projects = [
+  {
+    year: "2020",
+    title: "LA Purple Line Extension (Section 2)",
+    status: "Completed",
+    votes: 0,
+    kind: "map",
+    author: "TERASTAMP",
+    postedOn: "May 15",
+    image: "/la-purple-line-section2.jpg",
+    intro: [
+      "TeraStamp was first deployed on the LA Purple Line Extension (Section 2), providing comprehensive digital monitoring for tunnel excavation and station construction.",
+      "This project marked the beginning of our journey in transforming infrastructure monitoring through real‑time data and actionable insights.",
+    ],
+    features: [
+      { lead: "End‑to‑end monitoring:", text: "Integrated sensors across the entire 4‑mile tunnel alignment." },
+      { lead: "Centralized dashboard:", text: "All data streams consolidated into a single, accessible platform." },
+      { lead: "Automated reporting:", text: "Daily and weekly reports generated without manual effort." },
+    ],
+    steps: [
+      { text: "Deployed instrumentation network across the project site." },
+      { lead: "Configured alert thresholds:", text: "Set up real‑time notifications for critical deviations." },
+      { lead: "Trained team members:", text: "Onboarded engineers and field staff to use the platform." },
+    ],
+  },
+  {
+    year: "2023",
+    title: "LA Purple Line 3 Tunnels",
+    status: "Completed",
+    votes: 0,
+    kind: "line",
+    author: "TERASTAMP",
+    postedOn: "October 10",
+    image: "/la-purple-line-3-tunnels.jpg",
+    intro: [
+      "With the expansion of the Purple Line to include three new tunnel sections, TeraStamp was extended to handle the increased complexity and volume of monitoring data.",
+      "The platform's scalability and reliability were put to the test and proved essential for managing the project's rigorous demands.",
+    ],
+    features: [
+      { lead: "Multi‑site synchronization:", text: "All three tunnel sections monitored in unison." },
+      { lead: "Advanced analytics:", text: "Trend analysis and predictive modeling for ground movement." },
+      { lead: "Collaborative tools:", text: "Shared dashboards and real‑time commenting for team alignment." },
+    ],
+    steps: [
+      { text: "Extended the existing monitoring network to the new tunnels." },
+      { lead: "Configured custom views:", text: "Created specific dashboards for each tunnel section." },
+      { lead: "Integrated with existing workflows:", text: "Connected with project management and BIM systems." },
+    ],
+  },
+  {
+    year: "2024",
+    title: "LA Purple Line 3 Stations",
+    status: "Completed",
+    votes: 0,
+    kind: "table",
+    author: "TERASTAMP",
+    postedOn: "September 5",
+    image: "/la-purple-line-3-stations.jpg",
+    intro: [
+      "The third phase of the Purple Line focused on three new station boxes, each with unique geotechnical challenges. TeraStamp provided the monitoring backbone to ensure safe and efficient construction.",
+    ],
+    features: [
+      { lead: "Station‑specific instrumentation:", text: "Tailored sensor arrays for each station's ground conditions." },
+      { lead: "Real‑time structural health:", text: "Continuous monitoring of diaphragm walls and shoring systems." },
+      { lead: "Automated alarm escalation:", text: "Multi‑level alerts for progressive response." },
+    ],
+    steps: [
+      { text: "Deployed instrumentation for each station box." },
+      { lead: "Set up station‑level dashboards:", text: "Separate views for each construction site." },
+      { lead: "Established reporting cadence:", text: "Daily progress reports pushed to all stakeholders." },
+    ],
+  },
+  {
+    year: "2025",
+    title: "VTA's BART Phase II — CP2 EWP 3C",
+    status: "Completed",
+    votes: 0,
+    kind: "gauge",
+    author: "TERASTAMP",
+    postedOn: "July 20",
+    image: "/vta-bart-phase2-cp2.jpg",
+    intro: [
+      "TeraStamp was selected for the VTA BART Phase II extension, specifically for the CP2 EWP 3C package. This high‑profile project required robust monitoring for tunnel boring machine (TBM) operations and ground movement.",
+    ],
+    features: [
+      { lead: "TBM performance tracking:", text: "Real‑time data on thrust, torque, and cutterhead wear." },
+      { lead: "Settlement monitoring:", text: "High‑precision sensors along the entire alignment." },
+      { lead: "Integration with 3D models:", text: "Live data overlaid on BIM models for spatial context." },
+    ],
+    steps: [
+      { text: "Installed monitoring equipment along the TBM route." },
+      { lead: "Configured TBM dashboards:", text: "Displayed critical performance metrics at a glance." },
+      { lead: "Linked with project control room:", text: "Enabled remote monitoring and decision support." },
+    ],
+  },
+  {
+    year: "2026",
+    title: "TeraStamp Platform Update: AI-Powered Monitoring Suite",
+    status: "Upcoming",
+    votes: 0,
+    kind: "area",
+    author: "TERASTAMP",
+    postedOn: "June 1",
+    image: "/la-purple-line-section2.jpg",
+    intro: [
+      "In 2026, TeraStamp introduced a major platform update centered around artificial intelligence. The new AI‑Powered Monitoring Suite brings predictive analytics, automated anomaly detection, and intelligent reporting to every project.",
+      "This release represents a leap forward in turning raw data into proactive decisions, reducing risk and improving outcomes for infrastructure teams.",
+    ],
+    features: [
+      { lead: "Predictive Insights:", text: "AI models forecast potential issues before they occur." },
+      { lead: "Anomaly Detection:", text: "Automated identification of unusual patterns across all instruments." },
+      { lead: "Intelligent Summaries:", text: "GEO AI generates concise daily digests tailored to each user." },
+      { lead: "Enhanced Visualizations:", text: "Interactive 3D and time‑lapse views for better understanding." },
+    ],
+    steps: [
+      { text: "Enable AI features from the Settings panel." },
+      { lead: "Configure AI thresholds:", text: "Set sensitivity levels for anomaly detection." },
+      { lead: "Access AI reports:", text: "View daily, weekly, or custom‑period summaries." },
+    ],
+  },
+];
+
+const TeraStampJourney = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  return (
+    <section className="relative overflow-hidden min-h-screen w-full bg-slate-50">
+      {/* Background Image Layer (Fixed & Properly Scaled) */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/blogimage/digitalmonotoring.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "scroll",
+          filter: "blur(0px)",
+          opacity: 1,
+        }}
+      />
+
+      {/* Main Content Container */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            Our <span className="text-[#F26418]">Journey</span>
+          </h2>
+
+          <p className="mx-auto mt-5 text-lg leading-8 text-white/90 font-medium">
+            From an ambitious vision to becoming a trusted infrastructure
+            intelligence platform, our journey reflects continuous innovation,
+            engineering excellence, and a commitment to smarter monitoring
+            solutions.
+          </p>
+        </div>
+
+        {/* Timeline */}
+        {/* Timeline */}
+        <div className="relative mt-20">
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 rounded-full bg-[#F26418] md:block" />
+
+          {/* Flex spacing structure explicitly handling mobile gap */}
+          <div className="flex flex-col gap-[20px] md:gap-4">
+            {projects.map((project, index) => {
+              const isLeft = index % 2 === 0;
+              const isCompleted = project.status === "Completed";
+
+              return (
+                <div
+                  key={project.year}
+                  className={`relative flex flex-col items-center w-full md:gap-10 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 top-10 z-20 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-[#F26418] shadow-lg md:block" />
+
+                  {/* Card */}
+                  <div
+                    className={`w-full md:w-5/12 ${isLeft ? "md:pr-4" : "md:pl-4"}`}
+                  >
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="group relative w-full overflow-hidden rounded-3xl border border-[#F26418]/30 bg-white p-6 text-left shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#F26418] hover:shadow-2xl"
+                    >
+                      {/* Clean content structure without the embedded pattern */}
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between">
+                          <span className="text-lg font-bold text-[#F26418]">
+                            {project.year}
+                          </span>
+
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-semibold ${isCompleted
+                                ? "bg-green-100 text-green-700"
+                                : "bg-yellow-100 text-yellow-700"
+                              }`}
+                          >
+                            {project.status}
+                          </span>
+                        </div>
+
+                        <h3 className="mt-4 text-xl font-bold text-[#1A202C]">
+                          {project.title}
+                        </h3>
+
+                        <p className="mt-3 text-sm leading-7 text-[#4A5568]">
+                          {project.intro[0].length > 130
+                            ? project.intro[0].slice(0, 130) + "..."
+                            : project.intro[0]}
+                        </p>
+
+                        <div className="mt-6 inline-flex items-center gap-2 font-semibold text-[#F26418]">
+                          Learn More
+                          <ArrowRight
+                            size={16}
+                            className="transition group-hover:translate-x-1"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="hidden md:block md:w-5/12" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Modal View */}
+      {selectedProject && (
+        <FeatureModal
+          feature={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </section>
+  );
+};
+
+
 
 
 
@@ -1922,9 +2479,9 @@ export default function Home() {
       <DataPlatformSection />
       <HorizontalScrollSection />
 
-  
-      <FeatureCarousel/>
-      <FeaturesGrid/>
+
+      <FeatureCarousel />
+      <FeaturesGrid />
       <ProjectSlider />
       <BenefitsSection />
       <TestimonialsSection />
@@ -1935,7 +2492,7 @@ export default function Home() {
       <ThreeDSection />
       <DashboardSection />
       <CounterSection />
-        
+      <TeraStampJourney />
       <CTASection />
     </div>
   );

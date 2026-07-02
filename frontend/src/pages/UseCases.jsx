@@ -123,10 +123,10 @@ const CTAsection = () => {
         {/* Left Content Column */}
         <div className="flex flex-col max-w-md z-10 text-white">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Discover the "New" New with TeraStamp
+            Transform Infrastructure with TeraStamp
           </h1>
           <p className="text-lg sm:text-xl font-medium opacity-90 mb-8">
-            Start building faster today
+            Empower your projects with smarter monitoring and real-time insights.
           </p>
           <div>
             <Link

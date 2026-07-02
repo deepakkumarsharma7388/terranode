@@ -86,7 +86,7 @@ const CtaBanner = () => (
 
     <div className="relative h-[260px] w-full self-end overflow-hidden rounded-2xl border border-white/20 shadow-2xl sm:h-[340px] md:w-[55%]">
       <img
-        src="/test1.webp"
+        src="/la-purple-line-section2.jpg"
         alt="Newsletter"
         className="h-full w-full object-cover"
         onError={(e) => (e.currentTarget.style.opacity = "0")}

@@ -21,7 +21,7 @@ const colors = {
   cardHover: "#F1F3F5",
 };
 
-const heroImage = "/mixe.jpeg"; // Replace with your image
+const heroImage = "/landslide.jpeg"; // Replace with your image
 
 const benefits = [
   {

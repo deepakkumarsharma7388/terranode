@@ -21,7 +21,7 @@ const colors = {
   cardHover: "#F1F3F5",
 };
 
-const heroImage = "/watersav.jpeg"; // Replace with your image
+const heroImage = "/structuralhealth.jpeg"; 
 
 const benefits = [
   {
